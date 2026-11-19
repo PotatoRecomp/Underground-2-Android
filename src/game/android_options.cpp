@@ -1,0 +1,539 @@
+// ANDROID OPTIONS: the settings panel's pages (src/common/menu.cpp), but for My Music, in the game's own options
+// menu, drawn as its own options are.
+//
+// The main menu's Setup (0x0C7110, thiscall on the icon scroller) makes its seven icons (MMCareer ... MMOptions) as
+// IconOptions: 0x48 bytes from operator new (0x3ED50, cdecl), the constructor 0x12C0C0 (thiscall: texture hash at
+// +0xC, name hash at +0x2C, description hash at +0x30), a vtable of two (the destructor 0x12DB10, React), each added
+// by the scroller's vtable slot 0x18. ANDROID OPTIONS is one more after OPTIONS, whose React is OPTIONS' own
+// (0x0C7010: UI_OptionsMain.fng) and marks the options it opens as ours. That UIOptionsMain's Setup (0x0CE3A0, its
+// eight icons OMAudio ... OMOnline, their React setting the category [0x406CC4]) then makes our sections' icons in
+// place of the game's. A section's React picks category 0, which the fade after Accept opens UI_Options.fng for
+// (0x0CE278), and the section; UIOptionsScreen then sets up category 0 by 0x0CE680 (the Audio page's), which makes
+// our rows instead when a section is picked. A row is a widget as the Player page's (0x0CF4F0): 0x54 bytes, the
+// constructor 0x12AF20 (the screen's +0x100, +0x110, +0x118, +0x120, enabled), added by 0x15B2E0 (thiscall on the
+// screen: widget, 1), which hands it the package's next title and value strings. Its vtable is the Player page's
+// first (0x34F4A0) with Act (+0x4: thiscall, the message second; the dpad's left and right step it, then the arrows
+// blink, +0x40, and it draws, +0xC) and Draw (+0xC: its title [+0x2C] and value [+0x30] set to a string hash by
+// 0x118BF0) as host functions.
+//
+// The texts are strings the string table's lookup (SearchForString, 0x1105C0, the hash in edx) answers for hashes of
+// ours. The icons' pictures are the main menu's OPTIONS icon's TextureInfo copied (GetTextureInfo, 0xA1580, answers
+// our hashes with them), our pixels in its D3D texture (tools/option_icons.py). The pause menu gets ANDROID OPTIONS
+// too, which opens the settings panel there.
+#include <algorithm>
+#include <atomic>
+#include <cctype>
+#include <cstdint>
+#include <cstring>
+#include <iterator>
+#include <mutex>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+#include "common/fe_mouse.h"
+#include "common/menu.h"
+#include "common/options.h"
+#include "common/translations.h"
+#include "core/log.h"
+#include "cpu/x86_ops.h"
+#include "kernel/kernel.h"
+#include "kernel/memory.h"
+
+namespace dispatch {
+uint32_t HostThunk(X86Func* fn);  // sdk/runtime/cpu/dispatch.cpp
+}
+
+namespace game {
+
+namespace {
+
+using app::rows::Kind;
+using app::rows::Row;
+using kernel::CallGuest;
+using kernel::R32;
+using kernel::W32;
+
+constexpr uint32_t kNew = 0x3ED50, kIconCtor = 0x12C0C0, kIconDtor = 0x12DB10, kIconBytes = 0x48;
+constexpr uint32_t kAddIconSlot = 0x18, kStaysIcon = 0x45;
+constexpr uint32_t kGetTextureInfo = 0xA1580, kSetString = 0x118BF0, kFindObject = 0x144360, kSelectedIcon = 0x118120;
+constexpr uint32_t kAccept = 0x0C407210, kLeft = 0x9120409E, kRight = 0xB5971BF1;
+constexpr uint32_t kOptionsReact = 0x0C7010;  // MMOptions'
+// the pause menu's: its OPTIONS' React, UIPauseOptionsMain's Setup (its three icons, by 0x0DA950) and the Audio page it
+// opens for category 0 (0x0DAC80). Each sets its texts first: Header_text, Header_text2, Back_button, Select_button
+constexpr uint32_t kPauseOptionsReact = 0x0D9FB0;
+constexpr uint32_t kCategory = 0x406CC4, kAudioCategory = 0;
+// a row: the widget, its constructor and vtable (the Player page's), the screen's add; its title and value strings
+constexpr uint32_t kRowBytes = 0x54, kRowCtor = 0x12AF20, kRowVtable = 0x34F4A0, kRowVtableBytes = 0x44;
+constexpr uint32_t kAddRow = 0x15B2E0, kRowTitle = 0x2C, kRowValue = 0x30;
+constexpr uint32_t kActSlot = 0x4, kDrawSlot = 0xC, kBlinkSlot = 0x40;
+// UIOptionsScreen: its package +4, its fields the rows are made with, the header's title (set to the category's name
+// by 0x0E6753 before the page's Setup), the screen's own string (+0x2C, 0x0CF943) and the Player page's flag +0x152
+constexpr uint32_t kScreenPackage = 0x4, kHeaderTitle = 0x42ADB44C, kScreenString = 0x2C, kScreenFlag = 0x152;
+constexpr uint32_t kScreenFields[] = {0x100, 0x110, 0x118, 0x120};
+
+// the main menu's OPTIONS icon, or in a race (its textures alone loaded) the pause menu's
+constexpr uint32_t kTemplates[] = {0x3058FE37, 0x520DE4E3, 0xB34993C9};
+// ours: hashes nothing of the game's has ("RC" and a number); icon 0 ANDROID OPTIONS, then the sections
+constexpr uint32_t kTextureHashes = 0x52430A10, kNameHashes = 0x52430A20;
+
+#ifdef __ANDROID__
+constexpr const char* kHostOptions = "Android Options";  // as the game's "Options"
+#else
+constexpr const char* kHostOptions = "Linux Options";
+#endif
+
+// the panel's pages in three: graphics; the touch controls, the controller and keyboard; general and the credits
+struct Section {
+    const char* name;
+    std::vector<int> pages;
+};
+#ifdef __ANDROID__
+const Section kSections[] = {{"GRAPHICS", {0}}, {"CONTROLS", {1, 4, 3}}, {"GENERAL", {2, 5}}};
+#else
+const Section kSections[] = {{"GRAPHICS", {0}}, {"CONTROLS", {3, 4, 1}}, {"GENERAL", {2, 5}}};
+#endif
+constexpr int kSectionCount = int(std::size(kSections));
+
+#include "game/option_icons.inc"  // kIconCount, kIconWidth, kIconHeight, kIcons (tools/option_icons.py)
+static_assert(kIconCount == 1 + kSectionCount, "tools/option_icons.py draws ANDROID OPTIONS, then a section each");
+
+// ---- text
+
+// the game's fonts are Latin-1: UTF-8 to it, what it lacks as '?'
+std::string Latin1(const std::string& text) {
+    std::string out;
+    for (size_t i = 0; i < text.size(); i++) {
+        uint8_t c = uint8_t(text[i]);
+        if (c < 0x80) {
+            out += char(c);
+        } else if ((c & 0xE0) == 0xC0 && i + 1 < text.size()) {
+            uint32_t cp = (c & 0x1Fu) << 6 | (uint8_t(text[++i]) & 0x3Fu);
+            out += cp < 0x100 ? char(cp) : '?';
+        } else {
+            while (i + 1 < text.size() && (uint8_t(text[i + 1]) & 0xC0) == 0x80) i++;
+            out += '?';
+        }
+    }
+    return out;
+}
+
+// the game's options read "Sound Effects Volume", "On": each word's first letter in capitals, but for the short
+// forms and anything with a digit in it
+std::string TitleCase(std::string text) {
+    static const char* const kKeep[] = {"FPS", "CPU", "GPU", "FXAA", "SSAA", "HDR", "CRT", "EA", "UI", "TV", "LT",
+                                        "RT", "LB", "RB", "USB", "SDL", "XBOX"};
+    size_t start = 0;
+    while (start < text.size()) {
+        size_t end = text.find_first_of(" /()-,", start);
+        if (end == std::string::npos) end = text.size();
+        std::string word = text.substr(start, end - start);
+        bool keep = std::any_of(word.begin(), word.end(), [](char c) { return std::isdigit(uint8_t(c)); });
+        for (const char* k : kKeep) keep |= word == k;
+        for (size_t i = start + 1; !keep && i < end; i++)
+            if (uint8_t(text[i]) < 0x80) text[i] = char(std::tolower(uint8_t(text[i])));
+        start = end + 1;
+    }
+    return text;
+}
+
+// the panel's English, in the boot language, as the game writes its own
+std::string GameText(const std::string& english) { return Latin1(TitleCase(app::Ui(english))); }
+
+// our strings by hash, each text in guest memory once; the lookup runs on the game's threads
+std::mutex g_strings_lock;
+std::unordered_map<uint32_t, uint32_t> g_strings;
+
+uint32_t PutString(uint32_t hash, const std::string& text) {
+    std::lock_guard lock(g_strings_lock);
+    uint32_t& va = g_strings[hash];
+    if (!va) {
+        va = mem::AllocSystem(uint32_t(text.size() + 1));
+        if (va) std::memcpy(kernel::HostPtr(va), text.c_str(), text.size() + 1);
+    }
+    return hash;
+}
+
+// a hash of the text's own, so a changed value is a changed hash (0x118BF0 redraws a string only then)
+uint32_t TextHash(const std::string& text) {
+    uint32_t h = 2166136261u;
+    for (char c : text) h = (h ^ uint8_t(c)) * 16777619u;
+    return PutString(0x7E000000u | (h & 0x00FFFFFFu), text);
+}
+
+uint32_t LookUp(uint32_t hash) {
+    std::lock_guard lock(g_strings_lock);
+    auto it = g_strings.find(hash);
+    return it == g_strings.end() ? 0 : it->second;
+}
+
+// ---- the icons' pictures
+
+std::atomic<uint32_t> g_textures[kIconCount] = {};
+
+// the NV2A's swizzle: x's and y's bits interleaved, x first, while both have them; the longer side's rest above
+uint32_t Swizzle(uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
+    uint32_t out = 0, bit = 0;
+    for (uint32_t m = 1; m < w || m < h; m <<= 1) {
+        if (m < w) out |= (x & m ? 1u : 0u) << bit++;
+        if (m < h) out |= (y & m ? 1u : 0u) << bit++;
+    }
+    return out;
+}
+
+uint32_t Log2(uint32_t v) {
+    uint32_t n = 0;
+    while ((1u << n) < v) n++;
+    return n;
+}
+
+// TextureInfo (MAIN_ICON_OPTIONS's): its platform record +0, its hash +0x24, itself +0x6C, its pixels +0x70. The
+// record's D3D texture (+0x10: data +4, format +12, size +16) is a 128x64 DXT3; ours is A8R8G8B8, swizzled
+uint32_t MakeTexture(X86Context& ctx, uint32_t icon) {
+    uint32_t tmpl = 0;
+    for (uint32_t hash : kTemplates) {
+        X86Context saved = ctx;
+        tmpl = CallGuest(ctx, kGetTextureInfo, {hash, 0, 0});
+        ctx = saved;
+        if (tmpl && mem::IsCommitted(tmpl) && R32(tmpl) && mem::IsCommitted(R32(tmpl))) break;
+        tmpl = 0;
+    }
+    if (!tmpl) return 0;
+    constexpr uint32_t kInfoBytes = 0x80, kPlatBytes = 0x40, kInfoHash = 0x24, kInfoSelf = 0x6C, kInfoPixels = 0x70;
+    constexpr uint32_t kD3D = 0x10;
+    uint32_t p = R32(tmpl);
+    uint32_t info = mem::AllocSystem(kInfoBytes), plat = mem::AllocSystem(kPlatBytes);
+    uint32_t data = mem::AllocContiguous(kIconWidth * kIconHeight * 4, 0, 0xFFFFFFFF, 0x1000);
+    if (!info || !plat || !data) return 0;
+    std::memcpy(kernel::HostPtr(info), kernel::HostPtr(tmpl), kInfoBytes);
+    std::memcpy(kernel::HostPtr(plat), kernel::HostPtr(p), kPlatBytes);
+    for (uint32_t y = 0; y < kIconHeight; y++)
+        for (uint32_t x = 0; x < kIconWidth; x++)
+            W32(data + Swizzle(x, y, kIconWidth, kIconHeight) * 4, kIcons[icon][y * kIconWidth + x]);
+    W32(info, plat);
+    W32(info + kInfoHash, kTextureHashes + icon);
+    if (R32(info + kInfoSelf) == tmpl) W32(info + kInfoSelf, info);
+    if (R32(info + kInfoPixels) == mem::VirtualFromPhysical(R32(p + kD3D + 4) & 0x0FFFFFFF)) W32(info + kInfoPixels, data);
+    uint32_t d3d = plat + kD3D;
+    uint32_t format = (R32(d3d + 12) & 0xFF) | 0x06u << 8 | 1u << 16 | Log2(kIconWidth) << 20 | Log2(kIconHeight) << 24;
+    W32(d3d + 4, mem::PhysicalFromVirtual(data));
+    W32(d3d + 8, 0);
+    W32(d3d + 12, format);
+    W32(d3d + 16, 0);
+    return info;
+}
+
+// ---- the icons
+
+// the options the next UIOptionsMain shows are ours; the section picked in it, -1 for the game's own
+bool g_android = false;
+int g_section = -1;
+
+std::unordered_map<uint32_t, int> g_section_icons;  // an icon of a section, the section
+
+uint32_t Vtable(X86Func* react) {
+    uint32_t vt = mem::AllocSystem(8);
+    W32(vt, kIconDtor);
+    W32(vt + 4, dispatch::HostThunk(react));
+    return vt;
+}
+
+// an icon added last to a scroller (thiscall Setup's this): icon 0 ANDROID OPTIONS, then the sections
+uint32_t AddIcon(X86Context& ctx, uint32_t menu, uint32_t picture, uint32_t vtable, bool stays) {
+    X86Context saved = ctx;
+    uint32_t icon = CallGuest(ctx, kNew, {kIconBytes});
+    if (icon) {
+        ctx.ecx = icon;
+        CallGuest(ctx, kIconCtor, {kTextureHashes + picture, kNameHashes + picture, 0});
+        W32(icon, vtable);
+        // Accept on an icon stops the scroller's input and fades it out for the screen the icon opens (0x14FF5B);
+        // one with +0x45 set takes it in place (0x14FF34), as one that opens no screen must
+        kernel::G<uint8_t>(icon + kStaysIcon) = stays ? 1 : 0;
+        ctx.ecx = menu;
+        CallGuest(ctx, R32(R32(menu) + kAddIconSlot), {icon});
+    }
+    ctx = saved;
+    return icon;
+}
+
+// IconOption::React(package, message, ...), thiscall, five arguments
+void MainMenuReact(X86Context& ctx, uint8_t*) {
+    uint32_t esp = ctx.esp, self = ctx.ecx;
+    if (R32(esp + 8) == kAccept) g_android = true;
+    X86Context saved = ctx;
+    ctx.ecx = self;
+    CallGuest(ctx, kOptionsReact, {R32(esp + 4), R32(esp + 8), R32(esp + 12), R32(esp + 16), R32(esp + 20)});
+    ctx = saved;
+    ctx.esp = esp + 4 + 0x14;
+}
+
+// the pause menu's: as its OPTIONS (0x0D9FB0: UI_PauseOptionsMain.fng)
+void PauseReact(X86Context& ctx, uint8_t*) {
+    uint32_t esp = ctx.esp, self = ctx.ecx;
+    if (R32(esp + 8) == kAccept) g_android = true;
+    X86Context saved = ctx;
+    ctx.ecx = self;
+    CallGuest(ctx, kPauseOptionsReact, {R32(esp + 4), R32(esp + 8), R32(esp + 12), R32(esp + 16), R32(esp + 20)});
+    ctx = saved;
+    ctx.esp = esp + 4 + 0x14;
+}
+
+void SectionReact(X86Context& ctx, uint8_t*) {
+    uint32_t esp = ctx.esp;
+    auto it = g_section_icons.find(ctx.ecx);
+    if (R32(esp + 8) == kAccept && it != g_section_icons.end()) {
+        W32(kCategory, kAudioCategory);
+        g_section = it->second;
+    }
+    ctx.esp = esp + 4 + 0x14;
+}
+
+// ---- the rows
+
+std::unordered_map<uint32_t, Row> g_rows;  // a widget of ours, its row: the options screen up now's alone
+
+void DrawRow(X86Context& ctx, uint32_t self) {
+    auto it = g_rows.find(self);
+    if (it == g_rows.end()) return;
+    const Row& r = it->second;
+    uint32_t title = TextHash(GameText(r.label)), value = TextHash(GameText(app::rows::Value(r, 0)));
+    X86Context saved = ctx;
+    CallGuest(ctx, kSetString, {R32(self + kRowTitle), title});
+    CallGuest(ctx, kSetString, {R32(self + kRowValue), value});
+    ctx = saved;
+}
+
+// Draw(), thiscall
+void RowDraw(X86Context& ctx, uint8_t*) {
+    DrawRow(ctx, ctx.ecx);
+    ctx.esp += 4;
+}
+
+// Act(?, message), thiscall: left and right step a value, Accept opens a link or a binding
+void RowAct(X86Context& ctx, uint8_t*) {
+    uint32_t esp = ctx.esp, self = ctx.ecx, message = R32(esp + 8);
+    auto it = g_rows.find(self);
+    if (it != g_rows.end()) {
+        const Row r = it->second;
+        if (r.kind == Kind::Value && (message == kLeft || message == kRight)) app::rows::Value(r, message == kLeft ? -1 : 1);
+        else if (message == kAccept) app::rows::Activate(r);
+        X86Context saved = ctx;
+        ctx.ecx = self;
+        CallGuest(ctx, R32(kRowVtable + kBlinkSlot), {message});
+        ctx = saved;
+        DrawRow(ctx, self);
+    }
+    ctx.esp = esp + 4 + 8;
+}
+
+uint32_t RowVtable() {
+    static uint32_t vt = 0;
+    if (!vt) {
+        vt = mem::AllocSystem(kRowVtableBytes);
+        std::memcpy(kernel::HostPtr(vt), kernel::HostPtr(kRowVtable), kRowVtableBytes);
+        W32(vt + kActSlot, dispatch::HostThunk(RowAct));
+        W32(vt + kDrawSlot, dispatch::HostThunk(RowDraw));
+    }
+    return vt;
+}
+
+// the section's rows on the options screen (thiscall's this), as the Player page makes its own; headings are left
+// out, as the game's pages have none
+void SetupRows(X86Context& ctx, uint32_t screen, int section, bool pause = false) {
+    g_rows.clear();
+    X86Context saved = ctx;
+    for (int page : kSections[section].pages) {
+        size_t count = 0;
+        const Row* list = app::rows::Page(page, &count);
+        for (size_t i = 0; i < count; i++) {
+            if (list[i].kind == Kind::Heading) continue;
+            uint32_t w = CallGuest(ctx, kNew, {kRowBytes});
+            if (!w) continue;
+            ctx.ecx = w;
+            CallGuest(ctx, kRowCtor, {screen + kScreenFields[0], screen + kScreenFields[1], screen + kScreenFields[2],
+                                      screen + kScreenFields[3], 1});
+            W32(w, RowVtable());
+            g_rows[w] = list[i];
+            ctx.ecx = screen;
+            CallGuest(ctx, kAddRow, {w, 1});
+        }
+    }
+    uint32_t name = TextHash(GameText(kSections[section].name));
+    if (!pause) {
+        if (uint32_t header = CallGuest(ctx, kFindObject, {R32(screen + kScreenPackage), kHeaderTitle}))
+            CallGuest(ctx, kSetString, {header, name});
+        kernel::G<uint8_t>(screen + kScreenFlag) = 1;
+        W32(screen + kScreenString, name);
+    }
+    ctx = saved;
+}
+
+// SetString(the package's object by the name's hash, the string's hash): the texts a page sets first
+void SetText(X86Context& ctx, uint32_t package, uint32_t name, uint32_t string_hash) {
+    constexpr uint32_t kHash = 0x1160C0;  // bStringHash(text), cdecl
+    X86Context saved = ctx;
+    uint32_t object = CallGuest(ctx, kFindObject, {package, CallGuest(ctx, kHash, {name})});
+    CallGuest(ctx, kSetString, {object, string_hash});
+    ctx = saved;
+}
+constexpr uint32_t kHeaderText = 0x34CE4C, kHeaderText2 = 0x3506A0, kBackButton = 0x350644, kSelectButton = 0x350634;
+// what the pause options pages say over their rows and in their prompts (the game's own pages' texts)
+void PauseTexts(X86Context& ctx, uint32_t package, uint32_t title) {
+    SetText(ctx, package, kHeaderText, title);
+    SetText(ctx, package, kBackButton, 0x933DD695);
+    SetText(ctx, package, kSelectButton, 0x8202C364);
+}
+
+void PutNames() {
+    static bool done = false;
+    if (done) return;
+    done = true;
+    PutString(kNameHashes, Latin1(kHostOptions));
+    for (int s = 0; s < kSectionCount; s++) PutString(kNameHashes + 1 + uint32_t(s), GameText(kSections[s].name));
+}
+
+}  // namespace
+
+// a change the UI applied (src/common/menu.cpp's ApplyPending): our rows on the screen show it
+void OptionsFrame(X86Context& ctx) {
+    static uint32_t seen = 0;
+    uint32_t applied = app::rows::Applied();
+    if (applied == seen) return;
+    seen = applied;
+    if (g_rows.empty() || !(FeOnPackage("UI_Options.fng") || FeOnPackage("UI_PauseOptions.fng"))) return;
+    for (const auto& [widget, row] : g_rows) DrawRow(ctx, widget);
+}
+
+}  // namespace game
+
+using namespace game;
+
+// the main menu's Setup (thiscall, the scroller): its icons, then ANDROID OPTIONS
+X86_EXTERN_FUNC(__imp__sub_000C7110);
+X86_FUNC(sub_000C7110) {
+    uint32_t menu = ctx.ecx;
+    g_android = false;
+    g_rows.clear();
+    PutNames();
+    __imp__sub_000C7110(ctx, base);
+    static const uint32_t vt = Vtable(MainMenuReact);
+    AddIcon(ctx, menu, 0, vt, false);
+}
+
+// the pause menu's Setups, in a race (0x0DA4D0) and in free roam (0x0DA230): theirs, then ANDROID OPTIONS, which
+// opens the same menu as the main menu's
+X86_EXTERN_FUNC(__imp__sub_000DA4D0);
+X86_FUNC(sub_000DA4D0) {
+    uint32_t menu = ctx.ecx;
+    g_android = false;
+    PutNames();
+    __imp__sub_000DA4D0(ctx, base);
+    static const uint32_t vt = Vtable(PauseReact);
+    AddIcon(ctx, menu, 0, vt, false);
+}
+X86_EXTERN_FUNC(__imp__sub_000DA230);
+X86_FUNC(sub_000DA230) {
+    uint32_t menu = ctx.ecx;
+    g_android = false;
+    PutNames();
+    __imp__sub_000DA230(ctx, base);
+    static const uint32_t vt = Vtable(PauseReact);
+    AddIcon(ctx, menu, 0, vt, false);
+}
+
+// UIOptionsMain's Setup (thiscall, the scroller): ANDROID OPTIONS' has our sections in place of the game's, then
+// starts where the game's does (0x0CE641: the icon last picked in the package, then the scroller's own start)
+X86_EXTERN_FUNC(__imp__sub_000CE3A0);
+X86_FUNC(sub_000CE3A0) {
+    g_section = -1;
+    g_rows.clear();  // the options screen is gone, its widgets with it
+    if (!g_android) {
+        __imp__sub_000CE3A0(ctx, base);
+        return;
+    }
+    uint32_t menu = ctx.ecx;
+    static const uint32_t vt = Vtable(SectionReact);
+    for (int s = 0; s < kSectionCount; s++)
+        if (uint32_t icon = AddIcon(ctx, menu, 1 + uint32_t(s), vt, false)) g_section_icons[icon] = s;
+    X86Context saved = ctx;
+    uint32_t start = CallGuest(ctx, kSelectedIcon, {R32(menu + 4)});
+    ctx.ecx = menu + 0x50;
+    CallGuest(ctx, R32(R32(menu + 0x50) + 0x1C), {start});
+    ctx.ecx = menu;
+    CallGuest(ctx, R32(R32(menu) + 0x10), {});
+    ctx = saved;
+    ctx.esp += 4;
+}
+
+// UIPauseOptionsMain's Setup (thiscall, the scroller): the main menu's, for the pause menu's options
+X86_EXTERN_FUNC(__imp__sub_000DA950);
+X86_FUNC(sub_000DA950) {
+    g_section = -1;
+    g_rows.clear();
+    if (!g_android) {
+        __imp__sub_000DA950(ctx, base);
+        return;
+    }
+    uint32_t menu = ctx.ecx;
+    PauseTexts(ctx, R32(menu + 4), 0x1D7BB6C9);
+    static const uint32_t vt = Vtable(SectionReact);
+    for (int s = 0; s < kSectionCount; s++)
+        if (uint32_t icon = AddIcon(ctx, menu, 1 + uint32_t(s), vt, false)) g_section_icons[icon] = s;
+    X86Context saved = ctx;
+    uint32_t start = CallGuest(ctx, kSelectedIcon, {R32(menu + 4)});
+    ctx.ecx = menu + 0x50;
+    CallGuest(ctx, R32(R32(menu + 0x50) + 0x1C), {start});
+    ctx.ecx = menu;
+    CallGuest(ctx, R32(R32(menu) + 0x10), {});
+    ctx = saved;
+    ctx.esp += 4;
+}
+
+// the pause options screen's page of category 0 (its Audio page's): a section's rows when one was picked
+X86_EXTERN_FUNC(__imp__sub_000DAC80);
+X86_FUNC(sub_000DAC80) {
+    if (g_section < 0 || g_section >= kSectionCount) {
+        __imp__sub_000DAC80(ctx, base);
+        return;
+    }
+    uint32_t screen = ctx.ecx;
+    PauseTexts(ctx, R32(screen + 4), TextHash(GameText(kSections[g_section].name)));
+    SetText(ctx, R32(screen + 4), kHeaderText2, TextHash(Latin1(app::Ui(kSections[g_section].name, true))));
+    SetupRows(ctx, screen, g_section, true);
+    ctx.esp += 4;
+}
+
+// UIOptionsScreen's Setup of category 0 (the Audio page's, thiscall): a section's rows when one was picked
+X86_EXTERN_FUNC(__imp__sub_000CE680);
+X86_FUNC(sub_000CE680) {
+    if (g_section < 0 || g_section >= kSectionCount) {
+        __imp__sub_000CE680(ctx, base);
+        return;
+    }
+    SetupRows(ctx, ctx.ecx, g_section);
+    ctx.esp += 4;
+}
+
+// GetTextureInfo(hash, default, unloaded), cdecl: our icons' hashes get our pictures
+X86_EXTERN_FUNC(__imp__sub_000A1580);
+X86_FUNC(sub_000A1580) {
+    uint32_t icon = R32(ctx.esp + 4) - kTextureHashes;
+    if (icon >= kIconCount) {
+        __imp__sub_000A1580(ctx, base);
+        return;
+    }
+    if (!g_textures[icon]) g_textures[icon] = MakeTexture(ctx, icon);
+    ctx.eax = g_textures[icon];
+    ctx.esp += 4;
+}
+
+// SearchForString (hash in edx): our strings
+X86_EXTERN_FUNC(__imp__sub_001105C0);
+X86_FUNC(sub_001105C0) {
+    if (uint32_t va = LookUp(ctx.edx)) {
+        ctx.eax = va;
+        ctx.esp += 4;
+        return;
+    }
+    __imp__sub_001105C0(ctx, base);
+}
