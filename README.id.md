@@ -1,5 +1,5 @@
 # Need for Speed: Underground 2 untuk Android
-[English](README.md) | **Bahasa Indonesia**
+[English](README.md) | **Bahasa Indonesia** | [Español](README.es.md) | [Português](README.pt.md)
 
 Port Android native tidak resmi dari *Need for Speed: Underground 2* versi Xbox orisinal, dengan kontrol sentuh, dukungan controller dan keyboard, serta opsi grafis tambahan.
 
