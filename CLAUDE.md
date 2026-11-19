@@ -1,0 +1,86 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this is
+
+An unofficial Android (arm64) port of the original Xbox game *Need for Speed: Underground 2* (USA, title 4541005A), built from the Android host of [MostWanted-Android](https://github.com/RanggaCasper/MostWanted-Android) (itself from Black-Android), and made with the [XboxXBE-Recomp](https://github.com/TGP482/XboxXBE-Recomp) SDK. The game's x86 code in `default.xbe` is statically recompiled to C++ on a Windows PC. That C++ is then built for Android together with the SDK's portable runtime and this repo's host code. Drawing goes through Vulkan 1.1, and windowing, input and audio through SDL3. The repo ships no game assets. `assets/`, `iso/` and `generated/` hold the user's own files or files derived from them, and all three are gitignored.
+
+## Build
+
+Everything runs on Windows. Requirements: Visual Studio 2022 C++ tools, plus Android SDK Platform 34, NDK `28.2.13676358` and CMake `3.31.6`. Java 17–21 is needed for Gradle 8.7 (`.vscode/settings.json` points to JDK 17). Python is used only to pull the xbe out of an ISO.
+
+- `build.bat` runs the full pipeline:
+  1. Checks the tools.
+  2. Gets `assets/default.xbe`. If it is missing, `python -I tools/xdvdfs.py <iso> default.xbe assets/default.xbe` extracts it from `assets/*.iso` or `iso/*.iso`.
+  3. Builds the recompiler (`tools/CMakeLists.txt` → `out/build/android-tools/xbe_recomp.exe` and `xbe_symbols.exe`) with clang-cl.
+  4. Writes the `[symbols]` table into `config/game.toml` with `xbe_symbols`, only if the file doesn't have one yet.
+  5. Runs `xbe_recomp config/game.toml --xdk <sdk>/xdk` → `generated/game/`.
+  6. Runs `gradlew.bat assembleRelease`.
+- To rebuild only the APK after editing host code (no re-recompile): `gradlew.bat assembleRelease`. Output: `app/build/outputs/apk/release/app-release.apk`, signed with the debug key.
+- After editing `config/game.toml` (hooks, symbols, ABI, partitions), the recompile step has to run again. Run `build.bat`, or run the two `out/build/android-tools` commands by hand.
+- `gradlew.bat assembleDebug` still builds the native code as Release: unoptimized recompiled code is too slow to run.
+- Install: `adb install -r app/build/outputs/apk/release/app-release.apk`. On the device, settings (`underground2.toml`, `android.toml`, `layout.toml`) and the shader cache are in `Android/data/com.racas.underground2/files`; saves in `/storage/emulated/0/Underground2/hdd` and logs in `/storage/emulated/0/Underground2/logs` (`HddDir`, `LogDir` in `native/main.cpp`). All files access is required: the activity's dialog can't be turned down, and `main` waits for the Underground2 folder to be writable before anything else (`WaitForSharedAccess`). The first launch after an update from a version with the saves in `files/hdd` copies them to `Underground2/hdd` (through `hdd.copying`, renamed when complete) and leaves the old copy; a failed copy plays on the old one. Crashes go in the same folder as `crash_<date>.txt` at the next launch (`CrashLogs.java`): Android 11+ hands the app its own exits (`ApplicationExitInfo`), a native crash's tombstone (protobuf from Android 12, written out as tombstone text), an ANR's traces.
+- The first native build compiles 128 partitions of recompiled code and takes 30–90 minutes.
+- `-PxbeGenerated=<dir> -PxbeImage=<file>` makes Gradle build recompiled code from somewhere other than `generated/game`.
+
+There are no tests or linters in this repo.
+
+Linux (x86-64): `./build.sh` runs the same pipeline natively with clang: the recompiler into `out/build/linux-tools`, `default.xbe` from an ISO with `tools/xdvdfs.py`, the symbols, the recompile, then the root `CMakeLists.txt` as an executable, `out/build/linux/underground2` (`-march=x86-64-v2`; `./build.sh debug` sets `XBE_VERBOSE_LOG`). To rebuild after host edits: `cmake --build out/build/linux --target main`. SDL3 is the system's (`find_package(SDL3)`), else fetched and linked statically. The game is looked for in `assets/` or `iso/` beside the executable or in any folder above it, then the working folder (`native/game_files.cpp`); a loose `default.xbe` counts as the extracted game only with its `NFSUNDER` folder beside it, else the `.iso` beside it is mounted (the build leaves the extracted xbe in `assets/`, which alone has no data); settings, `hdd`, `logs` and `shadercache` go beside the executable.
+
+Performance: an empty file named `perf` in `Android/data/com.racas.underground2/files` turns on `XBE_PERF` (`native/main.cpp`). The log then gets a line a second from `D3DDevice_Swap` (`src/d3d/d3d8.cpp`, counters in `src/d3d/gpu_frame.h`): fps, the title thread's own time, the render thread's, GPU time from timestamps, draws and renderings; and every 600 frames the frame's renderings with the GPU time of each. `-Pdebuggable` makes `simpleperf record --app com.racas.underground2` work; symbolize with the unstripped `libmain.so` under `app/build/intermediates/cxx`.
+
+## CI/CD
+
+`.github/workflows/build.yml` runs on Windows for each `v*` tag, and by hand (workflow_dispatch, artifact only). It decrypts `ci/default.xbe.enc` (not in the repo yet: make it with the command in the workflow's header) with the `XBE_KEY` secret (AES-256-CBC, PBKDF2, 200000 iterations; the command to make it is in the workflow's header), checks its SHA-1, runs `build.bat` with `GRADLE_ARGS` setting `-PversionCode`/`-PversionName` from the tag, and for a tag publishes a release with `ci/release-notes.md` and the commits since the previous tag. `app/build.gradle` signs with a release key from the `BLACK_KEYSTORE*` environment variables when they are set (the workflow sets them from the `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD` repository secrets), else the debug key. Releases since v1.0.0 are signed with the keystore in `.local/` (gitignored); a different key breaks every installed copy's updates. `UpdateChecker.REPO` names the repository whose latest release the app checks.
+
+## Where the SDK comes from
+
+The SDK is vendored in `sdk/` (upstream commit in `sdk/UPSTREAM_COMMIT`), changed in three places: `kPhysicalSize` is 128 MB (see Memory below), `ExQueryNonVolatileSetting` takes XC_LANGUAGE from a weak `app::ConsoleLanguage()`, which `src/game/game.cpp` defines, and `kernel/files.cpp` reads D:'s files from `SetDiscOverlay`'s folder (`Underground2/mods`) when they are there. Keep `kernel/objects.cpp` notifying every waiter on every signal: notifying only the waiters of the object that changed hung Most Wanted in loading screens (the title spun at 0x087AB5 walking a stream list another thread never filled). Both `CMakeLists.txt` files look for the SDK in this order: `sdk/` in the repo, then `../XboxXBE-Recomp` beside the repo. If neither exists, they FetchContent the SDK's `main` branch. A sibling checkout lets you read or change the runtime (`<sdk>/runtime/{app,core,kernel,xdk,gpu,audio}`), whose headers (`app/app.h`, `kernel/kernel.h`, `xdk/hle.h`, `core/input.h`, ...) the host code includes. Gradle's `fetchSDL` task shallow-clones SDL `release-3.4.16` into `third_party/SDL`. Its Java sources go into the APK and its C side becomes `libSDL3.so`. glslang, toml++ and imgui are fetched by CMake.
+
+## Architecture
+
+The root `CMakeLists.txt` builds one shared library, `libmain.so`, which SDL's activity loads. It is made from:
+
+- **`generated/game/`**: recompiler output (`x86_recomp.N.cpp` for N < `partitions`, `x86_func_mapping.cpp`, `image_symbols.h`). Compiled with `-O2 -w`. Never edit it by hand. Change `config/game.toml` or the host code and recompile instead.
+- **The SDK runtime** (`<sdk>/runtime/*/*.cpp`), without the Windows-only parts and the parts this repo replaces. The regex filter in `CMakeLists.txt` drops `app/`, `core/input.cpp`, `gpu/d3d12`, `gpu/render_thread`, `audio/xaudio2`, `xdk/dsound` and `xdk/d3d8`.
+- **`src/`**, the game-specific host, organized as `src/<area>/*.cpp` and globbed by CMake:
+  - `src/game/`: game hooks and patches. `game.cpp` has the language glue (`app::ConsoleLanguage`), `Racing()` (the game flow state) and `MusicFrame` (My Music tied to EA Trax). `music.cpp`, `threads.cpp` and `timing.cpp` replace recompiled functions of this image (below). No `[[hook]]` yet. The code carried over from Black (weapon cheats, mouse look, walk key, FOV, typed names), Shaolin Monks (cheats, menu and prompt taps found in what it drew) and Most Wanted (options menu, FEng mouse, render switches, cheats, add-on cars, texture packs, replay, cinematic camera and its videos and photos, HUD layout, RESET, the game's font) is gone.
+  - `src/d3d/`: the title's Direct3D 8 (XDK 5849) entry points. `Direct3D_CreateDevice` also sets the device fields the library's init would (FVF shader, vertical blank event, display flags) and starts the vertical blank thread, which Black did from a hook. `render_thread.cpp` records D3D calls on the game's render thread and replays them on a dedicated Vulkan thread. Vertex, texture and surface memory is read at draw time, the way the console GPU reads it, so XDK fences, busy checks and locks wait on that replay.
+  - `src/sound/`: DirectSound reimplemented (buffers, streams, ADPCM decode, mixer, reverb).
+  - `src/common/`: `game_info.cpp` defines `app::kGame`, the struct that describes the game to the runtime (title, settings file, option bindings, load/save/init, pad and rumble filters, UI callback). Also here: the settings' rows (`menu.cpp`: `app::rows`, the pages of the ImGui panel on F10 and the touch gear, the gear pausing a race first (Start) and opening the panel once the press is out), `options.h` (`game::Options`, saved to `underground2.toml`) and translations.
+- **`native/`**, the Android host, shared with Linux. On Linux `main_linux.cpp` replaces `main.cpp` (the window and its display modes, F11/Alt+Enter, the settings beside the executable, a crash handler that logs the guest stack); the other files build for both, Android-only code (JNI, the activity, Android's window pointer, the battery) under `#ifdef __ANDROID__`, and `src/d3d/render_thread.cpp` has SSE2 beside its NEON. On Linux the touch controls show only after a touch, and the update check opens the releases page. `main.cpp` runs SDL's window and event loop, the app lifecycle and foreground/surface handling. `vulkan.cpp` is the Vulkan backend, and `vk_shader.cpp` compiles the SDK's HLSL shader translations to SPIR-V with glslang. The rest: `touch.cpp` (touch controls and layout editor, plus keyboard and mouse), `gyro.cpp` (tilt steering), `input.cpp` (controllers, and the settings panel's CONTROLLER page bindings, saved as `[pad]` in `underground2.toml`, laid over SDL's mapping), `audio.cpp`, `ui.cpp` (ImGui), and `game_files.cpp`, which finds the game files or ISO and checks the xbe's SHA1 against `kImageSha1`. `host.h` declares the interfaces these parts share. `native/compat/crt.h` is force-included into all host sources (not the generated ones).
+- **`app/`**: Gradle module. `Underground2Activity.java` (package `com.racas.underground2`) extends `SDLActivity`. It asks for all-files access (the storage permission on Android 10) and creates `/storage/emulated/0/Underground2` and `files/assets`, which are where the game files are looked for, along with a `Underground2` folder at the top of each SD card. `UpdateChecker.java` asks `REPO` (RanggaCasper/Underground2-Android) for its latest release; it is off while `REPO` is empty.
+
+### How recompiled code reaches the host
+
+`config/game.toml` is the recompiler's input:
+- `[xbe]`: path, entry point, XDK version, output dir, `partitions` (CMake reads this number to list the generated sources), and code sections.
+- `[symbols]` / `[data]`: addresses of library functions and globals in the image, 0 where the image has none. Host code refers to them through `SYM(Name)` from `image_symbols.h`.
+- `[abi]`: register-argument conventions for link-time-code-generated XDK functions.
+- `[[hook]]`: entries `at = <x86 address>`, `call = "<Name>"`. The recompiler emits a call at that address to a host function `void Name(X86Context& ctx, uint8_t* base)`, defined in `src/game/`. To add a hook, add the `[[hook]]` entry, define the function, and recompile.
+
+Host code reads and writes guest memory through the kernel helpers (`HostPtr(va)`, `R32`, ...) and guest registers through `X86Context`.
+
+### Supported game versions
+
+Only the USA disc: `default.xbe` SHA-1 `428b5a70b9400f19cc5be7679db6c72a6f80a1c9` (4,038,656 bytes, XDK 5849, entry 0x21B1CE). The disc root holds `default.xbe`, `update.xbe`, `dashupdate.xbe`, `B3/` and `NFSUNDER/` (the game data); `native/game_files.cpp` takes a loose `default.xbe` only with `NFSUNDER` beside it.
+
+### Notes on this image
+
+- The host (`native/`, `src/d3d`, `src/sound`, `src/common`) is Most Wanted's, which is the same XDK 5849. Its comments still cite Most Wanted's addresses in places: those are that game's, never this image's.
+- `src/game/game.cpp` is the game layer the host calls (`MusicFrame` at each present from `D3DDevice_Swap`, `Racing()` from touch). Most Wanted's patches (options menu, render switches, cheats, add-on cars, texture packs, replay, cinematic camera, FEng mouse, prompts, HUD layout, the game's font, file system locks, save hash) were removed along with the host code that served them (`native/video.cpp`, `native/texture_packs.cpp`, the touch screen's FEng menu layer and HUD editor, the RESET button): they were that game's addresses, and an `X86_FUNC(sub_X)` left in would replace whatever this image has at X. Find each again in this image before bringing it back.
+- `xbe_symbols` finds 173 of 238 functions and all 12 data symbols. Resolved by hand at the top of `[symbols]`, matched to Most Wanted's by their neighbours in the D3D section and checked by disassembly: `D3DDevice_Reset` 0x2E9820, `SetPalette` 0x2EA2D0 (+0xF98), `BeginPush`/`EndPush` 0x2E8D10/0x2E8D30, `LoadVertexShaderProgram` 0x2E83B0 (word count at +2), `IsBusy` 0x2EA3F0 (+0x934 get/put), `BeginVisibilityTest` 0x2EA420 (NV097 0x17C8), `EndVisibilityTest` 0x2EA4C0, `GetVisibilityTestResult` 0x2E9550 (+0x7D4); `IDirectSoundBuffer_Pause` 0x32D3A9 and `SetEG` 0x32D2F5 (.XTLID B0057, B0067). `D3D_FvfShader` 0x2F9E18, loaded by `SetVertexShader` at 0x2E8797. `D3D_pDevice` is 0x2F7798.
+- The recompile: 20,797 functions, 1,047,117 instructions, 497 jump tables; unimplemented are a few SSE/MMX (`pxor`, `psraw`, `paddw`, `pmulhuw`, `psubw`) and odd opcodes in data decoded as code, as in Most Wanted.
+- Frame buffers: the present parameters give the title's own surfaces, 0x3E8010 (1280x480 multisampled, memory 0x7888000: the 3D scene, read back as a texture into the frame) and 0x3E8890 (640x480, 0x7AE4000), and the depth 0x3E9D68. `CopyTitleBuffers` (`src/d3d/d3d8.cpp`) gives our copy of a surface wider than the frame a memory of its own: presented from the scene's memory, the frame's drawing went over the scene every other frame (the menu's car flickering, cars gone in races). The title's headers are never turned.
+- Threads (`src/game/threads.cpp`), as Most Wanted's: the bank module's entry points (0x282630 ... 0x2844E0) keep the game's own try lock ([0x46D4E8]) but close the window between its test and its claim (a plain lock deadlocked with the stream thread at the EA logo); EA's slot pools (alloc 0x4FFC0, 0x4EC70; free 0x4C0C0, 0x4ECA0; make 0x4FDF0, 0x50070; teardown 0x50020, 0x4FEE0) hold one lock ("CARS" read as a slot at 0x4FFC0); each seek and its read (archive reader 0x185900, the jobs' 0x254337 and 0x254229; raw device vtable 0x366BF0, read +0x14, seek +0x1C) another.
+- Frame time (`src/game/timing.cpp`): 0x1890C0 turns the real frame time into the game's dt (0x428A0C, 1/3600 s) but never under a minimum, 0x428EE8 (1/60 s, set by 0x180AA0/0x180AC0) or the 1/50 s constant at 0x341750 when the mode 0x3A4C50 is 0. The console was held to its 60 Hz vertical blank; above 60 fps every frame still counted 1/60 s and the game ran fps/60 times too fast (the remainder 0x4289BC does not give the shortfall back). The hook zeroes the minimum before each call, running mode 0 as 2. The game's own sim still steps at 60 Hz (accumulator in 0x184200), so above 60 fps motion is the right speed but not smoother. `-PverboseLog` logs `timing: dt` once per 120 frames.
+- The saves' guard (`native/saves.cpp`) checks EA's "MC02" profiles, which this image writes too (0x255018), signed as Most Wanted's are; any other file is backed up as it is and never put back.
+- The gear panel shows every settings page as tabs (`src/common/menu.cpp`), as the game's own OPTIONS menu has no hook yet.
+- `art/icon_source.png` is the launcher icon's source; `app/src/main/res/drawable-nodpi/ic_launcher_art.png` (adaptive, the picture in the 72dp safe zone over a blurred copy) and `mipmap-*/ic_launcher.png` are made from it.
+
+## Conventions
+
+- Native code is C++20 and is compiled with `-fsigned-char -fno-strict-aliasing`, matching x86 semantics.
+- Only arm64-v8a is built, minSdk 29 (`native/compat/crt.h` supplies `memfd_create`, which bionic has from API 30). Libraries are linked with 16 KB page alignment.
+- Comment style is terse, lowercase, and explains *why*, as in the existing files.
