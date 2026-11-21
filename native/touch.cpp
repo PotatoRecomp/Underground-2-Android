@@ -416,14 +416,14 @@ struct Button {
 };
 // the layout is set in the settings panel (TOUCH CONTROLS): its steering, opacity, size, and the editor that moves the
 // controls, see the functions at the end. A Text control shows its label.
-// the face buttons' captions are Underground 2's own controls, as its controller screen shows them: A the handbrake,
-// B nitrous, X shift down, Y shift up, Black look back, White the camera (Most Wanted's speedbreaker, look back and
-// camera art were on X, Y and Black)
+// the face buttons' captions are Underground 2's own controls: A the handbrake, B nitrous, X shift up, Y shift down
+// (as the game shifts; its controller screen has them the other way round), Black look back, White the camera (Most
+// Wanted's speedbreaker, look back and camera art were on X, Y and Black)
 constexpr Button kButtons[] = {
     {"a", "A", Icon::Text, kAnalogA, Shape::Round, "E-BRAKE"},
     {"b", "B", Icon::Text, kAnalogB, Shape::Round, "NITROUS"},
-    {"x", "X", Icon::Down, kAnalogX, Shape::Round, "SHIFT DOWN", false, false, "shift_down"},
-    {"y", "Y", Icon::Up, kAnalogY, Shape::Round, "SHIFT UP", false, false, "shift_up"},
+    {"x", "X", Icon::Up, kAnalogX, Shape::Round, "SHIFT UP", false, false, "shift_up"},
+    {"y", "Y", Icon::Down, kAnalogY, Shape::Round, "SHIFT DOWN", false, false, "shift_down"},
     {"black", "BLACK", Icon::Text, 4, Shape::Tab, "LOOK BACK", false, false, "look_back"},
     {"white", "WHITE", Icon::Text, 5, Shape::Tab, "CAMERA", false, false, "camera"},
     {"lt", "LT", Icon::Text, kAnalogLT, Shape::Tab},
@@ -431,12 +431,13 @@ constexpr Button kButtons[] = {
     {"start", "START", Icon::Text, kBit + 4, Shape::Pill},
     {"back", "BACK", Icon::Text, kBit + 5, Shape::Pill},
     {"panel", "Settings", Icon::Gear, kPanel, Shape::Round, nullptr, true},
-    // the dpad as its controller screen gives it: up enters a shop or challenges an opponent, left the world map,
-    // right the career's statistics, down the SMS (tools/dpad_art.py; the arrows stay for the steering arrows)
+    // the dpad by what it does in the game: up enters a shop or challenges an opponent, left the world map, right the
+    // SMS, down the career's statistics (its controller screen has right and down the other way round;
+    // tools/dpad_art.py; the arrows stay for the steering arrows)
     {"dpad_up", "Shop / Challenge", Icon::Up, kBit + 0, Shape::Square, nullptr, false, false, "dpad_shop"},
-    {"dpad_down", "SMS", Icon::Down, kBit + 1, Shape::Square, nullptr, false, false, "dpad_sms"},
+    {"dpad_down", "Career stats", Icon::Down, kBit + 1, Shape::Square, nullptr, false, false, "dpad_stats"},
     {"dpad_left", "World map", Icon::Left, kBit + 2, Shape::Square, nullptr, false, false, "dpad_map"},
-    {"dpad_right", "Career stats", Icon::Right, kBit + 3, Shape::Square, nullptr, false, false, "dpad_stats"},
+    {"dpad_right", "SMS", Icon::Right, kBit + 3, Shape::Square, nullptr, false, false, "dpad_sms"},
     // the left stick pushed to a side, as a racing game's arrows steer; shown when STEERING is ARROWS
     {"steer_left", "Steer left", Icon::Left, kSteerLeft, Shape::Square},
     {"steer_right", "Steer right", Icon::Right, kSteerRight, Shape::Square},
@@ -473,10 +474,10 @@ using Layout = std::array<Place, kPlaces>;
 // Nitrous over the gas, the e-brake over the brake, X and Look Back near them; the dpad's shop, map, stats and
 // SMS in a column down the left edge, Back, the settings and Start along the top, Black (look back) and White (the
 // camera) in the top right corner, the gear lever (the right stick) low in the middle; the menus' A and B in the
-// frame's side bars, low. No left stick, no other shoulders. Shift up (Y) over shift down (X) left of the e-brake,
+// frame's side bars, low. No left stick, no other shoulders. Shift up (X) over shift down (Y) left of the e-brake,
 // the gear lever on the left between the dpad's column and the steering arrows, clear of the car
 constexpr Layout kRacing = {{
-    {0.80f, 0.50f, 0.06f}, {0.92f, 0.38f, 0.068f}, {0.665f, 0.60f, 0.052f}, {0.665f, 0.40f, 0.052f},
+    {0.80f, 0.50f, 0.06f}, {0.92f, 0.38f, 0.068f}, {0.665f, 0.40f, 0.052f}, {0.665f, 0.60f, 0.052f},
     {0.932f, 0.085f, 0.048f}, {0.832f, 0.085f, 0.048f},
     {0.765f, 0.85f, 0.085f}, {0.915f, 0.74f, 0.17f},
     {0.585f, 0.075f, 0.036f}, {0.415f, 0.075f, 0.036f}, {0.50f, 0.075f, 0.045f},
@@ -548,7 +549,7 @@ float Height() {
 
 std::filesystem::path LayoutFile() { return app::ExeDir() / "layout.toml"; }
 // the layout's places changed: a layout saved before keeps its opacity and size but not its places
-constexpr int64_t kLayoutVersion = 9;
+constexpr int64_t kLayoutVersion = 10;
 constexpr int64_t kOldestLayout = 4;  // an older saved layout's places are kRacing's
 
 void LoadLayout() {
@@ -573,8 +574,9 @@ void LoadLayout() {
             if (version < 6 && (id == "white" || id == "black")) continue;
             // the dpad was a cross of arrows before 7, a column of what it does since
             if (version < 7 && id.starts_with("dpad_")) continue;
-            // shifting moved in 9: Y over X, the gear lever off the car to the left
-            if (version < 9 && (id == "x" || id == "y" || id == "rstick")) continue;
+            // shifting moved in 9: the gear lever off the car to the left; in 10 X (shift up) over Y
+            if (version < 9 && id == "rstick") continue;
+            if (version < 10 && (id == "x" || id == "y")) continue;
             const toml::table* p = t["controls"][PlaceId(i)].as_table();
             if (!p) continue;
             Place& pl = g_layout[i];
@@ -1259,12 +1261,12 @@ void Apply(int port, input::Pad& pad) {
         pad.lx = int16_t(sx * 32767.0f);
         pad.ly = int16_t(std::clamp(g_stick_y, -1.0f, 1.0f) * 32767.0f);
     }
-    // the gear lever: Underground 2 shifts on Y and X, its right stick unused; pushed up it is Y (shift up), pulled
-    // down X (shift down), held as the buttons would be
+    // the gear lever: Underground 2 shifts on X and Y, its right stick unused; pushed up it is X (shift up), pulled
+    // down Y (shift down), held as the buttons would be
     constexpr float kLeverThrow = 0.5f;
     if (g_rstick_y > kLeverThrow || g_rstick_y < -kLeverThrow) {
         used = true;
-        pad.analog[g_rstick_y > 0 ? kAnalogY : kAnalogX] = 0xFF;
+        pad.analog[g_rstick_y > 0 ? kAnalogX : kAnalogY] = 0xFF;
     }
     if (used) pad.connected = true;
 }
