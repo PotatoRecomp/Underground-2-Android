@@ -73,10 +73,10 @@ jobs:
           if [ -z "$KEYSTORE_BASE64" ]; then echo "::warning::No release keystore: the APK has a debug signature"; exit 0; fi
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
           {
-            echo "BLACK_KEYSTORE=$RUNNER_TEMP/release.jks"
-            echo "BLACK_KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD"
-            echo "BLACK_KEY_ALIAS=$KEY_ALIAS"
-            echo "BLACK_KEY_PASSWORD=$KEY_PASSWORD"
+            echo "UG2_KEYSTORE=$RUNNER_TEMP/release.jks"
+            echo "UG2_KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD"
+            echo "UG2_KEY_ALIAS=$KEY_ALIAS"
+            echo "UG2_KEY_PASSWORD=$KEY_PASSWORD"
           } >> "$GITHUB_ENV"
 
       - name: Version
