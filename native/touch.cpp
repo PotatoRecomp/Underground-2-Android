@@ -1262,7 +1262,9 @@ void Apply(int port, input::Pad& pad) {
 }
 
 #ifdef __ANDROID__
-bool Shown() { return !PadPlugged() || NowMs() - g_touch_ms < kShownMs; }
+// a finger held still (a pedal down a long straight) sends no events: the controls stay while one is down, or a
+// phone that reports a controller (its own buttons, some do) stopped drawing them mid-race. Under g_lock
+bool Shown() { return !PadPlugged() || NowMs() - g_touch_ms < kShownMs || !g_fingers.empty(); }
 #else
 // a PC plays on its keyboard and controllers: the controls only on a touch screen, a while after it is touched
 bool Shown() { return g_touch_ms && NowMs() - g_touch_ms < kShownMs; }

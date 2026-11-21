@@ -578,13 +578,16 @@ void FeFrame(X86Context& ctx) {
                 break;
             }
     }
-    // a race's intro: the caption over its opening camera (Chyron_IG.fng) is up
+    // a race's intro: the caption over its opening camera (Chyron_IG.fng) is up and takes the pad (Start skips it).
+    // The same captions come up in free roam over the driving (a place's name, a message) without taking input: those
+    // hid the race's controls mid-drive, and a pedal held under them was let go
     bool intro = false;
     {
         int count = 0;
         for (uint32_t p = Peek(fe + kFirstPackage); p && count++ < kMaxPackages; p = Peek(p + kNext))
-            if (Name(p).rfind("Chyron", 0) == 0) intro = true;
+            if ((kernel::G<uint8_t>(p + kInput) & 1) && Name(p).rfind("Chyron", 0) == 0) intro = true;
     }
+    if (intro != g_intro) LOGR("fe: intro %s", intro ? "up" : "gone");
     g_intro = intro;
     static uint32_t logged = ~0u;
     std::string name = menu ? Name(menu) : std::string();
