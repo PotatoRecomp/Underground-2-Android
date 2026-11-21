@@ -11,6 +11,12 @@ namespace {
 
 std::mutex g_dispatch;
 std::condition_variable g_cv;
+// A signal wakes every blocked thread (see the note on waking only some), but only when one of them has this object in
+// its wait (Object::waiters, under g_dispatch): the notify is a futex call on Android even when it wakes no one, and the
+// game's sound locks are mutants nobody waits on, released thousands of times a frame
+void NotifyWaiters(const Object& o) {
+    if (o.waiters) g_cv.notify_all();
+}
 
 std::mutex g_handles_lock;
 std::unordered_map<uint32_t, ObjectRef> g_handles;
@@ -224,9 +230,17 @@ static uint32_t WaitFor(const std::vector<ObjectRef>& objs, bool wait_all, int64
             int64_t now = duration_cast<nanoseconds>(steady_clock::now().time_since_epoch()).count();
             if (now >= deadline) return kTimeout;
             // bounded so alertable waits notice new APCs
+            for (auto& o : objs)
+                if (o) o->waiters++;
             g_cv.wait_for(lock, nanoseconds(std::min<int64_t>(deadline - now, 50000000)));
+            for (auto& o : objs)
+                if (o) o->waiters--;
         } else {
+            for (auto& o : objs)
+                if (o) o->waiters++;
             g_cv.wait_for(lock, milliseconds(50));
+            for (auto& o : objs)
+                if (o) o->waiters--;
         }
     }
 }
@@ -242,7 +256,7 @@ int32_t SetEvent(Object& o) {
     std::lock_guard<std::mutex> lock(g_dispatch);
     int32_t old = o.signal;
     SetSignal(o, 1);
-    g_cv.notify_all();
+    NotifyWaiters(o);
     return old;
 }
 
@@ -258,7 +272,7 @@ int32_t PulseEvent(Object& o) {
     std::lock_guard<std::mutex> lock(g_dispatch);
     int32_t old = o.signal;
     SetSignal(o, 1);
-    g_cv.notify_all();
+    NotifyWaiters(o);
     return old;
 }
 
@@ -271,7 +285,7 @@ int32_t ReleaseSemaphore(Object& o, int32_t count, uint32_t& status) {
     }
     SetSignal(o, old + count);
     status = kSuccess;
-    g_cv.notify_all();
+    NotifyWaiters(o);
     return old;
 }
 
@@ -286,7 +300,7 @@ int32_t ReleaseMutant(Object& o, uint32_t& status) {
     if (--o.recursion == 0) {
         o.owner = 0;
         SetSignal(o, 1);
-        g_cv.notify_all();
+        NotifyWaiters(o);
     }
     status = kSuccess;
     return old;
@@ -369,7 +383,7 @@ static void TimerLoop() {
         {
             std::lock_guard<std::mutex> dl(g_dispatch);
             SetSignal(*e.timer, 1);
-            g_cv.notify_all();
+            NotifyWaiters(*e.timer);
         }
         if (e.dpc) QueueDpc(e.dpc, uint32_t(Now100ns()), uint32_t(Now100ns() >> 32));
         if (auto t = e.apc_thread.lock(); t && e.apc_routine)
