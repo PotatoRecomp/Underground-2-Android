@@ -38,6 +38,8 @@ constexpr Entry kEntries[] = {
     {"VERTICAL SYNC", {u"Synchro verticale", u"V-Sync", u"Sincronia verticale", u"Sincronismo vertical", u"Sinkronisasi vertikal"}},
     {"MAX FRAME RATE", {u"Images par seconde max.", u"Max. Bildrate", u"Frame rate massimo", u"Fotogramas por segundo máx.", u"Frame rate maks."}},
     {"FOG", {u"Brouillard", u"Nebel", u"Nebbia", u"Niebla", u"Kabut"}},
+    {"RAIN", {u"Pluie", u"Regen", u"Pioggia", u"Lluvia", u"Hujan"}},
+    {"PARTICLES", {u"Particules", u"Partikel", u"Particelle", u"Partículas", u"Partikel"}},
     {"FULL", {u"Complet", u"Voll", u"Pieno", u"Completo", u"Penuh"}},
     {"SHADER PRELOADING", {u"Préchargement des shaders", u"Shader vorladen", u"Precaricamento shader", u"Precarga de shaders", u"Muat shader di awal"}},
     {"MAX", {u"Max", u"Max", u"Max", u"Máx", u"Maks"}},

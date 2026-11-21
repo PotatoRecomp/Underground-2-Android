@@ -244,7 +244,7 @@ void Changed() {
 enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutput, kLanguage, kGyro,
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
-             kShaderPreload };
+             kShaderPreload, kRain, kParticles };
 
 using rows::Kind;
 using rows::Row;
@@ -267,6 +267,8 @@ constexpr Row kGraphicsRows[] = {
     {Kind::Value, kAntiAliasing, "ANTI-ALIASING"},
     {Kind::Value, kBloom, "BLOOM"},
     {Kind::Value, kFog, "FOG"},
+    {Kind::Value, kRain, "RAIN"},
+    {Kind::Value, kParticles, "PARTICLES"},
     {Kind::Value, kScreenFilter, "SCREEN FILTER"},
 };
 
@@ -336,6 +338,8 @@ bool* ToggleFlag(Settings& s, int id) {
         case kFpsUsage: return &o.fps_usage;
         case kBloom: return &o.bloom;
         case kFog: return &o.fog;
+        case kRain: return &o.rain;
+        case kParticles: return &o.particles;
         case kShaderPreload: return &o.shader_preload;
         default: return nullptr;
     }

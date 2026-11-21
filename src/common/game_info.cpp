@@ -90,6 +90,8 @@ const app::GameInfo app::kGame = {
     .options = {{"fps_counter", &game::Opt().fps_counter, nullptr},
                 {"bloom", &game::Opt().bloom, nullptr},
                 {"fog", &game::Opt().fog, nullptr},
+                {"rain", &game::Opt().rain, nullptr},
+                {"particles", &game::Opt().particles, nullptr},
                 {"shader_preload", &game::Opt().shader_preload, nullptr},
                 {"fps_usage", &game::Opt().fps_usage, nullptr},
                 {"fps_temps", &game::Opt().fps_temps, nullptr},
