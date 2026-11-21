@@ -839,13 +839,15 @@ void DrawPanel() {
     ImGui::PushStyleVar(ImGuiStyleVar_GrabMinSize, em * 2.0f);
     constexpr ImGuiWindowFlags kFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse |
                                         ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoTitleBar;
+    // the panel is My Music alone: the settings are rows of the game's own OPTIONS menu (src/game/android_options.cpp)
     if (ImGui::Begin("##settings", nullptr, kFlags)) {
-        DrawTitle(em);
+        g_music_tab = true;
+        ImGui::TextUnformatted("MY MUSIC");
+        ImGui::Separator();
         float footer = ImGui::GetTextLineHeightWithSpacing() + ImGui::GetFrameHeightWithSpacing() + em;
         ImGui::BeginChild("##rows", ImVec2(0, -footer), ImGuiChildFlags_NavFlattened);
         g_hovered_box = -1;
-        if (g_music_tab) DrawMusic(em);
-        else DrawRows(g_page);
+        DrawMusic(em);
         DragScroll();
         ImGui::EndChild();
         DrawFooter(em);

@@ -83,20 +83,42 @@ constexpr const char* kHostOptions = "Android Options";  // as the game's "Optio
 constexpr const char* kHostOptions = "Linux Options";
 #endif
 
-// the panel's pages in three: graphics; the touch controls, the controller and keyboard; general and the credits
-struct Section {
-    const char* name;
-    std::vector<int> pages;
-};
-#ifdef __ANDROID__
-const Section kSections[] = {{"GRAPHICS", {0}}, {"CONTROLS", {1, 4, 3}}, {"GENERAL", {2, 5}}};
-#else
-const Section kSections[] = {{"GRAPHICS", {0}}, {"CONTROLS", {3, 4, 1}}, {"GENERAL", {2, 5}}};
-#endif
-constexpr int kSectionCount = int(std::size(kSections));
+// the icons' pictures: ANDROID OPTIONS, then graphics, controls and general (each tab has one of the three)
+constexpr int kPictureCount = 3;
 
 #include "game/option_icons.inc"  // kIconCount, kIconWidth, kIconHeight, kIcons (tools/option_icons.py)
-static_assert(kIconCount == 1 + kSectionCount, "tools/option_icons.py draws ANDROID OPTIONS, then a section each");
+static_assert(kIconCount == 1 + kPictureCount, "tools/option_icons.py draws ANDROID OPTIONS, then a section each");
+
+// The scroller's tabs: graphics, the touch controls, the controller, the keyboard, general and the credits, each a list
+// of its rows (headings left out) with its section's picture. The options screens show 11 rows (UI_PauseOptions.fng:
+// a title and a value object per row, found by the row's number; past them a row has neither): a longer list scrolls
+// through those 11 (the hook of 0x15E170 below)
+struct Tab {
+    const char* name;  // English, translated as it is shown
+    std::vector<int> pages;
+    int picture;  // 1 + its section
+};
+#ifdef __ANDROID__
+const Tab kTabs[] = {{"GRAPHICS", {0}, 1}, {"TOUCH CONTROLS", {1}, 2}, {"CONTROLLER", {4}, 2},
+                     {"KEYBOARD", {3}, 2}, {"GENERAL", {2, 5}, 3}};
+#else
+const Tab kTabs[] = {{"GRAPHICS", {0}, 1}, {"KEYBOARD", {3}, 2}, {"CONTROLLER", {4}, 2},
+                     {"TOUCH CONTROLS", {1}, 2}, {"GENERAL", {2, 5}, 3}};
+#endif
+constexpr int kTabCount = int(std::size(kTabs));
+
+std::vector<app::rows::Row> TabRows(int tab) {
+    std::vector<app::rows::Row> out;
+    for (int page : kTabs[tab].pages) {
+        size_t count = 0;
+        const app::rows::Row* list = app::rows::Page(page, &count);
+        for (size_t i = 0; i < count; i++)
+            if (list[i].kind != app::rows::Kind::Heading) out.push_back(list[i]);
+    }
+    return out;
+}
+
+std::string TabName(int tab) { return app::Ui(kTabs[tab].name); }
 
 // ---- text
 
@@ -239,12 +261,13 @@ uint32_t Vtable(X86Func* react) {
 }
 
 // an icon added last to a scroller (thiscall Setup's this): icon 0 ANDROID OPTIONS, then the sections
-uint32_t AddIcon(X86Context& ctx, uint32_t menu, uint32_t picture, uint32_t vtable, bool stays) {
+uint32_t AddIcon(X86Context& ctx, uint32_t menu, uint32_t picture, uint32_t vtable, bool stays, uint32_t name = ~0u) {
+    if (name == ~0u) name = picture;
     X86Context saved = ctx;
     uint32_t icon = CallGuest(ctx, kNew, {kIconBytes});
     if (icon) {
         ctx.ecx = icon;
-        CallGuest(ctx, kIconCtor, {kTextureHashes + picture, kNameHashes + picture, 0});
+        CallGuest(ctx, kIconCtor, {kTextureHashes + picture, kNameHashes + name, 0});
         W32(icon, vtable);
         // Accept on an icon stops the scroller's input and fades it out for the screen the icon opens (0x14FF5B);
         // one with +0x45 set takes it in place (0x14FF34), as one that opens no screen must
@@ -292,11 +315,28 @@ void SectionReact(X86Context& ctx, uint8_t*) {
 
 std::unordered_map<uint32_t, Row> g_rows;  // a widget of ours, its row: the options screen up now's alone
 
+// A tab's rows through the screen's 11 places: the widgets show the rows from g_first on, and the list's up and down
+// at its first and last place move that window instead of the cursor (0x15E170 below)
+constexpr int kBlankId = -1001;
+std::vector<Row> g_section_rows;  // the tab's rows, headings left out
+std::vector<uint32_t> g_widgets;  // the widgets with a place, in order
+size_t g_first = 0;               // the row the first widget shows
+uint32_t g_screen = 0;            // the screen they are on
+
+void MapRows() {
+    for (size_t i = 0; i < g_widgets.size(); i++) {
+        size_t at = g_first + i;
+        g_rows[g_widgets[i]] = at < g_section_rows.size() ? g_section_rows[at] : Row{Kind::Info, kBlankId, ""};
+    }
+}
+
 void DrawRow(X86Context& ctx, uint32_t self) {
     auto it = g_rows.find(self);
     if (it == g_rows.end()) return;
     const Row& r = it->second;
-    uint32_t title = TextHash(GameText(r.label)), value = TextHash(GameText(app::rows::Value(r, 0)));
+    std::string shown;
+    if (r.id != kBlankId) shown = GameText(app::rows::Value(r, 0));
+    uint32_t title = TextHash(r.id == kBlankId ? std::string() : GameText(r.label)), value = TextHash(shown);
     X86Context saved = ctx;
     CallGuest(ctx, kSetString, {R32(self + kRowTitle), title});
     CallGuest(ctx, kSetString, {R32(self + kRowValue), value});
@@ -313,7 +353,7 @@ void RowDraw(X86Context& ctx, uint8_t*) {
 void RowAct(X86Context& ctx, uint8_t*) {
     uint32_t esp = ctx.esp, self = ctx.ecx, message = R32(esp + 8);
     auto it = g_rows.find(self);
-    if (it != g_rows.end()) {
+    if (it != g_rows.end() && it->second.id != kBlankId) {
         const Row r = it->second;
         if (r.kind == Kind::Value && (message == kLeft || message == kRight)) app::rows::Value(r, message == kLeft ? -1 : 1);
         else if (message == kAccept) app::rows::Activate(r);
@@ -341,24 +381,39 @@ uint32_t RowVtable() {
 // out, as the game's pages have none
 void SetupRows(X86Context& ctx, uint32_t screen, int section, bool pause = false) {
     g_rows.clear();
+    g_widgets.clear();
+    g_section_rows.clear();
+    g_first = 0;
+    g_screen = screen;
+    g_section_rows = TabRows(section);
     X86Context saved = ctx;
-    for (int page : kSections[section].pages) {
-        size_t count = 0;
-        const Row* list = app::rows::Page(page, &count);
-        for (size_t i = 0; i < count; i++) {
-            if (list[i].kind == Kind::Heading) continue;
-            uint32_t w = CallGuest(ctx, kNew, {kRowBytes});
-            if (!w) continue;
-            ctx.ecx = w;
-            CallGuest(ctx, kRowCtor, {screen + kScreenFields[0], screen + kScreenFields[1], screen + kScreenFields[2],
-                                      screen + kScreenFields[3], 1});
-            W32(w, RowVtable());
-            g_rows[w] = list[i];
-            ctx.ecx = screen;
-            CallGuest(ctx, kAddRow, {w, 1});
+    // a widget a row, until the rows are all in or one finds no place
+    for (size_t i = 0; i < g_section_rows.size(); i++) {
+        uint32_t w = CallGuest(ctx, kNew, {kRowBytes});
+        if (!w) break;
+        ctx.ecx = w;
+        CallGuest(ctx, kRowCtor, {screen + kScreenFields[0], screen + kScreenFields[1], screen + kScreenFields[2],
+                                  screen + kScreenFields[3], 1});
+        W32(w, RowVtable());
+        g_rows[w] = Row{Kind::Info, kBlankId, ""};
+        ctx.ecx = screen;
+        CallGuest(ctx, kAddRow, {w, 1});
+        if (!R32(w + kRowTitle) || !R32(w + kRowValue)) {
+            // no place: out of the screen's list again, or the cursor would step on to it, a blank under the last
+            // row. AddRow linked it at the list's end (head +0x50 {next, prev}, the widget's link its +4 {next, prev})
+            uint32_t node = w + 4, next = R32(node), prev = R32(node + 4);
+            W32(prev, next);
+            W32(next + 4, prev);
+            g_rows.erase(w);
+            break;
         }
+        g_widgets.push_back(w);
     }
-    uint32_t name = TextHash(GameText(kSections[section].name));
+    if (g_widgets.size() < g_section_rows.size())
+        LOGR("options: %d rows through %d places", int(g_section_rows.size()), int(g_widgets.size()));
+    MapRows();
+    for (uint32_t w : g_widgets) DrawRow(ctx, w);
+    uint32_t name = TextHash(Latin1(TitleCase(TabName(section))));
     if (!pause) {
         if (uint32_t header = CallGuest(ctx, kFindObject, {R32(screen + kScreenPackage), kHeaderTitle}))
             CallGuest(ctx, kSetString, {header, name});
@@ -389,7 +444,7 @@ void PutNames() {
     if (done) return;
     done = true;
     PutString(kNameHashes, Latin1(kHostOptions));
-    for (int s = 0; s < kSectionCount; s++) PutString(kNameHashes + 1 + uint32_t(s), GameText(kSections[s].name));
+    for (int t = 0; t < kTabCount; t++) PutString(kNameHashes + 1 + uint32_t(t), Latin1(TitleCase(TabName(t))));
 }
 
 }  // namespace
@@ -401,7 +456,7 @@ void OptionsFrame(X86Context& ctx) {
     if (applied == seen) return;
     seen = applied;
     if (g_rows.empty() || !(FeOnPackage("UI_Options.fng") || FeOnPackage("UI_PauseOptions.fng"))) return;
-    for (const auto& [widget, row] : g_rows) DrawRow(ctx, widget);
+    for (uint32_t widget : g_widgets) DrawRow(ctx, widget);
 }
 
 }  // namespace game
@@ -414,6 +469,7 @@ X86_FUNC(sub_000C7110) {
     uint32_t menu = ctx.ecx;
     g_android = false;
     g_rows.clear();
+    g_widgets.clear();
     PutNames();
     __imp__sub_000C7110(ctx, base);
     static const uint32_t vt = Vtable(MainMenuReact);
@@ -447,14 +503,15 @@ X86_EXTERN_FUNC(__imp__sub_000CE3A0);
 X86_FUNC(sub_000CE3A0) {
     g_section = -1;
     g_rows.clear();  // the options screen is gone, its widgets with it
+    g_widgets.clear();
     if (!g_android) {
         __imp__sub_000CE3A0(ctx, base);
         return;
     }
     uint32_t menu = ctx.ecx;
     static const uint32_t vt = Vtable(SectionReact);
-    for (int s = 0; s < kSectionCount; s++)
-        if (uint32_t icon = AddIcon(ctx, menu, 1 + uint32_t(s), vt, false)) g_section_icons[icon] = s;
+    for (int t = 0; t < kTabCount; t++)
+        if (uint32_t icon = AddIcon(ctx, menu, uint32_t(kTabs[t].picture), vt, false, 1 + uint32_t(t))) g_section_icons[icon] = t;
     X86Context saved = ctx;
     uint32_t start = CallGuest(ctx, kSelectedIcon, {R32(menu + 4)});
     ctx.ecx = menu + 0x50;
@@ -470,6 +527,7 @@ X86_EXTERN_FUNC(__imp__sub_000DA950);
 X86_FUNC(sub_000DA950) {
     g_section = -1;
     g_rows.clear();
+    g_widgets.clear();
     if (!g_android) {
         __imp__sub_000DA950(ctx, base);
         return;
@@ -477,8 +535,8 @@ X86_FUNC(sub_000DA950) {
     uint32_t menu = ctx.ecx;
     PauseTexts(ctx, R32(menu + 4), 0x1D7BB6C9);
     static const uint32_t vt = Vtable(SectionReact);
-    for (int s = 0; s < kSectionCount; s++)
-        if (uint32_t icon = AddIcon(ctx, menu, 1 + uint32_t(s), vt, false)) g_section_icons[icon] = s;
+    for (int t = 0; t < kTabCount; t++)
+        if (uint32_t icon = AddIcon(ctx, menu, uint32_t(kTabs[t].picture), vt, false, 1 + uint32_t(t))) g_section_icons[icon] = t;
     X86Context saved = ctx;
     uint32_t start = CallGuest(ctx, kSelectedIcon, {R32(menu + 4)});
     ctx.ecx = menu + 0x50;
@@ -492,13 +550,13 @@ X86_FUNC(sub_000DA950) {
 // the pause options screen's page of category 0 (its Audio page's): a section's rows when one was picked
 X86_EXTERN_FUNC(__imp__sub_000DAC80);
 X86_FUNC(sub_000DAC80) {
-    if (g_section < 0 || g_section >= kSectionCount) {
+    if (g_section < 0 || g_section >= kTabCount) {
         __imp__sub_000DAC80(ctx, base);
         return;
     }
     uint32_t screen = ctx.ecx;
-    PauseTexts(ctx, R32(screen + 4), TextHash(GameText(kSections[g_section].name)));
-    SetText(ctx, R32(screen + 4), kHeaderText2, TextHash(Latin1(app::Ui(kSections[g_section].name, true))));
+    PauseTexts(ctx, R32(screen + 4), TextHash(Latin1(TitleCase(TabName(g_section)))));
+    SetText(ctx, R32(screen + 4), kHeaderText2, TextHash(Latin1(TabName(g_section))));
     SetupRows(ctx, screen, g_section, true);
     ctx.esp += 4;
 }
@@ -506,12 +564,42 @@ X86_FUNC(sub_000DAC80) {
 // UIOptionsScreen's Setup of category 0 (the Audio page's, thiscall): a section's rows when one was picked
 X86_EXTERN_FUNC(__imp__sub_000CE680);
 X86_FUNC(sub_000CE680) {
-    if (g_section < 0 || g_section >= kSectionCount) {
+    if (g_section < 0 || g_section >= kTabCount) {
         __imp__sub_000CE680(ctx, base);
         return;
     }
     SetupRows(ctx, ctx.ecx, g_section);
     ctx.esp += 4;
+}
+
+// The list screens' messages, 0x1613A0 (thiscall on the screen: the message, the object, two more; ret 0x10), which
+// the options screen's (0xB5AD0) runs first: up and down step its current widget (+0x58) through its list (head
+// +0x50). On our tab, up at the first place with rows above and down at the last place with rows below move the rows
+// through the places and the cursor stays; down at the last place at the end stays there
+X86_EXTERN_FUNC(__imp__sub_001613A0);
+X86_FUNC(sub_001613A0) {
+    constexpr uint32_t kUp = 0x72619778, kDown = 0x911C0A4B, kCurrentWidget = 0x58;
+    uint32_t screen = ctx.ecx, message = R32(ctx.esp + 4);
+    if (screen != g_screen || g_widgets.empty() || (message != kUp && message != kDown)) {
+        __imp__sub_001613A0(ctx, base);
+        return;
+    }
+    uint32_t current = R32(screen + kCurrentWidget);
+    if (message == kUp && current == g_widgets.front() && g_first > 0) {
+        g_first--;
+    } else if (message == kDown && current == g_widgets.back()) {
+        if (g_first + g_widgets.size() >= g_section_rows.size()) {
+            kernel::Return(ctx, 0, 4);
+            return;
+        }
+        g_first++;
+    } else {
+        __imp__sub_001613A0(ctx, base);
+        return;
+    }
+    MapRows();
+    for (uint32_t w : g_widgets) DrawRow(ctx, w);
+    kernel::Return(ctx, 0, 4);
 }
 
 // GetTextureInfo(hash, default, unloaded), cdecl: our icons' hashes get our pictures

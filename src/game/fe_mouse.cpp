@@ -430,8 +430,11 @@ bool ColumnTap(const std::string& name, int16_t x, int16_t y) {
 }
 
 // a tap's pad presses on the options' list; false for the mouse's click
+// the bar's arrows a finger's width round them: the rows end before them (-118 to 119), so on the bar's ends the right
+// arrows of the rows are not in reach
+constexpr float kBarArrowX = 165.0f;
 bool OptionsTap(int16_t x, int16_t y) {
-    if (x >= kBarX && std::fabs(float(y)) >= kBarArrowY) {
+    if (x >= kBarArrowX && std::fabs(float(y)) >= kBarArrowY) {
         touch::QueuePad(y < 0 ? kPadUp : kPadDown, 1);
         return true;
     }
