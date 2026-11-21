@@ -329,10 +329,18 @@ std::string Lower(std::string s) {
 bool Contains(const std::string& name, const char* part) { return Lower(name).find(Lower(part)) != std::string::npos; }
 bool SameName(const std::string& a, const char* b) { return Lower(a) == Lower(b); }
 
+// the screens after a race and before one (results, stats, rewards, a sponsor's offer): no button to pick, their
+// prompt "A Next" is the pad's alone; a tap anywhere on them is A. The pointer clicked nothing there, and with the
+// race's controls hidden under the menu the screen could not be left
+bool NextScreen(const std::string& name) {
+    return Contains(name, "PostRace") || Contains(name, "PreRaceStats") || Contains(name, "Reward") ||
+           Contains(name, "SponsorPopup") || Contains(name, "TournResults") || Contains(name, "TournStandings");
+}
+
 bool ScrollerAt(const std::string& name, int16_t y) {
     for (const Scroller& s : kScrollers)
         if (SameName(name, s.package)) return std::fabs(y - s.y) <= kRowHalf;
-    if (Contains(name, "Options") || Contains(name, "Dialog") || name.rfind("MC_", 0) == 0) return false;
+    if (Contains(name, "Options") || Contains(name, "Dialog") || name.rfind("MC_", 0) == 0 || NextScreen(name)) return false;
     return y >= kBandTop && y <= kBandBottom;
 }
 
@@ -499,6 +507,9 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
             // the pointer made the key the current one; pressed with the pad's A (the mouse's click took the key
             // before it was current and did nothing), unless it is no button
             if (sx != -2000) key_a_in = 8;
+        }
+        else if (NextScreen(name) && !Peek(g_menu_package + kButtonCount)) {
+            touch::QueuePad(kPadA, 1);
         }
         else if (!(OptionsList(name) && OptionsTap(x0, y0)) && !ColumnTap(name, x0, y0) && !CarSelectTap(name, x0, y0) && !PromptTap(name, x0, y0)) {
             if (!key_press) hold = kHoldUpdates;
