@@ -342,7 +342,7 @@ private:
         const uint32_t type = kernel::R32(header) & 0x70000;  // 0 vertex, 0x10000 index, 0x30000 palette
         uint8_t now[kHeaderBytes] = {};
         std::memcpy(now, kernel::HostPtr(header), type < 0x20000 || type == 0x30000 ? 12 : kHeaderBytes);
-        Recent<HeaderCopy>& r = recent_headers_[(header >> 3) & 63];
+        Recent<HeaderCopy>& r = recent_headers_[(header >> 3) & (kRecent - 1)];
         HeaderCopy& c = r.key == header ? *r.value : headers_[header];
         r = {header, &c};
         if (c.made && !std::memcmp(c.bytes, now, kHeaderBytes) && ring_pos_ - c.made < kHeaderRing / 2) return c.at;
@@ -415,7 +415,7 @@ private:
     // resources by guest header: the batch that last read them
     void Use(uint32_t header) {
         if (!header) return;
-        Recent<uint64_t>& r = recent_uses_[(header >> 3) & 63];
+        Recent<uint64_t>& r = recent_uses_[(header >> 3) & (kRecent - 1)];
         if (r.key != header) r = {header, &last_use_[header]};
         *r.value = cur_->id;
     }
@@ -537,8 +537,11 @@ private:
         uint32_t key = 0;
         T* value = nullptr;
     };
-    std::array<Recent<HeaderCopy>, 64> recent_headers_{};
-    std::array<Recent<uint64_t>, 64> recent_uses_{};
+    // headers seen lately, direct mapped by address: a frame's draws use a few hundred, which 64 slots kept sending
+    // to the maps (a profile's hash lookups on the title thread)
+    static constexpr size_t kRecent = 1024;
+    std::array<Recent<HeaderCopy>, kRecent> recent_headers_{};
+    std::array<Recent<uint64_t>, kRecent> recent_uses_{};
     uint32_t ring_ = 0;
     uint64_t ring_pos_ = 0;
     Batch* cur_ = nullptr;

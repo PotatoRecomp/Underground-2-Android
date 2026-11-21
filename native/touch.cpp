@@ -411,17 +411,21 @@ struct Button {
     Shape shape = Shape::Round;
     const char* caption = nullptr;  // what it does in the game, under a face button
     bool keep = false;  // never hidden: the way back out of the menus
+    bool menu = false;  // shown only over the game's menus, never in a race
+    const char* art = nullptr;  // its art's name, nullptr for its id's
 };
 // the layout is set in the settings panel (TOUCH CONTROLS): its steering, opacity, size, and the editor that moves the
 // controls, see the functions at the end. A Text control shows its label.
-// the face buttons' captions are Underground 2's own controls, as its loading screen shows them
+// the face buttons' captions are Underground 2's own controls, as its controller screen shows them: A the handbrake,
+// B nitrous, X shift down, Y shift up, Black look back, White the camera (Most Wanted's speedbreaker, look back and
+// camera art were on X, Y and Black)
 constexpr Button kButtons[] = {
     {"a", "A", Icon::Text, kAnalogA, Shape::Round, "E-BRAKE"},
     {"b", "B", Icon::Text, kAnalogB, Shape::Round, "NITROUS"},
-    {"x", "X", Icon::Text, kAnalogX, Shape::Round},
-    {"y", "Y", Icon::Text, kAnalogY, Shape::Round, "LOOK BACK"},
-    {"black", "BLACK", Icon::Text, 4, Shape::Tab, "CAMERA"},
-    {"white", "WHITE", Icon::Text, 5, Shape::Tab},
+    {"x", "X", Icon::Down, kAnalogX, Shape::Round, "SHIFT DOWN", false, false, "shift_down"},
+    {"y", "Y", Icon::Up, kAnalogY, Shape::Round, "SHIFT UP", false, false, "shift_up"},
+    {"black", "BLACK", Icon::Text, 4, Shape::Tab, "LOOK BACK", false, false, "look_back"},
+    {"white", "WHITE", Icon::Text, 5, Shape::Tab, "CAMERA", false, false, "camera"},
     {"lt", "LT", Icon::Text, kAnalogLT, Shape::Tab},
     {"rt", "RT", Icon::Text, kAnalogRT, Shape::Tab},
     {"start", "START", Icon::Text, kBit + 4, Shape::Pill},
@@ -436,6 +440,10 @@ constexpr Button kButtons[] = {
     {"steer_right", "Steer right", Icon::Right, kSteerRight, Shape::Square},
     // a steering wheel turned by a finger dragged round it; shown when STEERING is WHEEL
     {"wheel", "Wheel", Icon::Wheel, kSteerWheel, Shape::Round},
+    // over the game's menus: the pad's A and B, for the screens a tap cannot pick on (a race's results) and a way
+    // back that is not the phone's own
+    {"menu_ok", "A", Icon::Text, kAnalogA, Shape::Round, "OK", false, true, ""},
+    {"menu_back", "Menu back", Icon::Back, kAnalogB, Shape::Round, "BACK", false, true, ""},
 };
 constexpr size_t kButtonCount = std::size(kButtons);
 constexpr size_t kStick = kButtonCount;  // the sticks' places, after the buttons'
@@ -458,18 +466,20 @@ struct Place {
 };
 using Layout = std::array<Place, kPlaces>;
 // The layout's places, as the editor's reset puts them: a b x y, black white, lt rt, start back, the settings, the
-// dpad's up down left right, the steering arrows, the wheel, the left stick and the right stick.
+// dpad's up down left right, the steering arrows, the wheel, the menus' A and B, the left stick and the right stick.
 // As a mobile racing game: steering arrows under the left thumb, the gas and brake pedals (RT, LT) under the right,
 // Nitrous over the gas, the e-brake over the brake, X and Look Back near them; a small dpad for the menus
-// high on the left, Back, the settings and Start along the top, Black (the camera) in the top right corner, the gear
-// lever (the right stick) low in the middle. No left stick, no other shoulders
+// high on the left, Back, the settings and Start along the top, Black (look back) and White (the camera) in the top
+// right corner, the gear lever (the right stick) low in the middle; the menus' A and B in the frame's side bars,
+// low. No left stick, no other shoulders
 constexpr Layout kRacing = {{
     {0.80f, 0.50f, 0.06f}, {0.92f, 0.38f, 0.068f}, {0.665f, 0.60f, 0.052f}, {0.80f, 0.24f, 0.045f},
-    {0.932f, 0.085f, 0.048f}, {0.068f, 0.085f, 0.048f, true},
+    {0.932f, 0.085f, 0.048f}, {0.832f, 0.085f, 0.048f},
     {0.765f, 0.85f, 0.085f}, {0.915f, 0.74f, 0.17f},
     {0.585f, 0.075f, 0.036f}, {0.415f, 0.075f, 0.036f}, {0.50f, 0.075f, 0.045f},
     {0.07f, 0.28f, 0.038f}, {0.07f, 0.46f, 0.038f}, {0.03f, 0.37f, 0.038f}, {0.11f, 0.37f, 0.038f},
     {0.08f, 0.76f, 0.11f}, {0.25f, 0.76f, 0.11f}, {0.15f, 0.70f, 0.19f},
+    {0.945f, 0.88f, 0.06f}, {0.055f, 0.88f, 0.06f},
     {0.17f, 0.76f, 0.12f, true}, {0.55f, 0.80f, 0.10f},
 }};
 
@@ -535,7 +545,7 @@ float Height() {
 
 std::filesystem::path LayoutFile() { return app::ExeDir() / "layout.toml"; }
 // the layout's places changed: a layout saved before keeps its opacity and size but not its places
-constexpr int64_t kLayoutVersion = 5;
+constexpr int64_t kLayoutVersion = 6;
 constexpr int64_t kOldestLayout = 4;  // an older saved layout's places are kRacing's
 
 void LoadLayout() {
@@ -553,9 +563,11 @@ void LoadLayout() {
         // the places of the presets there were besides RACING are not its
         if (version < kOldestLayout || t["preset"].value_or(std::string("racing")) != "racing") return;
         for (size_t i = 0; i < kPlaces; i++) {
-            // Black (the camera) and the gear lever were hidden before: kRacing's until saved again
+            // Black and the gear lever were hidden before version 5, White before 6 (it is the camera now, and Black
+            // look back): kRacing's until saved again
             std::string_view id = PlaceId(i);
-            if (version < kLayoutVersion && (id == "black" || id == "rstick")) continue;
+            if (version < 5 && (id == "black" || id == "rstick")) continue;
+            if (version < 6 && (id == "white" || id == "black")) continue;
             const toml::table* p = t["controls"][PlaceId(i)].as_table();
             if (!p) continue;
             Place& pl = g_layout[i];
@@ -610,6 +622,9 @@ bool ButtonShown(size_t i) {
     if (g_layout[i].hidden) return false;
     // no pad out of a race (the front end's screens, the loading screens), nor over its intro or the pause menu and
     // the options in it: they take the finger as their pointer, the pad's controls would hide them
+    // the menus' own A and B over a menu, whether in a race or out (not over the loading screens: an A landing on one
+    // crashed it)
+    if (b.menu) return game::FeMenuShown() && !game::FeIntro();
     if (!game::Racing() || game::FeIntro() || game::FeMenuShown()) return b.keep;
     return true;
 }
@@ -628,7 +643,8 @@ Art g_art[] = {{"a", 1.0f},     {"b", 1.0f},     {"x", 1.0f},          {"y", 1.0
                {"lt", 0.698f},  {"rt", 1.2345f}, {"black", 1.0f},      {"start", 1.0f},
                {"back", 1.0f},  {"up", 1.0f},    {"down", 1.0f},       {"left", 1.0f},
                {"right", 1.0f}, {"wheel", 1.0f}, {"stick_ring", 1.0f}, {"stick_knob", 1.0f},
-               {"stick_shift", 1.66f}};
+               {"stick_shift", 1.66f}, {"shift_up", 1.0f}, {"shift_down", 1.0f}, {"look_back", 1.0f},
+               {"camera", 1.0f}};
 
 const Art* FindArt(std::string_view name) {
     for (const Art& a : g_art)
@@ -639,6 +655,7 @@ const Art* FindArt(std::string_view name) {
 // a control's art: by its id, the dpad and the steering arrows sharing the arrows; nullptr to draw it as before
 const Art* ArtOf(size_t i) {
     if (i >= kButtonCount) return nullptr;
+    if (const char* art = kButtons[i].art) return *art ? FindArt(art) : nullptr;  // "" for none
     std::string_view id = kButtons[i].id;
     if (id.starts_with("dpad_")) id.remove_prefix(5);
     else if (id.starts_with("steer_")) id.remove_prefix(6);
@@ -1213,7 +1230,9 @@ void Apply(int port, input::Pad& pad) {
     }
     // a steering arrow turns in over kSteerRampMs from kSteerStart of a full lock, as a racing game's do: full at
     // once twitched the car on a tap
-    constexpr float kSteerStart = 0.4f, kSteerRampMs = 250.0f;
+    // Underground 2 turns its wheels slowly from a small push: 0.4 of a lock felt heavy, so the arrows start at most
+    // of it
+    constexpr float kSteerStart = 0.75f, kSteerRampMs = 150.0f;
     float steer = 0;
     for (const Finger& f : g_fingers) {
         if (f.role != Role::Button || (kButtons[f.button].press != kSteerLeft && kButtons[f.button].press != kSteerRight))
@@ -1232,16 +1251,20 @@ void Apply(int port, input::Pad& pad) {
         pad.lx = int16_t(sx * 32767.0f);
         pad.ly = int16_t(std::clamp(g_stick_y, -1.0f, 1.0f) * 32767.0f);
     }
-    if (g_rstick_x || g_rstick_y) {
+    // the gear lever: Underground 2 shifts on Y and X, its right stick unused; pushed up it is Y (shift up), pulled
+    // down X (shift down), held as the buttons would be
+    constexpr float kLeverThrow = 0.5f;
+    if (g_rstick_y > kLeverThrow || g_rstick_y < -kLeverThrow) {
         used = true;
-        pad.rx = int16_t(std::clamp(g_rstick_x, -1.0f, 1.0f) * 32767.0f);
-        pad.ry = int16_t(std::clamp(g_rstick_y, -1.0f, 1.0f) * 32767.0f);
+        pad.analog[g_rstick_y > 0 ? kAnalogY : kAnalogX] = 0xFF;
     }
     if (used) pad.connected = true;
 }
 
 #ifdef __ANDROID__
-bool Shown() { return !PadPlugged() || NowMs() - g_touch_ms < kShownMs; }
+// a finger held still (a pedal down a long straight) sends no events: the controls stay while one is down, or a
+// phone that reports a controller (its own buttons, some do) stopped drawing them mid-race. Under g_lock
+bool Shown() { return !PadPlugged() || NowMs() - g_touch_ms < kShownMs || !g_fingers.empty(); }
 #else
 // a PC plays on its keyboard and controllers: the controls only on a touch screen, a while after it is touched
 bool Shown() { return g_touch_ms && NowMs() - g_touch_ms < kShownMs; }

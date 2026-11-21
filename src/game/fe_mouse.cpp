@@ -329,10 +329,18 @@ std::string Lower(std::string s) {
 bool Contains(const std::string& name, const char* part) { return Lower(name).find(Lower(part)) != std::string::npos; }
 bool SameName(const std::string& a, const char* b) { return Lower(a) == Lower(b); }
 
+// the screens after a race and before one (results, stats, rewards, a sponsor's offer): no button to pick, their
+// prompt "A Next" is the pad's alone; a tap anywhere on them is A. The pointer clicked nothing there, and with the
+// race's controls hidden under the menu the screen could not be left
+bool NextScreen(const std::string& name) {
+    return Contains(name, "PostRace") || Contains(name, "PreRaceStats") || Contains(name, "Reward") ||
+           Contains(name, "SponsorPopup") || Contains(name, "TournResults") || Contains(name, "TournStandings");
+}
+
 bool ScrollerAt(const std::string& name, int16_t y) {
     for (const Scroller& s : kScrollers)
         if (SameName(name, s.package)) return std::fabs(y - s.y) <= kRowHalf;
-    if (Contains(name, "Options") || Contains(name, "Dialog") || name.rfind("MC_", 0) == 0) return false;
+    if (Contains(name, "Options") || Contains(name, "Dialog") || name.rfind("MC_", 0) == 0 || NextScreen(name)) return false;
     return y >= kBandTop && y <= kBandBottom;
 }
 
@@ -422,8 +430,11 @@ bool ColumnTap(const std::string& name, int16_t x, int16_t y) {
 }
 
 // a tap's pad presses on the options' list; false for the mouse's click
+// the bar's arrows a finger's width round them: the rows end before them (-118 to 119), so on the bar's ends the right
+// arrows of the rows are not in reach
+constexpr float kBarArrowX = 165.0f;
 bool OptionsTap(int16_t x, int16_t y) {
-    if (x >= kBarX && std::fabs(float(y)) >= kBarArrowY) {
+    if (x >= kBarArrowX && std::fabs(float(y)) >= kBarArrowY) {
         touch::QueuePad(y < 0 ? kPadUp : kPadDown, 1);
         return true;
     }
@@ -500,6 +511,9 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
             // before it was current and did nothing), unless it is no button
             if (sx != -2000) key_a_in = 8;
         }
+        else if (NextScreen(name) && !Peek(g_menu_package + kButtonCount)) {
+            touch::QueuePad(kPadA, 1);
+        }
         else if (!(OptionsList(name) && OptionsTap(x0, y0)) && !ColumnTap(name, x0, y0) && !CarSelectTap(name, x0, y0) && !PromptTap(name, x0, y0)) {
             if (!key_press) hold = kHoldUpdates;
         }
@@ -564,13 +578,16 @@ void FeFrame(X86Context& ctx) {
                 break;
             }
     }
-    // a race's intro: the caption over its opening camera (Chyron_IG.fng) is up
+    // a race's intro: the caption over its opening camera (Chyron_IG.fng) is up and takes the pad (Start skips it).
+    // The same captions come up in free roam over the driving (a place's name, a message) without taking input: those
+    // hid the race's controls mid-drive, and a pedal held under them was let go
     bool intro = false;
     {
         int count = 0;
         for (uint32_t p = Peek(fe + kFirstPackage); p && count++ < kMaxPackages; p = Peek(p + kNext))
-            if (Name(p).rfind("Chyron", 0) == 0) intro = true;
+            if ((kernel::G<uint8_t>(p + kInput) & 1) && Name(p).rfind("Chyron", 0) == 0) intro = true;
     }
+    if (intro != g_intro) LOGR("fe: intro %s", intro ? "up" : "gone");
     g_intro = intro;
     static uint32_t logged = ~0u;
     std::string name = menu ? Name(menu) : std::string();

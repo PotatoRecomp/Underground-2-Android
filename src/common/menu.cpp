@@ -244,7 +244,7 @@ void Changed() {
 enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutput, kLanguage, kGyro,
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
-             kShaderPreload };
+             kShaderPreload, kRain, kParticles };
 
 using rows::Kind;
 using rows::Row;
@@ -267,6 +267,8 @@ constexpr Row kGraphicsRows[] = {
     {Kind::Value, kAntiAliasing, "ANTI-ALIASING"},
     {Kind::Value, kBloom, "BLOOM"},
     {Kind::Value, kFog, "FOG"},
+    {Kind::Value, kRain, "RAIN"},
+    {Kind::Value, kParticles, "PARTICLES"},
     {Kind::Value, kScreenFilter, "SCREEN FILTER"},
 };
 
@@ -336,6 +338,8 @@ bool* ToggleFlag(Settings& s, int id) {
         case kFpsUsage: return &o.fps_usage;
         case kBloom: return &o.bloom;
         case kFog: return &o.fog;
+        case kRain: return &o.rain;
+        case kParticles: return &o.particles;
         case kShaderPreload: return &o.shader_preload;
         default: return nullptr;
     }
@@ -835,13 +839,15 @@ void DrawPanel() {
     ImGui::PushStyleVar(ImGuiStyleVar_GrabMinSize, em * 2.0f);
     constexpr ImGuiWindowFlags kFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse |
                                         ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoTitleBar;
+    // the panel is My Music alone: the settings are rows of the game's own OPTIONS menu (src/game/android_options.cpp)
     if (ImGui::Begin("##settings", nullptr, kFlags)) {
-        DrawTitle(em);
+        g_music_tab = true;
+        ImGui::TextUnformatted("MY MUSIC");
+        ImGui::Separator();
         float footer = ImGui::GetTextLineHeightWithSpacing() + ImGui::GetFrameHeightWithSpacing() + em;
         ImGui::BeginChild("##rows", ImVec2(0, -footer), ImGuiChildFlags_NavFlattened);
         g_hovered_box = -1;
-        if (g_music_tab) DrawMusic(em);
-        else DrawRows(g_page);
+        DrawMusic(em);
         DragScroll();
         ImGui::EndChild();
         DrawFooter(em);

@@ -31,6 +31,8 @@ struct Options {
     uint32_t aspect_ratio = 0;  // the frame's shape in hundredths (133 is 4:3), 0 the whole screen; common/aspect.h
     bool bloom = true;  // the glow added over the frame, native/vulkan.cpp skips it when off
     bool fog = true;    // the distance fog, native/vulkan.cpp draws without it when off
+    bool rain = true;       // the falling rain and its drops on the screen, src/game/effects.cpp skips them when off
+    bool particles = true;  // the particle effects (smoke, sparks, spray), src/game/effects.cpp spawns none when off
     bool shader_preload = false;  // native/vulkan.cpp makes earlier runs' shaders and pipelines at the start
     uint32_t audio_output = 0;  // audio::kOutputAuto, kOutputStereo, kOutputSurround or kOutputMono
     std::string language = "int";  // one of kLanguages

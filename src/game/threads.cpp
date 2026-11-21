@@ -100,4 +100,20 @@ LOCKED(g_io, 00185900)
 LOCKED(g_io, 00254229)
 LOCKED(g_io, 00254337)
 
+// The track streamer (0x4419E0, its sections 0x50 bytes: state +0xC, buffer +0x44, size +0x4C). A section's read
+// completes in a callback (0x1CF240 / 0x1CF1F0 > 0x1CB120) that sets the state to 3 first, then may decompress the
+// buffer (0x1CAFD0: a new one at +0x44, the old freed, state 4). The main loop meanwhile unloads sections it finds in
+// state 3 (0x1CF800 > 0x1CB0A0: frees +0x44) and loads those in 4 (0x1CB050). Run at once, one buffer was freed twice:
+// the heap's int3 at 0x4F837 (the block's 0x22 mark gone) under 0x1D7020 > 0x1CF800 > 0x1CB0A0 in free roam. The
+// four take one lock, so a section's state is only seen between whole steps. The unload waits for the GPU (0x99120)
+// under it, which never waits on the streamer
+namespace {
+std::recursive_mutex g_stream;
+}
+
+LOCKED(g_stream, 001CB120)
+LOCKED(g_stream, 001CB0A0)
+LOCKED(g_stream, 001CB050)
+LOCKED(g_stream, 001CAFD0)
+
 #undef LOCKED

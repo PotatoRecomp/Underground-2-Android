@@ -1103,6 +1103,19 @@ private:
     void DropFramebuffers(VkImageView v);
     void SetViewport(float x, float y, float w, float h);
     void SetScissor(int32_t x0, int32_t y0, int32_t x1, int32_t y1);
+    // The dynamic state and pipeline the command buffer has now: a draw sets only what differs. Every draw setting all
+    // of it was a good part of the Mali driver's recording time (Redmi Note 8 Pro profile). Forgotten at a new command
+    // buffer, after the UI's draws, and when a pipeline without the blend and stencil states dynamic is bound
+    VkPipeline bound_pipe_ = VK_NULL_HANDLE;
+    VkViewport bound_vp_{};
+    VkRect2D bound_sc_{};
+    float bound_bf_[4] = {};
+    uint32_t bound_sref_ = 0;
+    bool vp_known_ = false, sc_known_ = false, bf_known_ = false, sref_known_ = false;
+    void ForgetBound() {
+        bound_pipe_ = VK_NULL_HANDLE;
+        vp_known_ = sc_known_ = bf_known_ = sref_known_ = false;
+    }
     VkDescriptorSet Set(const VkImageView views[4], const VkSampler samplers[4]);
     void BindSet(VkDescriptorSet set, VkDeviceSize vc, VkDeviceSize dc);
 
@@ -1956,6 +1969,7 @@ void VulkanBackend::Begin() {
     VkCommandBufferBeginInfo bi{VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};
     bi.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
     VkResult r = vkBeginCommandBuffer(Cb(), &bi);
+    ForgetBound();
     if (r != VK_SUCCESS) {
         FailGpu("vkBeginCommandBuffer", r, value_);
         return;
@@ -2376,11 +2390,17 @@ void VulkanBackend::DropFramebuffers(VkImageView v) {
 // in the D3D convention, y down from the top: a negative height turns Vulkan's clip space the same way up
 void VulkanBackend::SetViewport(float x, float y, float w, float h) {
     VkViewport vp{x, y + h, w, -h, 0, 1};
+    if (vp_known_ && !std::memcmp(&vp, &bound_vp_, sizeof(vp))) return;
+    bound_vp_ = vp;
+    vp_known_ = true;
     vkCmdSetViewport(Cb(), 0, 1, &vp);
 }
 
 void VulkanBackend::SetScissor(int32_t x0, int32_t y0, int32_t x1, int32_t y1) {
     VkRect2D r{{std::max(x0, 0), std::max(y0, 0)}, {uint32_t(std::max(x1 - std::max(x0, 0), 0)), uint32_t(std::max(y1 - std::max(y0, 0), 0))}};
+    if (sc_known_ && !std::memcmp(&r, &bound_sc_, sizeof(r))) return;
+    bound_sc_ = r;
+    sc_known_ = true;
     vkCmdSetScissor(Cb(), 0, 1, &r);
 }
 
@@ -3021,6 +3041,7 @@ void VulkanBackend::Blit(Image& dst, const VkRect2D& to, Image& src, const float
     VkDescriptorSet set = Set(views, samplers);
     BeginRender(&dst, nullptr);
     vkCmdBindPipeline(Cb(), VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
+    ForgetBound();
     BindSet(set, cb.off, cb.off);
     SetViewport(float(to.offset.x), float(to.offset.y), float(to.extent.width), float(to.extent.height));
     SetScissor(0, 0, int32_t(dst.w), int32_t(dst.h));
@@ -3063,6 +3084,7 @@ bool VulkanBackend::DepthCopy(const State& s) {
     VkDescriptorSet set = Set(views, samplers);
     BeginRender(nullptr, &dst.img);
     vkCmdBindPipeline(Cb(), VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
+    ForgetBound();
     BindSet(set, cb.off, cb.off);
     SetViewport(0, 0, float(dst.w), float(dst.h));
     SetScissor(0, 0, int32_t(dst.w), int32_t(dst.h));
@@ -3541,7 +3563,17 @@ void VulkanBackend::Draw(const State& s, uint32_t prim, uint32_t start, uint32_t
     if (need < kUploadSize / 4 && CurrentFrame().used + need > kUploadSize && !Submit(true, false)) return;
     GuestExtent size;
     SurfaceSize(draw_rt_ ? s.rt : s.zs, size.w, size.h);
-    DrawConstants c{};
+    // A vertex program's draw never reads the fixed function's lighting block (wv to lt: sdk/runtime/gpu/shaders.cpp
+    // reads them only in FixedVertexHlsl, the pixel shaders not at all): it is neither cleared nor uploaded, more than
+    // half of the constants each draw copied
+    constexpr size_t kLitBegin = offsetof(DrawConstants, wv), kLitEnd = offsetof(DrawConstants, rtshift);
+    DrawConstants c;
+    if (sh.prog) {
+        std::memset(&c, 0, kLitBegin);
+        std::memset(reinterpret_cast<uint8_t*>(&c) + kLitEnd, 0, sizeof(c) - kLitEnd);
+    } else {
+        std::memset(&c, 0, sizeof(c));
+    }
     FillSurfaceConstants(s, size, c);
     if (game::Opt().fog) FillFogConstants(s, c);  // off: no fog mode, the shaders' fog factor stays 1
     FillCombinerConstants(s, c);
@@ -3567,8 +3599,16 @@ void VulkanBackend::Draw(const State& s, uint32_t prim, uint32_t start, uint32_t
         last_vc_frame_ = &CurrentFrame();
         last_vc_epoch_ = upload_epoch_;
     }
-    Alloc dc = Constants(&c, sizeof(c));
-    if (!dc.cpu) return;
+    Alloc dc;
+    if (sh.prog) {
+        dc = Upload(kUboRange, kUboAlign);
+        if (!dc.cpu) return;
+        std::memcpy(dc.cpu, &c, kLitBegin);
+        std::memcpy(dc.cpu + kLitEnd, reinterpret_cast<const uint8_t*>(&c) + kLitEnd, sizeof(c) - kLitEnd);
+    } else {
+        dc = Constants(&c, sizeof(c));
+        if (!dc.cpu) return;
+    }
     VkBuffer vbufs[16];
     VkDeviceSize voffs[16];
     for (uint32_t i = 0; i < a.buffer_count; i++) {
@@ -3595,7 +3635,10 @@ void VulkanBackend::Draw(const State& s, uint32_t prim, uint32_t start, uint32_t
     BeginRender(draw_rt_ ? &draw_rt_->img : nullptr, draw_ds_ ? &draw_ds_->img : nullptr);
     if (draw_rt_) draw_rt_->drawn = true, draw_rt_->writes++;
     if (draw_ds_) draw_ds_->drawn = true;
-    vkCmdBindPipeline(Cb(), VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
+    if (pipe != bound_pipe_) {
+        vkCmdBindPipeline(Cb(), VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
+        bound_pipe_ = pipe;
+    }
     BindSet(set, vc.off, dc.off);
     Target& bt = draw_rt_ ? *draw_rt_ : *draw_ds_;
     float W = float(bt.w), H = float(bt.h);
@@ -3620,8 +3663,17 @@ void VulkanBackend::Draw(const State& s, uint32_t prim, uint32_t start, uint32_t
                std::clamp(y1, 0, int32_t(H)));
     float bf[4];
     Color(SimpleState(s, kMBlendColor), bf);
-    vkCmdSetBlendConstants(Cb(), bf);
-    vkCmdSetStencilReference(Cb(), VK_STENCIL_FACE_FRONT_AND_BACK, SimpleState(s, kMStencilRef) & 0xFF);
+    if (!bf_known_ || std::memcmp(bf, bound_bf_, sizeof(bf))) {
+        vkCmdSetBlendConstants(Cb(), bf);
+        std::memcpy(bound_bf_, bf, sizeof(bf));
+        bf_known_ = true;
+    }
+    uint32_t sref = SimpleState(s, kMStencilRef) & 0xFF;
+    if (!sref_known_ || sref != bound_sref_) {
+        vkCmdSetStencilReference(Cb(), VK_STENCIL_FACE_FRONT_AND_BACK, sref);
+        bound_sref_ = sref;
+        sref_known_ = true;
+    }
     if (a.buffer_count) vkCmdBindVertexBuffers(Cb(), 0, a.buffer_count, vbufs, voffs);
     if (a.index_count) {
         vkCmdBindIndexBuffer(Cb(), ib.buf, ib.off, a.index16 ? VK_INDEX_TYPE_UINT16 : VK_INDEX_TYPE_UINT32);
@@ -3967,6 +4019,7 @@ void VulkanBackend::DrawFrame(Target* t, uint32_t index) {
     }
     if (pipe) {
         vkCmdBindPipeline(cb, VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
+        ForgetBound();
         BindSet(set, cbuf.off, cbuf.off);
         SetViewport((w - vw) / 2, (h - vh) / 2, vw, vh);
         SetScissor(0, 0, int32_t(w), int32_t(h));
@@ -3995,6 +4048,7 @@ void VulkanBackend::RenderUi() {
     touch::Draw();
     ImGui::Render();
     ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), Cb());
+    ForgetBound();
 }
 
 void VulkanBackend::UploadGammaRamp() {

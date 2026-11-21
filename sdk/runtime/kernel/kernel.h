@@ -111,6 +111,7 @@ struct Object {
     bool notification = false;  // manual reset event or notification timer
     uint32_t owner = 0;         // mutant owner thread
     uint32_t recursion = 0;
+    uint32_t waiters = 0;       // threads blocked with this object in their wait, so a signal knows to wake them
     std::string name;
     explicit Object(ObjType t) : type(t) {}
     virtual ~Object() = default;
