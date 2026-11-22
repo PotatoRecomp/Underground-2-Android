@@ -9,6 +9,7 @@ void FeFrame(X86Context& ctx);  // game thread, at each present
 bool FeIntro();      // any thread: a race's intro (the caption over its opening camera) is up
 bool FeMenuShown();  // any thread: a menu that takes the pointer is up
 bool FeHudWaiting();  // any thread: the race's HUD is loaded but its speedometer not drawn yet
+bool FeHudShown();    // any thread: the race's HUD is up (its speedometer drawn, or a HUD without one)
 // the arrow images the front end draws (its one texture, the circle with an arrow in it, turned and flipped by the
 // quad's corners): the texture's data address, 0 until the screen has loaded it, and each such quad drawn, by the
 // draw hook (src/d3d/d3d8.cpp), as the corners' places on the 640x480 frame and texture coordinates

@@ -65,6 +65,7 @@ constexpr int64_t kHudWaitMs = 30000;
 std::atomic<uint32_t> g_dial_data{0};  // the dial texture's data address, 0 for none
 bool g_dial_drawing = false;          // drawn in the frame being drawn (game thread)
 std::atomic<bool> g_hud_waiting{false};
+std::atomic<bool> g_hud_shown{false};  // a HUD package is up and not waiting
 
 // the arrows drawn: each as the box it covers on the 640x480 frame and the way it points; those of the frame being
 // drawn, and of the last one, which a tap is tested against
@@ -619,6 +620,8 @@ void HudFrame(X86Context& ctx, uint32_t fe) {
     if (drawn && !seen) LOGR("fe: hud up");
     seen |= drawn;
     g_hud_waiting = package && g_dial_data && !seen && NowMs() - since < kHudWaitMs;
+    // its dial not yet known (the texture loads after the package) is waiting too
+    g_hud_shown = package && !g_hud_waiting && (seen || !hash || NowMs() - since >= kHudWaitMs);
 }
 
 }  // namespace
@@ -707,6 +710,8 @@ bool FeMenuShown() { return g_menu; }
 bool FeIntro() { return g_intro; }
 
 bool FeHudWaiting() { return g_hud_waiting; }
+
+bool FeHudShown() { return g_hud_shown; }
 
 
 bool FeOnPackage(const char* name) { return g_menu_package && Name(g_menu_package) == name; }

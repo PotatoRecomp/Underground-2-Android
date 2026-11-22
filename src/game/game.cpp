@@ -82,10 +82,12 @@ void MusicFrame(X86Context& ctx) {
     // 0xB4940 / 0xB49F0 write these floats and pass the settings to 0x76A70.
     float level = kernel::G<float>(flow == 6 ? 0x406CF4 : 0x406CF0);
     if (!std::isfinite(level)) level = 0;
-    // My Music starts at the main menu, not over the boot's logos, movies and memory card screens
+    // My Music starts at the main menu, not over the boot's logos, movies and memory card screens, and in a race once
+    // its HUD is up, not over the loading screen and the opening camera
     static bool main_menu = false;
     main_menu |= FeOnPackage("UI_Main.fng");
-    music::SetContext(main_menu && (flow == 3 || flow == 6) && !g_focus_paused, flow == 6, std::clamp(level, 0.0f, 1.0f));
+    bool playing = main_menu && (flow == 3 || (flow == 6 && FeHudShown())) && !g_focus_paused;
+    music::SetContext(playing, flow == 6, std::clamp(level, 0.0f, 1.0f));
     bool replace = music::HasSongs() && music::Source() == music::kMyMusic;
     uint32_t bus = kernel::R32(0x3E5AFC);
     bool changed = g_replace_music.exchange(replace) != replace;
