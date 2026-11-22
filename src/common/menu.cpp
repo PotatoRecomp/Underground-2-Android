@@ -24,6 +24,7 @@
 #include "common/menu.h"
 #include "common/mouse_keyboard.h"
 #include "common/music.h"
+#include "common/fps_place.h"
 #include "common/options.h"
 #include "common/pad_binds.h"
 #include "common/translations.h"
@@ -99,11 +100,18 @@ constexpr uint32_t kScreenFilters[] = {0, 1, 2, 3, 4};
 const char* const kScreenFilterNames[] = {"OFF", "SHARPEN", "VIVID", "SCANLINES", "CRT"};
 constexpr uint32_t kAntiAliasings[] = {game::kAaOff, game::kAaFxaa, game::kAaSsaa};
 const char* const kAntiAliasingNames[] = {"OFF", "FXAA", "SSAA 2X"};
-// the counter's place on the screen, Options::fps_position; top centre is under the settings gear
-enum FpsPosition : uint32_t { kFpsTop, kFpsTopLeft, kFpsTopRight, kFpsBottomLeft, kFpsBottom, kFpsBottomRight };
-constexpr uint32_t kFpsPositions[] = {kFpsTop, kFpsTopLeft, kFpsTopRight, kFpsBottomLeft, kFpsBottom, kFpsBottomRight};
+// the counter's place on the screen, Options::fps_position (common/fps_place.h); top centre is under the settings
+// gear, CUSTOM where the touch layout editor dragged it
+using game::kFpsTop, game::kFpsTopLeft, game::kFpsTopRight, game::kFpsBottomLeft, game::kFpsBottom,
+    game::kFpsBottomRight, game::kFpsCustom, game::kFpsPlaceScale;
+constexpr uint32_t kFpsPositions[] = {kFpsTop, kFpsTopLeft, kFpsTopRight, kFpsBottomLeft, kFpsBottom, kFpsBottomRight,
+                                      kFpsCustom};
+// the counter's look, Options::fps_style
+constexpr uint32_t kFpsSimple = 0, kFpsDetailed = 1;
+constexpr uint32_t kFpsStyles[] = {kFpsSimple, kFpsDetailed};
+const char* const kFpsStyleNames[] = {"SIMPLE", "DETAILED"};
 const char* const kFpsPositionNames[] = {"TOP CENTER", "TOP LEFT", "TOP RIGHT", "BOTTOM LEFT", "BOTTOM CENTER",
-                                         "BOTTOM RIGHT"};
+                                         "BOTTOM RIGHT", "CUSTOM"};
 constexpr uint32_t kAudioOutputs[] = {audio::kOutputAuto, audio::kOutputMono, audio::kOutputStereo,
                                       audio::kOutputSurround};
 const char* const kAudioOutputNames[] = {"AUTOMATIC", "MONO", "2.0 STEREO", "5.1 SURROUND"};
@@ -249,7 +257,7 @@ enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutp
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
              kShaderPreload, kRain, kParticles, kShifting, kResetKeyboard, kResetController, kPadPreset, kCheatCash,
-             kCheatNitrous, kCheatUnlockAll, kVibration, kHdr };
+             kCheatNitrous, kCheatUnlockAll, kVibration, kHdr, kFpsStyle };
 
 using rows::Kind;
 using rows::Row;
@@ -264,6 +272,7 @@ constexpr Row kGraphicsRows[] = {
     {Kind::Value, kVsync, "VERTICAL SYNC"},
     {Kind::Value, kMaxFps, "MAX FRAME RATE"},
     {Kind::Value, kFpsCounter, "FPS COUNTER"},
+    {Kind::Value, kFpsStyle, "FPS COUNTER STYLE"},
     {Kind::Value, kFpsPosition, "FPS COUNTER POSITION"},
     {Kind::Value, kFpsUsage, "SHOW CPU / GPU USAGE"},
     {Kind::Value, kFpsTemps, "SHOW TEMPERATURES"},
@@ -415,6 +424,9 @@ bool StepGraphicsRow(int id, int step, Settings& s, char (&text)[64]) {
             return true;
         case kScreenFilter:
             std::snprintf(text, sizeof(text), "%s", kScreenFilterNames[StepTable(kScreenFilters, o.screen_filter, step)]);
+            return true;
+        case kFpsStyle:
+            std::snprintf(text, sizeof(text), "%s", kFpsStyleNames[StepTable(kFpsStyles, o.fps_style, step)]);
             return true;
         case kFpsPosition:
             std::snprintf(text, sizeof(text), "%s", kFpsPositionNames[StepTable(kFpsPositions, o.fps_position, step)]);
@@ -1079,72 +1091,236 @@ void ToggleMenu() {
     if (open) input::ReleaseCursor();
 }
 
-// "CPU 40% 65°C", the parts the device tells
-void AppendPerf(std::string& line, const char* name, float load, float temp) {
-    if (load < 0 && temp < 0) return;
-    char part[48];
-    int n = std::snprintf(part, sizeof(part), "%s%s", line.empty() ? "" : "   ", name);
-    if (load >= 0) n += std::snprintf(part + n, sizeof(part) - n, " %.0f%%", load);
-    if (temp >= 0) std::snprintf(part + n, sizeof(part) - n, " %.0f\xC2\xB0" "C", temp);
-    line += part;
+// the last frames' times in ms, as the render thread draws the UI once a present; a ring, the newest before g_ft_head
+constexpr int kFrameHistory = 240;
+float g_ft[kFrameHistory] = {};
+int g_ft_head = 0, g_ft_count = 0;
+std::chrono::steady_clock::time_point g_ft_last{};
+
+void RecordFrame() {
+    auto now = std::chrono::steady_clock::now();
+    float ms = std::chrono::duration<float, std::milli>(now - g_ft_last).count();
+    g_ft_last = now;
+    // a pause (the app in the background, a load holding the presents) is no frame: the graph starts again
+    if (ms > 1000.0f) {
+        g_ft_count = 0;
+        return;
+    }
+    g_ft[g_ft_head] = ms;
+    g_ft_head = (g_ft_head + 1) % kFrameHistory;
+    g_ft_count = std::min(g_ft_count + 1, kFrameHistory);
 }
 
-// a line of text with a drop shadow, its left edge at x
+// the i-th frame back, 0 the newest
+float FrameAgo(int i) { return g_ft[(g_ft_head - 1 - i + kFrameHistory * 2) % kFrameHistory]; }
+
+struct FrameStats {
+    float avg_ms = 0, max_ms = 0, low_fps = 0;  // over the last second; the 1% low over the whole history
+};
+
+FrameStats Stats() {
+    FrameStats st;
+    float sum = 0;
+    int n = 0;
+    while (n < g_ft_count && sum < 1000.0f) {
+        float ms = FrameAgo(n++);
+        sum += ms;
+        st.max_ms = std::max(st.max_ms, ms);
+    }
+    if (n) st.avg_ms = sum / float(n);
+    if (g_ft_count) {
+        // the frame time 1% of the history is slower than
+        float sorted[kFrameHistory];
+        for (int i = 0; i < g_ft_count; i++) sorted[i] = FrameAgo(i);
+        int k = g_ft_count / 100;
+        std::nth_element(sorted, sorted + k, sorted + g_ft_count, [](float a, float b) { return a > b; });
+        st.low_fps = sorted[k] > 0 ? 1000.0f / sorted[k] : 0;
+    }
+    return st;
+}
+
+// a frame time's colour: 50 fps or more green, down to 30 yellow, slower red
+ImU32 FrameColor(float ms, int alpha = 255) {
+    if (ms <= 20.0f) return IM_COL32(110, 220, 120, alpha);
+    if (ms <= 33.4f) return IM_COL32(240, 200, 80, alpha);
+    return IM_COL32(240, 90, 80, alpha);
+}
+
 void DrawShadowed(ImDrawList* dl, float size, ImVec2 at, ImU32 color, const char* text) {
-    float shadow = std::max(2.0f, size / 12.0f);
-    dl->AddText(ImGui::GetFont(), size, ImVec2(at.x + shadow, at.y + shadow), IM_COL32(0, 0, 0, 200), text);
+    float shadow = std::max(1.0f, size / 16.0f);
+    dl->AddText(ImGui::GetFont(), size, ImVec2(at.x + shadow, at.y + shadow), IM_COL32(0, 0, 0, 180), text);
     dl->AddText(ImGui::GetFont(), size, at, color, text);
 }
 
-// the frame rate, and under it the CPU's and GPU's load and temperatures and the battery's, over the game at the
-// place Options::fps_position picks
-void DrawFpsCounter(double fps) {
-    const game::Options& o = game::Opt();
-    if (!o.fps_counter || MenuOpen()) return;
-    host::SamplePerf();
-    char text[16];
-    std::snprintf(text, sizeof(text), "%.0f FPS", fps);
-    std::string perf;
-    AppendPerf(perf, "CPU", o.fps_usage ? host::CpuLoad() : -1, o.fps_temps ? host::CpuTemp() : -1);
-    AppendPerf(perf, "GPU", o.fps_usage ? host::GpuLoad() : -1, o.fps_temps ? host::GpuTemp() : -1);
-    if (o.fps_temps) AppendPerf(perf, "BAT", -1, host::BatteryTemp());
+float TextWidth(float size, const char* text) { return ImGui::GetFont()->CalcTextSizeA(size, FLT_MAX, 0, text).x; }
+float TextHeight(float size) { return ImGui::GetFont()->CalcTextSizeA(size, FLT_MAX, 0, "0").y; }
 
-    ImDrawList* dl = ImGui::GetForegroundDrawList();
+constexpr ImU32 kLabel = IM_COL32(160, 165, 180, 255), kValue = IM_COL32(240, 240, 245, 255);
+// the credit in a warm gold, opaque: it reads over the game in both styles
+constexpr ImU32 kCreditColor = IM_COL32(255, 205, 110, 255);
+
+// a temperature's colour: warm from 55, hot from 70
+ImU32 TempColor(float c) {
+    if (c >= 70.0f) return IM_COL32(240, 90, 80, 255);
+    if (c >= 55.0f) return IM_COL32(240, 200, 80, 255);
+    return kValue;
+}
+
+// a label and its value in a small rounded box of their own
+struct Chip {
+    std::string label, value;
+    ImU32 color;
+};
+
+// "CPU" with what the device tells of it: its load, its temperature coloured when warm; none when it tells nothing
+void AddPerfChip(std::vector<Chip>& chips, const char* name, float load, float temp) {
+    if (load < 0 && temp < 0) return;
+    char v[32] = "";
+    int n = 0;
+    if (load >= 0) n += std::snprintf(v + n, sizeof(v) - n, "%.0f%%", load);
+    if (temp >= 0) std::snprintf(v + n, sizeof(v) - n, "%s%.0f\xC2\xB0", n ? " " : "", temp);
+    chips.push_back({name, v, temp >= 0 ? TempColor(temp) : kValue});
+}
+
+// the place Options::fps_position picks for a box of this size
+ImVec2 FpsCorner(float box_w, float box_h) {
     ImVec2 screen = ImGui::GetIO().DisplaySize;
-    float big = ImGui::GetFontSize() * 1.5f, small = ImGui::GetFontSize();
-    ImVec2 fs = ImGui::GetFont()->CalcTextSizeA(big, FLT_MAX, 0, text);
-    ImVec2 ps = perf.empty() ? ImVec2(0, 0) : ImGui::GetFont()->CalcTextSizeA(small, FLT_MAX, 0, perf.c_str());
-    ImVec2 cs = ImGui::GetFont()->CalcTextSizeA(small, FLT_MAX, 0, kCredit);
-    // the first line: the frame rate, the credit beside it
-    float gap = small;
-    float line_w = fs.x + gap + cs.x;
-    float block = fs.y + ps.y;
     float margin = screen.y * 0.03f;
-    uint32_t pos = o.fps_position;
+    uint32_t pos = game::Opt().fps_position;
     bool bottom = pos == kFpsBottomLeft || pos == kFpsBottom || pos == kFpsBottomRight;
     // top centre sits under the settings gear, bottom centre over Back and Start, which the touch controls keep there
     float y = pos == kFpsTop ? screen.y * 0.14f
-              : pos == kFpsBottom ? screen.y * 0.86f - block
-              : bottom ? screen.y - margin - block
+              : pos == kFpsBottom ? screen.y * 0.86f - box_h
+              : bottom ? screen.y - margin - box_h
                        : margin;
-    // left, centred or right aligned, each line on its own; every corner at the edge, as far in as it is from the
-    // top or bottom
-    float side = margin;
-    auto x = [&](float w) {
-        if (pos == kFpsTopLeft || pos == kFpsBottomLeft) return side;
-        if (pos == kFpsTopRight || pos == kFpsBottomRight) return screen.x - side - w;
-        return screen.x / 2 - w / 2;
-    };
-    float line_x = x(line_w);
-    DrawShadowed(dl, big, ImVec2(line_x, y), IM_COL32(255, 214, 90, 255), text);
-    // the credit beside the frame rate, dimmer, its foot on the same line
-    DrawShadowed(dl, small, ImVec2(line_x + fs.x + gap, y + fs.y - cs.y), IM_COL32(200, 180, 150, 220), kCredit);
-    if (!perf.empty()) DrawShadowed(dl, small, ImVec2(x(ps.x), y + fs.y), IM_COL32(235, 235, 235, 255), perf.c_str());
+    float x = pos == kFpsTopLeft || pos == kFpsBottomLeft     ? margin
+              : pos == kFpsTopRight || pos == kFpsBottomRight ? screen.x - margin - box_w
+                                                              : screen.x / 2 - box_w / 2;
+    // CUSTOM: where it was dragged, kept whole on the screen whichever style or size it has now
+    if (pos == kFpsCustom) {
+        x = float(game::Opt().fps_x) / kFpsPlaceScale * screen.x;
+        y = float(game::Opt().fps_y) / kFpsPlaceScale * screen.y;
+    }
+    x = std::clamp(x, 0.0f, std::max(screen.x - box_w, 0.0f));
+    y = std::clamp(y, 0.0f, std::max(screen.y - box_h, 0.0f));
+    // the editor picks the box up where it is drawn
+    game::g_fps_box[0] = x, game::g_fps_box[1] = y, game::g_fps_box[2] = x + box_w, game::g_fps_box[3] = y + box_h;
+    game::g_fps_shown = true;
+    return ImVec2(x, y);
 }
 
-void DrawUi(double fps) {
+// the box under the counter, a bar down its left edge in the frame rate's colour
+void FpsBox(ImDrawList* dl, ImVec2 at, float w, float h, float unit, ImU32 accent) {
+    float round = unit * 0.35f, bar = std::max(2.0f, unit * 0.14f);
+    dl->AddRectFilled(at, ImVec2(at.x + w, at.y + h), IM_COL32(12, 14, 20, 150), round);
+    dl->AddRectFilled(at, ImVec2(at.x + bar, at.y + h), accent, round, ImDrawFlags_RoundCornersLeft);
+}
+
+// The frame rate counter at the place Options::fps_position picks. SIMPLE: the rate and the frame time on one line.
+// DETAILED: that line with a graph of the last frames' times (the 60 fps line across it) and the credit, then the 1%
+// low, the last second's slowest frame and the CPU's, GPU's and battery's load and temperatures, each in a chip
+void DrawFpsCounter() {
+    const game::Options& o = game::Opt();
+    game::g_fps_shown = false;
+    if (!o.fps_counter || MenuOpen()) return;
+    bool detailed = o.fps_style == kFpsDetailed;
+    if (detailed) host::SamplePerf();
+    FrameStats st = Stats();
+    float fps = st.avg_ms > 0 ? 1000.0f / st.avg_ms : 0;
+    ImU32 accent = FrameColor(st.avg_ms);
+
+    float unit = ImGui::GetFontSize();
+    float big = unit * 1.25f, small = unit * 0.8f;
+    float big_h = TextHeight(big), small_h = TextHeight(small);
+    char rate[16], ms[24];
+    std::snprintf(rate, sizeof(rate), "%.0f", fps);
+    std::snprintf(ms, sizeof(ms), "%.1f ms", st.avg_ms);
+    const char* unit_text = " FPS  ";
+    float rate_w = TextWidth(big, rate), unit_w = TextWidth(small, unit_text), ms_w = TextWidth(small, ms);
+    float lead = unit * 0.55f, pad = unit * 0.35f, gap = unit * 0.5f;
+    // the credit, the last line in both styles
+    float credit = unit * 0.78f, credit_w = TextWidth(credit, kCredit), credit_h = TextHeight(credit);
+    float credit_gap = unit * 0.2f;
+    ImDrawList* dl = ImGui::GetForegroundDrawList();
+
+    // the first line's start: the rate large, its unit and the frame time on the same foot
+    auto head = [&](float x, float y) {
+        float foot = y + big_h;
+        DrawShadowed(dl, big, ImVec2(x, y), accent, rate);
+        x += rate_w;
+        DrawShadowed(dl, small, ImVec2(x, foot - small_h), kLabel, unit_text);
+        DrawShadowed(dl, small, ImVec2(x + unit_w, foot - small_h), kValue, ms);
+        return x + unit_w + ms_w;
+    };
+
+    if (!detailed) {
+        float w = lead + std::max(rate_w + unit_w + ms_w, credit_w) + pad * 1.5f;
+        float h = pad * 0.6f * 2 + big_h + credit_gap + credit_h;
+        ImVec2 at = FpsCorner(w, h);
+        FpsBox(dl, at, w, h, unit, accent);
+        head(at.x + lead, at.y + pad * 0.6f);
+        DrawShadowed(dl, credit, ImVec2(at.x + lead, at.y + pad * 0.6f + big_h + credit_gap), kCreditColor, kCredit);
+        return;
+    }
+
+    char low[16], max[16];
+    std::snprintf(low, sizeof(low), "%.0f", st.low_fps);
+    std::snprintf(max, sizeof(max), "%.0f ms", st.max_ms);
+    std::vector<Chip> chips = {{"1% LOW", low, FrameColor(st.low_fps > 0 ? 1000.0f / st.low_fps : 0)},
+                               {"MAX", max, FrameColor(st.max_ms)}};
+    AddPerfChip(chips, "CPU", o.fps_usage ? host::CpuLoad() : -1, o.fps_temps ? host::CpuTemp() : -1);
+    AddPerfChip(chips, "GPU", o.fps_usage ? host::GpuLoad() : -1, o.fps_temps ? host::GpuTemp() : -1);
+    if (o.fps_temps) AddPerfChip(chips, "BAT", -1, host::BatteryTemp());
+    float chip_pad = unit * 0.25f, chip_gap = unit * 0.25f, space = TextWidth(small, " ");
+    float chips_w = 0;
+    for (const Chip& c : chips)
+        chips_w += TextWidth(small, c.label.c_str()) + space + TextWidth(small, c.value.c_str()) + chip_pad * 2 + chip_gap;
+    chips_w -= chip_gap;
+
+    float graph_w = unit * 6.0f, graph_h = big_h * 0.75f;
+    // the graph takes the first line's room up to the box's width
+    float inner = std::max({rate_w + unit_w + ms_w + gap + graph_w, chips_w, credit_w});
+    graph_w = inner - (rate_w + unit_w + ms_w + gap);
+    float chip_h = small_h + chip_pad * 0.8f;
+    float w = lead + inner + pad, h = pad + big_h + unit * 0.25f + chip_h + credit_gap + credit_h + pad;
+    ImVec2 at = FpsCorner(w, h);
+    FpsBox(dl, at, w, h, unit, accent);
+
+    float x = head(at.x + lead, at.y + pad) + gap, foot = at.y + pad + big_h;
+    // the graph: the last frames, one bar each, newest on the right, scaled to 33 ms or the slowest up to 66
+    constexpr int kShown = 120;
+    int shown = std::min(g_ft_count, kShown);
+    float scale = 33.4f;
+    for (int i = 0; i < shown; i++) scale = std::max(scale, std::min(FrameAgo(i), 66.8f));
+    ImVec2 g0(x, foot - graph_h - unit * 0.08f), g1(x + graph_w, foot - unit * 0.08f);
+    dl->AddRectFilled(ImVec2(g0.x - 2, g0.y - 2), ImVec2(g1.x + 2, g1.y + 2), IM_COL32(255, 255, 255, 14), unit * 0.15f);
+    float bar = graph_w / float(kShown);
+    for (int i = 0; i < shown; i++) {
+        float t = FrameAgo(i);
+        float hgt = std::max(std::min(t / scale, 1.0f) * graph_h, 1.0f);
+        float bx = g1.x - float(i + 1) * bar;
+        dl->AddRectFilled(ImVec2(bx, g1.y - hgt), ImVec2(bx + std::max(bar, 1.0f), g1.y), FrameColor(t, 220));
+    }
+    float l60 = g1.y - 16.7f / scale * graph_h;
+    dl->AddLine(ImVec2(g0.x, l60), ImVec2(g1.x, l60), IM_COL32(255, 255, 255, 80), 1.0f);
+    // the chips
+    float cx = at.x + lead, cy = foot + unit * 0.25f;
+    for (const Chip& c : chips) {
+        float lw = TextWidth(small, c.label.c_str()), vw = TextWidth(small, c.value.c_str());
+        float cw = lw + space + vw + chip_pad * 2;
+        dl->AddRectFilled(ImVec2(cx, cy), ImVec2(cx + cw, cy + chip_h), IM_COL32(255, 255, 255, 18), unit * 0.2f);
+        float ty = cy + (chip_h - small_h) / 2;
+        DrawShadowed(dl, small, ImVec2(cx + chip_pad, ty), kLabel, c.label.c_str());
+        DrawShadowed(dl, small, ImVec2(cx + chip_pad + lw + space, ty), c.color, c.value.c_str());
+        cx += cw + chip_gap;
+    }
+    DrawShadowed(dl, credit, ImVec2(at.x + lead, cy + chip_h + credit_gap), kCreditColor, kCredit);
+}
+
+void DrawUi(double) {
     ApplyPending();
-    DrawFpsCounter(fps);
+    RecordFrame();
+    DrawFpsCounter();
     ImGuiIO& io = ImGui::GetIO();
     if (MenuOpen()) io.ConfigFlags &= ~ImGuiConfigFlags_NoMouseCursorChange;
     else io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;

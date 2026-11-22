@@ -30,6 +30,7 @@
 #include "common/keys.h"
 #include "common/aspect.h"
 #include "common/fe_mouse.h"
+#include "common/fps_place.h"
 #include "common/hud_layout.h"
 #include "common/menu.h"
 #include "common/options.h"
@@ -394,7 +395,7 @@ namespace {
 using input::NowMs;
 
 // what a finger on the screen does
-enum class Role : uint8_t { None, Stick, Look, Button, Drag, Pinch, Wheel, FeMouse, HudDrag };
+enum class Role : uint8_t { None, Stick, Look, Button, Drag, Pinch, Wheel, FeMouse, HudDrag, FpsDrag };
 
 // a control of the touch layout: what it shows and presses, on the controller (analog 0-7, button bits from 8) or on
 // the host. Where it sits is the layout's, which the player edits
@@ -567,6 +568,11 @@ using HudLayout = std::array<HudPlace, game::kHudItems>;
 HudLayout g_hud{}, g_hud_before{};
 int g_hud_selected = -1;
 HudPlace g_hud_drag_from;  // the dragged item's place as the drag began
+// the FPS counter in the editor: its place as the editor opened (fps_position, fps_x, fps_y, for Cancel), the box's
+// top left as a drag began, and whether it is the picked item
+uint32_t g_fps_before[3] = {};
+float g_fps_drag_from[2] = {};
+bool g_fps_selected = false;
 
 void PublishHud() {
     for (size_t i = 0; i < game::kHudItems; i++) {
@@ -681,8 +687,11 @@ void OpenEditor() {
     g_before = g_layout;
     g_before_opacity = g_opacity;
     g_hud_before = g_hud;
+    const game::Options& o = game::Opt();
+    g_fps_before[0] = o.fps_position, g_fps_before[1] = o.fps_x, g_fps_before[2] = o.fps_y;
     g_selected = -1;
     g_hud_selected = -1;
+    g_fps_selected = false;
     g_editing = true;
 }
 
@@ -828,21 +837,29 @@ void ResetLayout() {
     g_layout = kRacing;
     g_hud = {};
     PublishHud();
+    // a dragged FPS counter goes back to its default place
+    if (game::Opt().fps_position == game::kFpsCustom) game::Opt().fps_position = game::Options{}.fps_position;
     g_selected = -1;
     g_hud_selected = -1;
+    g_fps_selected = false;
 }
 
 void CloseEditor(bool keep) {
+    game::Options& o = game::Opt();
+    bool fps_moved = o.fps_position != g_fps_before[0] || o.fps_x != g_fps_before[1] || o.fps_y != g_fps_before[2];
     if (keep) {
         SaveLayout();
+        if (fps_moved) app::Save();  // the counter's place is a setting of the settings file, not the layout's
     } else {
         g_layout = g_before;
         g_opacity = g_before_opacity;
         g_hud = g_hud_before;
         PublishHud();
+        o.fps_position = g_fps_before[0], o.fps_x = g_fps_before[1], o.fps_y = g_fps_before[2];
     }
     g_selected = -1;
     g_hud_selected = -1;
+    g_fps_selected = false;
     g_editing = false;
 }
 
@@ -1033,6 +1050,24 @@ void DragHud(size_t i, float dx, float dy) {
     PublishHud();
 }
 
+// the FPS counter where it was last drawn, when it is
+bool HitFps(float x, float y) {
+    return game::g_fps_shown && x >= game::g_fps_box[0] && x <= game::g_fps_box[2] && y >= game::g_fps_box[1] &&
+           y <= game::g_fps_box[3];
+}
+
+// the FPS counter dragged by a finger from where its box was as the drag began: CUSTOM, its top left kept on the
+// screen (menu.cpp keeps the whole box on it as it draws)
+void DragFps(float dx, float dy) {
+    game::Options& o = game::Opt();
+    float bw = game::g_fps_box[2] - game::g_fps_box[0], bh = game::g_fps_box[3] - game::g_fps_box[1];
+    float x = std::clamp(g_fps_drag_from[0] + dx, 0.0f, std::max(Width() - bw, 0.0f));
+    float y = std::clamp(g_fps_drag_from[1] + dy, 0.0f, std::max(Height() - bh, 0.0f));
+    o.fps_position = game::kFpsCustom;
+    o.fps_x = uint32_t(x / Width() * game::kFpsPlaceScale);
+    o.fps_y = uint32_t(y / Height() * game::kFpsPlaceScale);
+}
+
 // the editor: a touch on the bar resets, resizes the picked control, cancels or saves; a second finger while one
 // drags a control pinches it bigger or smaller; on a control picks it up to move it, anywhere else lets go of the pick
 void EditDown(Finger& f, float x, float y) {
@@ -1069,6 +1104,16 @@ void EditDown(Finger& f, float x, float y) {
         f.y0 = g_layout[d.button].r;
         return;
     }
+    // the FPS counter first: it is drawn over everything, the driving layout's top left shortcuts under it
+    g_fps_selected = HitFps(x, y);
+    if (g_fps_selected) {
+        g_selected = -1;
+        g_hud_selected = -1;
+        f.role = Role::FpsDrag;
+        g_fps_drag_from[0] = game::g_fps_box[0];
+        g_fps_drag_from[1] = game::g_fps_box[1];
+        return;
+    }
     // kPlaces for none: kButtonCount, HitButton's none, is the left stick's place
     size_t b = HitButton(x, y);
     if (b == kButtonCount) {
@@ -1091,6 +1136,7 @@ void EditDown(Finger& f, float x, float y) {
         return;
     }
     g_hud_selected = -1;
+    g_fps_selected = false;
     g_selected = int(b);
     f.role = Role::Drag;
     f.button = b;
@@ -1202,6 +1248,7 @@ void FingerMove(SDL_FingerID id, float x, float y) {
         f.x = x;
         f.y = y;
         if (f.role == Role::HudDrag) DragHud(f.button, f.x - f.x0, f.y - f.y0);
+        if (f.role == Role::FpsDrag) DragFps(f.x - f.x0, f.y - f.y0);
         if (f.role == Role::Drag) {
             Place& p = g_layout[f.button];
             p.x = std::clamp((x - f.x0) / Width(), 0.0f, 1.0f);
@@ -1613,6 +1660,15 @@ void DrawHudBoxes(ImDrawList* dl, float th) {
     }
 }
 
+// the FPS counter's box in the editor: an edge round it, gold while picked, to show it can be dragged
+void DrawFpsEdge(ImDrawList* dl, float th) {
+    if (!game::g_fps_shown) return;
+    ImVec2 a(game::g_fps_box[0] - th * 2, game::g_fps_box[1] - th * 2);
+    ImVec2 b(game::g_fps_box[2] + th * 2, game::g_fps_box[3] + th * 2);
+    ImU32 edge = g_fps_selected ? IM_COL32(255, 200, 60, 255) : IM_COL32(240, 228, 205, 200);
+    dl->AddRect(a, b, edge, th * 3, 0, th * (g_fps_selected ? 1.5f : 1.0f));
+}
+
 // a control in its shape: glass, its edge, its icon or label, a face button's caption under it. fade is the share
 // (of 100) a hidden control shows at in the editor
 // the steering wheel, turned as it steers: a rim, three spokes to a hub and a saffron mark at its top
@@ -1768,6 +1824,7 @@ void Draw() {
     if (editing) {
         dl->AddRectFilled(ImVec2(0, 0), ImVec2(Width(), h), IM_COL32(0, 0, 0, 90));
         DrawHudBoxes(dl, th);
+        DrawFpsEdge(dl, th);
     }
     for (size_t i = 0; i < kButtonCount; i++) {
         const Button& b = kButtons[i];

@@ -24,7 +24,9 @@ inline constexpr uint32_t kAaOff = 0, kAaFxaa = 1, kAaSsaa = 2;
 
 struct Options {
     bool fps_counter = false;
+    uint32_t fps_style = 1;     // the counter: 0 the rate alone, 1 the detailed panel (src/common/menu.cpp)
     uint32_t fps_position = 0;  // the counter's place, src/common/menu.cpp's kFpsPositionNames
+    uint32_t fps_x = 0, fps_y = 0;  // CUSTOM's: the box's top left, ten thousandths of the screen (fps_place.h)
     bool fps_usage = true;      // the counter's CPU and GPU load
     bool fps_temps = true;      // the counter's CPU, GPU and battery temperatures
     uint32_t screen_filter = 0;  // the present's look: 0 none, 1 sharpen, 2 vivid, 3 scanlines, 4 CRT
