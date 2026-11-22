@@ -966,11 +966,12 @@ Frame Letterbox() {
 void HudRect(size_t i, float r[4]) {
     Frame f = Letterbox();
     const game::HudBox& b = game::kHudBoxes[i];
-    float dx = (g_hud[i].x + game::g_hud_base_x[i]) / game::kHudUnitsX;
+    float aspect = game::Aspect();
+    float dx = (g_hud[i].x + game::g_hud_base_x[i]) / game::HudUnitsAcross(aspect);
     float dy = (g_hud[i].y + game::g_hud_base_y[i]) / game::kHudUnitsY;
-    r[0] = f.x0 + (b.x0 + dx) * f.w;
+    r[0] = f.x0 + (game::HudBoxX(b.x0, aspect) + dx) * f.w;
     r[1] = f.y0 + (b.y0 + dy) * f.h;
-    r[2] = f.x0 + (b.x1 + dx) * f.w;
+    r[2] = f.x0 + (game::HudBoxX(b.x1, aspect) + dx) * f.w;
     r[3] = f.y0 + (b.y1 + dy) * f.h;
 }
 
@@ -988,10 +989,12 @@ int HitHud(float x, float y) {
 void DragHud(size_t i, float dx, float dy) {
     Frame f = Letterbox();
     const game::HudBox& b = game::kHudBoxes[i];
-    float bx = game::g_hud_base_x[i] / game::kHudUnitsX, by = game::g_hud_base_y[i] / game::kHudUnitsY;
-    float sx = std::clamp(g_hud_drag_from.x / game::kHudUnitsX + dx / f.w, -b.x0 - bx, 1.0f - b.x1 - bx);
+    float aspect = game::Aspect(), across = game::HudUnitsAcross(aspect);
+    float x0 = game::HudBoxX(b.x0, aspect), x1 = game::HudBoxX(b.x1, aspect);
+    float bx = game::g_hud_base_x[i] / across, by = game::g_hud_base_y[i] / game::kHudUnitsY;
+    float sx = std::clamp(g_hud_drag_from.x / across + dx / f.w, -x0 - bx, 1.0f - x1 - bx);
     float sy = std::clamp(g_hud_drag_from.y / game::kHudUnitsY + dy / f.h, -b.y0 - by, 1.0f - b.y1 - by);
-    g_hud[i].x = sx * game::kHudUnitsX;
+    g_hud[i].x = sx * across;
     g_hud[i].y = sy * game::kHudUnitsY;
     PublishHud();
 }

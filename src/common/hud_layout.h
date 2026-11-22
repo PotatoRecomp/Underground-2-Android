@@ -24,7 +24,11 @@ inline constexpr HudBox kHudBoxes[kHudItems] = {
 inline std::atomic<float> g_hud_base_x[kHudItems] = {}, g_hud_base_y[kHudItems] = {};
 
 // the frame's width and height in the HUD's FEng units: an offset of 100 moved it 381 and 353 pixels on a 3200x2136
-// frame (its objects are drawn scaled, not 640x480 to the frame as the menus' are)
+// frame (its objects are drawn scaled, not 640x480 to the frame as the menus' are) while the 4:3 layout was stretched
+// over the frame. src/game/widescreen.cpp keeps its shape: across is then the frame's aspect times 3/4 of that, and
+// kHudBoxes' places (measured stretched) come in towards the middle by 4/3 over the aspect
 inline constexpr float kHudUnitsX = 838.0f, kHudUnitsY = 606.0f;
+inline float HudUnitsAcross(float aspect) { return kHudUnitsX * 0.75f * aspect; }
+inline float HudBoxX(float share, float aspect) { return 0.5f + (share - 0.5f) * (4.0f / 3.0f) / aspect; }
 
 }  // namespace game

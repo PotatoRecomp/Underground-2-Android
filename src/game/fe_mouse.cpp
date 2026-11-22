@@ -101,10 +101,12 @@ uint32_t FEngine() {
     return c ? Peek(c + kFEngine) : 0;
 }
 
-// a point of the frame in FEng's units: its 640x480 over the whole frame, the origin in the middle (MC_Main.fng's
-// dialog has its Yes at -163 to -107 and its No at 138 to 180, 154 to 178 down)
+// a point of the frame in FEng's units: 480 times the frame's aspect across (the layout's 640 in the middle,
+// src/game/widescreen.cpp keeping its shape), 480 down, the origin in the middle (MC_Main.fng's dialog has its Yes at
+// -163 to -107 and its No at 138 to 180, 154 to 178 down)
+float Across() { return 480.0f * Aspect(); }
 void ToFeng(float u, float v, int16_t& x, int16_t& y) {
-    x = int16_t(std::lround((u - 0.5f) * 640.0f));
+    x = int16_t(std::lround((u - 0.5f) * Across()));
     y = int16_t(std::lround((v - 0.5f) * 480.0f));
 }
 
@@ -709,11 +711,14 @@ int FeArrowKind(uint32_t data) {
 }
 
 // the quad's corners: the way the arrow points is where the texture's right edge (its u past a half) lies from its left
-void FeArrowQuad(int kind, const float* px, const float* py, const float* u, const float* v) {
+void FeArrowQuad(int kind, const float* px_frame, const float* py, const float* u, const float* v) {
     if (kind == 6) {
         g_dial_drawing = true;
         return;
     }
+    // the frame's 640 across in FEng's units, as ToFeng takes a finger
+    float px[4];
+    for (int i = 0; i < 4; i++) px[i] = (px_frame[i] - 320.0f) * Across() / 640.0f + 320.0f;
     if (kind == 5) {
         g_keys_building.push_back({*std::min_element(px, px + 4), *std::min_element(py, py + 4),
                                    *std::max_element(px, px + 4), *std::max_element(py, py + 4)});
