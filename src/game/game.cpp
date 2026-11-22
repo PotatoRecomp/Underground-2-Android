@@ -118,8 +118,9 @@ void MusicFrame(X86Context& ctx) {
 constexpr uint32_t kGameFlowState = 0x428E34, kGameFlowRacing = 6;
 bool Racing() { return kernel::R32(kGameFlowState) == kGameFlowRacing; }
 
-// only English and Indonesian are offered; Indonesian translates the host's own panels and, from language.cpp, the game's text
-bool LanguageAvailable(const std::string& code) { return code == "int" || code == "ind"; }
+// every language of the disc is offered (src/game/language.cpp picks the game's), and Indonesian, which translates the
+// host's own panels and, from language.cpp, the game's text
+bool LanguageAvailable(const std::string& code) { return KnownLanguage(code); }
 
 }  // namespace game
 

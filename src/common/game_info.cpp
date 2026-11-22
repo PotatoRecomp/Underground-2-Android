@@ -44,7 +44,7 @@ void Load(const void* table) {
     const toml::table& t = *static_cast<const toml::table*>(table);
     Options& o = Opt();
     std::string language = t["language"].value_or(o.language);
-    // a language no longer offered (French, German, Italian, Spanish) goes back to English
+    // a language this build does not offer goes back to English
     if (KnownLanguage(language) && LanguageAvailable(language)) o.language = language;
     if (const toml::table* keys = t["keys"].as_table())
         for (auto&& [id, value] : *keys)

@@ -106,7 +106,7 @@ constexpr uint32_t kAudioOutputs[] = {audio::kOutputAuto, audio::kOutputMono, au
                                       audio::kOutputSurround};
 const char* const kAudioOutputNames[] = {"AUTOMATIC", "MONO", "2.0 STEREO", "5.1 SURROUND"};
 const char* const kLanguageNames[] = {"ENGLISH", "FRENCH", "GERMAN", "ITALIAN", "SPANISH",
-                                      "INDONESIAN"};  // as game::kLanguages
+                                      "INDONESIAN", "DUTCH", "SWEDISH", "DANISH"};  // as game::kLanguages
 constexpr const char* kDonateUrl = "https://sociabuzz.com/racas/tribe";
 constexpr const char* kGithubUrl = "https://github.com/RanggaCasper";
 constexpr const char* kYoutubeUrl = "https://youtube.com/c/@RanggaCasper";
@@ -459,7 +459,7 @@ void StepInputRow(int id, int step, char (&text)[64]) {
             int count = int(std::size(game::kLanguages));
             int i = 0;
             while (i < count - 1 && o.language != game::kLanguages[i]) i++;
-            // past the languages this disc has no strings for; English and Indonesian are always there
+            // past the languages this build does not offer
             if (step) {
                 do i = StepIndex(i, step, count);
                 while (!game::LanguageAvailable(game::kLanguages[i]));

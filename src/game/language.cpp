@@ -71,3 +71,18 @@ X86_FUNC(sub_0011ED10) {
     __imp__sub_0011ED10(ctx, base);
     if (ctx.eax == 1 && game::BootLanguage() == "ind") Apply();
 }
+
+// The language the game boots in: 0x11EC80 asks 0x1C18A0 for the id of the console's language in the game's table at 0x3A0640
+// (0 English, 1 French, 2 German, 3 Italian, 4 Spanish, 5 Dutch, 6 Swedish, 7 Danish; the others are Asian), which the
+// console's language gives for English, French, German and Italian only, Spanish and the rest never (PAL discs ask the
+// player). The language setting gives it instead, Indonesian the English one its text is swapped in.
+X86_EXTERN_FUNC(__imp__sub_001C18A0);
+X86_FUNC(sub_001C18A0) {
+    __imp__sub_001C18A0(ctx, base);
+    static constexpr struct {
+        const char* code;
+        uint32_t id;
+    } kIds[] = {{"int", 0}, {"ind", 0}, {"fra", 1}, {"deu", 2}, {"ita", 3}, {"esp", 4}, {"nld", 5}, {"swe", 6}, {"dan", 7}};
+    for (auto& l : kIds)
+        if (game::BootLanguage() == l.code) ctx.eax = l.id;
+}

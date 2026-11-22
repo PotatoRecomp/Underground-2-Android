@@ -122,6 +122,9 @@ constexpr Entry kEntries[] = {
     {"SPANISH", {u"Espagnol", u"Spanisch", u"Spagnolo", u"Español", u"Spanyol"}},
     // its own name in every language, so it can be found from any of them
     {"INDONESIAN", {u"Bahasa Indonesia", u"Bahasa Indonesia", u"Bahasa Indonesia", u"Bahasa Indonesia", u"Bahasa Indonesia"}},
+    {"DUTCH", {u"Nederlands", u"Nederlands", u"Nederlands", u"Nederlands", u"Nederlands"}},
+    {"SWEDISH", {u"Svenska", u"Svenska", u"Svenska", u"Svenska", u"Svenska"}},
+    {"DANISH", {u"Dansk", u"Dansk", u"Dansk", u"Dansk", u"Dansk"}},
     {"OPEN", {{}, {}, {}, {}, u"Buka"}},
     {"CHECK FOR UPDATES", {u"Rechercher des mises à jour", u"Nach Updates suchen", u"Cerca aggiornamenti", u"Buscar actualizaciones", u"Cek pembaruan"}},
     {"CHECK", {u"Rechercher", u"Suchen", u"Cerca", u"Buscar", u"Cek"}},
@@ -210,7 +213,10 @@ int Language() {
     static const int language = [] {
         if (!game::LanguageAvailable(game::BootLanguage())) return -1;
         auto at = std::find(std::begin(game::kLanguages), std::end(game::kLanguages), game::BootLanguage());
-        return at == std::end(game::kLanguages) ? -1 : int(at - std::begin(game::kLanguages)) - 1;
+        if (at == std::end(game::kLanguages)) return -1;
+        // the recomp's own text is in the first five after English; Dutch, Swedish and Danish keep the panel's English
+        int i = int(at - std::begin(game::kLanguages)) - 1;
+        return i < int(std::size(kEntries[0].text)) ? i : -1;
     }();
     return language;
 }

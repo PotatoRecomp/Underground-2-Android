@@ -11,9 +11,9 @@ struct X86Context;
 // the game's own settings, in the settings file through app::kGame.options
 namespace game {
 
-// the languages, saved by these codes: English, French, German, Italian, Spanish, Indonesian. Indonesian is the
-// recomp's own text only: the game files have none, so the game itself stays in English
-inline constexpr const char* kLanguages[] = {"int", "fra", "deu", "ita", "esp", "ind"};
+// the languages, saved by these codes: English, French, German, Italian, Spanish, Indonesian, Dutch, Swedish, Danish.
+// The disc has the game's text in all of them but Indonesian, which src/game/language.cpp translates from the English
+inline constexpr const char* kLanguages[] = {"int", "fra", "deu", "ita", "esp", "ind", "nld", "swe", "dan"};
 inline bool KnownLanguage(const std::string& code) {
     return std::find(std::begin(kLanguages), std::end(kLanguages), code) != std::end(kLanguages);
 }
