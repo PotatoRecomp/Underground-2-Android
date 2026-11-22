@@ -126,6 +126,8 @@ std::vector<app::rows::Row> TabRows(int tab) {
         const app::rows::Row* list = app::rows::Page(page, &count);
         for (size_t i = 0; i < count; i++)
             if (list[i].kind != app::rows::Kind::Heading) out.push_back(list[i]);
+        app::rows::Row reset;
+        if (app::rows::ResetRow(page, &reset)) out.push_back(reset);
     }
     return out;
 }
@@ -390,12 +392,27 @@ std::vector<Row> g_section_rows;  // the tab's rows, headings left out
 std::vector<uint32_t> g_widgets;  // the widgets with a place, in order
 size_t g_first = 0;               // the row the first widget shows
 uint32_t g_screen = 0;            // the screen they are on
+// a list longer than its places keeps its RESET TO DEFAULTS (the KEYBOARD and CONTROLLER tabs' last row) in the last
+// place, the rest scrolling through the places over it
+bool g_pinned = false;
+
+bool IsReset(const Row& r) {
+    Row reset;
+    for (int page : {3, 4})
+        if (app::rows::ResetRow(page, &reset) && r.kind == reset.kind && r.id == reset.id) return true;
+    return false;
+}
+
+// the places the rows scroll through, and those rows
+size_t Places() { return g_widgets.size() - (g_pinned ? 1 : 0); }
+size_t ScrollRows() { return g_section_rows.size() - (g_pinned ? 1 : 0); }
 
 void MapRows() {
-    for (size_t i = 0; i < g_widgets.size(); i++) {
+    for (size_t i = 0; i < Places(); i++) {
         size_t at = g_first + i;
-        g_rows[g_widgets[i]] = at < g_section_rows.size() ? g_section_rows[at] : Row{Kind::Info, kBlankId, ""};
+        g_rows[g_widgets[i]] = at < ScrollRows() ? g_section_rows[at] : Row{Kind::Info, kBlankId, ""};
     }
+    if (g_pinned) g_rows[g_widgets.back()] = g_section_rows.back();
 }
 
 void DrawRow(X86Context& ctx, uint32_t self) {
@@ -474,6 +491,7 @@ void SetupRows(X86Context& ctx, uint32_t screen, int section, bool pause = false
     g_widgets.clear();
     g_section_rows.clear();
     g_first = 0;
+    g_pinned = false;
     g_screen = screen;
     g_section_rows = TabRows(section);
     X86Context saved = ctx;
@@ -501,6 +519,7 @@ void SetupRows(X86Context& ctx, uint32_t screen, int section, bool pause = false
     }
     if (g_widgets.size() < g_section_rows.size())
         LOGR("options: %d rows through %d places", int(g_section_rows.size()), int(g_widgets.size()));
+    g_pinned = g_widgets.size() > 1 && g_widgets.size() < g_section_rows.size() && IsReset(g_section_rows.back());
     MapRows();
     for (uint32_t w : g_widgets) DrawRow(ctx, w);
     uint32_t name = TextHash(Latin1(TitleCase(TabName(section))));
@@ -702,15 +721,16 @@ X86_FUNC(sub_001613A0) {
         __imp__sub_001613A0(ctx, base);
         return;
     }
-    uint32_t current = R32(screen + kCurrentWidget);
+    // with RESET TO DEFAULTS pinned in the last place the rows scroll through the places over it: down at the last of
+    // those moves the cursor onto it once they are at their end
+    uint32_t current = R32(screen + kCurrentWidget), last_place = g_widgets[Places() - 1];
     if (message == kUp && current == g_widgets.front() && g_first > 0) {
         g_first--;
-    } else if (message == kDown && current == g_widgets.back()) {
-        if (g_first + g_widgets.size() >= g_section_rows.size()) {
-            kernel::Return(ctx, 0, 4);
-            return;
-        }
+    } else if (message == kDown && current == last_place && g_first + Places() < ScrollRows()) {
         g_first++;
+    } else if (message == kDown && current == g_widgets.back()) {
+        kernel::Return(ctx, 0, 4);
+        return;
     } else {
         __imp__sub_001613A0(ctx, base);
         return;

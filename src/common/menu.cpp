@@ -246,7 +246,7 @@ void Changed() {
 enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutput, kLanguage, kGyro,
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
-             kShaderPreload, kRain, kParticles, kShifting };
+             kShaderPreload, kRain, kParticles, kShifting, kResetKeyboard, kResetController };
 
 using rows::Kind;
 using rows::Row;
@@ -583,6 +583,11 @@ int BindRow(const char* label, const std::vector<std::string>& keys, int capturi
 // Escape cancels, any other bindable key or mouse button binds
 void PollCapture() {
     if (g_capture < 0) return;
+    if (std::chrono::steady_clock::now() - g_pad_capture_since > kPadCaptureTimeout) {  // as a controller's
+        g_capture = -1;
+        g_capture_done = ImGui::GetFrameCount();
+        return;
+    }
     int vk = input::PressedKey();
     if (!g_capture_armed) {
         g_capture_armed = !vk;
@@ -673,6 +678,7 @@ void KeyRow(const Row& r) {
     if (cleared >= 0 && CaptureFree()) input::Bind(size_t(r.id), 0, cleared);
     if (box < 0 || !CaptureFree()) return;
     g_capture_slot = box;
+    g_pad_capture_since = std::chrono::steady_clock::now();
     g_capture = r.id;
     g_capture_armed = false;
 }
@@ -945,18 +951,37 @@ void ApplyPending() {
     for (const auto& [r, step] : pending) {
         if (step) {
             RowText(r.id, step);
+        } else if (r.kind == Kind::Link && (r.id == kResetKeyboard || r.id == kResetController)) {
+            g_capture = -1;
+            g_pad_capture = -1;
+            RestoreDefaults(r.id == kResetKeyboard ? kKeyboardPage : kControllerPage);
         } else if (r.kind == Kind::Link) {
             if (r.id == kTouchEdit) touch::EditLayout();
             else if (const char* url = LinkUrl(r.id)) SDL_OpenURL(url);
-        } else if (r.kind == Kind::Bind || r.kind == Kind::PadBind) {
-            g_page = r.kind == Kind::Bind ? kKeyboardPage : kControllerPage;
-            if (!MenuOpen()) ToggleMenu();
+        } else if ((r.kind == Kind::Bind || r.kind == Kind::PadBind) && !Capturing()) {
+            // the game's options menu waits for the input in place, as Most Wanted's does: the row reads PRESS A KEY
+            // or PRESS A BUTTON, the next one binds (its value then), Escape or kPadCaptureTimeout gives up
+            g_pad_capture_since = std::chrono::steady_clock::now();
+            if (r.kind == Kind::Bind) {
+                g_capture_slot = 0;
+                g_capture_armed = false;
+                g_capture = r.id;
+            } else {
+                g_pad_capture_armed = false;
+                g_pad_capture = r.id;
+            }
         }
     }
     if (!pending.empty()) g_applied++;
 }
 
 uint32_t rows::Applied() { return g_applied; }
+
+bool rows::ResetRow(int page, Row* row) {
+    if (page != kKeyboardPage && page != kControllerPage) return false;
+    *row = {Kind::Link, page == kKeyboardPage ? kResetKeyboard : kResetController, "RESET TO DEFAULTS"};
+    return true;
+}
 
 std::string rows::Value(const Row& r, int step) {
     if (step && r.kind == Kind::Value) {
@@ -965,10 +990,11 @@ std::string rows::Value(const Row& r, int step) {
     }
     switch (r.kind) {
         case Kind::Value: return RowText(r.id, 0);
-        case Kind::Link: return "OPEN";
+        case Kind::Link: return r.id == kResetKeyboard || r.id == kResetController ? "RESET" : "OPEN";
         case Kind::Info: return r.id >= 0 && r.id < int(std::size(kCreditNames)) ? kCreditNames[r.id] : "";
-        case Kind::Bind: return KeyBoxes(size_t(r.id))[0];
+        case Kind::Bind: return g_capture == r.id ? "PRESS A KEY" : KeyBoxes(size_t(r.id))[0];
         case Kind::PadBind: {
+            if (g_pad_capture == r.id) return "PRESS A BUTTON";
             size_t count = 0;
             std::string bound = input::PadBinding(size_t(r.id));
             return bound.empty() ? input::PadActions(&count)[r.id].defaults : bound;
@@ -977,7 +1003,7 @@ std::string rows::Value(const Row& r, int step) {
     }
 }
 
-// a link opens its page or the touch layout's editor; a binding opens the panel on its page, which captures keys
+// a link opens its page or the touch layout's editor; a binding waits for its input (ApplyPending)
 void rows::Activate(const Row& r) {
     if (r.kind != Kind::Link && r.kind != Kind::Bind && r.kind != Kind::PadBind) return;
     std::lock_guard lock(g_pending_lock);
@@ -1069,11 +1095,13 @@ void DrawUi(double fps) {
     // scale the font with the output height: a phone's dense screen reads 13 px text at 540 rows to the height
     float base = io.Fonts->Fonts.empty() ? 13.0f : io.Fonts->Fonts[0]->FontSize;
     io.FontGlobalScale = std::max(1.0f, io.DisplaySize.y / 540.0f) * 13.0f / base;
-    if (MenuOpen()) {
-        PollCapture();
-        PollPadCapture();
-        DrawPanel();
-    }
+    // a binding taken in the game's options menu as in the panel; its end redraws the menu's rows
+    PollCapture();
+    PollPadCapture();
+    static bool was_capturing = false;
+    if (was_capturing && !Capturing()) g_applied++;
+    was_capturing = Capturing();
+    if (MenuOpen()) DrawPanel();
 }
 
 }  // namespace app

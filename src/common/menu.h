@@ -30,6 +30,8 @@ const char* PageName(int page);  // the tab's, in English capitals
 // shows it (in English, capitals), stepped first when step is not zero, and saved; a link's or a binding's action
 std::string Value(const Row& r, int step);
 void Activate(const Row& r);
+// the game's options menu's last row of the KEYBOARD (3) and CONTROLLER (4) pages: their bindings back to the defaults
+bool ResetRow(int page, Row* row);
 // those steps and actions wait for the UI's frame (the render thread), which counts each batch it applies
 uint32_t Applied();
 

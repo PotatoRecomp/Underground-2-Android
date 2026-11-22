@@ -1,3 +1,6 @@
+#include <atomic>
+#include <cstdlib>
+
 #include <toml++/toml.hpp>
 
 #include "app/app.h"
@@ -11,13 +14,22 @@ namespace game {
 
 namespace {
 
-// port 0 has the touch controls, the keyboard and mouse; the game sees no input while the panel is open
+// port 0 has the touch controls, the keyboard and mouse; the game sees no input while the panel is open, nor while a
+// binding waits for its input and until what bound it is let go (B bound would have backed out of the menu too)
 void Pad(int port, input::Pad& pad) {
     input::SeenPad(pad);
     if (port == 0) pad.connected = true;
+    static std::atomic<bool> held{false};
+    if (app::Capturing()) held = true;
     const bool panel = app::MenuOpen();
     if (!panel && port == 0) input::Keyboard(pad);
-    if (panel) pad = input::Pad{.connected = pad.connected};
+    if (held && port == 0 && !app::Capturing()) {
+        bool idle = !pad.buttons && std::abs(pad.lx) < 8000 && std::abs(pad.ly) < 8000 && std::abs(pad.rx) < 8000 &&
+                    std::abs(pad.ry) < 8000;
+        for (uint8_t a : pad.analog) idle &= a < 30;
+        if (idle) held = false;
+    }
+    if (panel || held) pad = input::Pad{.connected = pad.connected};
 }
 
 // no vibration while the keyboard and mouse are in use
