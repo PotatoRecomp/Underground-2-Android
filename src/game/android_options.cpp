@@ -594,12 +594,24 @@ bool OptionsRowAt(X86Context& ctx, int16_t y, int16_t& tx, int16_t& ty, bool& st
 // begun again by the first of a new screen's
 uint32_t g_widgets_screen = 0;
 std::vector<uint32_t> g_screen_widgets;
+std::unordered_map<uint32_t, bool> g_sliders;  // those of the widgets that are sliders (0x15B5F0's, the Audio page's)
 
+void NoteWidget(uint32_t screen, uint32_t widget, bool slider) {
+    if (screen != g_widgets_screen) {
+        g_widgets_screen = screen;
+        g_screen_widgets.clear();
+        g_sliders.clear();
+    }
+    g_screen_widgets.push_back(widget);
+    if (slider) g_sliders[widget] = true;
+}
+
+// an object's rect as hit tested, shown or not: the game's own pages show the arrows of the current row alone
 bool ObjectRect(X86Context& ctx, uint32_t object, float r[4]) {
-    constexpr uint32_t kObjectRect = 0x12A720, kObjectFlags = 0x1C;
+    constexpr uint32_t kObjectRect = 0x12A720;
     static uint32_t rect = 0;
     if (!rect) rect = mem::AllocSystem(16);
-    if (!rect || !object || !mem::IsCommitted(object) || (R32(object + kObjectFlags) & 1)) return false;  // hidden
+    if (!rect || !object || !mem::IsCommitted(object)) return false;
     X86Context saved = ctx;
     uint8_t ok = uint8_t(CallGuest(ctx, kObjectRect, {object, rect}));
     ctx = saved;
@@ -617,8 +629,23 @@ bool OptionsArrowAt(X86Context& ctx, int16_t x, int16_t y, bool& right) {
         float d = std::fabs((t[1] + t[3]) / 2 - float(y));
         if (d < best) best = d, row = w;
     }
-    float l[4], r[4];
-    if (!row || !ObjectRect(ctx, R32(row + kRowArrows[0]), l) || !ObjectRect(ctx, R32(row + kRowArrows[1]), r)) return false;
+    // a row of ours that does not step (OPEN, a binding) has its arrows hidden for good
+    if (auto it = g_rows.find(row); it != g_rows.end() && it->second.kind != Kind::Value) return false;
+    float l[4] = {}, r[4] = {};
+    bool lok = false, rok = false;
+    if (row && g_sliders.count(row)) {
+        // a slider's pictures (0x15B5F0: +0x60 to +0x74 but the value's string at +0x68): its arrows the outermost
+        for (uint32_t at : {0x60u, 0x64u, 0x6Cu, 0x70u, 0x74u}) {
+            float o[4];
+            if (!ObjectRect(ctx, R32(row + at), o)) continue;
+            if (!lok || o[0] < l[0]) std::memcpy(l, o, sizeof o), lok = true;
+            if (!rok || o[2] > r[2]) std::memcpy(r, o, sizeof o), rok = true;
+        }
+    } else if (row) {
+        lok = ObjectRect(ctx, R32(row + kRowArrows[0]), l);
+        rok = ObjectRect(ctx, R32(row + kRowArrows[1]), r);
+    }
+    if (!row || !lok || !rok) return false;
     if (x < l[0] - kArrowReach || x > r[2] + kArrowReach) return false;
     right = x >= (l[2] + r[0]) / 2;  // the value's halves between them
     return true;
@@ -804,9 +831,13 @@ X86_EXTERN_FUNC(__imp__sub_0015B2E0);
 X86_FUNC(sub_0015B2E0) {
     uint32_t screen = ctx.ecx, widget = R32(ctx.esp + 4);
     __imp__sub_0015B2E0(ctx, base);
-    if (screen != g_widgets_screen) {
-        g_widgets_screen = screen;
-        g_screen_widgets.clear();
-    }
-    g_screen_widgets.push_back(widget);
+    NoteWidget(screen, widget, false);
+}
+
+// a slider into an options screen (the Audio page's, thiscall on the screen: the widget, one more; ret 8)
+X86_EXTERN_FUNC(__imp__sub_0015B5F0);
+X86_FUNC(sub_0015B5F0) {
+    uint32_t screen = ctx.ecx, widget = R32(ctx.esp + 4);
+    __imp__sub_0015B5F0(ctx, base);
+    NoteWidget(screen, widget, true);
 }
