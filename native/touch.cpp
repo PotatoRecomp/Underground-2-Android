@@ -432,10 +432,8 @@ constexpr Button kButtons[] = {
     {"start", "START", Icon::Text, kBit + 4, Shape::Pill},
     {"back", "BACK", Icon::Text, kBit + 5, Shape::Pill},
     {"panel", "Settings", Icon::Gear, kPanel, Shape::Round, nullptr, true},
-    // the dpad by what it does in the game: up enters a shop or challenges an opponent, left the world map, right the
-    // SMS, down the career's statistics (its controller screen has right and down the other way round;
-    // tools/dpad_art.py; the arrows stay for the steering arrows)
-    {"dpad_up", "Shop / Challenge", Icon::Up, kBit + 0, Shape::Square, nullptr, false, false, "dpad_shop"},
+    // Both contextual shortcuts send Dpad Up; the game decides which nearby interaction is available.
+    {"dpad_up", "Shop", Icon::Up, kBit + 0, Shape::Square, nullptr, false, false, "dpad_shop"},
     {"dpad_down", "Career stats", Icon::Down, kBit + 1, Shape::Square, nullptr, false, false, "dpad_stats"},
     {"dpad_left", "World map", Icon::Left, kBit + 2, Shape::Square, nullptr, false, false, "dpad_map"},
     {"dpad_right", "SMS", Icon::Right, kBit + 3, Shape::Square, nullptr, false, false, "dpad_sms"},
@@ -444,10 +442,19 @@ constexpr Button kButtons[] = {
     {"steer_right", "Steer right", Icon::Right, kSteerRight, Shape::Square},
     // a steering wheel turned by a finger dragged round it; shown when STEERING is WHEEL
     {"wheel", "Wheel", Icon::Wheel, kSteerWheel, Shape::Round},
-    // over the game's menus: the pad's A and B, for the screens a tap cannot pick on (a race's results) and a way
-    // back that is not the phone's own
+    // Over the game's menus: every prompt button. FEng packages draw A/B/X/Y/L/R in several incompatible ways, so
+    // these reliable host controls are always available while a menu is up instead of depending on its glyph hitbox.
     {"menu_ok", "A", Icon::Text, kAnalogA, Shape::Round, "OK", false, true, "menu_ok"},
     {"menu_back", "Menu back", Icon::Back, kAnalogB, Shape::Round, "BACK", false, true, "menu_back"},
+    {"menu_x", "X", Icon::Text, kAnalogX, Shape::Round, nullptr, false, true, "menu_x"},
+    {"menu_y", "Y", Icon::Text, kAnalogY, Shape::Round, nullptr, false, true, "menu_y"},
+    {"menu_l", "L", Icon::Text, kAnalogLT, Shape::Round, nullptr, false, true, "menu_l"},
+    {"menu_r", "R", Icon::Text, kAnalogRT, Shape::Round, nullptr, false, true, "menu_r"},
+    {"menu_up", "Up", Icon::Up, kBit + 0, Shape::Round, nullptr, false, true, "up"},
+    {"menu_down", "Down", Icon::Down, kBit + 1, Shape::Round, nullptr, false, true, "down"},
+    {"menu_left", "Left", Icon::Left, kBit + 2, Shape::Round, nullptr, false, true, "left"},
+    {"menu_right", "Right", Icon::Right, kBit + 3, Shape::Round, nullptr, false, true, "right"},
+    {"dpad_race", "Race / Challenge", Icon::Up, kBit + 0, Shape::Square, nullptr, false, false, "dpad_race"},
 };
 constexpr size_t kButtonCount = std::size(kButtons);
 constexpr size_t kStick = kButtonCount;  // the sticks' places, after the buttons'
@@ -473,18 +480,25 @@ using Layout = std::array<Place, kPlaces>;
 // dpad's up down left right, the steering arrows, the wheel, the menus' A and B, the left stick and the right stick.
 // As a mobile racing game: steering arrows under the left thumb, the gas and brake pedals (RT, LT) under the right,
 // Nitrous over the gas, the e-brake over the brake, X and Look Back near them; the dpad's shop, map, stats and
-// SMS in a column down the left edge, Back, the settings and Start along the top, Black (look back) and White (the
-// camera) in the top right corner, the gear lever (the right stick) low in the middle; the menus' A and B in the
-// frame's side bars, low. No left stick, no other shoulders. Shift up (X) over shift down (Y) left of the e-brake,
-// the gear lever on the left between the dpad's column and the steering arrows, clear of the car
+// SMS and race shortcut in a row at the top left, Back, settings and Start along the top, Black (look back) and White (the
+// camera) in the top right corner, the gear lever (the right stick) low in the middle; menu prompts in the side bars,
+// L on the left and R on the right, and a dynamic dpad grouped on the left above Back. No left stick or other shoulders.
+// the gear lever on the left above the steering arrows, clear of the car
 constexpr Layout kRacing = {{
     {0.80f, 0.50f, 0.06f}, {0.92f, 0.38f, 0.068f}, {0.665f, 0.40f, 0.052f}, {0.665f, 0.60f, 0.052f},
     {0.932f, 0.085f, 0.048f}, {0.832f, 0.085f, 0.048f},
     {0.765f, 0.85f, 0.085f}, {0.915f, 0.74f, 0.17f},
     {0.585f, 0.075f, 0.036f}, {0.415f, 0.075f, 0.036f}, {0.50f, 0.075f, 0.045f},
-    {0.05f, 0.25f, 0.042f}, {0.05f, 0.58f, 0.042f}, {0.05f, 0.36f, 0.042f}, {0.05f, 0.47f, 0.042f},
+    // Top-left shortcuts, visually ordered Shop, Race, Map, SMS, Stats (Race's entry follows the menu buttons).
+    {0.05f, 0.085f, 0.042f}, {0.31f, 0.085f, 0.042f}, {0.18f, 0.085f, 0.042f}, {0.245f, 0.085f, 0.042f},
     {0.08f, 0.76f, 0.11f}, {0.25f, 0.76f, 0.11f}, {0.15f, 0.70f, 0.19f},
-    {0.945f, 0.88f, 0.06f}, {0.055f, 0.88f, 0.06f},
+    // Menu controls: shoulders at the top, B/A at the bottom, X/Y above A, and a compact dpad above B.
+    {0.93f, 0.84f, 0.065f}, {0.07f, 0.84f, 0.065f},
+    {0.93f, 0.59f, 0.065f}, {0.93f, 0.36f, 0.065f},
+    {0.07f, 0.14f, 0.065f}, {0.93f, 0.14f, 0.065f},
+    {0.12f, 0.48f, 0.065f}, {0.12f, 0.70f, 0.065f},
+    {0.065f, 0.59f, 0.065f}, {0.175f, 0.59f, 0.065f},
+    {0.115f, 0.085f, 0.042f},
     {0.17f, 0.76f, 0.12f, true}, {0.175f, 0.42f, 0.085f},
 }};
 
@@ -574,7 +588,7 @@ float Height() {
 
 std::filesystem::path LayoutFile() { return app::ExeDir() / "layout.toml"; }
 // the layout's places changed: a layout saved before keeps its opacity and size but not its places
-constexpr int64_t kLayoutVersion = 10;
+constexpr int64_t kLayoutVersion = 18;
 constexpr int64_t kOldestLayout = 4;  // an older saved layout's places are kRacing's
 
 void LoadLayout() {
@@ -608,9 +622,27 @@ void LoadLayout() {
             if (version < 6 && (id == "white" || id == "black")) continue;
             // the dpad was a cross of arrows before 7, a column of what it does since
             if (version < 7 && id.starts_with("dpad_")) continue;
-            // shifting moved in 9: the gear lever off the car to the left; in 10 X (shift up) over Y
+            // shifting moved in 9: the gear lever off the car to the left; in 10 X (shift up) over Y; version 11
+            // added the menu's X/Y/L/R beside its A/B; version 12 split L/R across the sides and added its dpad;
+            // version 13 moved that dpad into a compact group on the left above Back; version 14 moved the group
+            // inward so its left button is not against the screen edge; version 15 enlarged and spaced out the four
+            // directions so they do not touch when all are visible; version 16 rebuilt every menu control's position
+            // as a balanced mobile layout and made them uniformly 0.065 of the screen height
             if (version < 9 && id == "rstick") continue;
             if (version < 10 && (id == "x" || id == "y")) continue;
+            if (version < 11 && id.starts_with("menu_") && id != "menu_ok" && id != "menu_back") continue;
+            if (version < 12 && (id == "menu_l" || id == "menu_r" || id == "menu_up" || id == "menu_down" ||
+                                 id == "menu_left" || id == "menu_right")) continue;
+            if (version < 13 && (id == "menu_up" || id == "menu_down" || id == "menu_left" || id == "menu_right"))
+                continue;
+            if (version < 14 && (id == "menu_up" || id == "menu_down" || id == "menu_left" || id == "menu_right"))
+                continue;
+            if (version < 15 && (id == "menu_up" || id == "menu_down" || id == "menu_left" || id == "menu_right"))
+                continue;
+            if (version < 16 && id.starts_with("menu_")) continue;
+            if (version < 17 && id == "dpad_race") continue;
+            // Version 18 groups the five driving shortcuts at the top left; other custom positions are preserved.
+            if (version < 18 && id.starts_with("dpad_")) continue;
             const toml::table* p = t["controls"][PlaceId(i)].as_table();
             if (!p) continue;
             Place& pl = g_layout[i];
@@ -681,7 +713,7 @@ bool ButtonShown(size_t i) {
     // the options in it: they take the finger as their pointer, the pad's controls would hide them
     // the menus' own A and B over a menu, whether in a race or out (not over the loading screens: an A landing on one
     // crashed it)
-    if (b.menu) return game::FeMenuShown() && !game::FeIntro();
+    if (b.menu) return game::FeMenuShown() && !game::FeIntro() && (game::FePromptButtons() & (1u << b.press));
     if (!game::Racing() || game::FeIntro() || game::FeMenuShown()) return b.keep;
     // waiting for the HUD the race is on already: START pauses it
     if (game::FeHudWaiting()) return b.keep || b.press == kBit + 4;
@@ -704,7 +736,9 @@ Art g_art[] = {{"a", 1.0f},     {"b", 1.0f},     {"x", 1.0f},          {"y", 1.0
                {"right", 1.0f}, {"wheel", 1.0f}, {"stick_ring", 1.0f}, {"stick_knob", 1.0f},
                {"stick_shift", 1.66f}, {"shift_up", 1.0f}, {"shift_down", 1.0f}, {"look_back", 1.0f},
                {"camera", 1.0f}, {"dpad_shop", 1.0f}, {"dpad_map", 1.0f}, {"dpad_stats", 1.0f},
-               {"dpad_sms", 1.0f}, {"menu_ok", 1.0f}, {"menu_back", 1.0f}};
+                {"dpad_sms", 1.0f}, {"dpad_race", 1.0f},
+                {"menu_ok", 1.0f}, {"menu_back", 1.0f}, {"menu_x", 1.0f},
+                {"menu_y", 1.0f}, {"menu_l", 1.0f}, {"menu_r", 1.0f}};
 
 const Art* FindArt(std::string_view name) {
     for (const Art& a : g_art)
