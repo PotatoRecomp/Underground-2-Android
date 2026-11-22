@@ -1,4 +1,4 @@
-// Text the recomp adds in French, German, Italian, Spanish and Indonesian: Double Agent recomp's wording where the
+// Text the recomp adds in French, German, Italian, Spanish, Indonesian and Portuguese: Double Agent recomp's wording where the
 // English is the same, in sentence case with German's nouns capitalized; the panel's rows and the game's menu show it
 // in capitals. Indonesian has no game strings on any disc: the game's own text is translated apart (src/game/language.cpp).
 #include <algorithm>
@@ -200,6 +200,166 @@ constexpr Entry kEntries[] = {
       u"Game gagal dimulai, lihat log di folder logs."}},
 };
 
+// Portuguese, kept apart from the rows above (the same phrases, in the same sentence case)
+struct PortugueseEntry {
+    std::string_view english;
+    std::u16string_view text;
+};
+constexpr PortugueseEntry kPortuguese[] = {
+    {"GENERAL", u"Geral"},
+    {"DISPLAY", u"Tela"},
+    {"GRAPHICS", u"Gráficos"},
+    {"PRESS A KEY", u"Pressione uma tecla"},
+    {"UNBOUND", u"Não atribuído"},
+    {"TOUCH", u"Toque"},
+    {"DRAG TO MOVE, PINCH OR - + TO RESIZE", u"Arraste para mover, faça pinça ou use - + para redimensionar"},
+    {"PRESET", u"Predefinição"},
+    {"CUSTOM", u"Personalizado"},
+    {"MODERN (R2 GAS)", u"Moderno (R2 acelera)"},
+    {"RESET TO DEFAULTS", u"Restaurar padrões"},
+    {"EXIT GAME", u"Sair do jogo"},
+    {"SHIFTING", u"Troca de marchas"},
+    {"GEAR LEVER", u"Alavanca de câmbio"},
+    {"X / Y BUTTONS", u"Botões X / Y"},
+    {"DRAG TACHOMETER", u"Conta-giros (drag)"},
+    {"SPEEDOMETER", u"Velocímetro"},
+    {"MINIMAP", u"Minimapa"},
+    {"RACE INFO", u"Info da corrida"},
+    {"QUALITY", u"Qualidade"},
+    {"PERFORMANCE", u"Desempenho"},
+    {"TOUCH CONTROLS", u"Controles por toque"},
+    {"UPDATES", u"Atualizações"},
+    {"CONTROLS", u"Controles"},
+    {"RESOLUTION", u"Resolução"},
+    {"RENDER RESOLUTION", u"Resolução de renderização"},
+    {"VERTICAL SYNC", u"Sincronização vertical"},
+    {"MAX FRAME RATE", u"Taxa de quadros máx."},
+    {"FOG", u"Neblina"},
+    {"RAIN", u"Chuva"},
+    {"PARTICLES", u"Partículas"},
+    {"FULL", u"Total"},
+    {"SHADER PRELOADING", u"Pré-carregamento de shaders"},
+    {"MAX", u"Máx"},
+    {"BLOOM", u"Bloom"},
+    {"ASPECT RATIO", u"Proporção da tela"},
+    {"FULL SCREEN", u"Tela cheia"},
+    {"SCREEN FILTER", u"Filtro de tela"},
+    {"SHARPEN", u"Nitidez"},
+    {"VIVID", u"Vívido"},
+    {"FPS COUNTER POSITION", u"Posição do contador de FPS"},
+    {"SHOW CPU / GPU USAGE", u"Mostrar uso de CPU / GPU"},
+    {"SHOW TEMPERATURES", u"Mostrar temperaturas"},
+    {"TOP CENTER", u"Superior central"},
+    {"TOP LEFT", u"Superior esquerdo"},
+    {"TOP RIGHT", u"Superior direito"},
+    {"BOTTOM LEFT", u"Inferior esquerdo"},
+    {"BOTTOM CENTER", u"Inferior central"},
+    {"BOTTOM RIGHT", u"Inferior direito"},
+    {"FPS COUNTER", u"Contador de FPS"},
+    {"ANISOTROPIC FILTERING", u"Filtragem anisotrópica"},
+    {"LANGUAGE", u"Idioma"},
+    {"AUDIO OUTPUT", u"Saída de áudio"},
+    {"SELECT", u"Selecionar"},
+    {"CONTRIBUTORS", u"Colaboradores"},
+    {"LINUX AND CINEMATIC MODE", u"Linux e modo cinematográfico"},
+    {"CONTROLLER SETTINGS", u"Configurações do controle"},
+    {"LANDSCAPE ORIENTATION", u"Orientação paisagem"},
+    {"RESTART", u"Reiniciar"},
+    {"CONTROLS OPACITY", u"Opacidade dos controles"},
+    {"STICK MODE", u"Modo do analógico"},
+    {"FLOATING", u"Flutuante"},
+    {"FIXED", u"Fixo"},
+    {"CONTROLS SIZE", u"Tamanho dos controles"},
+    {"EDIT CONTROLS POSITION", u"Editar posição dos controles"},
+    {"STEERING", u"Direção"},
+    {"ARROWS", u"Setas"},
+    {"WHEEL", u"Volante"},
+    {"TILT", u"Inclinar o celular"},
+    {"TILT ANGLE", u"Ângulo de inclinação"},
+    {"CREDITS", u"Créditos"},
+    {"ANDROID PORT", u"Port para Android"},
+    {"RECOMPILER AND RUNTIME", u"Recompilador e runtime"},
+    {"LIBRARIES", u"Bibliotecas"},
+    {"XBOX REFERENCES", u"Referências do Xbox"},
+    {"SUPPORT", u"Apoie"},
+    {"DONATE", u"Doar"},
+    {"FULLSCREEN", u"Tela cheia"},
+    {"WINDOWED", u"Em janela"},
+    {"BORDERLESS", u"Janela sem bordas"},
+    {"ON", u"Ligado"},
+    {"OFF", u"Desligado"},
+    {"UNLIMITED", u"Ilimitado"},
+    {"REFRESH RATE", u"Taxa de atualização da tela"},
+    {"AUTOMATIC", u"Automático"},
+    {"GAME DEFAULT", u"Padrão do jogo"},
+    {"NOT SUPPORTED", u"Não suportado"},
+    {"MONO", u"Mono"},
+    {"2.0 STEREO", u"2.0 Estéreo"},
+    {"5.1 SURROUND", u"5.1 Surround"},
+    {"(DEFAULT)", u"(padrão)"},
+    {"(RESTART)", u"(reiniciar)"},
+    {"ENGLISH", u"Inglês"},
+    {"FRENCH", u"Francês"},
+    {"GERMAN", u"Alemão"},
+    {"ITALIAN", u"Italiano"},
+    {"SPANISH", u"Espanhol"},
+    {"INDONESIAN", u"Bahasa Indonesia"},
+    {"DUTCH", u"Holandês"},
+    {"SWEDISH", u"Sueco"},
+    {"DANISH", u"Dinamarquês"},
+    {"PORTUGUESE", u"Português"},
+    {"OPEN", u"Abrir"},
+    {"CHECK FOR UPDATES", u"Verificar atualizações"},
+    {"CHECK", u"Verificar"},
+    {"DEFAULT", u"Padrão"},
+    {"SETTINGS PANEL", u"Painel de configurações"},
+    {"BLACK", u"Botão preto"},
+    {"WHITE", u"Botão branco"},
+    {"LEFT TRIGGER", u"Gatilho esquerdo"},
+    {"RIGHT TRIGGER", u"Gatilho direito"},
+    {"DPAD UP", u"D-pad para cima"},
+    {"DPAD DOWN", u"D-pad para baixo"},
+    {"DPAD LEFT", u"D-pad para a esquerda"},
+    {"DPAD RIGHT", u"D-pad para a direita"},
+    {"LEFT THUMB", u"Clique do analógico esquerdo"},
+    {"RIGHT THUMB", u"Clique do analógico direito"},
+    {"LEFT STICK UP", u"Analógico esquerdo para cima"},
+    {"LEFT STICK DOWN", u"Analógico esquerdo para baixo"},
+    {"LEFT STICK LEFT", u"Analógico esquerdo para a esquerda"},
+    {"LEFT STICK RIGHT", u"Analógico esquerdo para a direita"},
+    {"RIGHT STICK UP", u"Analógico direito para cima"},
+    {"RIGHT STICK DOWN", u"Analógico direito para baixo"},
+    {"RIGHT STICK LEFT", u"Analógico direito para a esquerda"},
+    {"RIGHT STICK RIGHT", u"Analógico direito para a direita"},
+    {"PRESS", u"Pressione"},
+    {"SETTINGS", u"Configurações"},
+    {"BACK", u"Voltar"},
+    {"DEFAULTS", u"Padrões"},
+    {"MOUSE", u"Mouse"},
+    {"KEYBOARD", u"Teclado"},
+    {"Press a key or mouse button to bind, Escape cancels",
+     u"Pressione uma tecla ou botão do mouse para atribuir, Esc cancela"},
+    {"Right click or Delete clears the key", u"Clique direito ou Delete limpa a tecla"},
+    {"CONTROLLER", u"Controle"},
+    {"PRESS A BUTTON", u"Pressione um botão"},
+    {"Press a button on the controller to bind, wait 5 seconds to cancel",
+     u"Pressione um botão do controle para atribuir, aguarde 5 segundos para cancelar"},
+    {"Right click or Delete restores the default", u"Clique direito ou Delete restaura o padrão"},
+    {"RESET", u"Redefinir"},
+    {"CANCEL", u"Cancelar"},
+    {"HIDE", u"Ocultar"},
+    {"SHOW", u"Mostrar"},
+    {"DONE", u"Concluir"},
+    {"is a different release of the game than this build was made from, and will most likely crash.\n\nStart it "
+     "anyway?",
+     u"é uma versão do jogo diferente da usada para fazer esta build, e muito provavelmente vai travar.\n\nIniciar "
+     u"mesmo assim?"},
+    {"YES", u"Sim"},
+    {"NO", u"Não"},
+    {"The game failed to start, see the log in the logs folder.",
+     u"O jogo não conseguiu iniciar, veja o registro na pasta logs."},
+};
+
 bool Same(std::string_view a, std::string_view b) {
     auto upper = [](char c) { return char(std::toupper(uint8_t(c))); };
     return a.size() == b.size() && std::equal(a.begin(), a.end(), b.begin(), [&](char x, char y) {
@@ -209,13 +369,17 @@ bool Same(std::string_view a, std::string_view b) {
 
 bool WordChar(char c) { return std::isalnum(uint8_t(c)) != 0; }
 
+constexpr int kPortugueseColumn = 5;
+
 // the language the game booted in, -1 for English or one this disc cannot boot in
 int Language() {
     static const int language = [] {
         if (!game::LanguageAvailable(game::BootLanguage())) return -1;
         auto at = std::find(std::begin(game::kLanguages), std::end(game::kLanguages), game::BootLanguage());
         if (at == std::end(game::kLanguages)) return -1;
-        // the recomp's own text is in the first five after English; Dutch, Swedish, Danish and Portuguese keep the panel's English
+        // the recomp's own text is in the first five after English, Portuguese in its own table (kPortuguese, column
+        // kPortugueseColumn); Dutch, Swedish and Danish keep the panel's English
+        if (game::BootLanguage() == "por") return kPortugueseColumn;
         int i = int(at - std::begin(game::kLanguages)) - 1;
         return i < int(std::size(kEntries[0].text)) ? i : -1;
     }();
@@ -224,6 +388,11 @@ int Language() {
 
 // null where the entry has none in this language, so the English shows
 const char16_t* Translation(std::string_view english) {
+    if (Language() == kPortugueseColumn) {
+        for (const PortugueseEntry& e : kPortuguese)
+            if (Same(e.english, english)) return e.text.data();
+        return nullptr;
+    }
     for (const Entry& e : kEntries)
         if (Same(e.english, english)) return e.text[Language()].empty() ? nullptr : e.text[Language()].data();
     return nullptr;
