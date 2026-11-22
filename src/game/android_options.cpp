@@ -32,6 +32,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include <SDL3/SDL.h>
+
 #include "common/fe_mouse.h"
 #include "common/menu.h"
 #include "common/options.h"
@@ -88,11 +90,14 @@ constexpr const char* kHostOptions = "Android Options";  // as the game's "Optio
 constexpr const char* kHostOptions = "Linux Options";
 #endif
 
-// the icons' pictures: ANDROID OPTIONS, then graphics, controls and general (each tab has one of the three)
-constexpr int kPictureCount = 3;
+// the icons' pictures, as tools/option_icons.py draws them: ANDROID OPTIONS, graphics, the controller, general, the main
+// menu's EXIT GAME, the touch controls, the keyboard
+enum Picture : uint32_t { kAndroidPicture, kGraphicsPicture, kControllerPicture, kGeneralPicture, kExitPicture,
+                          kTouchPicture, kKeyboardPicture, kPictures };
+constexpr uint32_t kExitName = 0x40;  // past the tabs' names
 
 #include "game/option_icons.inc"  // kIconCount, kIconWidth, kIconHeight, kIcons (tools/option_icons.py)
-static_assert(kIconCount == 1 + kPictureCount, "tools/option_icons.py draws ANDROID OPTIONS, then a section each");
+static_assert(kIconCount == kPictures, "tools/option_icons.py draws a picture for each of Picture");
 
 // The scroller's tabs: graphics, the touch controls, the controller, the keyboard, general and the credits, each a list
 // of its rows (headings left out) with its section's picture. The options screens show 11 rows (UI_PauseOptions.fng:
@@ -101,14 +106,16 @@ static_assert(kIconCount == 1 + kPictureCount, "tools/option_icons.py draws ANDR
 struct Tab {
     const char* name;  // English, translated as it is shown
     std::vector<int> pages;
-    int picture;  // 1 + its section
+    Picture picture;
 };
 #ifdef __ANDROID__
-const Tab kTabs[] = {{"GRAPHICS", {0}, 1}, {"TOUCH CONTROLS", {1}, 2}, {"CONTROLLER", {4}, 2},
-                     {"KEYBOARD", {3}, 2}, {"GENERAL", {2, 5}, 3}};
+const Tab kTabs[] = {{"GRAPHICS", {0}, kGraphicsPicture}, {"TOUCH CONTROLS", {1}, kTouchPicture},
+                     {"CONTROLLER", {4}, kControllerPicture}, {"KEYBOARD", {3}, kKeyboardPicture},
+                     {"GENERAL", {2, 5}, kGeneralPicture}};
 #else
-const Tab kTabs[] = {{"GRAPHICS", {0}, 1}, {"KEYBOARD", {3}, 2}, {"CONTROLLER", {4}, 2},
-                     {"TOUCH CONTROLS", {1}, 2}, {"GENERAL", {2, 5}, 3}};
+const Tab kTabs[] = {{"GRAPHICS", {0}, kGraphicsPicture}, {"KEYBOARD", {3}, kKeyboardPicture},
+                     {"CONTROLLER", {4}, kControllerPicture}, {"TOUCH CONTROLS", {1}, kTouchPicture},
+                     {"GENERAL", {2, 5}, kGeneralPicture}};
 #endif
 constexpr int kTabCount = int(std::size(kTabs));
 
@@ -306,6 +313,62 @@ void PauseReact(X86Context& ctx, uint8_t*) {
     ctx.esp = esp + 4 + 0x14;
 }
 
+// EXIT GAME: Accept closes the app as the system closing it would (native/main.cpp's Dispatch on SDL_EVENT_QUIT)
+void ExitReact(X86Context& ctx, uint8_t*) {
+    uint32_t esp = ctx.esp;
+    if (R32(esp + 8) == kAccept) {
+        LOGR("options: exit game");
+        SDL_Event e{};
+        e.type = SDL_EVENT_QUIT;
+        SDL_PushEvent(&e);
+    }
+    ctx.esp = esp + 4 + 0x14;
+}
+
+// The pause menus' Setups add QUIT TO MAIN MENU (and a race's other ways out, the icons with the texture 0x4C9E34E6)
+// last: ANDROID OPTIONS goes in before the first of them. While the game's Setup runs the screen has a copy of its
+// vtable whose add (+0x18) is PauseAdd, which adds ours ahead of that icon; a menu without one gets ours at its end.
+// Moving our icon in the scroller's list afterwards did not do: the scroller keeps more of its order than the list
+constexpr uint32_t kQuitTexture = 0x4C9E34E6, kIconTexture = 0xC;
+uint32_t g_pause_add = 0;   // the screen's own add while its Setup runs
+bool g_pause_ours = false;  // ANDROID OPTIONS is in
+
+void AddPauseIcon(X86Context& ctx, uint32_t menu) {
+    static const uint32_t vt = Vtable(PauseReact);
+    g_pause_ours = true;
+    AddIcon(ctx, menu, 0, vt, false);
+}
+
+// add(icon), thiscall
+void PauseAdd(X86Context& ctx, uint8_t*) {
+    uint32_t esp = ctx.esp, self = ctx.ecx, icon = R32(esp + 4);
+    X86Context saved = ctx;
+    if (!g_pause_ours && icon && R32(icon + kIconTexture) == kQuitTexture) AddPauseIcon(ctx, self);
+    ctx = saved;
+    ctx.ecx = self;
+    CallGuest(ctx, g_pause_add, {icon});
+    ctx = saved;
+    ctx.esp = esp + 4 + 4;
+}
+
+// a pause menu's Setup (thiscall on its screen) with PauseAdd as the screen's add
+void PauseSetup(X86Context& ctx, uint8_t* base, X86Func* setup) {
+    static std::unordered_map<uint32_t, uint32_t> copies;  // the screen's vtable, our copy of it
+    constexpr uint32_t kVtableBytes = 0x40;
+    uint32_t menu = ctx.ecx, vt = R32(menu);
+    uint32_t& copy = copies[vt];
+    if (!copy && (copy = mem::AllocSystem(kVtableBytes))) {
+        std::memcpy(kernel::HostPtr(copy), kernel::HostPtr(vt), kVtableBytes);
+        W32(copy + kAddIconSlot, dispatch::HostThunk(PauseAdd));
+    }
+    g_pause_ours = false;
+    g_pause_add = R32(vt + kAddIconSlot);
+    if (copy) W32(menu, copy);
+    setup(ctx, base);
+    W32(menu, vt);
+    if (!g_pause_ours) AddPauseIcon(ctx, menu);
+}
+
 void SectionReact(X86Context& ctx, uint8_t*) {
     uint32_t esp = ctx.esp;
     auto it = g_section_icons.find(ctx.ecx);
@@ -471,6 +534,7 @@ void PutNames() {
     if (done) return;
     done = true;
     PutString(kNameHashes, Latin1(kHostOptions));
+    PutString(kNameHashes + kExitName, Latin1(TitleCase(app::Ui("EXIT GAME"))));
     for (int t = 0; t < kTabCount; t++) PutString(kNameHashes + 1 + uint32_t(t), Latin1(TitleCase(TabName(t))));
 }
 
@@ -521,7 +585,7 @@ void OptionsFrame(X86Context& ctx) {
 
 using namespace game;
 
-// the main menu's Setup (thiscall, the scroller): its icons, then ANDROID OPTIONS
+// the main menu's Setup (thiscall, the scroller): its icons, then ANDROID OPTIONS and EXIT GAME
 X86_EXTERN_FUNC(__imp__sub_000C7110);
 X86_FUNC(sub_000C7110) {
     uint32_t menu = ctx.ecx;
@@ -532,27 +596,23 @@ X86_FUNC(sub_000C7110) {
     __imp__sub_000C7110(ctx, base);
     static const uint32_t vt = Vtable(MainMenuReact);
     AddIcon(ctx, menu, 0, vt, false);
+    static const uint32_t exit_vt = Vtable(ExitReact);
+    AddIcon(ctx, menu, kExitPicture, exit_vt, true, kExitName);
 }
 
-// the pause menu's Setups, in a race (0x0DA4D0) and in free roam (0x0DA230): theirs, then ANDROID OPTIONS, which
-// opens the same menu as the main menu's
+// the pause menu's Setups, in a race (0x0DA4D0) and in free roam (0x0DA230): theirs with ANDROID OPTIONS before QUIT
+// TO MAIN MENU (PauseSetup), which opens the same menu as the main menu's
 X86_EXTERN_FUNC(__imp__sub_000DA4D0);
 X86_FUNC(sub_000DA4D0) {
-    uint32_t menu = ctx.ecx;
     g_android = false;
     PutNames();
-    __imp__sub_000DA4D0(ctx, base);
-    static const uint32_t vt = Vtable(PauseReact);
-    AddIcon(ctx, menu, 0, vt, false);
+    PauseSetup(ctx, base, __imp__sub_000DA4D0);
 }
 X86_EXTERN_FUNC(__imp__sub_000DA230);
 X86_FUNC(sub_000DA230) {
-    uint32_t menu = ctx.ecx;
     g_android = false;
     PutNames();
-    __imp__sub_000DA230(ctx, base);
-    static const uint32_t vt = Vtable(PauseReact);
-    AddIcon(ctx, menu, 0, vt, false);
+    PauseSetup(ctx, base, __imp__sub_000DA230);
 }
 
 // UIOptionsMain's Setup (thiscall, the scroller): ANDROID OPTIONS' has our sections in place of the game's, then

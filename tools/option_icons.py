@@ -1,5 +1,5 @@
-# Draws the icons of ANDROID OPTIONS (the main menu's and pause menu's) and of its sections (GRAPHICS, CONTROLS,
-# GENERAL: src/game/android_options.cpp) and writes them as src/game/option_icons.inc. They are drawn as the
+# Draws the icons of ANDROID OPTIONS (the main menu's and pause menu's), of its sections (GRAPHICS, CONTROLS,
+# GENERAL) and the main menu's EXIT GAME (src/game/android_options.cpp) and writes them as src/game/option_icons.inc. They are drawn as the
 # game's main menu icons are (MAIN_ICON_*: 128x64, white, the picture in alpha): a rounded screen with a glare across it, see through, and the subject in front of it on its
 # right, more solid, a gap cut round it.
 # usage: python tools/option_icons.py [preview.png]
@@ -90,8 +90,50 @@ def sliders():
     return img
 
 
-# in src/game/android_options.cpp's order: ANDROID OPTIONS, then its sections
-ICONS = [robot, monitor, pad, sliders]
+def exit_door():
+    # a door ajar and an arrow out of it, to the right
+    img, d = canvas()
+    d.rounded_rectangle(p(62, 12, 88, 54), radius=2 * SCALE, fill=255)   # the frame
+    d.rectangle(p(66, 16, 84, 50), fill=0)
+    d.polygon(p(66, 16, 78, 20, 78, 54, 66, 50), fill=255)                # the door, swung in
+    d.ellipse(p(73, 34, 76, 37), fill=0)                                  # its knob
+    d.rectangle(p(84, 30, 102, 36), fill=255)                             # the arrow's shaft
+    d.polygon(p(100, 24, 112, 33, 100, 42), fill=255)                     # its head
+    return img
+
+
+def touch():
+    # a phone, a finger's tap on its screen: a dot and two rings round it
+    img, d = canvas()
+    d.rounded_rectangle(p(68, 9, 98, 57), radius=4 * SCALE, fill=255)
+    d.rounded_rectangle(p(71, 14, 95, 50), radius=1.5 * SCALE, fill=0)
+    d.ellipse(p(81, 52, 85, 55.5), fill=0)                                # the home button
+    cx, cy = 83, 31
+    d.ellipse(p(cx - 10, cy - 10, cx + 10, cy + 10), fill=255)
+    d.ellipse(p(cx - 8, cy - 8, cx + 8, cy + 8), fill=0)
+    d.ellipse(p(cx - 6, cy - 6, cx + 6, cy + 6), fill=255)
+    d.ellipse(p(cx - 4, cy - 4, cx + 4, cy + 4), fill=0)
+    d.ellipse(p(cx - 2.5, cy - 2.5, cx + 2.5, cy + 2.5), fill=255)
+    return img
+
+
+def keyboard():
+    # a keyboard: three rows of keys and the space bar cut out of it
+    img, d = canvas()
+    x0, y0, x1, y1 = 60, 18, 112, 50
+    d.rounded_rectangle(p(x0, y0, x1, y1), radius=3 * SCALE, fill=255)
+    kw, gap = 5, 1.6
+    for row, (y, n, shift) in enumerate(((22, 8, 0), (29, 8, 2.5), (36, 7, 4.5))):
+        for k in range(n):
+            x = x0 + 4 + shift + k * (kw + gap)
+            d.rounded_rectangle(p(x, y, x + kw, y + 4.6), radius=0.8 * SCALE, fill=0)
+    d.rounded_rectangle(p(x0 + 14, 43, x1 - 14, 47), radius=0.8 * SCALE, fill=0)
+    return img
+
+
+# in src/game/android_options.cpp's order: ANDROID OPTIONS, the sections' (graphics, controller, general), EXIT GAME,
+# then touch controls' and keyboard's
+ICONS = [robot, monitor, pad, sliders, exit_door, touch, keyboard]
 
 
 def compose(subject):

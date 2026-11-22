@@ -26,6 +26,7 @@ constexpr Entry kEntries[] = {
     {"UNBOUND", {u"Non assigné", u"Nicht belegt", u"Non assegnato", u"Sin asignar", u"Belum diatur"}},
     {"TOUCH", {{}, {}, {}, {}, u"Sentuh"}},
     {"DRAG TO MOVE, PINCH OR - + TO RESIZE", {{}, {}, {}, {}, u"Seret untuk memindah, cubit atau - + untuk mengubah ukuran"}},
+    {"EXIT GAME", {u"Quitter le jeu", u"Spiel beenden", u"Esci dal gioco", u"Salir del juego", u"Keluar game"}},
     {"SHIFTING", {u"Changement de vitesse", u"Schalten", u"Cambio marcia", u"Cambio de marcha", u"Transmisi"}},
     {"GEAR LEVER", {u"Levier de vitesse", u"Schalthebel", u"Leva del cambio", u"Palanca de cambios", u"Tuas gigi"}},
     {"X / Y BUTTONS", {u"Boutons X / Y", u"Tasten X / Y", u"Pulsanti X / Y", u"Botones X / Y", u"Tombol X / Y"}},
