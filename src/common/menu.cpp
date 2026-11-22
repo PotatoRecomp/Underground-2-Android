@@ -805,13 +805,15 @@ void DrawTitle(float em) {
 // My Music: what plays and how, then every song in the folder, with a tap to play it, where it may play and its place in the list
 void DrawMusic(float em) {
     using namespace music;
-    ImGui::TextWrapped("Folder: Underground2/music (MP3, M4A, AAC, OGG, Opus, FLAC, WAV; codec support depends on the device).");
-    ImGui::TextWrapped("Volume follows the game's Audio options: menu music and in-game music. My Music automatically mutes EA Trax; select EA Trax to restore it.");
-    if (ImGui::Button("Rescan songs")) Rescan();
-    if (!HasSongs()) {
-        ImGui::TextWrapped("No songs. Copy sound files to the folder above. An empty folder is checked automatically every 5 seconds.");
-        return;
-    }
+    // one line: where the songs go and where their volume is set, Rescan at its end
+    const char* rescan = "Rescan";
+    float rescan_w = ImGui::CalcTextSize(rescan).x + ImGui::GetStyle().FramePadding.x * 2;
+    ImGui::AlignTextToFramePadding();
+    ImGui::TextColored(kDim, "%s", HasSongs() ? "Underground2/music  -  volume in the game's Audio options"
+                                              : "No songs: copy MP3, M4A, OGG, FLAC or WAV to Underground2/music");
+    ImGui::SameLine(std::max(ImGui::GetContentRegionMax().x - rescan_w, ImGui::GetCursorPosX()));
+    if (ImGui::Button(rescan)) Rescan();
+    if (!HasSongs()) return;
     float button = em * 7;
     bool mine = Source() == kMyMusic;
     ImGui::AlignTextToFramePadding();
