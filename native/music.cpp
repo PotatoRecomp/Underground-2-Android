@@ -33,9 +33,11 @@ namespace {
 
 constexpr uint32_t kBufferFrames = audio::kRate * 4;
 constexpr float kGainStep = 1.0f / (audio::kRate / 4);  // a quarter of a second from silence to full
-// the game's own music plays through buffers with 6 dB of headroom (src/sound/mixer.cpp's DefaultHeadroom): a song mastered
-// to full scale at full gain sat that much over it and clipped with the engines
-constexpr float kHeadroom = 0.5f;
+// a song as loud as the car at full volume: measured in a race with both sliders full (front left and right, 3 s RMS),
+// the game's mix sat about -30 dBFS and a loud song at half gain about -15. 0.09 (-21 dB, level with the engines)
+// was too quiet to hear over them: 0.18 (-15 dB) has it a few dB over. Songs are mastered to full scale, the game's
+// sounds well under it, and at 0.5 the music drowned the car
+constexpr float kHeadroom = 0.18f;
 
 struct Item {
     std::filesystem::path path;
