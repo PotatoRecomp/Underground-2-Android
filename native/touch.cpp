@@ -1155,6 +1155,8 @@ void FingerDown(SDL_FingerID id, float x, float y) {
         f.role = Role::Button;
         f.button = b;
         f.down_ms = NowMs();
+        // Menu input must survive a quick touch between two XInput polls. Keep driving controls held-only.
+        if (kButtons[b].menu) QueueAfter(kButtons[b].press, 1);
         // the gear opens and closes the settings panel; in a race it pauses first (Start), as the panel blanks the
         // pad and the race would go on under it, and opens once the press is out (Apply)
         if (kButtons[b].press == kPanel) {

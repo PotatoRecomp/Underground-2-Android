@@ -496,6 +496,12 @@ bool TextPromptTap(X86Context& ctx, uint32_t first, int count, int16_t x, int16_
 // Pause draws B Back and A Select in its panel without separate text objects. Other screens expose their footer labels,
 // whose current rectangles are used above instead of coordinates inherited from another game.
 bool PromptTap(X86Context& ctx, uint32_t package, const std::string& name, int16_t x, int16_t y) {
+    // Results have a fixed footer, not ordinary selectable menu rows. Handle it before object-rect matching, which
+    // can mistake a label in a translated parent group for a different prompt.
+    if (name == "UI_PostRaceResults.fng" && y >= 155 && y <= 225) {
+        touch::QueuePad(x < 0 ? kPadX : kPadA, 1);
+        return true;
+    }
     if (name == "UI_Paint.fng" && y >= 140 && y <= 172) {  // the finish's "L Gloss R", over the colours' grid's left
         if (x >= -205 && x <= -160) touch::QueuePad(kPadLT, 1);
         else if (x >= -95 && x <= -50) touch::QueuePad(kPadRT, 1);
@@ -801,6 +807,7 @@ void FeFrame(X86Context& ctx) {
         prompts |= (1u << kPadX) | (1u << kPadUp) | (1u << kPadDown) | (1u << kPadLeft) | (1u << kPadRight);
     // Main's Help prompt is assembled by the package without a useful translated text object.
     if (name == "UI_Main.fng") prompts |= 1u << kPadY;
+    if (name == "UI_PostRaceResults.fng") prompts |= 1u << kPadX;
     g_prompt_buttons = prompts;
     // the CONTROLLER page's bindings play the race; the menus keep the mapping's buttons, A picks and B backs out
     // whatever was bound to them (the input started in menu mode and nothing let it out: no binding ever played)
