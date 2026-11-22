@@ -682,7 +682,9 @@ bool ButtonShown(size_t i) {
     // the menus' own A and B over a menu, whether in a race or out (not over the loading screens: an A landing on one
     // crashed it)
     if (b.menu) return game::FeMenuShown() && !game::FeIntro();
-    if (!game::Racing() || game::FeIntro() || game::FeMenuShown() || game::FeHudWaiting()) return b.keep;
+    if (!game::Racing() || game::FeIntro() || game::FeMenuShown()) return b.keep;
+    // waiting for the HUD the race is on already: START pauses it
+    if (game::FeHudWaiting()) return b.keep || b.press == kBit + 4;
     return true;
 }
 
