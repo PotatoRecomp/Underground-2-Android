@@ -53,6 +53,7 @@ void EditLayout();
 namespace host {
 void CheckForUpdates();
 bool PhoneVibrator();  // native/input.cpp: the phone has a vibrator Android can drive
+bool HdrSupported();   // native/vulkan.cpp: the display offers an HDR10 swap chain
 // native/stats.cpp: the performance overlay's numbers, percent and degrees, -1 where the device does not tell
 void SamplePerf();
 float CpuLoad();
@@ -248,7 +249,7 @@ enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutp
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
              kShaderPreload, kRain, kParticles, kShifting, kResetKeyboard, kResetController, kPadPreset, kCheatCash,
-             kCheatNitrous, kCheatUnlockAll, kVibration };
+             kCheatNitrous, kCheatUnlockAll, kVibration, kHdr };
 
 using rows::Kind;
 using rows::Row;
@@ -258,6 +259,7 @@ constexpr Row kGraphicsRows[] = {
     {Kind::Heading, -1, "DISPLAY"},
     {Kind::Value, kRenderResolution, "RENDER RESOLUTION"},
     {Kind::Value, kAspectRatio, "ASPECT RATIO"},
+    {Kind::Value, kHdr, "HDR"},
     {Kind::Heading, -1, "PERFORMANCE"},
     {Kind::Value, kVsync, "VERTICAL SYNC"},
     {Kind::Value, kMaxFps, "MAX FRAME RATE"},
@@ -356,6 +358,7 @@ bool* ToggleFlag(Settings& s, int id) {
         case kParticles: return &o.particles;
         case kShaderPreload: return &o.shader_preload;
         case kVibration: return &o.vibration;
+        case kHdr: return &o.hdr;
         case kCheatCash: return &o.cheat_cash;
         case kCheatNitrous: return &o.cheat_nitrous;
         case kCheatUnlockAll: return &o.cheat_unlock_all;
@@ -490,7 +493,7 @@ void StepInputRow(int id, int step, char (&text)[64]) {
 // steps the value first when step is not zero
 std::string RowText(int id, int step, Settings& s = Get()) {
     char text[64] = "";
-    if (id == kVibration && !host::PhoneVibrator()) {
+    if ((id == kVibration && !host::PhoneVibrator()) || (id == kHdr && !host::HdrSupported())) {
         std::snprintf(text, sizeof(text), "NOT SUPPORTED");  // nothing to step
         return text;
     }

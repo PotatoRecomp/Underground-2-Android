@@ -100,6 +100,7 @@ const app::GameInfo app::kGame = {
                L"with the disc's NFSUNDER folder beside it.",
     .images = {{"default.xbe", "Underground2"}},
     .options = {{"fps_counter", &game::Opt().fps_counter, nullptr},
+                {"hdr", &game::Opt().hdr, nullptr},
                 {"bloom", &game::Opt().bloom, nullptr},
                 {"fog", &game::Opt().fog, nullptr},
                 {"rain", &game::Opt().rain, nullptr},

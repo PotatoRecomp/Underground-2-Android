@@ -189,6 +189,43 @@ float4 psmain(O i) : SV_Target {
 }
 )";
 
+// HDR's last pass: the SDR frame (the game's and the UI's, gamma 2.2) to HDR10, PQ over BT.2020 primaries. White
+// sits at opts.x nits (paper white) and the brightest part of the picture is stretched toward opts.y (peak), the
+// game's highlights (lights, sky, reflections) the only ones above paper white
+const char* kHdrHlsl = R"(
+cbuffer B : register(b1) { float4 uvrect; float4 opts; };
+Texture2D img : register(t0);
+SamplerState ps : register(s0);
+struct O { float4 p : SV_Position; float2 uv : TEXCOORD0; };
+O vs(uint id : SV_VertexID) {
+    O o;
+    float2 t = float2((id << 1) & 2, id & 2);
+    o.p = float4(t * float2(2, -2) + float2(-1, 1), 0, 1);
+    o.uv = uvrect.xy + t * uvrect.zw;
+    return o;
+}
+float3 Pq(float3 nits) {
+    float3 y = pow(saturate(nits / 10000.0), 0.1593017578125);
+    return pow((0.8359375 + 18.8515625 * y) / (1.0 + 18.6875 * y), 78.84375);
+}
+float4 psmain(O i) : SV_Target {
+    float3 c = pow(saturate(img.SampleLevel(ps, i.uv, 0).rgb), 2.2);
+    // the expansion: nothing below kKnee of white, then a curve up to the peak at white
+    const float kKnee = 0.6;
+    float l = dot(c, float3(0.2126, 0.7152, 0.0722));
+    float e = saturate((l - kKnee) / (1.0 - kKnee));
+    c *= 1.0 + (opts.y / opts.x - 1.0) * e * e;
+    float3 w = float3(dot(c, float3(0.6274, 0.3293, 0.0433)), dot(c, float3(0.0691, 0.9195, 0.0114)),
+                      dot(c, float3(0.0164, 0.0880, 0.8956)));
+    return float4(Pq(w * opts.x), 1);
+}
+)";
+
+// the display offers an HDR10 swap chain (CreateSwapchain); the HDR row reads NOT SUPPORTED until then and without it
+std::atomic<bool> g_hdr_supported{false};
+// HDR10's white and peak in nits: Android's SDR white in HDR (BT.2408's 203), a peak most phone panels reach
+constexpr float kHdrPaperWhite = 203.0f, kHdrPeak = 1000.0f;
+
 const char* kDepthHlsl = R"(
 Texture2D<float> img : register(t0);
 SamplerState ps : register(s1);
@@ -1218,6 +1255,13 @@ private:
 
     VkSwapchainKHR swap_ = VK_NULL_HANDLE;
     VkFormat swap_fmt_ = VK_FORMAT_B8G8R8A8_UNORM;
+    // the SDR format the frame and the UI are drawn in: the swap chain's, or with HDR hdr_src_'s, which the last pass
+    // turns to HDR10 into the swap chain (ImGui's pipelines are made for it once)
+    VkFormat ui_fmt_ = VK_FORMAT_B8G8R8A8_UNORM;
+    bool colorspace_ext_ = false;  // VK_EXT_swapchain_colorspace: the HDR color spaces are offered only with it
+    bool hdr_on_ = false;          // the swap chain is HDR10
+    bool hdr_broken_ = false;      // HDR's frame image could not be made: SDR from then on
+    Image hdr_src_;
     VkExtent2D swap_extent_{};
     std::vector<VkImage> swap_images_;
     std::vector<VkImageView> swap_views_;
@@ -1350,6 +1394,13 @@ bool VulkanBackend::CreateInstance() {
     uint32_t n = 0;
     const char* const* sdl = SDL_Vulkan_GetInstanceExtensions(&n);
     std::vector<const char*> exts(sdl, sdl + n);
+    uint32_t en = 0;
+    vkEnumerateInstanceExtensionProperties(nullptr, &en, nullptr);
+    std::vector<VkExtensionProperties> have(en);
+    vkEnumerateInstanceExtensionProperties(nullptr, &en, have.data());
+    for (const VkExtensionProperties& e : have)
+        if (!std::strcmp(e.extensionName, VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME)) colorspace_ext_ = true;
+    if (colorspace_ext_) exts.push_back(VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME);
     uint32_t loader = VK_API_VERSION_1_1;
     vkEnumerateInstanceVersion(&loader);
     VkApplicationInfo ai{VK_STRUCTURE_TYPE_APPLICATION_INFO};
@@ -1569,6 +1620,17 @@ bool VulkanBackend::CreateSwapchain() {
             chosen = f;
             break;
         }
+    ui_fmt_ = chosen.format;
+    // HDR10: 10 bits a channel (or half floats) in PQ over BT.2020, when the display has it
+    const VkSurfaceFormatKHR* hdr = nullptr;
+    for (VkFormat want : {VK_FORMAT_A2B10G10R10_UNORM_PACK32, VK_FORMAT_A2R10G10B10_UNORM_PACK32,
+                          VK_FORMAT_R16G16B16A16_SFLOAT})
+        for (const auto& f : formats)
+            if (!hdr && f.format == want && f.colorSpace == VK_COLOR_SPACE_HDR10_ST2084_EXT) hdr = &f;
+    if (hdr_broken_) hdr = nullptr;
+    g_hdr_supported = hdr != nullptr;
+    bool hdr_on = hdr && game::Opt().hdr;
+    if (hdr_on) chosen = *hdr;
     // the window's own size, landscape; Android's compositor turns the picture with the screen
     int w, h;
     host::WindowPixels(w, h);
@@ -1631,6 +1693,21 @@ bool VulkanBackend::CreateSwapchain() {
     swap_ = fresh;
     swap_fmt_ = chosen.format;
     swap_extent_ = ci.imageExtent;
+    // HDR's SDR picture, the swap chain's size; the GPU is idle here (DestroySwapchain)
+    if (hdr_src_) {
+        DropFramebuffers(hdr_src_.attach);
+        Destroy(hdr_src_);
+        hdr_src_ = {};
+    }
+    hdr_on_ = hdr_on && CreateImage(hdr_src_, ui_fmt_, swap_extent_.width, swap_extent_.height, 1, 1, 1,
+                                    VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,
+                                    VK_IMAGE_VIEW_TYPE_2D);
+    if (hdr_on && !hdr_on_) {
+        // the chain is HDR10 but has nothing to turn to it: made again in SDR at the next present
+        LOGE("vulkan: HDR's frame image failed, back to SDR");
+        hdr_broken_ = true;
+        g_hdr_supported = false;
+    }
     uint32_t count = 0;
     vkGetSwapchainImagesKHR(dev_, swap_, &count, nullptr);
     swap_images_.resize(count);
@@ -1649,8 +1726,10 @@ bool VulkanBackend::CreateSwapchain() {
         vkCreateSemaphore(dev_, &si, nullptr, &s);
         swap_done_.push_back(s);
     }
-    swap_stale_ = false;
-    LOGI("vulkan: swap chain %ux%u, %u images, %s", w, h, count, vsync_ ? "vsync" : "no vsync");
+    swap_stale_ = hdr_on && !hdr_on_;
+    // reported: whether the display offers HDR10 is wanted in a player's log
+    LOGR("vulkan: swap chain %ux%u, %u images, %s, %s", w, h, count, vsync_ ? "vsync" : "no vsync",
+         hdr_on_ ? "HDR10" : hdr ? "SDR (HDR10 offered)" : "SDR");
     return true;
 }
 
@@ -1841,8 +1920,8 @@ bool VulkanBackend::InitUi() {
     ii.UseDynamicRendering = dynamic_;
     ii.PipelineRenderingCreateInfo = {VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR};
     ii.PipelineRenderingCreateInfo.colorAttachmentCount = 1;
-    ii.PipelineRenderingCreateInfo.pColorAttachmentFormats = &swap_fmt_;
-    if (!dynamic_) ii.RenderPass = Pass(swap_fmt_, VK_FORMAT_UNDEFINED);
+    ii.PipelineRenderingCreateInfo.pColorAttachmentFormats = &ui_fmt_;
+    if (!dynamic_) ii.RenderPass = Pass(ui_fmt_, VK_FORMAT_UNDEFINED);
     ImGui::GetIO().BackendRendererName = "vulkan";
     return ImGui_ImplVulkan_Init(&ii);
 }
@@ -3933,7 +4012,7 @@ bool VulkanBackend::AcquireImage(uint32_t& index) {
     int w, h;
     host::WindowPixels(w, h);
     if (!swap_ || swap_stale_ || uint32_t(w) != swap_extent_.width || uint32_t(h) != swap_extent_.height ||
-        app::Get().vsync != vsync_) {
+        app::Get().vsync != vsync_ || (game::Opt().hdr && g_hdr_supported) != hdr_on_) {
         if (!CreateSwapchain()) return false;
     }
     // a bounded wait: a window Android is taking away may never hand an image back
@@ -3984,7 +4063,10 @@ void VulkanBackend::DrawFrame(Target* t, uint32_t index) {
     }
     Alloc cbuf = Constants(c, sizeof(c));
     if (!cbuf.cpu) return;
-    VkPipeline pipe = t ? FullScreenPipeline(post ? kPresentHlsl : kBlitHlsl, "psmain", swap_fmt_, VK_FORMAT_UNDEFINED, false)
+    // with HDR the frame and the UI go to hdr_src_ in SDR, the last pass below turns them to HDR10
+    VkFormat fmt = hdr_on_ ? ui_fmt_ : swap_fmt_;
+    VkImageView view = hdr_on_ ? hdr_src_.attach : swap_views_[index];
+    VkPipeline pipe = t ? FullScreenPipeline(post ? kPresentHlsl : kBlitHlsl, "psmain", fmt, VK_FORMAT_UNDEFINED, false)
                         : VK_NULL_HANDLE;
     VkDescriptorSet set = VK_NULL_HANDLE;
     if (pipe) {
@@ -3994,29 +4076,40 @@ void VulkanBackend::DrawFrame(Target* t, uint32_t index) {
         const VkSampler samplers[4] = {linear_, point_, point_, point_};
         set = Set(views, samplers);
     }
-    VkRenderingAttachmentInfoKHR ca{VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO_KHR};
-    ca.imageView = swap_views_[index];
-    ca.imageLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
-    ca.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
-    ca.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
-    ca.clearValue.color = {{0, 0, 0, 1}};
-    VkRenderingInfoKHR ri{VK_STRUCTURE_TYPE_RENDERING_INFO_KHR};
-    ri.renderArea = {{0, 0}, swap_extent_};
-    ri.layerCount = 1;
-    ri.colorAttachmentCount = 1;
-    ri.pColorAttachments = &ca;
-    if (dynamic_) {
-        begin_rendering_(cb, &ri);
-    } else {
-        VkRenderPassBeginInfo bi{VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
-        bi.renderPass = Pass(swap_fmt_, VK_FORMAT_UNDEFINED, VK_IMAGE_ASPECT_COLOR_BIT);
-        bi.framebuffer = Framebuffer(swap_fmt_, VK_FORMAT_UNDEFINED, swap_views_[index], VK_NULL_HANDLE,
-                                     swap_extent_.width, swap_extent_.height);
-        bi.renderArea = ri.renderArea;
-        bi.clearValueCount = 1;
-        bi.pClearValues = &ca.clearValue;
-        vkCmdBeginRenderPass(cb, &bi, VK_SUBPASS_CONTENTS_INLINE);
-    }
+    if (hdr_on_) Transition(hdr_src_, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+    // a rendering over the whole screen on a view of the format, cleared to black
+    auto begin = [&](VkImageView v, VkFormat f) {
+        VkRenderingAttachmentInfoKHR ca{VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO_KHR};
+        ca.imageView = v;
+        ca.imageLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+        ca.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+        ca.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+        ca.clearValue.color = {{0, 0, 0, 1}};
+        VkRenderingInfoKHR ri{VK_STRUCTURE_TYPE_RENDERING_INFO_KHR};
+        ri.renderArea = {{0, 0}, swap_extent_};
+        ri.layerCount = 1;
+        ri.colorAttachmentCount = 1;
+        ri.pColorAttachments = &ca;
+        if (dynamic_) {
+            begin_rendering_(cb, &ri);
+        } else {
+            VkRenderPassBeginInfo bi{VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
+            bi.renderPass = Pass(f, VK_FORMAT_UNDEFINED, VK_IMAGE_ASPECT_COLOR_BIT);
+            bi.framebuffer = Framebuffer(f, VK_FORMAT_UNDEFINED, v, VK_NULL_HANDLE, swap_extent_.width,
+                                         swap_extent_.height);
+            bi.renderArea = ri.renderArea;
+            bi.clearValueCount = 1;
+            bi.pClearValues = &ca.clearValue;
+            vkCmdBeginRenderPass(cb, &bi, VK_SUBPASS_CONTENTS_INLINE);
+        }
+    };
+    auto end = [&] {
+        if (dynamic_)
+            end_rendering_(cb);
+        else
+            vkCmdEndRenderPass(cb);
+    };
+    begin(view, fmt);
     if (pipe) {
         vkCmdBindPipeline(cb, VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
         ForgetBound();
@@ -4026,10 +4119,26 @@ void VulkanBackend::DrawFrame(Target* t, uint32_t index) {
         vkCmdDraw(cb, 3, 1, 0, 0);
     }
     RenderUi();
-    if (dynamic_)
-        end_rendering_(cb);
-    else
-        vkCmdEndRenderPass(cb);
+    end();
+    if (hdr_on_) {
+        // the SDR picture to HDR10, pixel for pixel
+        Transition(hdr_src_, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+        float hc[8] = {0, 0, 1, 1, kHdrPaperWhite, kHdrPeak, 0, 0};
+        Alloc hbuf = Constants(hc, sizeof(hc));
+        VkPipeline enc = FullScreenPipeline(kHdrHlsl, "psmain", swap_fmt_, VK_FORMAT_UNDEFINED, false);
+        begin(swap_views_[index], swap_fmt_);
+        if (enc && hbuf.cpu) {
+            const VkImageView views[4] = {hdr_src_.view, VK_NULL_HANDLE, VK_NULL_HANDLE, VK_NULL_HANDLE};
+            const VkSampler samplers[4] = {point_, point_, point_, point_};
+            vkCmdBindPipeline(cb, VK_PIPELINE_BIND_POINT_GRAPHICS, enc);
+            ForgetBound();
+            BindSet(Set(views, samplers), hbuf.off, hbuf.off);
+            SetViewport(0, 0, w, h);
+            SetScissor(0, 0, int32_t(w), int32_t(h));
+            vkCmdDraw(cb, 3, 1, 0, 0);
+        }
+        end();
+    }
     b.srcAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
     b.dstAccessMask = 0;
     b.oldLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
@@ -4262,5 +4371,6 @@ void WaitGpuFrame(uint64_t n) {
 }  // namespace gpu
 
 namespace host {
+bool HdrSupported() { return gpu::g_hdr_supported.load(std::memory_order_relaxed); }
 float VulkanGpuLoad() { return gpu::g_gpu_load.load(std::memory_order_relaxed); }
 }  // namespace host

@@ -26,6 +26,8 @@ void WaitForeground();
 void WindowPixels(int& w, int& h);
 // the phone has a vibrator Android can drive (input.cpp); false off Android
 bool PhoneVibrator();
+// the display offers an HDR10 swap chain (vulkan.cpp), known once the first one is made
+bool HdrSupported();
 
 }  // namespace host
 
