@@ -62,6 +62,8 @@ void StepStickMode(int step);
 const char* SteeringName();  // ARROWS, WHEEL or TILT: what steers in the RACING layout
 void StepSteering(int step);
 bool TiltSteering();         // any thread: STEERING is TILT
+const char* ShiftingName();  // GEAR LEVER or X / Y BUTTONS: what shifts in the RACING layout
+void StepShifting(int step);
 void EditLayout();  // the controls over the screen to drag where they go
 void LoadArt();     // main thread, once ImGui's context is made: the controls' art into its font atlas
 }  // namespace touch

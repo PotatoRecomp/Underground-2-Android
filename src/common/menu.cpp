@@ -44,6 +44,8 @@ const char* StickModeName();
 void StepStickMode(int step);
 const char* SteeringName();
 void StepSteering(int step);
+const char* ShiftingName();
+void StepShifting(int step);
 void EditLayout();
 }  // namespace touch
 
@@ -244,7 +246,7 @@ void Changed() {
 enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutput, kLanguage, kGyro,
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
-             kShaderPreload, kRain, kParticles };
+             kShaderPreload, kRain, kParticles, kShifting };
 
 using rows::Kind;
 using rows::Row;
@@ -276,6 +278,7 @@ constexpr Row kTouchRows[] = {
     {Kind::Heading, -1, "TOUCH"},
     {Kind::Value, kGyro, "STEERING"},
     {Kind::Value, kGyroSensitivity, "TILT ANGLE"},
+    {Kind::Value, kShifting, "SHIFTING"},
     {Kind::Value, kStickMode, "STICK MODE"},
     {Kind::Value, kTouchOpacity, "CONTROLS OPACITY"},
     {Kind::Value, kTouchSize, "CONTROLS SIZE"},
@@ -414,6 +417,11 @@ void StepInputRow(int id, int step, char (&text)[64]) {
             // the RACING layout's arrows, its wheel, or the phone tilted
             if (step) touch::StepSteering(step);
             std::snprintf(text, sizeof(text), "%s", touch::SteeringName());
+            break;
+        case kShifting:
+            // the RACING layout's gear lever or its X and Y buttons
+            if (step) touch::StepShifting(step);
+            std::snprintf(text, sizeof(text), "%s", touch::ShiftingName());
             break;
         case kStickMode:
             // floating sticks come where the thumb lands, fixed ones stay where they are drawn

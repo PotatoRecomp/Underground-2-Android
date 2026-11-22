@@ -526,6 +526,11 @@ enum class Steering : uint8_t { Arrows, Wheel, Tilt };
 constexpr const char* kSteeringIds[] = {"arrows", "wheel", "tilt"};
 constexpr const char* kSteeringNames[] = {"ARROWS", "WHEEL", "TILT"};
 std::atomic<Steering> g_steering{Steering::Arrows};
+// how the RACING layout shifts: the gear lever (the right stick, pushed up X, pulled down Y) or the X and Y buttons
+enum class Shifting : uint8_t { Lever, Buttons };
+constexpr const char* kShiftingIds[] = {"lever", "buttons"};
+constexpr const char* kShiftingNames[] = {"GEAR LEVER", "X / Y BUTTONS"};
+std::atomic<Shifting> g_shifting{Shifting::Lever};
 // the wheel's turn, degrees clockwise, and whether a finger holds it; let go it comes back to the middle
 constexpr float kWheelLock = 90.0f;  // degrees for a full lock
 float g_wheel_turn = 0;
@@ -589,6 +594,9 @@ void LoadLayout() {
         std::string steering = t["steering"].value_or(std::string(kSteeringIds[0]));
         for (size_t i = 0; i < std::size(kSteeringIds); i++)
             if (steering == kSteeringIds[i]) g_steering = Steering(i);
+        std::string shifting = t["shifting"].value_or(std::string(kShiftingIds[0]));
+        for (size_t i = 0; i < std::size(kShiftingIds); i++)
+            if (shifting == kShiftingIds[i]) g_shifting = Shifting(i);
         int64_t version = t["version"].value_or(int64_t(1));
         // the places of the presets there were besides RACING are not its
         if (version < kOldestLayout || t["preset"].value_or(std::string("racing")) != "racing") return;
@@ -628,6 +636,7 @@ void SaveLayout() {
     toml::table t{{"version", kLayoutVersion}, {"preset", "racing"}, {"opacity", double(g_opacity)},
                   {"scale", double(g_scale)}, {"stick_mode", g_fixed_sticks ? "fixed" : "floating"},
                   {"steering", kSteeringIds[size_t(g_steering.load())]},
+                  {"shifting", kShiftingIds[size_t(g_shifting.load())]},
                   {"controls", controls}, {"hud", hud}};
     std::ofstream(LayoutFile()) << t << "\n";
 }
@@ -655,9 +664,17 @@ bool SteeringShown(int press) {
     return true;
 }
 
+// the gear lever or the X and Y buttons as SHIFTING picks them, in the editor too
+bool ShiftShown(size_t i) {
+    if (i == kRStick) return g_shifting == Shifting::Lever;
+    if (i < kButtonCount && (kButtons[i].press == kAnalogX || kButtons[i].press == kAnalogY) && !kButtons[i].menu)
+        return g_shifting == Shifting::Buttons;
+    return true;
+}
+
 bool ButtonShown(size_t i) {
     const Button& b = kButtons[i];
-    if (!SteeringShown(b.press)) return false;
+    if (!SteeringShown(b.press) || !ShiftShown(i)) return false;
     if (g_editing) return true;
     if (g_layout[i].hidden) return false;
     // no pad out of a race (the front end's screens, the loading screens), nor over its intro or the pause menu and
@@ -858,7 +875,7 @@ bool InStickZone(float x) {
 // FIXED sticks: the one a touch came down near, its deflection from the centre; kPlaces for none
 size_t FixedStickAt(float x, float y) {
     for (size_t s : {kStick, kRStick}) {
-        if (g_layout[s].hidden) continue;
+        if (g_layout[s].hidden || !ShiftShown(s)) continue;
         float cx = g_layout[s].x * Width(), cy = g_layout[s].y * Height(), r = Radius(s) * kFixedReach;
         if ((x - cx) * (x - cx) + (y - cy) * (y - cy) <= r * r) return s;
     }
@@ -1018,6 +1035,7 @@ void EditDown(Finger& f, float x, float y) {
     if (b == kButtonCount) {
         b = kPlaces;
         for (size_t s : {kStick, kRStick}) {
+            if (!ShiftShown(s)) continue;
             float sx = g_layout[s].x * Width(), sy = g_layout[s].y * Height(), sr = Radius(s);
             if (b == kPlaces && (x - sx) * (x - sx) + (y - sy) * (y - sy) <= sr * sr) b = s;
         }
@@ -1131,7 +1149,7 @@ void FingerDown(SDL_FingerID id, float x, float y) {
     } else if (!g_layout[kStick].hidden && InStickZone(x)) {
         f.role = Role::Stick;
     } else {
-        f.role = g_layout[kRStick].hidden ? Role::None : Role::Look;
+        f.role = g_layout[kRStick].hidden || !ShiftShown(kRStick) ? Role::None : Role::Look;
     }
     g_fingers.push_back(f);
     Recount();
@@ -1494,6 +1512,7 @@ void DrawStickShapes(ImDrawList* dl, float th, ImVec2 at, float r, float sx, flo
 }
 
 void DrawStick(ImDrawList* dl, float th, size_t stick) {
+    if (!ShiftShown(stick)) return;
     // a hidden stick: faint and crossed out in the editor, else not drawn
     bool hidden = g_layout[stick].hidden;
     if (hidden && !g_editing) return;
@@ -1788,6 +1807,17 @@ void StepSteering(int step) {
 }
 
 bool TiltSteering() { return g_steering == Steering::Tilt; }
+
+const char* ShiftingName() { return kShiftingNames[size_t(g_shifting.load())]; }
+
+// the gear lever, the X and Y buttons
+void StepShifting(int) {
+    std::lock_guard lock(g_lock);
+    EnsureLayout();
+    g_shifting = g_shifting == Shifting::Lever ? Shifting::Buttons : Shifting::Lever;
+    g_rstick_x = g_rstick_y = 0;
+    SaveLayout();
+}
 
 void LoadArt() {
     ImFontAtlas* atlas = ImGui::GetIO().Fonts;
