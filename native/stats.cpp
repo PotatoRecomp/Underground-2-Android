@@ -12,6 +12,7 @@
 #endif
 
 #include <algorithm>
+#include <cctype>
 #include <atomic>
 #include <chrono>
 #include <cstdio>
@@ -90,20 +91,30 @@ float AdrenoBusy() {
 
 struct Zones {
     std::vector<std::string> cpu, gpu;
+    std::string types;  // every zone's type, for the log: the names differ by maker
 };
 
+// A zone by its type, lower cased. CPU: Qualcomm's cpu-1-0-0, cpuss-0, MediaTek's mtktscpu (Helio G90T and its
+// kind, which no rule took before), Exynos' and Tensor's BIG/LITTLE/MID; GPU: gpuss-0, MediaTek's mtktsgpu or gpu,
+// Exynos' G3D, Mali; a SoC zone (MediaTek's mtktsAP, soc_max) stands for the CPU where no CPU zone reads
 Zones FindZones() {
     Zones z;
+    std::vector<std::string> soc;
     for (int i = 0; i < 128; i++) {
         char path[64], type[64];
         std::snprintf(path, sizeof(path), "/sys/class/thermal/thermal_zone%d/type", i);
         if (!ReadFile(path, type, sizeof(type))) continue;
         std::string t = type;
+        while (!t.empty() && (t.back() == '\n' || t.back() == ' ')) t.pop_back();
+        if (z.types.size() < 400) z.types += (z.types.empty() ? "" : ",") + t;
+        for (char& c : t) c = char(std::tolower(uint8_t(c)));
         std::snprintf(path, sizeof(path), "/sys/class/thermal/thermal_zone%d/temp", i);
-        // Qualcomm's cpu-1-0-0 and cpuss-0, gpuss-0; MediaTek's and Exynos' cpu and gpu zones by those names
-        if (t.rfind("cpu", 0) == 0 || t.find("cpu_") != std::string::npos) z.cpu.push_back(path);
-        else if (t.find("gpu") != std::string::npos) z.gpu.push_back(path);
+        auto has = [&](const char* k) { return t.find(k) != std::string::npos; };
+        if (has("gpu") || has("g3d") || has("mali")) z.gpu.push_back(path);
+        else if (has("cpu") || t == "big" || t == "little" || t == "mid") z.cpu.push_back(path);
+        else if (has("mtktsap") || has("soc")) soc.push_back(path);
     }
+    if (z.cpu.empty()) z.cpu = soc;
     return z;
 }
 
@@ -169,9 +180,11 @@ void SamplePerf() {
     g_battery_temp = BatteryTemperature();
     if (!logged) {
         logged = true;
-        LOGR("perf: CPU load from %s, GPU load from %s, %zu CPU and %zu GPU thermal zones (%s), battery %.1f C",
+        LOGR("perf: CPU load from %s, GPU load from %s, %zu CPU and %zu GPU thermal zones (CPU %s, GPU %s), battery "
+             "%.1f C; zones: %s",
              system_cpu ? "/proc/stat" : "this process", kgsl ? "kgsl" : "Vulkan timestamps", zones.cpu.size(),
-             zones.gpu.size(), g_cpu_temp >= 0 ? "readable" : "unreadable", g_battery_temp.load());
+             zones.gpu.size(), g_cpu_temp >= 0 ? "readable" : "unreadable", g_gpu_temp >= 0 ? "readable" : "unreadable",
+             g_battery_temp.load(), zones.types.empty() ? "none listed" : zones.types.c_str());
     }
 }
 
