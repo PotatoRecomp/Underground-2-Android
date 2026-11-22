@@ -246,7 +246,8 @@ void Changed() {
 enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutput, kLanguage, kGyro,
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
-             kShaderPreload, kRain, kParticles, kShifting, kResetKeyboard, kResetController, kPadPreset };
+             kShaderPreload, kRain, kParticles, kShifting, kResetKeyboard, kResetController, kPadPreset, kCheatCash,
+             kCheatNitrous, kCheatUnlockAll };
 
 using rows::Kind;
 using rows::Row;
@@ -289,6 +290,14 @@ constexpr Row kTouchRows[] = {
 constexpr Row kGeneralRows[] = {
     {Kind::Value, kLanguage, "LANGUAGE"},
     {Kind::Value, kAudioOutput, "AUDIO OUTPUT"},
+};
+
+// src/game/game.cpp's ApplyCheats keeps them on while they are set
+constexpr Row kCheatRows[] = {
+    {Kind::Heading, -1, "CHEATS"},
+    {Kind::Value, kCheatCash, "MAX CASH"},
+    {Kind::Value, kCheatNitrous, "INFINITE NITROUS"},
+    {Kind::Value, kCheatUnlockAll, "UNLOCK ALL"},
 };
 
 // the credits' names, an info row's id; as they are, untranslated
@@ -344,6 +353,9 @@ bool* ToggleFlag(Settings& s, int id) {
         case kRain: return &o.rain;
         case kParticles: return &o.particles;
         case kShaderPreload: return &o.shader_preload;
+        case kCheatCash: return &o.cheat_cash;
+        case kCheatNitrous: return &o.cheat_nitrous;
+        case kCheatUnlockAll: return &o.cheat_unlock_all;
         default: return nullptr;
     }
 }
@@ -494,17 +506,25 @@ std::string KeyText(std::string keys) {
 }
 
 // the panel's tabs
-const char* const kPages[] = {"GRAPHICS", "TOUCH CONTROLS", "GENERAL", "KEYBOARD", "CONTROLLER", "CREDITS"};
+const char* const kPages[] = {"GRAPHICS", "TOUCH CONTROLS", "GENERAL", "KEYBOARD", "CONTROLLER", "CREDITS", "CHEATS"};
 constexpr int kSettingsPage = 0;
 constexpr int kTouchPage = 1;
 constexpr int kGeneralPage = 2;
 constexpr int kKeyboardPage = 3;
 constexpr int kControllerPage = 4;
 constexpr int kCreditsPage = 5;
+constexpr int kCheatsPage = 6;
 
 void RestoreDefaults(int page) {
     if (page == kCreditsPage) return;  // nothing to reset
     game::Options& o = game::Opt();
+    if (page == kCheatsPage) {
+        o.cheat_cash = game::Options{}.cheat_cash;
+        o.cheat_nitrous = game::Options{}.cheat_nitrous;
+        o.cheat_unlock_all = game::Options{}.cheat_unlock_all;
+        Changed();
+        return;
+    }
     if (page == kKeyboardPage) {
         input::ResetBindings();
         return;
@@ -518,6 +538,9 @@ void RestoreDefaults(int page) {
     o = game::Options{};
     o.keys = keep.keys;
     o.pad = keep.pad;
+    o.cheat_cash = keep.cheat_cash;  // the cheats have their own page to reset
+    o.cheat_nitrous = keep.cheat_nitrous;
+    o.cheat_unlock_all = keep.cheat_unlock_all;
     Changed();
 }
 
@@ -727,7 +750,7 @@ void Defaults() {
     RestoreDefaults(g_page);
 }
 
-bool g_music_tab = false;
+bool g_music_tab = true;  // the panel opens on My Music; its other tab is the cheats
 
 // the panel's pages and My Music, one button each, the open one lit
 void DrawTitle(float em) {
@@ -862,15 +885,26 @@ void DrawPanel() {
     ImGui::PushStyleVar(ImGuiStyleVar_GrabMinSize, em * 2.0f);
     constexpr ImGuiWindowFlags kFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse |
                                         ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoTitleBar;
-    // the panel is My Music alone: the settings are rows of the game's own OPTIONS menu (src/game/android_options.cpp)
+    // the panel is the cheats and My Music: the settings are rows of the game's own OPTIONS menu (src/game/android_options.cpp)
     if (ImGui::Begin("##settings", nullptr, kFlags)) {
-        g_music_tab = true;
-        ImGui::TextUnformatted("MY MUSIC");
+        auto tab = [&](const char* label, bool open) {
+            if (open) ImGui::PushStyleColor(ImGuiCol_Button, ImGui::GetStyleColorVec4(ImGuiCol_ButtonActive));
+            bool pressed = ImGui::Button(Ui(label).c_str(), ImVec2(em * 10, 0));
+            if (open) ImGui::PopStyleColor();
+            return pressed;
+        };
+        if (tab("CHEATS", !g_music_tab)) {
+            g_music_tab = false;
+            g_page = kCheatsPage;
+        }
+        ImGui::SameLine();
+        if (tab("MY MUSIC", g_music_tab)) g_music_tab = true;
         ImGui::Separator();
         float footer = ImGui::GetTextLineHeightWithSpacing() + ImGui::GetFrameHeightWithSpacing() + em;
         ImGui::BeginChild("##rows", ImVec2(0, -footer), ImGuiChildFlags_NavFlattened);
         g_hovered_box = -1;
-        DrawMusic(em);
+        if (g_music_tab) DrawMusic(em);
+        else DrawRows(kCheatsPage);
         DragScroll();
         ImGui::EndChild();
         DrawFooter(em);
@@ -936,6 +970,10 @@ const rows::Row* rows::Page(int page, size_t* count) {
     if (page == kCreditsPage) {
         *count = std::size(kCreditRows);
         return kCreditRows;
+    }
+    if (page == kCheatsPage) {
+        *count = std::size(kCheatRows);
+        return kCheatRows;
     }
     *count = std::size(kGraphicsRows);
     return kGraphicsRows;

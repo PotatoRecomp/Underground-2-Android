@@ -99,7 +99,7 @@ constexpr uint32_t kExitName = 0x40;  // past the tabs' names
 #include "game/option_icons.inc"  // kIconCount, kIconWidth, kIconHeight, kIcons (tools/option_icons.py)
 static_assert(kIconCount == kPictures, "tools/option_icons.py draws a picture for each of Picture");
 
-// The scroller's tabs: graphics, the touch controls, the controller, the keyboard, general and the credits, each a list
+// The scroller's tabs: graphics, the touch controls, the controller, the keyboard, general (with the credits), each a list
 // of its rows (headings left out) with its section's picture. The options screens show 11 rows (UI_PauseOptions.fng:
 // a title and a value object per row, found by the row's number; past them a row has neither): a longer list scrolls
 // through those 11 (the hook of 0x15E170 below)

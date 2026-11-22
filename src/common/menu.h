@@ -23,7 +23,7 @@ struct Row {
     int id;  // a bind row's input action
     const char* label;
 };
-// 0 graphics, 1 touch controls, 2 general, 3 mouse and keyboard, 4 controller, 5 credits
+// 0 graphics, 1 touch controls, 2 general, 3 mouse and keyboard, 4 controller, 5 credits, 6 cheats
 const Row* Page(int page, size_t* count);
 const char* PageName(int page);  // the tab's, in English capitals
 // the game's options menu's rows (src/game/android_options.cpp), any thread the game's: a row's value as the panel

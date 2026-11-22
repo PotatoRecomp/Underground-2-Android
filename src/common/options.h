@@ -36,6 +36,10 @@ struct Options {
     bool particles = true;  // the particle effects (smoke, sparks, spray), src/game/effects.cpp spawns none when off
     bool shader_preload = false;  // native/vulkan.cpp makes earlier runs' shaders and pipelines at the start
     uint32_t audio_output = 0;  // audio::kOutputAuto, kOutputStereo, kOutputSurround or kOutputMono
+    // cheats, src/game/game.cpp's ApplyCheats
+    bool cheat_cash = false;  // the career's cash kept at its largest
+    bool cheat_nitrous = false;  // the players' nitrous never runs out, src/game/nitrous.cpp
+    bool cheat_unlock_all = false;  // every car, track and part unlocked while it is on (the game's own switch)
     std::string language = "int";  // one of kLanguages
     std::map<std::string, std::string> keys;  // action id to key names, absent is the default
     std::map<std::string, std::string> pad;   // action id to a controller's input, absent is SDL's mapping
@@ -49,6 +53,7 @@ inline std::atomic<uint32_t> g_focus_pauses{0};  // focus pauses ended so far
 void WaitWhileUnfocused();  // native/game_host.cpp: game thread, before the present
 bool Racing();    // src/game/game.cpp, any thread: the game flow is in a race (free roam too), not loading or the front end
 void MusicFrame(X86Context& ctx);  // src/game/game.cpp: game thread, at each present
+void ApplyCheats();                // src/game/game.cpp: game thread, at each present
 // src/game/android_options.cpp: game thread, at each present: our options rows redrawn once the UI applied a change
 void OptionsFrame(X86Context& ctx);
 

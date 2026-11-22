@@ -118,6 +118,33 @@ void MusicFrame(X86Context& ctx) {
 constexpr uint32_t kGameFlowState = 0x428E34, kGameFlowRacing = 6;
 bool Racing() { return kernel::R32(kGameFlowState) == kGameFlowRacing; }
 
+// Cheats, at each present on the game thread. MAX CASH: the career's cash is the int at 0x405364 (the profile's working
+// copy): the shop's buy (0x12E5C0, 0x15C0C0) takes the price off it, clamped at 0, the affordability checks (0x163691,
+// 0x173048, ...) compare against it and the screens print it (0xC3D31). Only the front end and a race (the flow's
+// states 3 and 6) have a profile loaded
+constexpr uint32_t kCareerCash = 0x405364, kMaxCash = 9999999;
+// UNLOCK ALL: the byte at 0x3FBCB4 is EA's unlock-all switch (UnlockAllThings on the PC), 0 on the disc and written
+// nowhere: each unlock check (0x112FC0, 0x121F40, 0x136FE0, 0x137060, 0x1370F0, 0x140C60, 0x140CD0, 0x147D35, the car
+// lot 0x13CBFF, 0x13CCC8, the parts 0x16A19C, the new game 0x154A1F, ...) answers unlocked while it is set. Nothing of
+// it is saved: off again, the game's own unlocks come back
+constexpr uint32_t kUnlockAll = 0x3FBCB4;
+
+void ApplyCheats() {
+    const Options& o = Opt();
+    uint32_t flow = kernel::R32(kGameFlowState);
+    if (o.cheat_cash && (flow == 3 || flow == kGameFlowRacing) && mem::IsCommitted(kCareerCash) &&
+        kernel::R32(kCareerCash) != kMaxCash)
+        kernel::W32(kCareerCash, kMaxCash);
+    static bool unlocked = false;  // set by us, to put back when the cheat goes off
+    if (o.cheat_unlock_all) {
+        kernel::G<uint8_t>(kUnlockAll) = 1;
+        unlocked = true;
+    } else if (unlocked) {
+        kernel::G<uint8_t>(kUnlockAll) = 0;
+        unlocked = false;
+    }
+}
+
 // every language of the disc is offered (src/game/language.cpp picks the game's), and Indonesian, which translates the
 // host's own panels and, from language.cpp, the game's text
 bool LanguageAvailable(const std::string& code) { return KnownLanguage(code); }

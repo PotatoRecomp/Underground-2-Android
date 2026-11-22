@@ -971,6 +971,7 @@ HLE_STDCALL(D3DDevice_Swap, 1) {
     game::MusicFrame(ctx);
     game::FeFrame(ctx);
     game::OptionsFrame(ctx);
+    game::ApplyCheats();
     LogTargets(g_presents);
     if (g_trace) LOGI("trace: swap");
     // verbose builds: a file named trace beside the settings traces the next two frames, then goes
