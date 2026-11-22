@@ -590,6 +590,40 @@ bool OptionsRowAt(X86Context& ctx, int16_t y, int16_t& tx, int16_t& ty, bool& st
     return found;
 }
 
+// The widgets of the options screen up now, ours or the game's own pages': each added by 0x15B2E0 (below), the list
+// begun again by the first of a new screen's
+uint32_t g_widgets_screen = 0;
+std::vector<uint32_t> g_screen_widgets;
+
+bool ObjectRect(X86Context& ctx, uint32_t object, float r[4]) {
+    constexpr uint32_t kObjectRect = 0x12A720, kObjectFlags = 0x1C;
+    static uint32_t rect = 0;
+    if (!rect) rect = mem::AllocSystem(16);
+    if (!rect || !object || !mem::IsCommitted(object) || (R32(object + kObjectFlags) & 1)) return false;  // hidden
+    X86Context saved = ctx;
+    uint8_t ok = uint8_t(CallGuest(ctx, kObjectRect, {object, rect}));
+    ctx = saved;
+    if (ok) std::memcpy(r, kernel::HostPtr(rect), 16);
+    return ok != 0;
+}
+
+bool OptionsArrowAt(X86Context& ctx, int16_t x, int16_t y, bool& right) {
+    constexpr float kRowReach = 17.0f, kArrowReach = 24.0f;
+    float best = kRowReach;
+    uint32_t row = 0;
+    for (uint32_t w : g_screen_widgets) {
+        float t[4];
+        if (!mem::IsCommitted(w + kRowValue) || !ObjectRect(ctx, R32(w + kRowTitle), t)) continue;
+        float d = std::fabs((t[1] + t[3]) / 2 - float(y));
+        if (d < best) best = d, row = w;
+    }
+    float l[4], r[4];
+    if (!row || !ObjectRect(ctx, R32(row + kRowArrows[0]), l) || !ObjectRect(ctx, R32(row + kRowArrows[1]), r)) return false;
+    if (x < l[0] - kArrowReach || x > r[2] + kArrowReach) return false;
+    right = x >= (l[2] + r[0]) / 2;  // the value's halves between them
+    return true;
+}
+
 // a change the UI applied (src/common/menu.cpp's ApplyPending): our rows on the screen show it
 void OptionsFrame(X86Context& ctx) {
     static uint32_t seen = 0;
@@ -762,4 +796,17 @@ X86_FUNC(sub_001105C0) {
         return;
     }
     __imp__sub_001105C0(ctx, base);
+}
+
+// a widget into an options screen (thiscall on the screen: the widget, 1): the screen's widgets, for the taps on their
+// arrows (OptionsArrowAt)
+X86_EXTERN_FUNC(__imp__sub_0015B2E0);
+X86_FUNC(sub_0015B2E0) {
+    uint32_t screen = ctx.ecx, widget = R32(ctx.esp + 4);
+    __imp__sub_0015B2E0(ctx, base);
+    if (screen != g_widgets_screen) {
+        g_widgets_screen = screen;
+        g_screen_widgets.clear();
+    }
+    g_screen_widgets.push_back(widget);
 }

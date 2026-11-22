@@ -19,6 +19,9 @@ bool FeOnPackage(const char* name);  // game thread: that menu is this package (
 void FeTouch(bool down, float u, float v);
 // game thread: our options row at a tap's FEng y, its title's middle and whether it steps (src/game/android_options.cpp)
 bool OptionsRowAt(X86Context& ctx, int16_t y, int16_t& tx, int16_t& ty, bool& steps);
+// game thread: a tap at FEng's x, y on an options row's value (any options page's): its left or right arrow, by where
+// the screen drew them; false off them or with no row there
+bool OptionsArrowAt(X86Context& ctx, int16_t x, int16_t y, bool& right);
 
 }  // namespace game
 

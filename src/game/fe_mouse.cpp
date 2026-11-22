@@ -451,7 +451,15 @@ bool ColumnTap(const std::string& name, int16_t x, int16_t y) {
 // the bar's arrows a finger's width round them: the rows end before them (-118 to 119), so on the bar's ends the right
 // arrows of the rows are not in reach
 constexpr float kBarArrowX = 165.0f;
-bool OptionsTap(int16_t x, int16_t y) {
+bool OptionsTap(X86Context& ctx, int16_t x, int16_t y) {
+    // the row's own arrows where the screen put them (a widescreen layout's rows are wider than the 4:3 one's the
+    // places below were measured on: a 20:9 phone's right arrows were past kBarX)
+    bool right = false;
+    if (OptionsArrowAt(ctx, x, y, right)) {
+        LOGR("fe: options tap %d,%d -> %s (its arrows)", x, y, right ? "right" : "left");
+        touch::QueuePad(right ? kPadRight : kPadLeft, 1);
+        return true;
+    }
     if (x >= kBarArrowX && std::fabs(float(y)) >= kBarArrowY) {
         touch::QueuePad(y < 0 ? kPadUp : kPadDown, 1);
         return true;
@@ -540,7 +548,7 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
         else if (NextScreen(name) && !Peek(g_menu_package + kButtonCount)) {
             touch::QueuePad(kPadA, 1);
         }
-        else if (!(OptionsList(name) && !row_click && OptionsTap(x0, y0)) && !ColumnTap(name, x0, y0) && !CarSelectTap(name, x0, y0) && !PromptTap(name, x0, y0)) {
+        else if (!(OptionsList(name) && !row_click && OptionsTap(ctx, x0, y0)) && !ColumnTap(name, x0, y0) && !CarSelectTap(name, x0, y0) && !PromptTap(name, x0, y0)) {
             if (!key_press) hold = kHoldUpdates;
         }
     }
