@@ -471,6 +471,7 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
     static bool scroller_press = false, arrow_press = false;
     static int arrow_dir = -1, swatch_across = 0, swatch_down = 0;
     static bool swatch_press = false, key_press = false;
+    static bool row_click = false;  // a tap on an options row that opens something: the mouse's click on it
     static int key_a_in = 0;  // updates until the keyboard's key is pressed: its pointer has made it the current key
     static int16_t sx = 0, sy = 0;  // where the finger came down, snapped to its button
     uint32_t info = kernel::Args{ctx}[0];
@@ -478,7 +479,12 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
     if (uint32_t presses = g_presses; presses != seen_press) {
         seen_press = presses;
         ToFeng(g_u0, g_v0, sx, sy);
-        arrow_dir = ArrowAt(float(sx) + 320.0f, float(sy) + 240.0f);
+        // a row that opens something takes the tap anywhere on it, its value's arrows too, but for the list's bar
+        int16_t row_x = 0, row_y = 0;
+        bool steps = true;
+        row_click = OptionsList(name) && g_menu_package && sx < kBarArrowX &&
+                    OptionsRowAt(ctx, sy, row_x, row_y, steps) && !steps;
+        arrow_dir = row_click ? -1 : ArrowAt(float(sx) + 320.0f, float(sy) + 240.0f);
         swatch_press = arrow_dir < 0 && SwatchAt(float(sx) + 320.0f, float(sy) + 240.0f, swatch_across, swatch_down);
         arrow_press = arrow_dir >= 0 || swatch_press;
         scroller_press = !arrow_press && ScrollerAt(name, sy);
@@ -486,7 +492,9 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
         hold = 0;
         key_press = false;
         if (!scroller_press && !arrow_press && g_menu_package) {
-            if (name == "UI_VirtualKeyboard.fng" && KeyAt(ctx, g_menu_package, float(sx) + 320.0f, float(sy) + 240.0f, sx, sy))
+            if (row_click)
+                sx = row_x, sy = row_y;  // the row's title, which the click accepts (OPEN, a binding)
+            else if (name == "UI_VirtualKeyboard.fng" && KeyAt(ctx, g_menu_package, float(sx) + 320.0f, float(sy) + 240.0f, sx, sy))
                 key_press = true;
             else
                 Snap(ctx, g_menu_package, sx, sy);
@@ -514,7 +522,7 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
         else if (NextScreen(name) && !Peek(g_menu_package + kButtonCount)) {
             touch::QueuePad(kPadA, 1);
         }
-        else if (!(OptionsList(name) && OptionsTap(x0, y0)) && !ColumnTap(name, x0, y0) && !CarSelectTap(name, x0, y0) && !PromptTap(name, x0, y0)) {
+        else if (!(OptionsList(name) && !row_click && OptionsTap(x0, y0)) && !ColumnTap(name, x0, y0) && !CarSelectTap(name, x0, y0) && !PromptTap(name, x0, y0)) {
             if (!key_press) hold = kHoldUpdates;
         }
     }

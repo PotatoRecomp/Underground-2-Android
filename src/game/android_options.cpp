@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <atomic>
 #include <cctype>
+#include <cmath>
 #include <cstdint>
 #include <cstring>
 #include <iterator>
@@ -66,7 +67,11 @@ constexpr uint32_t kCategory = 0x406CC4, kAudioCategory = 0;
 // a row: the widget, its constructor and vtable (the Player page's), the screen's add; its title and value strings
 constexpr uint32_t kRowBytes = 0x54, kRowCtor = 0x12AF20, kRowVtable = 0x34F4A0, kRowVtableBytes = 0x44;
 constexpr uint32_t kAddRow = 0x15B2E0, kRowTitle = 0x2C, kRowValue = 0x30;
-constexpr uint32_t kActSlot = 0x4, kDrawSlot = 0xC, kBlinkSlot = 0x40;
+constexpr uint32_t kActSlot = 0x4, kDrawSlot = 0xC, kShowSlot = 0x14, kBlinkSlot = 0x40;
+// its value's left and right arrows (images, set by 0x15B2E0); an FEng object's flags (+0x1C, bit 0 hidden) and
+// FEngSetInvisible and FEngSetVisible (cdecl, the object), which the widget's Show and Hide (+0x14, +0x18) call on each
+constexpr uint32_t kRowArrows[] = {0x4C, 0x50};
+constexpr uint32_t kObjectFlags = 0x1C, kHidden = 0x1, kSetInvisible = 0x118CE0, kSetVisible = 0x118D30;
 // UIOptionsScreen: its package +4, its fields the rows are made with, the header's title (set to the category's name
 // by 0x0E6753 before the page's Setup), the screen's own string (+0x2C, 0x0CF943) and the Player page's flag +0x152
 constexpr uint32_t kScreenPackage = 0x4, kHeaderTitle = 0x42ADB44C, kScreenString = 0x2C, kScreenFlag = 0x152;
@@ -340,12 +345,31 @@ void DrawRow(X86Context& ctx, uint32_t self) {
     X86Context saved = ctx;
     CallGuest(ctx, kSetString, {R32(self + kRowTitle), title});
     CallGuest(ctx, kSetString, {R32(self + kRowValue), value});
+    // the arrows say left and right step the value: a row that opens something (OPEN, a binding) or shows one has none
+    bool arrows = r.id != kBlankId && r.kind == Kind::Value;
+    for (uint32_t at : kRowArrows) {
+        uint32_t arrow = R32(self + at);
+        if (!arrow || !mem::IsCommitted(arrow)) continue;
+        bool hidden = (R32(arrow + kObjectFlags) & kHidden) != 0;
+        if (hidden == arrows) CallGuest(ctx, arrows ? kSetVisible : kSetInvisible, {arrow});
+    }
     ctx = saved;
 }
 
 // Draw(), thiscall
 void RowDraw(X86Context& ctx, uint8_t*) {
     DrawRow(ctx, ctx.ecx);
+    ctx.esp += 4;
+}
+
+// Show(), thiscall: the widget's, which shows its arrows too; then ours as the row has them
+void RowShow(X86Context& ctx, uint8_t*) {
+    uint32_t self = ctx.ecx;
+    X86Context saved = ctx;
+    ctx.ecx = self;
+    CallGuest(ctx, R32(kRowVtable + kShowSlot), {});
+    ctx = saved;
+    DrawRow(ctx, self);
     ctx.esp += 4;
 }
 
@@ -357,10 +381,12 @@ void RowAct(X86Context& ctx, uint8_t*) {
         const Row r = it->second;
         if (r.kind == Kind::Value && (message == kLeft || message == kRight)) app::rows::Value(r, message == kLeft ? -1 : 1);
         else if (message == kAccept) app::rows::Activate(r);
-        X86Context saved = ctx;
-        ctx.ecx = self;
-        CallGuest(ctx, R32(kRowVtable + kBlinkSlot), {message});
-        ctx = saved;
+        if (r.kind == Kind::Value) {  // the arrows' blink: the others have none
+            X86Context saved = ctx;
+            ctx.ecx = self;
+            CallGuest(ctx, R32(kRowVtable + kBlinkSlot), {message});
+            ctx = saved;
+        }
         DrawRow(ctx, self);
     }
     ctx.esp = esp + 4 + 8;
@@ -373,6 +399,7 @@ uint32_t RowVtable() {
         std::memcpy(kernel::HostPtr(vt), kernel::HostPtr(kRowVtable), kRowVtableBytes);
         W32(vt + kActSlot, dispatch::HostThunk(RowAct));
         W32(vt + kDrawSlot, dispatch::HostThunk(RowDraw));
+        W32(vt + kShowSlot, dispatch::HostThunk(RowShow));
     }
     return vt;
 }
@@ -448,6 +475,37 @@ void PutNames() {
 }
 
 }  // namespace
+
+// a tap on the options screen at FEng's y (the middle of the frame 0): the row of ours there, the middle of its title
+// (where the pointer clicks it) and whether it steps; the rows that open something (OPEN, a binding) take Accept
+// alone, which a tap on their value as the dpad's left or right never gave them
+bool OptionsRowAt(X86Context& ctx, int16_t y, int16_t& tx, int16_t& ty, bool& steps) {
+    constexpr uint32_t kObjectRect = 0x12A720;  // (object, float rect[4]) cdecl
+    constexpr float kRowReach = 17.0f;          // half a row's step
+    static uint32_t rect = 0;
+    if (!rect) rect = mem::AllocSystem(16);
+    float best = kRowReach;
+    bool found = false;
+    for (uint32_t w : g_widgets) {
+        auto it = g_rows.find(w);
+        uint32_t title = R32(w + kRowTitle);
+        if (!rect || it == g_rows.end() || it->second.id == kBlankId || !title) continue;
+        X86Context saved = ctx;
+        uint8_t ok = uint8_t(CallGuest(ctx, kObjectRect, {title, rect}));
+        ctx = saved;
+        if (!ok) continue;
+        float r[4];
+        std::memcpy(r, kernel::HostPtr(rect), 16);
+        float d = std::fabs((r[1] + r[3]) / 2 - float(y));
+        if (d > best) continue;
+        best = d;
+        found = true;
+        tx = int16_t(std::lround((r[0] + r[2]) / 2));
+        ty = int16_t(std::lround((r[1] + r[3]) / 2));
+        steps = it->second.kind == Kind::Value;
+    }
+    return found;
+}
 
 // a change the UI applied (src/common/menu.cpp's ApplyPending): our rows on the screen show it
 void OptionsFrame(X86Context& ctx) {

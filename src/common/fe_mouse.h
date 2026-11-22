@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 // the front end's menus by touch and mouse (src/game/fe_mouse.cpp)
 struct X86Context;
 
@@ -15,6 +16,8 @@ void FeArrowQuad(int kind, const float* px, const float* py, const float* u, con
 bool FeOnPackage(const char* name);  // game thread: that menu is this package (UI_Options.fng)
 // any thread: the finger (or the mouse) in shares of the frame as the presenter letterboxes it, down or lifted
 void FeTouch(bool down, float u, float v);
+// game thread: our options row at a tap's FEng y, its title's middle and whether it steps (src/game/android_options.cpp)
+bool OptionsRowAt(X86Context& ctx, int16_t y, int16_t& tx, int16_t& ty, bool& steps);
 
 }  // namespace game
 
