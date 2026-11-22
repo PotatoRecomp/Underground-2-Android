@@ -1,15 +1,23 @@
-# Builds src/game/lang_id_data.inc, the Indonesian texts of the game's English language file (LANGUAGES\ENGLISH.BIN, in
-# the USA disc's ZZDATA archives), keyed by the file's string hashes: lang_id.py [<iso>] [<out>]
+# Builds src/game/lang_<code>_data.inc, the texts of one language (id Indonesian, pt Portuguese) for the game's English
+# language file (LANGUAGES\ENGLISH.BIN, in the USA disc's ZZDATA archives), keyed by the file's string hashes:
+# lang_text.py [id|pt] [<iso>] [<out>]
 #
-# The English chunk (id 0x39000: header, charset table, 3849 sorted (hash, offset) pairs, UTF-8 strings) is found on
-# the disc by its size; the translations in tools/lang_id/tr*.txt are "<index>|<text>" lines, the index being the
+# The English chunk (id 0x39000: header, charset table, 3849 sorted (hash, offset) pairs, strings) is found on the
+# disc by its size; the translations in tools/lang_<code>/tr*.txt are "<index>|<text>" lines, the index being the
 # string's place in the table and the first of identical English strings (the others get the same text). {xx} stands
-# for the byte xx (the game's own marks: {82} the trademark sign, {a9} the copyright sign). The key hints bars
-# (JOY_EVENT ... phrases) are translated from tools/lang_id/phrases.txt, the tracks' "Reverse" is "Terbalik".
+# for the byte xx (the game's own marks: {82} the trademark sign, {a9} the copyright sign); a letter of Latin 1 (the
+# Portuguese accents) is its byte. The key hints bars (JOY_EVENT ... phrases) are translated from
+# tools/lang_<code>/phrases.txt, the tracks' "Reverse" and the audio and nitrous parts' units by LANGS below.
 import glob, mmap, os, re, struct, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHUNK_SIZE, COUNT = 242820, 3849
+LANGS = {
+    "id": dict(reverse=" Terbalik", units=[(" INCH", " INCI"), (" WATTS", " WATT"), (" LB BOTTLE", " LB TABUNG"),
+                                           (" CARBON FIBRE", " SERAT KARBON")]),
+    "pt": dict(reverse=" (Inverso)", units=[(" INCH", " POL"), (" WATTS", " W"), (" LB BOTTLE", " LB GARRAFA"),
+                                            (" CARBON FIBRE", " FIBRA DE CARBONO")]),
+}
 
 
 def find_iso():
@@ -17,7 +25,7 @@ def find_iso():
         hits = glob.glob(os.path.join(ROOT, pat))
         if hits:
             return hits[0]
-    sys.exit("no iso found: lang_id.py <iso>")
+    sys.exit("no iso found: lang_text.py <iso>")
 
 
 def english_chunk(iso):
@@ -43,9 +51,9 @@ def parse(d):
     return out
 
 
-def load_numbered():
+def load_numbered(code):
     tr = {}
-    for path in sorted(glob.glob(os.path.join(ROOT, "tools", "lang_id", "tr*.txt"))):
+    for path in sorted(glob.glob(os.path.join(ROOT, "tools", "lang_" + code, "tr*.txt"))):
         with open(path, encoding="utf-8") as f:
             for n, line in enumerate(f, 1):
                 line = line.rstrip("\n")
@@ -56,9 +64,9 @@ def load_numbered():
     return tr
 
 
-def load_phrases():
+def load_phrases(code):
     ph = {}
-    with open(os.path.join(ROOT, "tools", "lang_id", "phrases.txt"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "tools", "lang_" + code, "phrases.txt"), encoding="utf-8") as f:
         for line in f:
             line = line.rstrip("\n")
             if line:
@@ -93,7 +101,10 @@ def hint_bar(s, phrases, unknown):
 
 
 def to_bytes(text):
-    return re.sub(r"\{([0-9a-f]{2})\}", lambda m: chr(int(m.group(1), 16)), text)
+    text = re.sub(r"\{([0-9a-f]{2})\}", lambda m: chr(int(m.group(1), 16)), text)
+    if any(ord(c) > 0xFF for c in text):
+        sys.exit("a letter past Latin 1 in: " + text[:80])
+    return text
 
 
 def c_string(text):
@@ -114,11 +125,14 @@ def tokens(s):
 
 
 def main():
-    iso = sys.argv[1] if len(sys.argv) > 1 else find_iso()
-    out_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join(ROOT, "src", "game", "lang_id_data.inc")
+    args = sys.argv[1:]
+    code = args.pop(0) if args and args[0] in LANGS else "id"
+    lang = LANGS[code]
+    iso = args[0] if args else find_iso()
+    out_path = args[1] if len(args) > 1 else os.path.join(ROOT, "src", "game", "lang_%s_data.inc" % code)
     english = parse(english_chunk(iso))
-    numbered = load_numbered()
-    phrases = load_phrases()
+    numbered = load_numbered(code)
+    phrases = load_phrases(code)
     first = {}
     for i, (h, s) in enumerate(english):
         first.setdefault(s, i)
@@ -131,11 +145,12 @@ def main():
         elif j in numbered:
             text = numbered[j]
         elif s.endswith(" Reverse") and 3120 <= i <= 3175:
-            text = s[:-len(" Reverse")] + " Terbalik"
+            text = s[:-len(" Reverse")] + lang["reverse"]
         elif re.search(r" (INCH|WATTS|LB BOTTLE|CARBON FIBRE)", s):
             # the audio and nitrous parts' units, brand names left as they are
-            text = (s.replace(" INCH", " INCI").replace(" WATTS", " WATT").replace(" LB BOTTLE", " LB TABUNG")
-                    .replace(" CARBON FIBRE", " SERAT KARBON"))
+            text = s
+            for a, b in lang["units"]:
+                text = text.replace(a, b)
         if text is None:
             continue
         visible = re.sub(r"[\x80-\xff]", lambda m: "{%02x}" % ord(m.group()), s)
@@ -146,7 +161,7 @@ def main():
         print("token mismatch at %d:\n  %s\n  %s" % (i, e[:160], t[:160]))
     if unknown:
         print("unknown phrases:", sorted(set(unknown)))
-    lines = ["// generated by tools/lang_id.py: Indonesian texts by the hash of their string in the English language file"]
+    lines = ["// generated by tools/lang_text.py %s: texts by the hash of their string in the English language file" % code]
     for h in sorted(result):
         lines.append("    {0x%08Xu, %s}," % (h, c_string(result[h])))
     with open(out_path, "w", encoding="ascii", newline="\n") as f:
