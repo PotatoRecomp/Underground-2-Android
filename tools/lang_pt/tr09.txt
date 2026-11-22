@@ -1,0 +1,4 @@
+1126|Você foi desconectado do Xbox Live^porque outra pessoa entrou^usando sua conta
+2109|está online em %s
+2453|DOURADO
+3591|IMPACTO NA PAREDE

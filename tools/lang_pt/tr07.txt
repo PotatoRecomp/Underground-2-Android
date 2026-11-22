@@ -1,0 +1,365 @@
+2724|Rasgado
+2725|Selvagem
+2726|Cidade de Exploração Livre
+2728|Novos Modos de Jogo
+2729|Personalização Visual
+2730|Compita Online
+2731|Novo/Editar
+2733|Excluindo persona '%s'...
+2734|Fala, craque. Você está arrasando por aí.
+2736|Demo de Burnout{ae} 3: Takedown{82}
+2737|Mín. de Jogadores
+2738|Pacote Street
+2739|Pacote Pro
+2740|Pacote Extreme
+2741|Abril
+2742|A Loja Car Specialties realmente faz seu carro se destacar da multidão. Venha aqui adicionar hidráulica, neon, áudio, spinners e muito mais ao seu carro.
+2744|Você excedeu o limite de perfis salvos.^Exclua perfis pelo menu EXCLUIR antes de criar um novo perfil.
+2745|Street Tuner
+2746|TIPO 3 VERMELHO E AZUL
+2747|TIPO 3 VERMELHO E DOURADO
+2749|Destruído
+2750|Quer comprar a possibilidade de converter para Fibra de Carbono quaisquer Para-choques Dianteiros/Traseiros e Saias Laterais instalados neste carro?
+2751|Restaurar Teclas ao Padrão
+2754|Leve o desempenho do seu carro ao máximo adicionando os melhores upgrades das Lojas de Performance de Bayview. Compre peças individualmente ou em pacotes e kits. Comprar em pacotes dá desconto em relação à compra de peças avulsas.
+2756|Race Breaker
+2757|Lento Demais!
+2759|Março
+2760|Este pacote de desempenho já está instalado!
+2761|Inútil
+2762|Faça a maior pontuação nas corridas de Drift derrapando nas áreas brancas de bônus na borda da pista. Cuidado para não bater nas paredes ou você perderá todos os pontos de drift.
+2764|0 a 100 km/h:
+2765|Enviar mensagem para o grupo
+2766|Hotel Plaza
+2767|CONTROLE DESCONECTADO
+2768|Novas Ponteiras de Escapamento já em estoque. Dê ao seu carro um visual e um som únicos. Agora disponíveis em todas as Oficinas de Carroceria Bayview.
+2769|Drift Absurdo
+2772|Posição:
+2773|Reordenar Camadas
+2774|Houve um problema com sua configuração de rede.
+2775|Encerrar Bate-papo por Voz
+2776|Bem-vindo à Megalow Parts, a superloja de peças de desempenho.
+2777|Aderência dos Pneus {83} Mais aderência geralmente significa melhor desempenho. Mas algumas corridas, como drift, podem até se beneficiar de pneus piores no carro.
+2778|Testar N2O Purge
+2779|Ponteira do Escapamento
+2780|Você deve encerrar este bate-papo por voz para bloquear este Jogador.
+2782|Tipo de Controle
+2783|Você me bateu direitinho, mano, mas seu carro tem que ficar tão bonito quanto anda. Vá até a estrela no seu mapa e eu ligo com informações de onde conseguir upgrades visuais daora que não estão disponíveis para todo mundo.
+2784|Discos Furados
+2786|Coal Harbor East
+2787|Ver DVD
+2788|Coal Harbor West
+2789|OBRIGATÓRIO
+2791|Novos designs de Entrada de Ar do Teto já em estoque. Os designs mais recentes de além-mar. Instale o seu em qualquer Oficina de Carroceria Bayview.
+2792|Compartilhamento de Informações
+2795|Velocidade Média:
+2796|Cancelar Pronto
+2797|Dificuldade da Carreira
+2798|Tem certeza de que quer sair para o Menu Principal Online? Você receberá uma derrota e uma desconexão neste jogo.
+2799|Houve um erro ao obter a lista de configurações de rede.
+2800|Comentário Enviado
+2801|Fort Union
+2803|º
+2806|Vice-campeão de Circuito
+2807|OFFSET HEADWIND
+2808|Sistema de Suspensão Coilover
+2809|Gerenciador de Perfis
+2811|VELOCIDADE DO QUARTO DE MILHA:
+2812|Cara, não me importo de perder para você, mas você precisa de uns contatos bons para o seu carro. Tenho um amigo que pode arranjar peças visuais especiais. Vá até a estrela no seu mapa e eu aviso onde fica a loja.
+2814|SCE/Ethernet (Adaptador de Rede)
+2816|Fique de olho nos carros à sua frente. Trocar de faixa cedo ajuda a evitar possíveis colisões com veículos desatentos do trânsito.
+2817|º
+2819|Direção (Direita)
+2821|Comportamento Perturbador
+2822|Aceitar Data
+2823|AMARELO BRILHANTE
+2824|Leve o visual do seu carro ao próximo nível. As rodas mais recentes acabaram de chegar ao estoque. Disponíveis em todas as Oficinas de Carroceria Bayview.
+2825|Detalhe do Mundo
+2826|Remover Bancos Traseiros
+2827|VITÓRIA
+2828|Locais de Corrida
+2833|Digite o Endereço de E-mail
+2834|Assunto: Oportunidade de Capa de DVD
+2835|LARANJA PÉROLA ESCURO
+2838|Fala, mano, você me venceu na lata. Vou te ajudar a deixar seu carro tão bom quanto você pilota. Vá até a estrela no mapa e eu ligo com mais informações.
+2839|Ei, sem ressentimentos
+2842|Mas é melhor ficar de olho nas costas.
+2843|Inacreditável! Para que vocês servem! Nenhum de vocês consegue derrubar esse cara! NENHUM!
+2844|O que você acha que vai
+2845|Todas as notas de cem caindo
+2846|Nós
+2847|Dessa vez ele não vai escapar.
+2848|Reposicionar Carro (Baixo)
+2849|N20 Purge
+2850|Categoria de Corrida: %s
+2851|Pedir Transmissão
+2852|Você Está na Liderança!
+2853|Tenha a dirigibilidade mais afiada das ruas. As novas Suspensões top de linha estão disponíveis com exclusividade em todas as Lojas de Performance Bayview.
+2854|FENG: Erro de string padrão.
+2855|O convite de voz foi retirado.
+2856|Escolher Cores do Vinil
+2857|Mensagens SMS
+2858|Pontuação
+2859|A senha informada é inválida.
+2860|Houve um problema ao selecionar esta persona. Você voltará à tela de Login EA.
+2861|Cara, o rádio scanner diz que as estradas para Beacon Hill estão abertas. Garanto que as corridas na região vão bombar em breve. Talvez valha a pena subir lá e tentar a sorte.
+2862|Caixa de Entrada
+2863|Sua senha será enviada para o endereço de e-mail associado a esta conta.
+2864|Centro da Cidade
+2874|TIPO 3 AZUL-CÉU E VERDE
+2875|SELECIONE UM PATROCINADOR!
+2876|Mudar Interiores / Car Specialties
+2877|V2 TUDO MENOS CAPÔ ESQUERDO PURGE
+2879|aguardando
+2880|Cara, você não dirige como quem é do interior. Vá até a estrela no seu mapa e eu ligo com informações de onde você pode conseguir umas peças visuais raras para o seu carro.
+2881|Sobrepondo Vinis
+2883|Falha ao Carregar
+2884|Voltar ao Jogo
+2885|BÔNUS DE ASSINATURA:  %$d
+2886|As cores mais recentes de Neon Interno já estão disponíveis para instalação. Confira a seleção em todas as Lojas Car Specialties.
+2887|CLÁUSULAS DO CONTRATO:^O piloto deve vencer as seguintes corridas: 9 corridas da URL, 34 corridas à escolha do piloto, 3 corridas à escolha do patrocinador.^^REQUISITOS ADICIONAIS:^Montar um carro que apareça em 4 capas de DVD.^^BÔNUS:^Veículo de qualquer concessionária Bayview sem custo.
+2888|Diferença de Pontos Ganhos Nesta Corrida em Relação à Média:
+2889|Seu tempo:
+2890|Atender Convite de Bate-papo por Voz
+2891|TIPO 2 VERMELHO
+2892|0 a %d Tempo:
+2893|TIPO 3 VERMELHO
+2894|Tem certeza de que quer sair do modo LAN?
+2896|Capa de DVD Modified to the Max
+2898|O outro jogador é um bom competidor, que participa com o espírito do jogo, vencendo ou perdendo.
+2899|Revistas Conquistadas:
+2900|Distância de Burnout: %$3.2f %s!
+2901|Corridas Vencidas
+2902|Unidade de Gerenciamento do Motor
+2908|Para-choque
+2909|TERMOS DO ACORDO:^Contrato concluído após vencer 3 corridas da URL, 3 corridas à escolha do patrocinador e 9 corridas adicionais à escolha do piloto.^^REQUISITOS DE MÍDIA:^Montar um carro que apareça em 1 capa de DVD.^^BÔNUS:^Veículo grátis da concessionária Bayview.
+2910|Nome da Pista:
+2911|Relações de Marcha {83} As relações de marcha originais servem para uma pilotagem em geral, mas ajustá-las pode dar melhor aceleração e maior velocidade máxima. Ajuste todas as marchas e a Relação Final juntas para obter os melhores resultados.
+2912|BRASIL
+2914|DISTÂNCIA DE BURNOUT:
+2915|Spoilers de Fibra de Carbono
+2916|Moderno
+2917|O cartão de memória (PS2) no slot de CARTÃO DE MEMÓRIA 1 ^foi removido. Quer ^continuar com o Salvamento Automático ativado?
+2918|Tipo de transmissão
+2919|Voltar à Corrida Livre
+2920|Jogos Criados:
+2922|As barras estabilizadoras afetam a transferência de peso entre os lados esquerdo e direito do carro. Use os controles deslizantes para ajustar a força das barras estabilizadoras dianteira e traseira. Barras mais macias permitem que o carro role, enquanto barras mais rígidas dão ao carro uma sensação de kart.
+2923|Drift de Tuning
+2924|Ler Convite
+2925|Solda
+2926|TIPO 3 BICOS DIREITO SUPERIOR ESQUERDO INFERIOR
+2927|Instale o visual mais fresco da cidade com uma das nossas novas cores de Película de Vidro. Instale a sua hoje em qualquer Loja Car Specialties Bayview.
+2928|LAYOUT PADRÃO
+2929|Adicionar esta pintura à sua seleção atual?
+2930|Outro jogador está tentando vencer jogando fora das regras normais e aceitas do jogo.
+2931|TIPO 2 MAGENTA E AZUL
+2932|Você não chegou à zona de destino a tempo. ^Quer tentar novamente?
+2933|Tirar Foto
+2934|Quer correr com este veículo?
+2935|Mono
+2936|Preto
+2937|CANADÁ
+2938|Primeiro Carro
+2939|A Oficina de Carroceria
+2942|StreetX Patrocinada
+2943|Mudar Pintura / Vinis
+2945|Você encontrará dezenas de novos designs de peças em Underground 2,^que vão do discreto ao ousado! Na versão demo, há dois^kits exclusivos disponíveis aqui. Experimente os dois!
+2946|Modo de Mapa de Exploração
+2947|INGLÊS
+2948|TIPO 1 BICOS DOS DOIS LADOS DO CAPÔ
+2949|O logotipo DNAS é marca registrada da Sony Computer Entertainment Inc.
+2950|Jogos Privados
+2951|SHOW DE SPRAY
+2953|Mostrar no Mapa do Mundo
+2954|Leve seu visual personalizado a um novo nível instalando um dos nossos novos designs de Faróis. As Oficinas de Carroceria Bayview têm todos os modelos mais recentes. Garanta o seu agora.
+2955|LARANJA ESCURO
+2956|Recusando pedido de amizade de %s ...
+2957|Tempo de 400m: %s^Velocidade de 400m: %$3.2f Km/h
+2958|Underground Racing League
+2959|Ver Revistas
+2962|Estatísticas Pós-Corrida
+2963|Sair para o Menu Principal
+2964|O nível dos seus pneus determina quanta aderência o carro tem com o chão. Ajuste os controles deslizantes para escolher entre pneus com menos ou mais aderência.
+2965|Personalizar Novo Carro
+2966|Direcional
+2967|Mudar Layout do Porta-malas
+2968|Eu Aceito
+2969|Para %s
+2970|V1 TUDO MENOS RODA ESQUERDA PURGE
+2972|Curva de Torque da ECU
+2974|Kit Turbo Estágio 1
+2975|Layout do Porta-malas
+2977|TIPO 3 MAGENTA
+2978|Você perdeu a conexão com o Servidor LAN. Verifique se o cabo de rede está conectado. Você voltará ao menu principal.
+2980|Boa Atitude
+2981|Informações ocultas de corridas
+2982|Tem certeza de que quer restaurar seu último setup ajustado personalizado?
+2983|Tempo do Quarto de Milha:
+2984|Ranking
+2985|Chegue na sua turma com as cores de Neon mais recentes instaladas no seu carro. Disponíveis agora em todas as Lojas Car Specialties Bayview.
+2986|Corridas Disputadas:
+2987|Diminua a distância de frenagem do seu carro instalando upgrades de freio.
+2988|TIPO 3 VERDE E AZUL
+2989|TIPO 3 VERDE E DOURADO
+2990|Tempo Final
+2991|Você terminou em segundo!
+2992|Porta Direita
+2994|Mensagens Armazenadas %d de %d
+2995|Aceitar Convite
+2996|Oficina de Carroceria Bayview
+2997|%s cancelou o convite.
+2998|BLOQUEADO
+2999|Você perdeu a conexão com o Xbox Live. Verifique se o cabo de rede está conectado. Você voltará ao menu principal.
+3001|Tuning de Street X
+3002|Menu Principal Online
+3003|TIPO 3 TODOS OS BICOS
+3004|Bairros
+3005|Aumente a quantidade de grana que você ganha por cada capa de revista aumentando a "classificação por estrelas" do seu carro. Quanto maior a classificação do carro, mais grana você ganha.
+3006|^Capa de revista concedida por vencer seu 3º Evento Mundial na Fase 4!
+3007|DISPONÍVEL PARA CARRO DE PATROCINADOR
+3011|Câmera de Direção Favorita:
+3015|Para mudar o velocímetro do carro de Imperial para Métrico, selecione Opções e depois Jogabilidade no Menu de Pausa.
+3018|A Underground Racing League é onde está a grana. São pistas fechadas baseadas em habilidade que exigem o mais alto nível de pilotagem. Os adversários da URL serão os melhores pilotos das ruas, então prepare-se para subir um degrau.
+3020|Tem certeza de que quer sair para o menu principal?
+3021|Primeira Rodada
+3022|Gênero
+3023|Gamertag
+3025|Novo estoque dos Spoilers mais insanos das ruas já disponível em qualquer Oficina de Carroceria Bayview.
+3026|bhp
+3030|Dica
+3033|CAVEIRA 4
+3035|Fala, mano, o drag de rua é a influência por trás de tudo o que temos.
+3036|É assim: a rotação é a chave para ficar à frente da concorrência.
+3037|Depois da largada vem a troca, então
+3038|Se o outro cara te passar, fique tranquilo e entre no vácuo dele. Ganhe velocidade preciosa e depois parta para a ultrapassagem.
+3039|Isto vai ser GRANDE, mano! Está pronto?! Ótimo, vá lá e prove seu valor.
+3040|Olha só: o drift é tudo sobre estilo e controle.
+3041|Lembre-se destas três palavras: velocidade, direção e freio de mão, porque todas contribuem para executar aquelas manobras que vão render uma pontuação alta.
+3042|Garanta que você não
+3043|Esta pontuação vai ditar o multiplicador que você vai ganhar. Esse multiplicador afeta a pontuação do seu próximo drift, então garanta que seja ALTO.
+3044|Depois de acertar todos esses detalhes, você precisa começar a emendar os drifts uns nos outros.
+3045|Agora, se você acha que
+3046|Agora vamos
+3047|Neste drift você
+3048|Isso
+3049|Agora só garanta que não vai bater no trânsito, porque os locais não
+3050|Ao mesmo tempo, quando esses trouxas aparecerem, cole nos carros deles o mais perto possível, como se você
+3051|E claro: a velocidade mantém seu multiplicador alto, então você quer que ele fique o mais alto possível para os pontos continuarem pipocando
+3052|Agora que você sabe o que fazer, é só pisar fundo no acelerador e ir com TUDO! Te vejo na base.
+3053|Beleza, escuta aqui. Você está prestes a sentir na pele a Street X. É a novidade mais quente que está sacudindo o mundo das corridas!
+3054|Estas pistas são APERTADAS. Há
+3055|Faça o que for preciso para tirar o outro cara do seu pé
+3056|Então ajuste para sprints rápidas e controle firme nas freadas.
+3057|Sabe o que
+3058|Mensagem %d de %d
+3059|MÁX
+3060|Criando jogo...
+3061|Tuning da URL
+3062|Remover Painéis Internos
+3063|0 a 60 mph:
+3064|Os servidores da EA estão com problemas no momento. Tente novamente mais tarde.
+3066|A curva de torque é um gráfico que mostra a quantidade de potência que o Turbo produz ao longo da faixa de RPM. Ajuste o formato da curva para levar a potência à faixa de RPM que você mais usará em uma corrida.
+3067|Info de Volta:
+3068|Sessão de Fotos da Revista
+3069|Tem certeza de que quer remover este membro do seu EA Messenger? Quaisquer mensagens não lidas deste membro serão perdidas.
+3071|Auto Motor
+3072|Cara, você não está falando sério em derrapar com a gente, está? Você vai precisar de muitos pontos para ter alguma chance. Não sei se você alcança esse patamar. Talvez seja melhor passar.
+3073|Fala, mano, eu vi você dirigindo pelas ruas e você fica zigue-zagueando por tudo. Esta corrida de drift deve ser perfeita para você, já que você não consegue andar em linha reta mesmo.
+3074|Você só pode estar de brincadeira, né? Não tem como uma sucata dessas derrapar. Você não está mais na fazenda, mano, aqui é a liga principal. É bom você representar.
+3075|Isso é piada? Você precisa de um carro de D-R-I-F-T para correr com a gente. A gente não vai derramar óleo na pista só para essa sucata deslizar. Por que você não vai para casa?
+3076|Você parece um garoto legal. Por que não volta para casa e devolve o carro da sua mãe? Se ainda quiser correr, esteja preparado para ficar de castigo por perder o carro da mamãe. Você decide, mano, só não me faça esperar a noite toda.
+3077|O que você tem na cabeça, garoto? Você chega aqui com uma lata-velha lamentável e espera que a gente deixe você correr? Bom, se você quiser ficar olhando minhas lanternas traseiras a noite toda, não há lei contra isso.
+3078|Fala, cara, parece que você quer participar da ação. Vou te dizer uma coisa: só para te dar uma chance, não vou passar da 4ª marcha. Assim, pelo menos, você talvez consiga me ver cruzar a linha de chegada em primeiro. Tente acompanhar, caipira.
+3079|Ei, piloto! É você, mano! Pronto para derrapar, garoto? A gente não tem a noite toda para você. Entra ou não?
+3080|Ei, garoto! É melhor pensar duas vezes antes de entrar no drift, porque esses caras vão vir com tudo para cima de você. É louco o bastante para participar ou o quê?
+3081|Mensagens Não Lidas %d de %d
+3082|Estabeleça o padrão de estilo com as novas opções de posicionamento do N2O Purge. Todas as Car Specialties Bayview da região podem montar o setup insano.
+3084|Tem certeza de que quer sair para o Menu Principal Online?
+3085|^Capa de revista concedida por vencer seu 2º Evento Mundial na Fase 3!
+3086|Ver Recompensas
+3087|Nome
+3088|Relações de Marcha
+3089|RASGADO 1
+3090|RASGADO 2
+3091|RASGADO 3
+3092|Vinil da Carroceria
+3093|pés
+3094|Lobby da Sessão de Jogo
+3095|E aí, querida? Opa, você não é a Rachel. Deve ser aquele caipira que está hospedado na casa dela. A gente está correndo sprint e, se você quer entrar, abra sua carteira. Vocês têm o mesmo dinheiro no interior que a gente na cidade grande, né? Veja o mapa para o percurso. Vai ficar ou vai embora?
+3096|Entrando
+3097|DEBUG DE PERSONALIZAÇÃO
+3098|Jogos^Disputados
+3099|SELVAGEM 1
+3100|SELVAGEM 2
+3101|SELVAGEM 3
+3102|Navegador
+3105|Pegue seu carro de patrocinador GRÁTIS^na concessionária local.
+3106|Solucionador de Problemas de Rede
+3107|SHIFT
+3108|Sem Perfil
+3109|ESPAÇO
+3110|Fala, irmão. Estou querendo um novo conjunto de rodas e preciso de doações. Já tenho outros dois prontos para contribuir um pouquinho com a causa. Que tal você entrar na aposta e eu garanto não te envergonhar demais.
+3111|Ei, você é aquele cara novo de quem ando ouvindo falar. Dizem que você tem jogo. Quer colocar uma grana e ver se consegue jogar com os grandes? Entre na aposta e eu te envio a pista.
+3112|Ih, otário! Se o seu carro fosse uma mão de pôquer, eu já teria desistido agora. Acha que tem o bastante para vencer meu straight flush? Vamos abrir as cartas e descobrir na pista.
+3113|Fala, mano, meus bolsos ainda têm espaço para a sua grana. Que tal terminarmos esta corrida para eu levar minha garota para jantar com a sua grana.
+3114|Olha só, otário. Isto é pra valer. Ponha suas notas na mesa e entre na fila para perder. Você recebe a rota do percurso assim que soubermos que você é de verdade.
+3115|Pode chegar, mano. Sempre tem lugar para perdedores. Aqui é diferente do interior. Assim que você puser a grana, recebe o mapa do percurso. Então, entra ou não?
+3116|Vou ser rápido. Você põe a grana e a gente fornece a rota do percurso. Pronto para corridas de verdade?
+3117|Fala, cara, esta é a sua chance de provar que não é um frouxo. A gente vai correr um circuito e tem vaga para mais pilotos. O mapa do percurso aparece assim que você se comprometer. Agora faça sua mãe se orgulhar.
+3118|Você aí!... Você não é daqui! Não importa. A gente está mandando ver numa corrida de circuito. Solte as notas e a gente envia o mapa do percurso para o seu SMS. Você tem dois segundos para decidir!
+3119|Farol do Carro
+3176|GRÉCIA
+3178|Mapa Completo
+3179|Retrovisor Interno:
+3180|OFFSET JETSTREAM
+3181|Isto é apertado, garoto. A URL não é corrida de brincadeira. Esses irmãos vão com tudo e vão dobrar o que puderem para garantir uma vitória. Fique apertado e longe da traseira.
+3182|É melhor você ir ao que interessa nesta, porque a URL é corrida rápida no seu melhor. Aqui não tem espaço para fanfarrão. Se você entrar na pista como se estivesse de enfeite, nunca mais terá outra chance aqui.
+3183|É assim: estes pilotos são os melhores do asfalto. Você vai com tudo contra eles ou eles sentem o cheiro da sua enrolação e te acertam feio. Se você desmoronar agora, a URL nunca vai rolar pra você. É bom acertar de primeira.
+3184|Outro jogador está sendo perturbador.
+3185|Par
+3186|Lojas Ocultas
+3187|Maior Nível de Jogador:
+3188|pés
+3189|%s recusou seu convite!
+3190|Jogabilidade
+3192|Tem certeza de que quer salvar o perfil chamado %s?
+3193|Aviso de Conexão de Jogo Ruim
+3194|Decalques só podem ser aplicados em capôs originais.^Você precisa reinstalar o capô original para aplicar decalques.
+3195|Trailers
+3196|Não Concluído
+3197|Instalar Setup
+3200|Outro jogador está usando constantemente linguagem obscena ou vulgar em salas de bate-papo.
+3201|Esta sessão de jogo está cheia.
+3202|Entrar em uma sala de jogo pode fazer você perder mensagens não lidas e convites de sessão de jogo.
+3203|Largue na hora certa e dispare para a liderança com velocidade.
+3204|Mas se você
+3205|Lembre-se: se você pisar fundo cedo demais, ou tarde demais, vai chegar em último.
+3206|Una seus drifts em uma única derrapagem longa e contínua e o placar vai se acender de forma impressionante.
+3207|Quanto mais pneus você derrapar pelas faixas, mais rápido sua pontuação sobe. Só lembre-se de ficar longe das paredes ou perderá todos os pontos daquela sequência.
+3208|A melhor linha de entrada e saída das curvas vai cortar um tempo sério da sua corrida.
+3209|Sobrescrever os dados do jogo salvo?
+3211|Você não tem grana suficiente para comprar este item.
+3212|Destaque-se da multidão e dê às suas rodas um visual novo com nossa nova seleção de Vinis de Carroceria. Disponível em qualquer Loja de Gráficos.
+3214|Seu Carro
+3215|Respingo
+3217|Você precisa ter todos os upgrades de motor, ECU e turbo de nível 3 no seu^veículo antes de poder escolher as cores de detalhes do motor.
+3219|Listras
+3220|Tamanho de senha inválido.^A senha deve ter entre %lu e %lu caracteres.
+3229|Eu avisei! Faça o que for preciso. Que parte disso você não
+3230|Sai da minha frente! Eu corro na lata!
+3231|É bom você se lembrar de quem
+3232|Ou o quê? Eu não
+3233|Ah, é mesmo? O que você vai fazer sem mim? Você
+3235|Então talvez eu
+3237|A gente está na chama até o talo, garoto. É bom você ir ao que interessa porque o patrocinador espera uma vitória de arrebentar. Pé na tábua ou ninguém vai embora feliz hoje.
+3238|POWER SLIDE
+3239|^Capa de revista concedida por vencer seu 4º Evento Mundial na Fase 2!
+3240|FRANÇA
+3241|Tela Ampla
+3242|Criar um novo perfil fará com que alterações não salvas no perfil atual sejam perdidas. Tem certeza de que quer criar um novo perfil?
+3244|Kit Turbo Estágio 3
+3245|Mudar Câmera
+3246|Quer aceitar a corrida sprint?
+3249|O serviço Xbox Live está muito ocupado. Tente novamente mais tarde.
+3250|Concluído
+3251|Responder

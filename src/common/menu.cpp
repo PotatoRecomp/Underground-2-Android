@@ -106,7 +106,7 @@ constexpr uint32_t kAudioOutputs[] = {audio::kOutputAuto, audio::kOutputMono, au
                                       audio::kOutputSurround};
 const char* const kAudioOutputNames[] = {"AUTOMATIC", "MONO", "2.0 STEREO", "5.1 SURROUND"};
 const char* const kLanguageNames[] = {"ENGLISH", "FRENCH", "GERMAN", "ITALIAN", "SPANISH",
-                                      "INDONESIAN", "DUTCH", "SWEDISH", "DANISH"};  // as game::kLanguages
+                                      "INDONESIAN", "DUTCH", "SWEDISH", "DANISH", "PORTUGUESE"};  // as game::kLanguages
 constexpr const char* kDonateUrl = "https://sociabuzz.com/racas/tribe";
 constexpr const char* kGithubUrl = "https://github.com/RanggaCasper";
 constexpr const char* kYoutubeUrl = "https://youtube.com/c/@RanggaCasper";

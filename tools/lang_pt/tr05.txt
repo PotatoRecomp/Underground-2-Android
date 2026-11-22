@@ -1,0 +1,402 @@
+1712|Digite o Nome da Persona
+1718|Coloque mais cavalos no asfalto instalando uma das Transmissões mais recentes que acabaram de chegar ao mercado. Instalação disponível em qualquer Loja de Performance Bayview ou Megalow Parts.
+1721|ÁUDIO
+1722|Diferencial de Deslizamento Limitado
+1723|Para-choques Dianteiros
+1725|Peças originais não podem ser pintadas, você precisa instalar peças de pós-venda se quiser pintá-las.
+1726|Fique de olho em eventos ocultos enquanto dirige pela cidade. Eventos ocultos não aparecem no minimapa, mas rendem muita grana. Confira as mensagens SMS e preste atenção às dicas de outros pilotos para encontrar esses eventos.
+1728|Molas {83} Molas rígidas são ideais para pistas lisas, enquanto molas mais macias ajudam em pistas irregulares onde você pode encontrar meios-fios e saltos.
+1729|Para aproveitar o recurso Racebreaker, você precisa instalar Óxido Nitroso no seu carro. Pegue um sistema N2O em qualquer loja de performance ou Megalow Parts da cidade.
+1730|Quer salvar seu progresso^no jogo no seu perfil?
+1731|Requisitos do contrato cumpridos
+1732|Acabei de saber de um fotógrafo que está na cidade, vindo da %s. Estou levantando onde ele vai fotografar a capa do mês que vem. Vá até a estrela que estou enviando ao seu mapa. Assim que eu tiver o local dele, te ligo.
+1734|Motor estourado!
+1735|Protegido por senha?
+1736|Ler mensagem
+1737|Você saiu na capa de uma revista. Vá dar uma olhada!
+1738|Quer remover este decalque?
+1739|Desbloqueios de DVD
+1741|A garagem é o lugar para guardar e modificar seus carros.
+1743|Novos capôs acabaram de chegar!^Garanta os designs de capô mais recentes agora em qualquer Oficina de Carroceria Bayview.
+1744|Redução de Peso
+1745|Troca Perdida!
+1747|Posição
+1748|Criar um novo perfil
+1749|Resultados da Corrida Única:
+1750|Grana Ganha:
+1751|Digite o Nome
+1752|Corrida da URL
+1753|E aí Rachel
+1754|Tempo do Quarto de Milha: %s^Velocidade do Quarto de Milha: %$3.2f MPH
+1755|Ver Capas de DVD
+1757|TIPO 3 BICO ESQUERDO DO CAPÔ
+1758|Seleção de Pista
+1760|Se quer ser o rei das sprints, é bom saber tomar decisões rápidas. Errou uma curva aqui e já era. Fica tranquilo, a gente espera você na linha de chegada.
+1761|Corrida sprint exige reflexos rápidos, meu amigo. Um movimento errado e já era. Boa sorte, você vai precisar. Vou enviar o mapa para o seu SMS.
+1762|E aí, mano, a gente vai de sprint nesta corrida. Se você e essa pilha de sucata chegarem à linha de chegada, me acorde para eu pegar minha grana. Assim que você entrar, eu te envio o percurso.
+1763|Regras de sprint para esta. Como o que você dirige equivale ao andador de uma velhinha, talvez seja melhor já entregar sua grana agora.
+1764|Ah, cara, esta corrida é uma sprint, não uma tartaruga. Talvez você devesse ligar para a Rachel e pegar um carro de verdade emprestado para eu ter pelo menos um pouco de concorrência.
+1765|Olha só quem o gato trouxe! Você sabe que aqui a gente não está jogando videogame, mano. Esta aqui é grana de verdade e eu sou quem vai levar. Vou ficar esperando na linha de chegada de pé para cima. Tente chegar lá antes que eu durma.
+1766|E aí, craque? Ouvi umas coisas boas sobre você. Por que não coloca algumas notas na mesa e prova? De jeito nenhum vou te respeitar até você me mostrar habilidade.
+1767|Cara, esse seu carro está doente... e não de um jeito bom. Alguém chame um médico porque ele precisa de cuidados sérios. Tenho que te dizer: não sei se dá para salvar.
+1768|Com esse carro lamentável, a gente precisa fazer uma festa da pena para você. Que tal eu te derrotar nesta corrida e depois a gente fazer uma festa na linha de chegada e chorar por essa sucata que você chama de carro.
+1770|Modo de Áudio:
+1771|Patrocinador Um
+1772|Patrocinador Dois
+1773|%s convidou você para o bate-papo por voz.
+1774|O balanço de freio controla quanto os pneus dianteiros frenam em relação aos traseiros. Ajuste o controle deslizante para calibrar o balanço de freio para a frente ou para trás. Mudar o balanço de freio altera o quanto seu carro consegue virar ao frear.
+1777|Visualizando Recompensas
+1779|Detecção de Colisão
+1780|TIPO 2 BICOS DOS DOIS LADOS DO CAPÔ
+1781|Não Linear
+1782|Remover
+1784|Novos turbos já em estoque em todas as Lojas de Performance Bayview e Megalow Parts. Garanta o seu hoje.
+1785|Drift Colossal!
+1786|TIPO 1 BICOS DO LADO ESQUERDO
+1787|HIDRÁULICA NÍV. 1
+1788|Enviar Reclamação
+1789|Baixando Termos e Condições ...
+1790|Bloqueando %s ...
+1791|Desafio Outrun Aceito^Despiste Eles!
+1792|Baixando Notícias ...
+1793|Reprise
+1794|Vice-campeão de Drift
+1795|Volta
+1797|Quer entrar na Oficina de Carroceria?
+1798|Vinis
+1799|Pneus Pro Performance
+1802|Mensagem de Celular Recebida
+1803|PULSO MAGENTA
+1806|Fala, cara, a obra na estrada para Coal Harbor foi liberada. Dizem que está rolando uma corrida boa lá em cima. Não deixe de conferir.
+1807|V3 TUDO MENOS CAPÔ DIREITO PURGE
+1808|Sua conta foi bloqueada pela Electronic Arts.^Entre em contato com o suporte ao cliente da EA.
+1809|Sair da corrida agora encerrará esta sessão e você receberá uma derrota e uma desconexão. Tem certeza de que quer sair?
+1810|Selecionar
+1814|Total de Pontos: %d
+1817|DUOCOR C
+1818|DUOCOR D
+1819|Downpipe de Diâmetro Maior
+1820|Pinças de Corrida de 6 Pistões
+1822|Designs de retrovisores difíceis de encontrar já disponíveis. Os designs de retrovisor mais raros do planeta estão disponíveis agora em todas as Oficinas de Carroceria Bayview.
+1823|Ver Mapa da Pista
+1825|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Bayview's Best! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+1826|1 Corrida de Drift^1 Corrida de Drag^1 Corrida de Circuito
+1828|Quer selecionar este kit de carroceria?
+1829|TIPO 3 BICO DA RODA DIREITA
+1830|O jogo em que você está tentando entrar não existe mais
+1832|Loja de Gráficos Bayview
+1833|Criar Nova Sessão de Jogo
+1834|TIPO 2 TODOS OS BICOS
+1835|O anfitrião pediu para reiniciar a corrida.
+1836|Cada carro tem um ponto de troca ideal. Aprenda onde ficam os pontos de troca perfeita do seu carro em cada marcha e ganhe um impulso extra de velocidade durante a corrida.
+1837|Downforce Aerodinâmico {83} Downforce geral demais fará seu carro reagir com mais força a irregularidades e meios-fios, então encontre um equilíbrio entre aderência e dirigibilidade.
+1838|CLÁUSULAS DO CONTRATO:^O piloto deve vencer 5 corridas da URL, 3 corridas à escolha do patrocinador e 19 corridas adicionais à escolha do piloto.^^REQUISITOS ADICIONAIS:^Montar um carro que apareça em 2 capas de DVD.^^BÔNUS:^Veículo de cortesia da concessionária Bayview.
+1839|CROSSOVER MÉDIO
+1840|Online
+1841|Classificação Visual em Estrelas
+1842|Wet Shot de Óxido Nitroso
+1843|perfil
+1845|%s bloqueou seu pedido de amizade!
+1847|^Capa de revista concedida por vencer seu 16º Evento Mundial na Fase 4!
+1848|Você já leu a respeito, agora coloque no seu carro. As ECUs mais recentes chegaram e estão disponíveis com exclusividade em todas as Lojas de Performance Bayview.
+1850|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Four on the Floor! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+1851|PULSO VERDE
+1852|SEÇÃO LIMPA
+1853|Garagem
+1854|TIPO 2 BICOS DO LADO DIREITO
+1855|Import Tuner
+1856|Imaginei que você quisesse mudar um pouco as coisas para clarear a cabeça. Não posso te culpar.
+1857|Ouça, quando chegar a Bayview, minha amiga Rachel vai te ajudar. Ela emprestou o carro dela para você. Está no aeroporto esperando.
+1858|Agora ele é o xodó dela, então vá com calma. Boa sorte, cara! A gente se vê.
+1860|O anfitrião removeu você do jogo.
+1861|Expulsando %s do jogo.
+1865|Taxa de Atualização do Reflexo do Carro
+1866|Converse aqui
+1867|Este é o comentário da região 5
+1868|Opções do Jogo em Tela Dividida
+1869|1ª Marcha
+1870|2ª Marcha
+1871|3ª Marcha
+1872|4ª Marcha
+1873|5ª Marcha
+1874|6ª Marcha
+1875|O Login EA não pode ser salvo sem um perfil. Quer criar um perfil?
+1876|Opções de Pista de Corrida Online
+1877|Compartilhar minhas informações com parceiros selecionados da EA?
+1879|Legenda do Minimapa
+1880|CHAMA 1
+1881|CHAMA 2
+1882|CHAMA 3
+1883|^Capa de revista concedida por vencer seu 20º Evento Mundial na Fase 4!
+1884|O nome digitado não é aceitável, digite um nome diferente.
+1885|Atenção!^Você está prestes a enviar esta informação pela rede.^Tem certeza?
+1886|Tem certeza de que quer remover este Amigo do seu EA Messenger e da sua Lista de Amigos do Xbox Live? Quaisquer mensagens não lidas deste Amigo serão perdidas.
+1887|Você digitou um endereço de e-mail inválido.
+1888|Spoilers
+1889|Classificação do Torneio
+1890|Silenciar Todos?
+1891|Alto-falante do Sistema
+1892|Quer dar aquele toque especial extra ao seu carro? Venha e deixe a gente pintar os Detalhes do seu Motor. Mangueiras, cabeçotes e muito mais. Disponível em todas as Lojas Car Specialties Bayview.
+1893|Aerodinâmica
+1895|Você já está dirigindo o seu %s!
+1897|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Underground Speed Zone! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+1898|Instalar Peça
+1899|TECLADO
+1900|Bloqueando pedido de amizade de %s ...
+1904|Giro das Rodas
+1905|Conjunto de Corrida
+1907|Hodômetro Parcial:
+1908|1 Corrida de Drift^1 Corrida Street X^1 Corrida de Drag
+1909|Digite o Nome:
+1911|Prepare seu carro para ser fotografado para o DVD %s. Quando tiver a composição que gosta, tire a foto!
+1912|KO por Volta
+1913|TRIBAL 1
+1914|TRIBAL 2
+1915|TRIBAL 3
+1916|VERMELHO MÉDIO
+1917|VERMELHO ESCURO
+1918|É, está tudo certo. Eu só precisava resolver um probleminha.
+1919|Reiniciar
+1920|É bom você ir direto ao ponto porque esta corrida no asfalto conta para o seu contrato e só a vitória vai valer. Eles estão sempre de olho, então mãos à obra.
+1921|Você sabia que ia começar, então não faça cara de surpresa. Esta curva está escrita no seu contrato, então é melhor entrar em primeiro. Patrocinador não anda com perdedor.
+1922|Drag:
+1923|Hospedar Servidor LAN
+1925|URL
+1926|Vinis únicos exigem as quatro camadas de vinil^quando aplicados ao seu veículo. Todos os outros^vinis atualmente instalados serão^removidos. Quer trocar ou remover este vinil?
+1928|Criar novo arquivo de Configuração de Rede
+1929|Rankings
+1931|Novas cores de faróis disponíveis em todas as Lojas Car Specialties. No momento, todas as marcas e modelos em estoque.
+1933|Seu arquivo de Configuração de Rede foi criado em outro console e não pode ser usado.
+1934|botões direcionais
+1936|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Speed Demons 3! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+1937|OFFSET XIMIAN
+1938|Este filtro não pode ser aplicado agora.
+1939|Embora não tenha todas as peças de desempenho disponíveis, a Megalow Parts vale a visita. Peças e Pacotes têm descontos adicionais em relação às lojas de Performance comuns. Para conseguir boas peças pelos menores preços, visite a Megalow Parts.
+1940|A loja de gráficos é o lugar para personalizar o visual do seu carro. Centenas de pinturas, vinis em várias camadas e decalques podem ser adicionados para criar um carro totalmente personalizado.
+1941|NOME
+1942|Resultados da Busca
+1943|Carregar um perfil fará com que alterações não salvas no perfil atual sejam perdidas. Tem certeza de que quer carregar um perfil?
+1944|Número de Pontos para Vencer:
+1945|TIPO 3 AZUL-CÉU E DOURADO
+1947|^^Capa de DVD concedida por montar um Carro de 4 Estrelas!
+1948|Houve um problema ao enviar as informações do seu carro.
+1949|RÉ
+1950|Você pode posicionar seu carro na zona onde quiser. Quando estiver satisfeito com o setup, tire a foto!
+1951|Desfoque de Movimento
+1952|Distância de Burnout:
+1953|Potência
+1954|Kit de Carbono
+1955|Mudar Marca
+1956|Posição na Corrida
+1957|Entrar no Jogo
+1958|Beleza! Vamos começar esta festa! É o rei do drift e você tem a chance de provar seu valor. Você já sabe como funciona.
+1959|O DRIFT está chegando com tudo! Entra ou sai, porque isto é de verdade. Sem aspirantes, você está no limite então seja rápido. Sim ou não, garoto?
+1960|Só pode ser brincadeira! Você espera vencer com esse carrinho?... Ei, se quiser jogar sua grana fora, fique à vontade, mano.
+1961|Fala, cara, vai rolar e você está na frente da fila no próximo Drift. Pequeno investimento para ganhar uma fama séria. O que me diz?
+1962|Atenção! Instalar este kit widebody com fibra de carbono pode remover alguns vinis.
+1963|Voltar / Ré
+1964|Houve um problema com o hardware de rede.
+1966|Atualizar
+1967|Status de Conclusão da Região:
+1968|Spoiler
+1969|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Modified to the Max! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+1970|Isso
+1972|Ler Agora
+1975|Mova seu carro pela zona até ficar satisfeito com a posição. Quando tiver o que gosta, tire a foto!
+1977|Pronto
+1978|Não existe Conta EA associada a esta Gamertag.
+1980|Agora que você tem um veículo, vá até a minha garagem. Nem perca tempo procurando corridas, não tem nada rolando. Não me faça esperar de novo. Te vejo lá.
+1981|A Gamertag que você selecionou é inválida.^Digite uma Gamertag válida e tente novamente.
+1982|Mensagem SMS de Opções
+1983|LAN Online
+1985|Ajuste de Desempenho / Dyno
+1986|EA Messenger
+1987|Quer trocar seu %s ^por este %s original?
+1988|RECOMPENSA
+1989|Houve um problema ao conectar a EA.COM.^Verifique suas configurações e tente novamente mais tarde.
+1990|Vinil Respingo
+1991|KM/H
+1992|MPH
+1993|^Capa de revista concedida por vencer seu 25º Evento Mundial na Fase 5!
+1994|Entrar no Xbox Live
+1995|Retrovisor Interno
+1997|Quer entrar na Loja de Gráficos?
+1998|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Burning Wheels! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+2000|Rápido!
+2001|Houve um problema ao selecionar esta persona. Quer tentar novamente?
+2002|Nenhum hardware de rede compatível detectado. Sem um adaptador de rede, você não poderá acessar os recursos online deste título.
+2003|Está com dificuldade para vencer corridas? Vá à Megalow Parts e às lojas de Performance pela cidade para comprar upgrades de desempenho para o seu carro. Mensagens SMS avisarão sobre o estoque recém-chegado.
+2004|DINAMARCA
+2005|Resultados Oficiais da Corrida
+2006|CLÁUSULAS DO CONTRATO:^O piloto deve vencer 3 corridas da URL, 3 corridas à escolha do patrocinador e 9 corridas adicionais à escolha do piloto.^^REQUISITOS ADICIONAIS:^Montar um carro que apareça em 1 capa de DVD.^^BÔNUS:^Veículo de cortesia da concessionária Bayview.
+2009|Tem certeza de que quer armazenar este setup ajustado personalizado?
+2010|Opções de Pista de Corrida Rápida
+2011|Houve um problema ao reconectar ao servidor do lobby.^Tente novamente mais tarde.
+2012|Total
+2013|Legenda do Mapa
+2014|Como a Street X é um evento bem novo, só os vencedores atrairão a grana grande dos patrocinadores. A primeira pessoa a fazer nome com isso pode ter um grande pagamento pela frente.
+2015|Fala, mano, esta serve para cumprir uma das suas obrigações com os patrocinadores. Eles colocaram uns caras aqui para ver como você dirige, então não faça nada besta. Se a gente vencer aqui, a gente recebe.
+2016|O burburinho está crescendo sobre o novato da cidade. Posso conseguir uns negócios bons para o futuro se você continuar vencendo. Vamos dar aos patrocinadores algo para se empolgarem.
+2017|Mano, patrocinadores apoiam vencedores. Vencedores vendem produtos para a galera. Vencedores são pagos. A gente precisa ser pago, então vá lá e vença.
+2018|É assim, mano. Ninguém sabe o que esperar da street X, então é a sua chance de brilhar. Chegue em primeiro lugar e os patrocinadores vão notar. Notar significa grana e isso significa um carro melhor.
+2019|Sem tempo para pose. Hoje à noite é a hora de provar a essa galera que você não é caipira. Vença a corrida e a grana começa a rolar. Faça o que você sabe que precisa.
+2020|Acerte na cruzada e os figurões vão ter que reparar. Uma exposição dessas gera grana e todos sabemos que você precisa dela.
+2021|Fala, doido! É a street cross grandona chegando! Chegue ao primeiro lugar e a turma de gravata vai curtir. Um acordo certamente virá deles.
+2022|Nunca parece grande coisa, mas fique claro...se você desrespeitar o X, vai se dar mal. Faça o que sabe e entre em primeiro. O resto vem atrás.
+2023|Dê ao seu carro aquele toque extra de estilo com as novíssimas películas de vidro. Agora disponíveis em todas as Lojas Car Specialties Bayview.
+2024|Molas e Amortecedores Esportivos
+2025|Desculpe, este cadastro não é destinado à sua faixa etária.^Pergunte ao seu pai, mãe ou responsável sobre criar uma conta.
+2026|AMARELO
+2027|Amortecedores Traseiros
+2028|Você mostra potencial como piloto de drag, agora não estrague tudo. Esta corrida envolve os interesses do seu patrocinador, então vamos vencer grande e receber.
+2029|Beleza, mais um pagamento rápido se você conseguir dominar esta corrida. Vença esta e você fica um passo mais perto de encerrar seu contrato. Vamos ver o que você tem.
+2030|Você precisa desta vitória. Um passarinho me contou que o patrocinador está de olho nesta corrida. Resolva esta para continuarmos recebendo.
+2032|Escuta, cara. Você tem que queimar o chão e liderar este drag, porque esta corrida está escrita no seu acordo. Você precisa vencer para que os patrocinadores não duvidem da escolha deles. Vou ficar olhando da linha de chegada.
+2033|Fala, garoto, o drag de hoje te rende uma boa se você largar na frente. Uma vitória conta no seu acordo e te rende uma grana. Você feliz, eu feliz e os patrocinadores felizes.
+2034|Relaxa, mas este drag não é uma corrida qualquer. Ele conta no seu acordo de patrocínio e te rende grana. Se você sair por cima, terá uma preocupação a menos, exceto a grana.
+2035|Vai rolar hoje à noite. Os patrocinadores querem uma vitória e você precisa da grana. Chegue em primeiro e risque mais uma corrida na coluna de vitórias do seu contrato. Vencer traz acordos e acordos te põem sob os holofotes. Mande ver!
+2036|AZUL MÉDIO
+2037|LARGADA ADIANTADA
+2038|Outubro
+2039|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Slammed & Stretched! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+2040|TIPO 2 BICO ESQUERDO DO CAPÔ
+2044|Corridas podem acontecer a qualquer hora, em qualquer lugar
+2045|Ajuste finamente cada aspecto do seu carro
+2046|Aprimore suas habilidades em várias modalidades de pilotagem
+2047|Novas opções de personalização e toneladas de novas peças
+2048|Desafiando o mundo
+2049|Introdução ao Outrun
+2050|Cor do Decalque
+2051|O convite expirou ou foi retirado.
+2052|ATALHO
+2053|Quer evitar perder mais grana? Certifique-se de estar do lado vencedor em qualquer Corrida Outrun futura.
+2054|Quer voltar ao modo exploração?
+2055|Assistência de Troca:
+2056|Adicionar Vinil ao Setup
+2057|Pintar pinças de freio
+2059|Todos os SLOTS DE CARRO PERSONALIZADO estão cheios.^Carros personalizados podem ser excluídos^escolhendo EXCLUIR CARRO PERSONALIZADO na loja de carros.
+2060|PRETO CLARO
+2061|VELOCIDADE DE TRAP:
+2062|Slot 1
+2063|Slot 2
+2064|Slot 3
+2065|Slot 4
+2066|Slot 5
+2067|Slot 6
+2068|Slot 7
+2069|Slot 8
+2070|Ouviu isso? Faça seu carro se destacar da multidão com nossas novíssimas ponteiras de escapamento. Confira a seleção em todas as Oficinas de Carroceria Bayview.
+2071|Esta categoria de desempenho já está original!
+2072|Você já enviou o número máximo de convites!
+2073|VERDE CLARO
+2074|Ocultar
+2075|Loja Dyno
+2076|Corrida de Drift Tandem
+2077|Revista Street Car
+2078|CIANO ESCURO
+2079|AZUL ESCURO
+2080|DOURADO ESCURO
+2081|VERDE-LIMÃO ESCURO
+2082|MAGENTA ESCURO
+2084|Uma senha será enviada ao e-mail informado se for uma conta válida.
+2085|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Straight From the Streets IV! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+2086|Velocidade Máxima:
+2087|Nenhum Jogador encontrado com os critérios de busca.
+2088|Para concluir seu cadastro na EA, preencha o seguinte...
+2089|Áudio do Porta-malas
+2090|Fase %d:
+2091|Alcançar
+2092|Configure suas opções
+2093|Senha
+2094|Prêmio da Corrida
+2095|GPS
+2096|PAÍSES BAIXOS
+2097|Até o seu barco lento pode parecer rápido com Listras de Vinil. Confira a grande variedade de opções em qualquer Loja de Gráficos da região.
+2099|Todos
+2100|Líder da URL
+2101|Sair da Demo
+2102|Total de Pontos:
+2103|Depois de adicionar peças de desempenho ao seu carro, leve-o à pista de teste para ajustar o desempenho. Há pistas diferentes para cada modo de corrida. Faça ajustes no seu carro aqui e prepare-o para ter vantagem em qualquer tipo de evento de corrida.
+2104|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Racing Street Unleashed! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+2105|Tem certeza de que quer bloquear %s ? Você não poderá mais receber mensagens ou convites deste usuário.
+2106|Carros da Carreira
+2107|Remover Limitador de Velocidade Máxima
+2108|Entrar em um jogo ranqueado trocará automaticamente para o carro ranqueado adequado a este modo de jogo. Quaisquer sessões de bate-papo por voz ativas também serão canceladas. Você também pode perder mensagens não lidas e convites de sessão de jogo.
+2110|Personalizar
+2112|Comentário: %s
+2113|Os Utilitários Esportivos adicionam uma nova dimensão às corridas em Need for Speed{82} Underground 2. O peso e o tamanho extras dos SUVs desafiarão o talento até dos pilotos mais experientes.
+2114|Volume de Voz
+2115|ASSUMIU O 1º
+2116|Jogadores Online:
+2118|Banir Jogador
+2119|Art Factory
+2120|Instalar este layout removerá os componentes de áudio^instalados anteriormente. Quer instalar^este layout de áudio do porta-malas agora?
+2121|Esta é uma corrida knockout. O último piloto de cada volta é eliminado. Como você vai ser eliminado primeiro, pode sentar e ver como estas corridas funcionam. Se quiser entrar, eu baixo o mapa para você.
+2122|Fala, mano, a gente vai de corrida knockout nesta. O último piloto de cada volta é eliminado. O último que ficar leva o prêmio, mas acredite, você não vai precisar se preocupar com isso.
+2123|Cara, você precisa acelerar a fundo o tempo todo para vencer uma corrida knockout. Não tem essa de ficar na espreita e atacar no fim. Se você relaxar em qualquer volta aqui, vai se ver eliminado bem rápido.
+2124|E aí, mano? Hoje a gente vai de corridas knockout, então mostre sua grana se quiser entrar. A propósito, você quer ser eliminado na primeira, segunda ou terceira volta?
+2125|Fala, mano, você realmente quer encarar o cara de novo? Eu adoraria pegar leve com você, mas esta aqui é uma corrida knockout e prevejo um KO no 1º round para você hoje.
+2126|Fala, doido! A gente está esquentando as ruas! Se você for metade do que todo mundo diz, vai entrar. Qual é a resposta, mano? Não temos a noite toda!
+2127|Tipo, quêêê! Pare de enrolar e resolva! Prepare o punho para uma corrida Knock Out. Se você não sabe o que é, é melhor sair fora. Se entrar, você recebe o mapa do percurso. Sim ou não?
+2128|KNOCK OUT! Isso mesmo! É exatamente o que vai acontecer com você se correr nesta corrida. Entra ou arrega?
+2129|A gente vai com TUDO! Corrida Knock Out vai rolar e você está convidado. Pare de latir e se posicione!
+2131|Atual
+2132|Acabou de chegar! Retrovisores insanos disponíveis para personalizar o visual do seu carro. Disponíveis para todas as marcas e modelos em todas as Oficinas de Carroceria Bayview.
+2133|Drift:
+2135|Selecionar configuração de rede
+2136|O Cartão de Memória no Slot A foi removido^ ou substituído. Quer continuar^ com o Salvamento Automático ativado?
+2137|No modo online há seis slots de carro reservados para jogos ranqueados, cada slot está vinculado a um modo de jogo. Ao entrar em um jogo ranqueado você será trocado automaticamente para o carro ranqueado adequado àquele modo
+2138|Criar Nova Conta
+2139|CROSSOVER GRANDE
+2140|Não Aceito
+2142|Patrocínios
+2143|CROSSOVER PEQUENO
+2144|Detalhe do Reflexo do Carro
+2145|Agora você pode tirar uma foto do seu carro e aparecer na capa de uma revista.
+2147|^^Capa de DVD concedida por montar um Carro de 5 Estrelas!
+2148|Falha ao baixar os Termos e Condições do EA Online
+2150|Atenção! Instalar um capô personalizado removerá quaisquer decalques do capô.
+2151|Aguardando %d segundos pelos resultados
+2152|Vitória no Outrun
+2153|Houve um erro de comunicação com o servidor.^Tente novamente mais tarde.
+2154|OCULTAR
+2155|Moderado
+2156|Aprenda a fazer curvas bem para ter sucesso nas corridas Street X. Carros com boa dirigibilidade se darão melhor nestas pistas técnicas e fechadas.
+2158|Salvar Configurações
+2159|Faça seu carro brilhar! Impressione as garotas com neon interno novo. Garanta o seu em qualquer Loja Car Specialties Bayview hoje.
+2160|BATIDA NO TRÂNSITO
+2161|Silenciar Bate-papo por Voz
+2162|Aceitando convite de %s ...
+2163|Julho
+2164|Junho
+2166|Perolado
+2168|ASSUMIU O 3º
+2169|VÁCUO
+2170|Muito Longe
+2173|Você excedeu o limite de novos carros que pode personalizar.^Edite seus carros existentes ou exclua-os pelo menu PERSONALIZAR CARRO acessado no Menu Principal.
+2176|Bem-vindo à Loja de Performance Bayview, unidade El Norte. Todas as peças liberadas na Megalow Parts também estão disponíveis aqui.
+2177|ESCÓCIA
+2178|Tempo de Corrida
+2179|Média de Pontos de Reputação por Corrida na Fase Atual
+2180|Borrão
+2181|Faísca
+2182|Comprar Setup
+2183|Planeje cada drift em pistas orgânicas levando em conta o sentido do tráfego. Derrapar na faixa externa é arriscado por causa da probabilidade de tráfego em sentido contrário.
+2184|Status Geral
+2185|Entrar na Pista de Ajuste de Desempenho / Dyno cancelará quaisquer sessões de bate-papo por voz ativas. Você também pode perder mensagens não lidas e convites de sessão de jogo. Quer continuar?
+2186|Descontos em Pacotes de Desempenho
+2188|Seu convite para %s expirou.
+2189|Modified to the Max
+2190|Kit de Troca Curta
+2191|Genérico
+2192|A mais recente seleção de Vinis Respingo acabou de chegar. Personalize seu visual. Garanta o seu hoje à noite em qualquer Loja de Gráficos.
+2194|SELECIONAR
+2195|Detecção de Colisão:
+2197|Próximo
+2198|Slot
+2199|Corridas Street X
+2201|Molas Traseiras
+2202|Opções do Modo de Corrida Rápida
+2204|Dirigir Com:
+2206|E aí, linda
+2207|Desconto de 10 por cento

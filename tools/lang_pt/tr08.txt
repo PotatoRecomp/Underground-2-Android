@@ -1,0 +1,455 @@
+3253|Olha só! Isso
+3254|Nada disso, mano
+3255|Então VOCÊ
+3256|É isso aí.
+3257|Você não
+3258|START
+3259|Deixe amigos e inimigos saberem quem está chegando colocando as luzes mais recentes no seu carro. Novas cores disponíveis agora em todas as Lojas Car Specialties.
+3260|SUICÍDIO
+3261|Alternar Câmeras
+3262|Personalize seus controles de direção no menu de opções. Escolha o setup que melhor combina com seu estilo de pilotagem. Selecione transmissão automática ou manual e ative o controle de estabilidade.
+3263|Entrando no jogo '%s'...
+3264|Todos os nomes de Conta EA associados a este e-mail serão enviados em breve.
+3265|Instruções do Minimapa
+3266|Fase%d - %s Lojas Ocultas Descobertas:
+3267|Convidado por:
+3268|Tribal
+3269|Resultados do Evento
+3270|ALPINE 1 LCD - 5,5 POL
+3271|Inicializando a rede ...
+3273|Conjunto Tribal
+3274|Status da Introdução
+3275|AMARELO PÉROLA ESCURO
+3277|Tem certeza de que quer parar de jogar Online? Todas as mensagens não lidas podem ser excluídas e todos os desafios pendentes serão revogados.
+3279|Após remover os jogadores não prontos, não há jogadores suficientes para iniciar o jogo!
+3280|Você precisa instalar todos os upgrades de motor, ECU e turbo de nível 3 para acessar o neon do motor.
+3281|Altura da Suspensão {83} Uma altura muito baixa recompensa o piloto disciplinado, desde que ele evite irregularidades e meios-fios que podem facilmente desequilibrar o carro.
+3282|Volume:
+3283|PRETO ESCURO
+3285|Filtro de Combustível
+3286|Direto de além-mar! As ECUs personalizáveis mais recentes já estão nas prateleiras de todas as Lojas de Performance Bayview e lojas Megalow Parts.
+3287|Único
+3289|CORAL ESCURO
+3290|VERDE ESCURO
+3292|Brilho Excessivo
+3293|Mensagens SMS de novas peças
+3294|Capas de DVD:
+3296|Criar Partida
+3297|E aí, Rachel! Opa, você não é a Rachel. Tanto faz para mim. Se quiser correr com a gente e tiver a grana, está dentro. Acerte com a Rachel depois. Duas voltas. O primeiro a cruzar a linha leva a grana. Topa?
+3298|Mano, você chega até nós no carro da Rachel e acha que é o tal? Vai precisar de mais que um conjunto de rodas bonito para provar que você pertence aqui. Pegue sua grana e vamos começar. Duas voltas. O percurso será baixado para o seu mapa.
+3299|Tem certeza de que quer sair de volta para o Modo Exploração?
+3301|BURNOUT
+3302|Você tem jogadores demais na sua lista de bloqueados!
+3303|As molas determinam a maciez ou rigidez geral do seu carro. Use os controles deslizantes para ajustar a rigidez das molas dianteiras e traseiras. Experimente molas rígidas para pistas lisas e molas macias para pistas com meios-fios e saltos.
+3304|MELHOR PONTUAÇÃO DE DRIFT:
+3305|Instalar este capô removerá os decalques de capô^atualmente aplicados. Comprar e instalar esta peça agora?
+3306|Revista Power
+3307|Adicione um upgrade de Óxido Nitroso ao seu carro para aproveitar o novo recurso Racebreaker. Dirigir com estilo adiciona N2O extra ao seu medidor e pode ser reabastecido durante a corrida para mais velocidade.
+3308|Pista Curta
+3309|Você precisa estar em uma sala de jogo para enviar um convite de jogo.
+3310|Você precisará dar um nome ao perfil^que quer salvar.
+3311|Se você cancelar a conexão com o servidor do lobby, ficará offline e voltará ao menu principal.^Tem certeza de que quer fazer isso?
+3312|Jogador 1
+3313|Jogador 2
+3314|Desculpe, estes vinis não estão disponíveis com peças widebody de Fibra de Carbono.
+3315|Se você estiver atrás do seu adversário em uma corrida outrun, a melhor estratégia é ficar um pouco para trás para poder reagir a curvas rápidas e mudanças de direção. Espere um trecho de pista sem curvas para tentar a ultrapassagem.
+3320|Neon Underglow
+3322|Recém-saídos do circuito de feiras, temos em estoque os designs de faróis mais recentes para o seu carro. Garanta o seu em qualquer Oficina de Carroceria Bayview.
+3324|Analógico Esquerdo
+3325|Regulador de Pressão de Combustível
+3326|Clima
+3327|Multivolta
+3328|Líder
+3330|Dezembro
+3331|Menu Principal do Xbox Live
+3332|TIPO 3 BICOS DO LADO ESQUERDO
+3333|O jogo falhou ao iniciar. Tente criar ou entrar em outro jogo.
+3334|Downforce Dianteiro
+3335|Eventos Ocultos
+3336|Procure uma das Oficinas de Carroceria no distrito Hotel Plaza. Procure a luz amarelo-esverdeada e a grande placa azul da Oficina de Carroceria.
+3337|HIDRÁULICA NÍV. 3
+3338|Entrar nesta sessão de bate-papo por voz encerrará a atual. Quer continuar?
+3339|JOGADOR
+3340|O servidor rejeitou os resultados da última corrida.^Ou o jogo expirou ou^os resultados são inválidos.
+3341|Ajuste Personalizado
+3342|A peça que você está tentando aplicar já está instalada!
+3343|[Mensagem privada]
+3344|Capa de DVD Underground Speed Zone
+3345|Entrada de data
+3348|Porta Esquerda
+3349|Quer este %s original?
+3351|Selecionar Evento
+3352|Você pode personalizar seu jogo ao jogar online. Use o sistema de filtros para exibir apenas os jogos adequados a você e à sua habilidade de corrida.
+3354|A curva de torque da ECU é um gráfico que mostra a quantidade de potência que o motor produz ao longo da faixa de RPM. Ajuste o formato da curva para levar a potência à faixa de RPM que você mais usará em uma corrida.
+3355|Recuperação de Conta
+3356|Melhor Tempo:
+3358|Exiba seu orgulho nas portas e deixe todos saberem de onde você vem com os Vinis de Bandeira mais recentes. Uma grande variedade está disponível em todas as Lojas de Gráficos.
+3360|Difícil
+3361|Gritando
+3362|Você Venceu o Outrun!
+3363|Patrocinador Três
+3364|Uma das Oficinas de Carroceria fica no distrito de Fort Union. Procure a luz amarelo-esverdeada e a grande placa azul da Oficina de Carroceria.
+3367|O outro jogador foi prestativo com você, durante um jogo ou simplesmente enquanto conversava online.
+3369|Houve um erro ao inicializar o adaptador de rede.
+3370|Armazenamento de Peças de Desempenho
+3371|Câmeras de Destaque:
+3373|Acessando. Não toque no Cartão de Memória no Slot A nem^ no botão POWER.
+3375|Mensagens de Celular Recebidas
+3376|Corrida de Drift
+3377|Aguardando
+3378|TAILÂNDIA
+3379|AMARELO ESCURO
+3380|Ao dirigir um carro com transmissão manual, reduza uma marcha para diminuir a velocidade antes de entrar na curva. Se feito corretamente, você pode reduzir a velocidade o bastante para nem precisar frear.
+3382|Coloque no seu carro os designs de roda mais insanos. Novos estilos e novos tamanhos acabaram de chegar a todas as Oficinas de Carroceria Bayview.
+3383|Vibração
+3385|A corrida terminou porque não há jogadores suficientes para continuar.
+3386|Discos de Grande Diâmetro
+3388|Cansou do seu carro? Troque-o por outro em qualquer concessionária. Lembre-se: ao trocar um carro, você também perde todas as peças compradas para ele.
+3389|Sair do Ajuste
+3390|Procurando Jogos
+3392|Fique de olho na Oficina de Carroceria em Beacon Hills East. Ela fica escondida atrás da Cafeteria.
+3394|Vice-campeão de Street X
+3396|TIPO 2 AZUL-CÉU E DOURADO
+3397|Escolher Cor do Mostrador
+3400|Volume da Música do Jogo
+3401|Ativar Filtro
+3402|Você deve ser o anfitrião de uma sala de jogo PRIVADA para enviar convites de jogo!!
+3403|Escolher Peças Individuais
+3404|O minimapa pode ser configurado para ficar fixo ou girar durante a direção ou corrida. Personalize a função do mapa para os modos Exploração e Corrida acessando as opções de Jogabilidade no menu de Pausa.
+3405|Impulso de Nitro
+3406|Encontre seu caminho até eventos de corrida e lojas com a ajuda do sistema de GPS. Acesse-o pressionando para a esquerda no HUD de SMS. Depois de selecionar o destino, volte ao jogo e siga a seta azul.
+3407|Racismo / Discurso de Ódio
+3408|A mensagem foi digitada rápido demais para ser processada. Tente novamente.
+3410|2. BÔNUS
+3411|Classe de Ranking
+3414|Maiores Pontos de Drift
+3415|Ver Patrocinadores Assinados
+3416|Agora oferecemos pintura personalizada para todos os modelos de pinças de freio. Venha hoje a qualquer Loja de Gráficos Bayview e confira as cores mais recentes.
+3417|VOLTA LIMPA
+3418|Ganhe %dX com:
+3419|^^Capa de DVD concedida por montar um Carro de 6 Estrelas!
+3420|Retomar Carreira
+3421|Mês
+3422|Não foi possível autenticar o ID de usuário e a senha. Verifique sua configuração de rede e tente novamente.
+3423|Peças Liberadas
+3424|Uma Loja Car Specialties pode ser encontrada na área de Coal Harbor East da cidade. A entrada do prédio fica nos fundos. Procure a luz verde para achar a entrada da garagem.
+3425|CIANO PÉROLA ESCURO
+3426|AZUL PÉROLA ESCURO
+3427|DOURADO PÉROLA ESCURO
+3428|VERDE-LIMÃO PÉROLA ESCURO
+3429|MAGENTA PÉROLA ESCURO
+3430|Assunto: Veja a Capa do Seu DVD
+3431|Fala, craque, topa uma corrida de faixa rápida em curta distância? É GRANDE e vai rolar num percurso X daqui a dois segundos.
+3432|E aí, mano? Sempre se achando. Ponha sua grana onde está sua boca e entre nesta street X maluca. Quer entrar ou não?
+3433|É o X GRANDE chegando com tudo! Se quiser correr, é melhor agora! Se ficar, é melhor entrar na jogada. Agarre o volante e entre na fila.
+3434|Fala, doido, a gente vai dobrar umas curvas curtas e você está convidado a participar. Não vai durar, então seja rápido.
+3435|Você deve estar aqui por um motivo, e é perder. Prepare-se para levar uma surra da street X. Um mapa será disparado para você. Tente não ser atropelado.
+3436|Trocar Carro
+3437|Pista
+3438|Opções de Filtro
+3441|Você quer mesmo trocar seu carro de patrocinador?^Você perderá todos os extras e só receberá 80 por cento do custo.
+3442|Armazenamento de Peças
+3443|Não foi possível estabelecer a conexão com seu provedor. Verifique o adaptador de rede, a conexão e/ou a configuração de rede e tente novamente.
+3444|Sair para o Menu Principal?^Todo o progresso não salvo da corrida será perdido.
+3445|O nome de persona que você digitou contém caracteres inválidos. Tente outro nome.
+3446|Reverter Kits ao Original
+3447|Na versão completa de Underground 2, a loja de pintura é o lugar^para dar aquele toque pessoal ao seu carro. Faça seu carro^se destacar da multidão com uma pintura especial ou um vinil^personalizado irado. Você também pode vir aqui para aplicar o decalque^da sua marca favorita no carro.^^Aqui está uma pequena amostra de cores e estilos de pintura que^você pode aplicar ao seu carro.
+3448|OFFSET TWISTER
+3451|Usar Conta Existente
+3453|TIPO 1 BICO DA RODA DIREITA
+3457|Seja o primeiro da sua turma a exibir os designs de retrovisor lateral mais recentes direto da fábrica. Quantidades limitadas disponíveis em qualquer Oficina de Carroceria Bayview.
+3458|O pedido de amizade foi cancelado.
+3461|Óxido Nitroso  {83} Ajuste seu Nitro para ser mais potente em corridas curtas ou durar mais em corridas longas.
+3464|Ver Carro
+3465|As Relações de Marcha determinam a taxa de aceleração e a velocidade máxima que você consegue em cada marcha. Mude cada relação de marcha ajustando seu controle deslizante.
+3466|Barras Estabilizadoras {83} Barras mais macias permitem que o carro role e transfira seu peso mais lentamente. Barras mais rígidas dão ao carro uma sensação de kart, mas não perdoam em irregularidades e meios-fios.
+3467|Tempo Atrás
+3468|Procure a Oficina de Carroceria na área de Coal Harbor West, na seção Industrial. Uma luz amarelo-esverdeada indica a entrada da loja.
+3469|Setembro
+3470|Para ligar ou desligar o retrovisor interno durante o jogo, selecione Opções e depois Jogabilidade no Menu de Pausa.
+3472|Pós-Corrida
+3473|Outro jogador está atrapalhando a experiência de jogo gritando em uma sessão de voz ou bate-papo.
+3474|A oficina de carroceria é um ótimo lugar para melhorar o visual do seu carro e aumentar sua classificação visual em estrelas. Uma classificação visual alta permite cumprir algumas tarefas da carreira e se traduz em grana extra pelas capas de revista.
+3475|Que carro lindo você acabou de pegar! Tem um fotógrafo que^quer tirar uma foto do seu carro para a capa de uma revista de tuning. O^local dele está marcado com uma estrela amarela no seu minimapa.
+3477|A sessão de jogo não está mais disponível.
+3479|ACIDENTE EVITADO
+3480|OFFSET NORDESTE
+3481|CORRIDA LIMPA
+3482|Retrovisor interno
+3483|Legenda do Minimapa
+3484|Estilos de Roda
+3486|Verificando conta
+3488|Acabou de chegar! Novas cores de neon para personalizar o visual do seu carro. Não fique com o mesmo visual cansado. Vá à Loja Car Specialties mais próxima para garantir o seu hoje.
+3489|Aderência dos Pneus Traseiros
+3490|A Gamertag que você selecionou está reservada.^Digite outra Gamertag e tente novamente.
+3491|Lobby LAN
+3492|Fala, mano, entre para pegar suas peças únicas.
+3493|Bem-vindo à Loja de Performance Bayview, unidade Beacon Hill West.^Você liberou o acesso aos upgrades de desempenho de nível Street em Redução de Peso, Pneus e Freios.^Todas as peças liberadas em outras Lojas de Performance e na Megalow Parts também estão disponíveis aqui.
+3494|Vá à Garagem...Agora!
+3495|Estatísticas do Carro
+3496|Carros Novos
+3497|Uma das Oficinas de Carroceria fica na área de Coal Harbor East, na seção Industrial. Uma luz amarelo-esverdeada indica a entrada da loja.
+3498|cartão de memória (PS2)
+3501|Cancelar Pedido de Amizade
+3502|Resultados da Corrida do Torneio
+3503|Sair para a Garagem?
+3505|Assunto: Oportunidade de Capa de Revista
+3506|^^Capa de DVD concedida por montar um Carro de 7 Estrelas!
+3508|TIPO 3 AZUL-CÉU E MAGENTA
+3509|Fala, cara, tem muita corrida na cidade hoje à noite. Enviei para o seu mapa todos os locais de encontro que conheço. Ouvi boatos sobre outras corridas, mas não sei o local exato. Fique de olho.
+3510|Esta sessão de jogo não está mais disponível. Atualizando Lista de Sessões de Jogo.
+3511|Prévia
+3514|Menos
+3515|Mais
+3517|Macio
+3518|Fraco
+3520|Tempo Parcial:
+3521|Você sabe o que tem que fazer, garota. Eu não
+3522|Eu não vou
+3523|Não
+3524|Não me decepcione, estou contando com você, Nikki!
+3526|URL:
+3527|Bem-vindo à Loja de Gráficos Bayview, unidade Coal Harbor East.^Você liberou o acesso a categorias adicionais de Pintura e novos Vinis.^Todas as peças liberadas em outras Lojas de Gráficos também estão disponíveis aqui.
+3528|Novos upgrades de Motor já estão disponíveis para todas as marcas e modelos. Ganhe mais potência no seu carro adicionando o que há de mais moderno em tecnologia de corrida em qualquer Loja de Performance Bayview ou Megalow Parts.
+3531|^Capa de revista concedida por vencer seu 20º Evento Mundial na Fase 5!
+3532|TIPO 1 BICO DIREITO DO CAPÔ
+3533|Você não pode pintar spoilers de fibra de carbono ou alumínio
+3534|O servidor não conseguiu expulsar este jogador do jogo.
+3535|km/h
+3536|mph
+3537|Voltar ao Mapa do Mundo?^Todo o progresso não salvo da corrida será perdido.
+3539|Selecionar Marca
+3540|Pneus Street Performance
+3541|Carros Originais
+3543|Meus Carros
+3544|INGLATERRA
+3545|Houve um erro no servidor ao obter os rankings mensais.
+3546|Líder de Drag
+3547|É, é. Você arrasou lá fora, mas lembre-se de que foi só um gostinho: você precisa continuar vencendo para ficar.^^ As pessoas estão
+3548|As pessoas estão
+3550|Vencedor!
+3551|TIPO 2 AZUL-CÉU E VERMELHO VIVO
+3552|Não existe um arquivo de Configuração de Rede utilizável no^cartão de memória (PS2) no slot de CARTÃO DE MEMÓRIA 1.
+3553|Vitórias %
+3554|Aguardando os resultados finais da corrida...
+3555|JOGABILIDADE
+3556|Requisito do contrato concluído
+3557|Revista Um
+3558|Revista Dois
+3559|Volante do Motor Leve
+3562|PONTUAÇÃO:
+3564|Tração
+3565|Vídeo
+3566|Volante
+3567|Os nomes, emblemas e designs de carroceria de Mitsubishi, Eclipse e Lancer Evolution são marcas registradas e/ou direitos de propriedade intelectual da Mitsubishi Motors Corporation e usados sob licença^pela Electronic Arts Inc.^^"NISSAN" e os nomes, logotipos, marcas e designs dos produtos NISSAN são marcas registradas e/ou direitos de propriedade intelectual^da NISSAN MOTOR CO., LTD. e usados sob licença^pela Electronic Arts Inc.^^Os nomes, emblemas e designs de carroceria de SUBARU, IMPREZA, WRX e STi são propriedade da Fuji Heavy Industries Ltd.^^Os nomes e logotipos de todas as empresas de peças automotivas de pós-venda são^marcas registradas de seus respectivos proprietários e são usados^com permissão. Todas as outras marcas registradas são propriedade^de seus respectivos proprietários.^^{a9} 2004 Electronic Arts Inc. Todos os direitos reservados.
+3568|Quer salvar este DVD?
+3569|%s já está na sua sessão de jogo
+3570|Tem certeza de que quer sair do Xbox Live? Todas as mensagens não lidas podem ser excluídas e todos os convites e pedidos de bate-papo por voz pendentes serão revogados.
+3571|Pegue novos vinis para o seu carro aqui. Você poderá^escolher entre uma enorme biblioteca de padrões, além de alguns vinis^personalizados insanos que podem ser sobrepostos em inúmeras^combinações.
+3573|Coletores de Alto Fluxo
+3574|Jogador Dois Pressione o botão START
+3575|Desbloqueios
+3576|TIPO 3 BICOS DAS DUAS RODAS
+3577|Abortado
+3578|Abrir/Fechar Capô
+3579|Convidando %s para jogar ...
+3581|Você foi o último!
+3582|Hidráulica
+3585|Permitir apenas jogadores que entram com o mesmo ranking
+3586|Desculpe, estes vinis não estão disponíveis com peças de carroceria de Fibra de Carbono.
+3588|Nível de Trânsito
+3590|Obtendo estatísticas do servidor.
+3592|Suas configurações mudaram. Quer^salvá-las no seu perfil?
+3593|Vinis únicos exigem as quatro camadas de vinil^quando aplicados ao seu veículo. Todos os outros^vinis atualmente instalados serão^removidos. Tem certeza de que quer aplicar^ este vinil ao seu veículo?
+3594|Quer correr neste evento?
+3595|Mudar Peças de Desempenho
+3596|^Capa de revista concedida por vencer seu 11º Evento Mundial na Fase 4!
+3597|Carros Ranqueados Online
+3599|Drift Insano
+3600|Prorrogação^Desafio Outrun Aceito^Despiste Eles!
+3601|Você foi desconectado deste jogo por ficar tempo demais no menu de pausa.
+3602|A Loja de Gráficos de Beacon Hills East fica logo ao norte da ponte que leva a Beacon Hills. Procure a luz vermelha.
+3604|Criar Nova Conta EA
+3605|Voltar ao Original
+3606|Instalado
+3608|Status do Evento
+3609|Cancelando convite de jogo para %s ...
+3612|Quer comprar a possibilidade de converter para Fibra de Carbono quaisquer Para-choques Dianteiros/Traseiros e Saias Laterais instalados neste carro? Isso fará com que alguns vinis sejam removidos do seu carro.
+3613|Câmeras de Salto:
+3614|Tem certeza de que quer desconectar e parar de jogar Online? Todas as mensagens não lidas podem ser excluídas e todos os desafios e pedidos de bate-papo por voz pendentes serão revogados.
+3615|Mensagens não lidas
+3616|Pressione o botão START
+3618|Entrando no Xbox Live
+3619|Street X:
+3621|Quer aplicar esta pintura ao seu veículo?
+3622|Pintura Base
+3623|Entrada de Ar do Teto
+3625|Você perdeu a conexão com o provedor. Verifique se o adaptador de rede e o cabo de rede estão conectados. Você voltará ao menu principal.
+3626|Observe os prédios perto da entrada de Jackson Heights e você encontrará a Loja de Gráficos. Um pouco afastada da rua, é preciso olhar com atenção para localizar a entrada.
+3627|Você perdeu a conexão com o anfitrião, ou o anfitrião saiu do jogo.
+3628|Street X é demais, mano: seu carro é melhor ter uma suspensão incrível para aguentar os g que você vai puxar nestas pistas. Quer entrar? Eu envio o mapa da pista.
+3629|E aí, maluco? Vai correr uma Street X com a gente? Então fique no fim do pelotão e veja como se faz. Eu ficaria chateado se machucasse um viciado como você. Vou te mandar o mapa para você ficar fora do caminho.
+3630|Ei, ei, ei. Você realmente vai trazer essa lata-velha lamentável para a minha pista Street X? Você sabe que tem que dirigir ela na pista, não empurrar, né? Quer ver o mapa da pista antes de pôr sua grana?
+3631|Que tal você me dar sua grana agora, antes da corrida? Quero garantir que minha riqueza nova tenha tempo de se acostumar com o novo lar permanente dela no meu bolso.
+3632|Cara, essa pilha tem cinto de segurança? Se tiver, você vai precisar, ou vai ser arremessado do carro. Esta é a Street X e é pura ferocidade. Você vai puxar uns g sérios se quiser participar.
+3633|Fala, cara: você sabe que isto é uma corrida de carros, não coisa de charrete, né? Carros são os que fazem vrum vrum. Talvez seja melhor você ficar de fora desta até se acostumar com essas carruagens chiques sem cavalos.
+3634|Funciona assim: eu vou te bater direitinho e, quando você finalmente chegar ao fim, me acorda da soneca para eu receber. Tenho certeza de que vou estar bem cansado de esperar por você na linha de chegada. Fechado?
+3635|Vou te passar o serviço. A gente corre, eu venço, você me dá sua grana. A gente pode pular a humilhação se você preferir entregar a grana agora. O que me diz?
+3636|Fala, doido! Você está com sorte. A Street X está para começar e precisamos de mais um otário. Está pronto para levar uma surra ou o quê?
+3637|Falha ao atualizar e executar o filtro por algum motivo.
+3638|Diferencial
+3639|Seleção de Modo de Tela Dividida
+3640|Amortecedores Dianteiros
+3641|Excluir Carro Ajustado
+3642|Status da Carreira
+3643|TODAS AS PONTUAÇÕES DE VOLTA
+3644|Bomba de Combustível de Alto Fluxo
+3646|Tem certeza de que quer excluir esta mensagem?
+3649|Comando de Válvulas Suave e Engrenagens
+3650|Velocidade de Trap:
+3651|Derrotas
+3652|Pastilhas de Freio Street Compound
+3653|Capa de DVD Bayview's Best
+3655|Você não pode pintar retrovisores de fibra de carbono ou alumínio
+3656|Lista de Jogadores
+3658|Contrato de Associação
+3659|Vice-campeão de Sprint
+3660|A caixa de entrada do EA Messenger do destinatário está cheia. Esta mensagem não pode ser enviada
+3661|Esta peça é pior do que uma que você já tem instalada.^Quer instalar esta peça?
+3662|A Loja de Gráficos na seção de Coal Harbor East da cidade fica ao lado dos viadutos da via expressa. Procure a luz vermelha para localizar a entrada do estacionamento.
+3663|SUÉCIA
+3665|Seleção de Carro em Tela Dividida
+3666|Esta conta não está atualizada. Você precisa atualizar a conta em Recuperação de Conta.
+3667|Verificando cartão de memória
+3668|Câmera de Salto
+3669|Capôs Únicos
+3670|O carro selecionado no momento é inválido para este jogo, ou as configurações do seu jogo são inválidas. Tente novamente com um carro diferente ou configurações de jogo diferentes.
+3671|Quer instalar este pacote de desempenho?
+3672|Preste atenção às mensagens SMS recebidas. Você costuma receber informações sobre onde acontecem corridas que não aparecem no seu mapa.
+3674|Quer ativar o Salvamento Automático? O Salvamento Automático sobrescreverá arquivos salvos de mesmo nome sem confirmação do usuário.
+3676|Você perdeu a conexão com o provedor. Você voltará ao menu principal.
+3677|^Capa de revista concedida por vencer seu 28º Evento Mundial na Fase 5!
+3681|DUOCOR A
+3682|DUOCOR B
+3683|^Capa de revista concedida por vencer seu 4º Evento Mundial na Fase 5!
+3685|Hora de provar ou calar. Você precisa vencer aqui para os patrocinadores te levarem a sério. Vou enviar o mapa para o seu HUD. Boa sorte.
+3686|Fica tranquilo, a concorrência aqui é dura, mas acho que você consegue vencê-los. Você precisa desta vitória para o seu contrato, então não estrague tudo.
+3687|Fala, cara, a gente precisa vencer esta corrida para cumprir outra cláusula do contrato. Você precisa receber se quiser continuar montando o seu carro.
+3688|Escuta, craque, sei que você tem vencido, mas seu patrocinador está de olho nesta, então você precisa fazer um bom show. Qualquer coisa abaixo do 1º é fracasso.
+3690|É assim: você erra aqui e acabou. Os patrocinadores não brincam quando o assunto é perder. Seja de verdade e dobre-os para continuar no show.
+3691|Você vence e fica tranquilo até a próxima faixa rápida. Patrocinadores observando, então não estrague isso. O mapa vai chegar por SMS: depois{86}
+3692|É melhor você parecer GRANDE, garoto, porque não existe fanfarronice quando se trata dos patrocinadores. Quer deixar esse pessoal de queixo caído, então não tenha piedade. O mapa está a caminho.
+3693|Isto é QUENTE, cara. Patrocinadores circulando por aí avaliando a cena e esta corrida conta para o seu acordo. Você tem que mandar ver lá como se não houvesse fim.
+3694|Xbox Communicator
+3696|Girar
+3697|Armazenamento Car Specialties
+3698|Então você quer este para o seu novo carro de patrocinador?
+3702|A altura da suspensão determina o quão alto o carro fica sobre as molas, o que afeta o centro de gravidade. Use o controle deslizante para subir ou descer o carro. Em geral, um centro de gravidade mais baixo faz o carro responder melhor.
+3707|Você pode ver as capas de DVD e seu patrocinador atual acessando o menu Ver Recompensas no menu da Garagem. Fique por dentro dos requisitos necessários para cumprir seu contrato de patrocínio.
+3708|Quer comprar e instalar este layout de áudio do porta-malas?
+3710|Quer instalar esta peça agora?
+3711|%s foi carregado com sucesso.
+3712|Dispositivo de trapaça detectado! Você deve remover quaisquer dispositivos de trapaça para jogar online.
+3713|OFFSET TYPHOON
+3714|Líder de Sprint
+3715|^Capa de revista concedida por vencer seu 34º Evento Mundial na Fase 5!
+3716|Metálico
+3717|Teste
+3718|Alterando Controles de Direção
+3719|Retomar Corrida
+3720|Repintar
+3722|A corrida terminou porque você perdeu a conexão com o servidor.
+3723|Filtros de Jogo
+3724|%s convidou você para jogar %s
+3727|Dolby Pro Logic II
+3728|Kits Widebody
+3730|Capôs de Fibra de Carbono
+3731|DEBUG
+3732|TIPO 1 BICO DA RODA ESQUERDA
+3733|Você escolheu não Aceitar! Você deve aceitar os Termos e Condições^ para acessar os recursos online deste título.
+3734|Estático
+3735|Jogador
+3736|Loja de Performance Bayview
+3737|DESEMPENHO EM CORRIDA DE DRAG
+3738|V2 TUDO MENOS RODA ESQUERDA PURGE
+3739|Selecione uma configuração de rede no seu arquivo de Configuração de Rede ou crie uma nova. É aqui que as configurações do seu provedor de internet e do hardware são armazenadas e definidas.
+3740|TIPO 2 AZUL-CÉU E MAGENTA
+3741|Converter Porta-malas para Fibra de Carbono
+3742|Novo Estoque na Concessionária
+3743|Estatísticas da Corrida
+3744|A Loja de Gráficos é uma loja de serviço completo. Personalize o visual do seu carro escolhendo pinturas, vinis e decalques que são pré-visualizados no carro. Quando estiver satisfeito com o visual, pague a taxa e suas escolhas serão aplicadas ao seu carro.
+3746|Unidade do Velocímetro
+3747|PRETO MÉDIO
+3749|Não Utilizado
+3750|Atender Pedido de Amizade
+3752|VERDE MÉDIO
+3754|Configuração do Joypad
+3756|Erro de Login no Xbox Live
+3757|Te vejo na Garagem
+3759|Subir Marcha (Baixo)^Reduzir Marcha (Cima)
+3760|TEMPO FINAL:
+3762|TIPO 1 BICOS DIREITO SUPERIOR ESQUERDO INFERIOR
+3763|Iniciando a próxima corrida em %d segundos
+3766|Caracteres Especiais
+3768|Os Reaps têm arrasado por aí, fazendo o que for preciso para vencer. Confira.
+3769|O chefe deles - Caleb
+3770|Os patrocinadores fazem tudo por mim e eu posso perder feio, mas você
+3771|Com o histórico que vocês dois têm, pode esquecer de correr
+3772|Mas se você continuar vencendo
+3773|Só lembre-se
+3776|Equilibrado
+3779|Ei, quero meu carro de volta! É melhor você correr para cá ou vou espalhar o que sei sobre você: e isso significa nenhuma corrida até eu liberar. Vá à concessionária...AGORA!
+3780|Interior Cheio de Espuma
+3782|Ao jogar online, você pode subir por dez níveis de ranking em cada modo de jogo. Veja se consegue alcançar o status de elite em cada um. O jogador que atinge o ranking de elite recebe recompensas especiais visíveis para outros jogadores nas salas de jogo online.
+3783|Trocar este carro?
+3785|Modo Outrun
+3786|Sair da Sala
+3787|Alternar Números
+3788|Torque do Nitro
+3789|Fala, cara, você
+3790|Sem trânsito, sem ruas
+3791|E como você
+3792|Você atingiu o número máximo permitido de jogadores bloqueados no seu EA Messenger.
+3796|ECU {83} Você pode ajustar cada ponto da curva de torque do motor para obter potência em baixas RPMs, potência constante em todas as RPMs ou mais potência em direção às RPMs máximas.
+3797|Jogador Um Pressione START
+3800|Se você prefere mais controle sobre o desempenho do carro, mude a transmissão de Automática para Manual selecionando Opções e depois Jogador no Menu de Pausa.
+3802|Evite as áreas da pista que estão em obras. Os trechos sem pavimento desequilibram o carro e reduzem sua velocidade.
+3804|Modo de Corrida:
+3805|PRETO PÉROLA ESCURO
+3806|Volume da Música
+3807|Volume dos Efeitos Sonoros
+3808|1 Street X^1 Corrida de Circuito^1 Corrida Sprint
+3809|1 Corrida de Circuito^1 Corrida Sprint^1 Corrida Street X
+3810|CORAL PÉROLA ESCURO
+3811|VERDE PÉROLA ESCURO
+3812|CLÁUSULAS:^Contrato cumprido após 5 vitórias na URL, 3 vitórias em corridas indicadas pelo patrocinador e 19 vitórias adicionais à escolha do piloto.^^REQUISITOS PROMOCIONAIS:^Montar um carro que apareça em 2 capas de DVD.^^BÔNUS:^Veículo grátis de qualquer concessionária Bayview.
+3813|CLÁUSULAS DO CONTRATO:^O piloto deve vencer as seguintes corridas: 3 corridas da URL, 9 corridas à escolha do piloto, 3 corridas à escolha do patrocinador.^^REQUISITOS ADICIONAIS:^Montar um carro que apareça em 1 capa de DVD.^^BÔNUS:^Veículo grátis de qualquer concessionária Bayview.
+3814|Modo de Jogo
+3815|Nome do jogo
+3816|Tipo de Jogo
+3817|Textura Animada
+3818|Tem certeza de que quer sair para o Dashboard do Xbox e criar uma nova Conta Xbox Live{82}?
+3819|Há uma Loja de Performance em Beacon Hills West, localizada perto do Burger King{ae}. Procure as luzes azuis que levam à entrada.
+3821|Este pacote contém uma peça pior do que a que você^já possui. Quer comprar e instalar este^pacote de desempenho?
+3823|Pilotos
+3824|Molas Dianteiras
+3825|Seu convite de voz foi recusado.
+3826|Limite de Tempo
+3827|Sair da Corrida
+3828|O servidor rejeitou este nome de conta EA.^Escolha outro nome e tente novamente.
+3829|Curva de Torque do Turbo
+3830|^Capa de revista concedida por vencer seu 32º Evento Mundial na Fase 5!
+3831|Quanto antes você desacelerar antes de uma curva, mais rápido consegue acelerar ao sair dela. Esta técnica economiza segundos valiosos durante uma corrida.
+3832|Pressione enter para atribuir uma nova tecla ou botão
+3833|Barra Estabilizadora Traseira
+3836|Enviando Comentário, Aguarde...
+3837|Máximo de Jogadores:
+3838|Jogos
+3840|^^Capa de DVD concedida por montar um Carro de 10 Estrelas!
+3841|Conjunto de Listras
+3843|Sair para o Menu Principal Online
+3844|As senhas digitadas não coincidem.
+3845|Painel Lateral Direito
+3846|Revista Três
+3847|Bem-vindo à Loja Car Specialties Bayview, unidade Stadium.
+3848|Seleção de Modo

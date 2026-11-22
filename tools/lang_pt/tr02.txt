@@ -1,0 +1,364 @@
+331|V1 TUDO MENOS CAPÔ ESQUERDO PURGE
+332|O patrocinador vai ficar feliz com o carro. Vá ao local indicado no mapa para fotografarem o seu carro.
+333|Esta persona é inválida ou não pode ser criada agora.
+334|Não foi possível carregar as Gamertags.
+335|Circuito:
+336|BRANCO BRILHANTE
+338|Direção (Esquerda)
+339|Não foi possível contatar o satélite
+340|Danos ao Carro
+342|Termos e Condições do EA Online - Texto a ser fornecido por Sue Garfield
+343|Controle de Estabilidade:
+344|Para cumprir seu contrato, você terá que correr em alguns eventos escolhidos a dedo pelo seu patrocinador. Os eventos são marcados com um X no seu mapa.
+345|Quer entrar na Loja?
+346|Dica de Jogo da Loja de Áudio
+347|Headset
+348|RETROVISOR ORIGINAL
+350|Assunto: Veja a Capa da Sua Revista
+351|Venha hoje e leve seu Porta-malas de Carbono. O upgrade mais quente do momento. Garanta o seu em qualquer Oficina de Carroceria da região de Bayview.
+352|Esta persona é inválida ou não pode ser excluída agora.
+353|Você aceita os Termos e Condições do EA Online?
+354|Carros Liberados:
+357|TEMPO DE VOLTA
+358|O carro ficou demais, cara. Agora leve-o ao local indicado no mapa para tirarmos a foto da capa do DVD.
+359|Criando persona '%s'...
+360|A conexão com os outros jogadores foi perdida. A sessão de jogo atual será encerrada.
+362|Assunto: %s
+363|Melhor Volta
+364|{a9} 2004 Electronic Arts Inc. Todos os direitos reservados.
+365|Entrar neste bate-papo por voz encerrará o atual. Quer continuar?
+366|Ei, queria te avisar. Agora que você está sob contrato com o patrocinador, precisa cumprir alguns eventos específicos para fechar o negócio. Eles estão marcados com um X no mapa.
+367|Quase
+368|CLÁUSULAS:^Contrato cumprido após 9 vitórias na URL, 3 vitórias em corridas indicadas pelo patrocinador e 34 vitórias adicionais à escolha do piloto.^^REQUISITOS PROMOCIONAIS:^Montar um carro que apareça em 4 capas de DVD.^^BÔNUS:^Veículo grátis de qualquer concessionária Bayview.
+369|A relação de direção determina a rapidez com que as rodas do carro respondem ao comando do volante. Use o controle deslizante para ajustar a sensibilidade da direção. Direção rápida é bom, desde que você ainda consiga controlar o carro.
+370|Mensagem SMS de um adversário
+371|Acabou de chegar! O upgrade mais quente que já passou por Bayview! O processo Carbon Kit já está em estoque em todas as Oficinas de Carroceria Bayview. Seja o primeiro da sua turma a carbonizar o kit.
+372|Desafio Outrun Aceito^Pegue Eles!
+374|Voltar ao Dyno
+375|Conexão com o anfitrião perdida.
+376|Neon do motor
+378|Coletor de Admissão de Alto Fluxo
+379|+Direcional
+380|Voltar ao Modo Exploração
+381|Corridas Outrun
+382|Sua Chave de CD não pôde ser autenticada. Verifique se a chave^foi digitada corretamente e se ainda não foi usada para autenticar^outra conta.
+384|Este fotógrafo não vai ficar esperando a noite toda. Você tem %s para chegar ao local dele antes que ele vá embora.
+385|0 a 60 MPH:
+386|TIPO 2 AZUL
+387|TIPO 2 CIANO
+388|Carros no Ranking
+389|TIPO 2 DOURADO
+390|Quer cancelar as alterações na sua configuração de pintura?
+391|Essa galera é séria: seu contrato exige que você vença este drift, ou os patrocinadores vão ficar irritados. Trate de deslizar até o primeiro lugar.
+392|Não se empolgue ainda. Este drift tem mais em jogo do que você imagina. O patrocinador o colocou no seu contrato, e isso significa que você precisa vencer. Eles gostam de vencedores, não de perdedores.
+395|Fácil
+396|Bem-vindo à Loja Car Specialties Bayview, unidade Coal Harbor West.^Você liberou o acesso a Portas, Hidráulica e Layout de Áudio 3.^Todas as peças liberadas em outras Lojas Car Specialties também estão disponíveis aqui.
+397|Acabou de chegar! Os melhores kits Widebody do mercado. Agora em estoque em todas as Oficinas de Carroceria Bayview. Seja o primeiro da sua turma a instalar um no seu carro.
+398|Primária
+400|Manual
+401|V1 TUDO MENOS CAPÔ DIREITO PURGE
+403|Você foi nocauteado!
+404|Salvamento Automático
+405|Comando
+407|Seu console Xbox não consegue se conectar ao Xbox Live. Quer iniciar o solucionador de problemas?
+408|PONTOS DE ESTILO DE CORRIDA
+409|Não acredito que você me venceu com isso, você deve ter talento. Vou te ajudar a virar um piloto de verdade, te arranjando umas peças de desempenho especiais. Vá até a estrela no mapa e eu ligo com mais detalhes.
+410|Ícones de Patrocinador
+412|Verificando jogos salvos anteriormente.
+413|Seleção de Pista em Tela Dividida
+415|Este jogo já começou.
+416|Sair do Jogo
+417|Se você quer o seu carro na capa desta revista, é melhor chegar ao local em %s
+418|Tempo de 400m:
+419|TIPO 3 AZUL
+420|TIPO 3 CIANO
+421|Ameaças / Assédio
+422|TIPO 3 DOURADO
+423|PULSO DOURADO
+424|Evento de Corrida:
+425|Usando persona online '%s'...
+426|Loja Car Specialties
+427|Resposta da Pista
+428|PULSO CORAL
+429|Insignificante
+430|Tempo Esgotado
+431|Reposicionar Carro
+432|Bem-vindo à Loja Car Specialties Bayview, unidade Coal Harbor East.^Você liberou o acesso a Spinners, Componentes de Áudio e Layout de Áudio 2.^Todas as peças liberadas em outras Lojas Car Specialties também estão disponíveis aqui.
+433|Houve um problema ao entrar no servidor do lobby.
+434|Imperial ou Métrico
+435|Turbo
+436|Áudio
+437|Bom Drift!
+438|OFFSET CYCLONE
+439|TERMOS DO ACORDO:^O piloto concorda em vencer: 3 corridas da URL, 3 corridas à escolha do patrocinador, 9 corridas à escolha do piloto.^^CLÁUSULA DE STREET CRED:^Montar um carro que apareça em 1 capa de DVD.^^BÔNUS:^O patrocinador fornece 1 veículo de cortesia.
+440|OPÇÕES DE PAUSA
+442|Loja de Carros
+443|Conectando ao provedor
+444|Restaurar Configurações
+445|Agora você pode tirar uma foto do seu carro e aparecer na capa de um DVD.
+446|TIPO 2 BICOS DAS DUAS RODAS
+447|Aparecer Offline
+448|Boa corrida, cara. Escuta, já que você me bateu, me sinto na obrigação de te ajudar. Tenho um parceiro que consegue uns upgrades de desempenho especiais pro seu carro. Corra até a estrela no mapa e eu te ligo com mais detalhes sobre onde ir em seguida.
+450|Assunto: Foto para a Capa da Revista
+451|Comprado
+452|Mapa do Mundo
+453|Suficiente
+454|Última Volta
+455|Longe
+456|Fala, cara, esse sujeito tem que pegar um avião. Estou enrolando ele, mas você precisa chegar ao local em %s ou ele vai embora.
+458|A corrida não pôde ser iniciada porque você perdeu a conexão de rede, ou os outros jogadores não conseguem se conectar à sua sessão. A sessão de jogo atual será encerrada.
+459|DUPLO NORDESTE
+460|Nova seleção de cores de neon interno já disponível em todas as Lojas Car Specialties Bayview.
+461|Pressione START
+462|Pressione a Tecla Enter
+463|ZONA DE BÔNUS
+464|Prêmio da Corrida do Patrocinador:
+466|Este é o comentário da região 2
+467|Quer entrar na Concessionária?
+469|^3 Corridas de Drift
+470|A caixa de entrada do EA Messenger do destinatário está cheia. Esta mensagem não pode ser enviada.
+471|Cara, eu consigo fazer esse seu carro voar. Tenho um amigo que me deve um favor. Ele pode te arranjar uns upgrades de desempenho caprichados, mas preciso organizar tudo antes. Vá até a estrela no seu mapa e eu ligo com mais detalhes.
+472|Ler Depois
+474|Cara, você precisa instalar nitro no seu carro antes^de poder purgar o sistema! Vá buscar o nitro primeiro!
+475|Se você não escolher uma peça única, nunca mais poderá^escolhê-la. Tem certeza de que^não quer uma peça única?
+476|Áudio e Eletrônicos Automotivos
+477|Neon da Cabine
+479|Cara, esse sujeito vai embora logo. Vai ser apertado, mas você precisa chegar ao local dele em %s ou perde a chance.
+480|Pedido de amizade retirado
+481|ACELERAÇÃO
+482|Películas dos vidros
+485|Mude o visual do seu carro com os mais novos modelos de Entrada de Ar do Teto. Esses designs de ponta já estão disponíveis em qualquer Oficina de Carroceria Bayview.
+486|Ao se aproximar de uma curva em alta velocidade, freie antes do ponto de entrada. No ápice da curva, acelere rápido para sair dela.
+487|Escolher Cores dos Decalques
+488|Maior Salto
+490|Downforce Traseiro
+492|está offline
+493|Neon do Porta-malas
+494|Seu perfil não pôde ser salvo.^O Salvamento Automático será desativado.
+495|Informações do Xbox Live
+496|Carro do Adversário
+497|Sair
+498|Digite o nome:
+499|Corrida de drag - Vácuo
+500|Sprint:
+501|Jogar Partidas Ranqueadas
+502|Opções Online
+509|Quer desativar os avisos de salvamento? Você não será mais perguntado se quer salvar o jogo e precisará salvar manualmente.
+510|Pressione para baixo para acessar suas estatísticas de carreira. Aqui você encontra informações sobre seu desempenho geral e a nota visual do seu carro. Enquanto navega pelo Status da Carreira, você também pode pressionar para a direita para ver informações mais detalhadas sobre os requisitos de cada Fase que precisa cumprir para avançar na carreira.
+511|Ré
+512|EA GAMES{82} TRAX
+513|Troca Curta!
+514|Balanço de Freio
+515|Ir para a Garagem
+516|Finalmente! Por onde você andou com o meu carro, hein?
+517|É bom não ter um arranhão sequer nele!
+518|Sam diz que você sabe dirigir
+519|Sabe de uma coisa? Use sua grana para comprar um carro de verdade. Eu
+520|Uma seleção completa de peças de desempenho licenciadas está^disponível aqui para transformar seu carro numa máquina imbatível.
+521|Cara, esse sujeito está ficando impaciente. Ele não viu nada bom o bastante hoje e já quer encerrar. Estou enrolando ele, mas você precisa chegar aqui em %s.
+523|DUPLO VENTO DE FRENTE
+524|Personalize a pegada do seu carro para ter aquele diferencial de piloto. A nova Suspensão está disponível em qualquer Loja de Performance ou Loja Megalow Parts.
+525|Pressione um botão para usar nesta função
+526|Parabéns!
+527|Próxima Corrida
+528|Prorrogação^Desafio Outrun Aceito^Pegue Eles!
+529|Slot 1 do CARTÃO DE MEMÓRIA
+530|Você precisa vencer mais corridas!
+531|Vitórias no Total:
+532|Vá até a Concessionária{86}Agora!
+533|Relação de Direção
+534|A qualidade da sua conexão com este jogo não foi ou não pode ser determinada.^Entrar neste jogo pode resultar em uma experiência ruim.^Tem certeza de que quer entrar neste jogo?
+535|FREIOS ORIGINAIS
+536|TIPO 2 VERMELHO E VERDE
+537|Opções do Modo de Corrida
+538|Ver Revista
+539|Corrida Rápida
+540|Fibra de Carbono
+541|Gostamos do que vimos. Tem lugar na minha turma para você. Eu não aceito um não como resposta. Qual vai ser?
+542|Você perdeu a conexão com o provedor. Verifique se o adaptador de rede e o cabo de rede estão conectados. Você voltará ao menu principal.
+543|Conforme você avança na carreira, novos carros ficarão disponíveis nas concessionárias. Volte sempre para ver o novo estoque.
+545|Sistema de Partículas
+546|Portas Leves
+548|Jogar mesmo assim
+549|RODAS ORIGINAIS
+551|Termos e Condições do EA Online
+552|Os servidores da EA estão com dificuldades técnicas no momento. Tente novamente mais tarde. Se o problema persistir, entre em contato com o Suporte ao Cliente da EA.
+553|TIPO 2 VERMELHO E CHARTREUSE
+554|Armazenamento de Peças de Carroceria
+555|Enviando pedido de amizade para %s
+556|1. TERMOS DO CONTRATO
+557|Baixo
+558|Dê aos perdedores algo para olhar enquanto você acelera com a nova pintura personalizada nas Ponteiras do Escapamento. Veja as cores mais recentes em qualquer Loja de Gráficos Bayview.
+560|Remover este layout também removerá os componentes de^áudio instalados anteriormente. Quer remover^este layout de áudio do porta-malas agora?
+561|Volume Geral
+562|Bancos Leves
+563|Circuito
+564|Ver Meus Outros Carros
+565|V3 TUDO MENOS RODA ESQUERDA PURGE
+566|Potência Máx
+568|CARROS DE PATROCINADOR
+569|DVD Um
+570|DVD Dois
+571|A Rachel precisa do carro dela de volta. Você precisa escolher um novo carro antes de sair.
+573|Entrando como '%s'...
+574|Você derrubou o Eddy, ficou com a garota. Já pensou no que vem agora?
+575|IA DEBUG
+576|Portas
+577|Este drift é para os patrocinadores. Vamos mostrar a eles uma amostra do que investiram. Vença esta corrida e eles vão começar a fazer fila.
+578|Está começando a rolar um burburinho nas ruas sobre você. Continue vencendo e logo você será uma lenda das corridas.
+579|Patrocinadores contratam vencedores, porque vencedores vendem mercadoria. A galera quer pôr nos carros as mesmas peças que os vencedores usam, então que tal vencer esta?
+580|Seu patrocinador tem expectativas altas e é bom você não decepcioná-lo. Moral nas ruas pesa muito nas vendas e eles só querem apoiar um vencedor. Chegue em primeiro e coisas boas vão acontecer.
+581|Conferi o contrato e você concordou não só em correr nesta prova, mas eles esperam que você a vença. Essa turma está soltando uma boa grana por vitórias, então vamos não decepcionar, certo?
+582|Isto é oficial, cara. Este drift de rua conta para o seu acordo com o patrocinador. Eles esperam uma vitória, então é melhor mandar bem limpo. A gente se vê do outro lado.
+583|Você vai tomar uma lavada nesta, cara. Este drift está escrito no acordo que você assinou com os figurões. A vitória é a única coisa que importa. Comece a mandar ver lá, e pra valer.
+584|Hoje à noite o drift vai pegar fogo. É isso: uma vitória aqui conta para o seu contrato. Segundo lugar te põe na rua. Subir ao primeiro lugar num show de derrapagens matador é a única coisa que aquela turma vai notar.
+585|É o seguinte: o drift de hoje conta para o seu acordo com os figurões. Eles querem ver uma vitória e você não tem escolha a não ser entregar. Jogue sujo se precisar, mas faça acontecer.
+586|Camada Inferior
+587|Camada Intermediária 1
+588|Camada Intermediária 2
+589|Camada Superior
+590|Torneio
+591|Boa Troca!
+592|Giro Excessivo!
+593|Listras de Vinil
+594|TIPO 3 BICOS DOS DOIS LADOS DO CAPÔ
+595|1 Corrida de Drift^1 Corrida de Drag^1 Corrida Sprint
+597|^Capa de revista concedida por vencer seu 7º Evento Mundial na Fase 4!
+598|Há uma atualização obrigatória disponível para o serviço Xbox Live. Você não poderá se conectar ao Xbox Live até que a atualização seja instalada.
+599|Dê ao seu motor uma nova cobertura estilosa. Venha hoje a qualquer Oficina de Carroceria Bayview e veja a grande variedade de novos Capôs que acabaram de chegar.
+600|Modo de Áudio
+601|%d mensagens armazenadas
+602|Vibração
+603|TIPO 2 BICOS DO LADO ESQUERDO
+604|Componentes de Áudio
+605|Intensidade Geral da Força
+606|Bandeira Definida
+607|Capôs de Carbono
+608|Linear
+609|Líderes de Pontos do Mês
+610|Purge de Nitro
+611|Personalize as informações que você vê na tela durante as corridas. Acessar as opções de Jogador pelo menu de Pausa permite desativar os Medidores, as informações de Volta ou a posição atual na Corrida.
+613|Seg.
+615|^Capa de revista concedida por vencer seu 8º Evento Mundial na Fase 2!
+616|%s voltou a ficar online e está jogando Need for Speed{82} Underground 2. Seu Convite foi reenviado.
+617|Detalhe do Reflexo da Pista
+618|Escolher esta cor de vinil?
+619|Reconecte seu controle à porta de controle %d para continuar.
+620|Reconecte o controle à porta de controle %d.
+624|Tem certeza de que quer salvar^o perfil chamado %s?
+625|Prêmio em Grana por DVD
+626|Impressione a turma ao abrir o capô instalando uma das novas cores de Neon do Motor já em estoque em qualquer Loja Car Specialties Bayview.
+627|Escolher Camada de Vinil
+628|Ponteiras do Escapamento
+629|Maio
+630|Fala, cara, meu parceiro tem uma peça especial para o seu carro na loja dele. Corra para lá antes que ele dê para outro otário. Você tem %s antes que acabe.
+631|Sem Decalque
+632|TIPO 1 TODOS OS BICOS
+633|Quer converter seu porta-malas para fibra de carbono?
+634|Ocultar no mapa do mundo
+636|Restaurar configurações padrão?
+638|Bônus de Assinatura:
+639|Faróis
+640|Recusar
+641|Convidar para Bate-papo por Voz
+642|Ler mensagens de grupo
+643|Bem-vindo à Loja de Gráficos Bayview, unidade Jackson Heights.^Você liberou o acesso a categorias adicionais de Pintura, posições de decalque e novos Vinis.^Todas as peças liberadas em outras Lojas de Gráficos também estão disponíveis aqui.
+644|Painel Lateral Esquerdo
+645|Tem certeza de que quer excluir^o perfil chamado %s?
+646|Original é coisa de otário. A loja de peças permite colocar mais cavalos de potência sob o capô. Compre peças em 9 categorias e personalize totalmente o desempenho do seu carro.
+647|Prêmio:
+648|DUPLO AEROSTYLE
+649|%d mensagens não lidas
+650|Carregar Carreira
+651|TIPO 3 BORDÔ
+652|Faça todo mundo adivinhar quem está chegando instalando as Películas de Vidro mais recentes no seu carro. Novas cores já disponíveis em qualquer Loja Car Specialties.
+653|Estas são as Notícias ONLINE sobre novos problemas,^paradas de servidor, etc...
+654|Configuração de Direção
+655|Cara, você sabe dirigir. Se chegar à garagem do Jimmy em %s, ele tem uma peça que vai fazer seu carro queimar o asfalto.
+656|Foto da Capa da Revista
+657|G Máx:
+658|Novato
+659|Iniciante
+660|Intermediário
+661|Habilidoso
+662|Avançado
+663|Veterano
+664|Especialista
+665|Profissional
+666|Lendário
+667|Elite
+668|Maxi Tuning
+669|Carro Tuner 1
+670|Carro Tuner 2
+672|O objetivo de uma Corrida Outrun é tomar a liderança do adversário... e depois despistá-lo! Quando você está na frente, pode seguir qualquer rota que quiser. Quando está atrás, precisa alcançar o líder e ultrapassá-lo para assumir o controle da corrida.
+673|Evento Especial
+675|TERMOS:^Contrato cumprido após 7 vitórias na URL, 3 vitórias em corridas indicadas pelo patrocinador e 29 vitórias adicionais à escolha do piloto.^^REQUISITOS PROMOCIONAIS:^Montar um carro que apareça em 3 capas de DVD.^^BÔNUS:^Veículo grátis de qualquer concessionária Bayview.
+676|Lojas Ocultas Descobertas
+677|A Relação Final de Transmissão afeta todas as marchas individualmente, deixando-as mais longas ou mais curtas, resultando em melhor aceleração ou maior velocidade final. Ajuste o controle deslizante para escolher entre aceleração ou velocidade final.
+678|RESPINGO 1
+679|RESPINGO 2
+680|RESPINGO 3
+681|Ocorreu um erro ao criar esta conta.
+682|Ir à Concessionária
+683|Dirigir com estilo gera pontos que são convertidos em N2O. Dobre a saída de N2O do seu carro acumulando pontos suficientes para encher o indicador de excedente do medidor.
+684|Você precisa remover o kit wide body antes de instalar estas peças.
+685|Procurando...
+686|DUPLO BLINDSIDE
+688|E aí, garoto do interior, você agora está na cidade grande. É bom ter o que é preciso porque aqui ninguém vai ter piedade de você. Ainda quer brincar com os grandes?
+689|Muito bem, o que temos aqui? Mais um otário pronto para entregar a grana num drag de verdade. Beleza, cara, chega aí e entra na fila.
+690|D-R-A-G! Chegando com tudo! Qualquer um pronto para apanhar é bem-vindo na linha. Não temos a noite toda!
+691|Dê ao seu carro a modificação definitiva instalando um dos nossos novos Medidores Personalizados. Os novos modelos estão acabando rápido, então garanta o seu hoje à noite em qualquer Loja Car Specialties Bayview.
+693|Ilimitado
+695|Foi rápido! Leve seu carro até a loja do meu parceiro Kaiser em %s e ele vai te arranjar uma peça show.
+696|Pintar Ponteiras do Escapamento
+697|Transmissão:
+699|A festa está bombando e eles querem a estrela. É bom você chegar logo{85} Alô? Alô?
+700|Centro da Cidade
+702|Dica de Jogo da Loja de Performance
+705|Bloquear
+706|Você está hospedando um servidor LAN. Se sair do modo LAN,^todos os usuários do seu servidor serão desconectados.^Continuar?
+707|TERMOS DO CONTRATO:^O piloto deve vencer as seguintes corridas: 5 corridas da URL, 19 corridas à escolha do piloto, 3 corridas à escolha do patrocinador.^^REQUISITOS ADICIONAIS:^Construir um carro que apareça em 2 capas de DVD.^^BÔNUS:^Veículo de qualquer concessionária Bayview sem custo.
+710|STATUS DE ELITE ALCANÇADO
+711|Aguardando os resultados finais do servidor
+713|Sair da demo?
+714|Voltar ao Menu Principal?
+715|Quer remover todos os decalques deste layout?
+716|Original
+717|OFFSET BACKDRAFT
+718|Não foi possível encontrar um caminho
+719|Não foi possível iniciar a contagem regressiva do jogo por algum motivo.
+720|DUPLO WINDTUNNEL
+721|Quer comprar a possibilidade de converter seu porta-malas para fibra de carbono?
+722|Quer trocar seu %s ^por este %s original?^Ou prefere escolher um dos seus outros carros?
+723|Loja Car Specialties Bayview
+727|Estádio
+728|Complete seu visual personalizado instalando um dos nossos novos designs de Lanternas Traseiras. As Oficinas de Carroceria Bayview têm todos os modelos mais recentes. Garanta o seu agora.
+729|Não foi possível estabelecer a conexão com seu provedor de internet (ISP). Verifique o adaptador de rede, a conexão e/ou o arquivo de Configuração de Rede e tente novamente.
+730|Para mudar de faixa nas corridas de drag, basta tocar na direção desejada e seu carro vai para a próxima faixa. Antecipe as trocas de faixa e evite colisões olhando à frente em busca de tráfego e obstáculos.
+731|Ajuste o desempenho do seu carro na área de Ajuste de Desempenho / Dyno. Salve configurações personalizadas para cada modo de corrida, que são carregadas automaticamente sempre que você entra em uma corrida. Experimente diferentes setups e configurações para ganhar vantagem nas corridas.
+732|Ícones de informação estão espalhados pelo mundo. Quando ativados, você receberá uma mensagem SMS com dicas úteis sobre o jogo e uma grana extra para gastar em upgrades.
+733|Quer adicionar este vinil ao seu setup?
+735|Procure a Concessionária em Beacon Hills East. Fica fora da estrada, logo ao norte da água. Fique de olho na luz cor de água.
+736|TIPO 3 VERMELHO E CHARTREUSE
+740|Melhor:
+743|Entrar no Xbox Live pode fazer com que alterações não salvas sejam perdidas. Tem certeza de que quer continuar?
+744|Este jogo não está mais disponível para entrada.
+745|Digite a Senha
+746|Quer vender esta peça por %d?
+747|Enviar Pedido de Amizade
+748|TERMOS DO ACORDO:^O piloto concorda em vencer: 7 corridas da URL, 3 corridas à escolha do patrocinador, 29 corridas à escolha do piloto.^^CLÁUSULA DE STREET CRED:^Montar um carro que apareça em 3 capas de DVD.^^BÔNUS:^O patrocinador fornece 1 veículo de cortesia.
+749|Adversários
+750|RPM (x1000)
+751|^Capa de revista concedida por vencer seu 11º Evento Mundial na Fase 3!
+753|Voltar ao Mapa do Mundo?
+754|Boa corrida, cara. Você tem talento. Tenho um amigo que pode te arranjar umas peças visuais especiais que vão destacar seu carro. Se tiver interesse, vá até a estrela no mapa e eu te passo o local.
+755|Transmissão
+756|Adicione downforce e estilo ao seu carro com um dos novos Spoilers que acabaram de chegar a todas as Oficinas de Carroceria Bayview. Garanta o seu enquanto durarem os estoques.
+757|Enviar Convite
+758|Bate-papo por Voz Desconectado
+759|O servidor rejeitou esta persona. Escolha outro nome e tente novamente.
+761|Mexa debaixo do capô para ajustar e calibrar individualmente mais de 20^configurações de desempenho dos seus carros. Solte a suspensão para^deslizar nas pistas de Drift ou encurte as relações de marcha para ganhar aceleração^extra na largada de um Drag. Configure e salve ajustes para cada^carro para obter o máximo desempenho em cada tipo de corrida.
+762|O e-mail dos pais que você informou é inválido.
+763|Patrocinador
+765|Convite de Bate-papo por Voz
+766|Drag

@@ -1,0 +1,340 @@
+767|Renderização DEBUG
+768|AVISO ESRB: A EXPERIÊNCIA DO JOGO PODE MUDAR DURANTE O JOGO ONLINE
+769|Recurso de Vibração:
+771|Esta loja é toda sobre visual. Você encontrará categorias^totalmente novas com itens como portas tesoura, hidráulica,^componentes de áudio e spinners que realmente^destacam o seu carro.
+772|Expulsar Jogador
+773|Loja de Performance
+774|Olhar para trás
+775|Capa de DVD #%d  Carro de %$.1f Estrelas
+776|SEM HIDRÁULICA
+777|Falha ao expulsar %s do jogo.
+778|Barras Estabilizadoras Dianteira e Traseira
+779|Opções do Cliente
+780|0 a 100 KM/H:
+781|Quer excluir este carro personalizado?
+782|Por favor, mude sua Gamertag!
+784|Forte
+785|Líder de Drift
+786|Leve seu carro à pista de teste e ajuste suas configurações de desempenho, em tempo real, enquanto roda na pista.
+788|Instalar este capô removerá os decalques de capô^atualmente aplicados. Instalar esta peça agora?
+789|Nenhum resultado para esse nome!!
+790|Desculpe, estes vinis não estão disponíveis com peças de capô de Fibra de Carbono.
+791|Ajustar
+792|Velocidade Máxima
+793|Você indicou no formulário de cadastro^que tem entre 13 e 17 anos de idade.^^A EA informa a um dos pais ou responsável que você está criando uma conta EA.^^Informe abaixo um e-mail válido do pai, mãe ou responsável.
+794|Loja de Gráficos
+795|Y da Tela
+796|Capa de DVD Burning Wheels
+797|Resultados do Dyno
+798|Maior Powerslide
+799|Dizem que te chamam de o homem dos 14 segundos porque é o tempo que essa lata-velha leva para sair da 1ª marcha. Aqui a gente não joga assim e, quando você perceber o que aconteceu, já estaremos comemorando na linha de chegada.
+800|E aí, caipira. Bem-vindo à cidade grande. Quer brincar com a gente? Trate de se mostrar. Aqui a gente faz drag pra valer. Piscou, perdeu. Você não vai enfrentar aqueles barquinhos lentos que corria lá na sua terra.
+801|Quer fazer drag com a gente? É bom trazer cavalos. Quando eu chegar à linha de chegada, vou montar um relógio de sol para marcarmos o tempo exato dessa sucata que você chama de carro.
+802|Cara, para entrar nesta corrida basta ter coragem e grana. Vejo que a grana você tem e a coragem eu aceito na palavra.
+803|Caipira, e aí? Traga seu trator até a linha de largada e solte a grana para começarmos. Vamos, cara, tempo é dinheiro.
+804|Uhul! O Velho MacDonald está chegando do interior. Será que você desenterrou grana suficiente do quintal para pagar a entrada nesta corrida?
+805|E aí, garoto? Pode entrar, tem lugar de sobra para otários que acham que podem fazer drag com a gente. Gosto da minha grana em notas grandes e novinhas. Deixe-as prontas para mim.
+806|Você está de gracinha se acha que pode nos vencer com esse carro. Mas ei, quem disse que grana de otário não vale? Vamos, garoto, pode entrar na fila para apanhar.
+807|Ei, mano! Isto vai ESQUENTAR! Se você acha que seu carro aguenta, venha para a linha de largada.
+809|Acho que não existe ninguém por aí que consiga te vencer na reta.
+810|Secundária
+811|TERMOS DO ACORDO:^Contrato concluído após vencer 7 corridas da URL, 3 corridas à escolha do patrocinador e 29 corridas adicionais à escolha do piloto.^^REQUISITOS DE MÍDIA:^Montar um carro que apareça em 3 capas de DVD.^^BÔNUS:^Veículo grátis da concessionária Bayview.
+812|Suspensão
+813|Corrida Encerrada. O Tempo Acabou
+814|Personalizar Configurações de Vídeo
+815|^^Capa de DVD concedida por montar um Carro de 3 Estrelas!
+816|LISTRA 1
+817|LISTRA 2
+818|LISTRA 3
+819|Bem-vindo à Loja de Gráficos Bayview, unidade South Market.
+820|Buscar
+821|Jogo Ranqueado
+822|Torque ( %s )
+823|Revista Swiss Tuner
+824|Tempo Anterior:
+825|UMA COR
+826|As informações da sua conta serão enviadas por e-mail em breve.
+829|Esta peça é pior do que uma que você já possui.^Quer comprar e instalar esta peça?
+830|Uma das lojas de Performance fica no distrito de El Norte. Procure uma luz azul na entrada do estacionamento.
+831|Instruções do SMS
+833|Aderência dos Pneus Dianteiros
+834|Disco Rígido
+835|Ocorreu um erro ao criar esta persona.
+836|Bandeira de Grupo
+837|Quer entrar com %s?
+838|Dica de Tutorial
+839|Sistema de Escapamento Cat Back
+840|Tamanho da Tela
+841|Drift
+842|Loja Car Specialties
+843|Filtro
+844|Pastilhas de Freio Race Compound
+845|Sair da Loja Dyno / Ajuste de Desempenho?
+846|Fala, cara. Chegou a notícia de que a região de Jackson Heights finalmente abriu. Suba para lá. As corridas nas colinas estão incríveis.
+847|Status e Progressão da Carreira
+848|Pneus de Desempenho Extremo
+850|Você escolheu iniciar a Demo de Burnout{ae} 3: Takedown{82}. Quaisquer alterações não salvas no seu jogo atual serão perdidas. Tem certeza de que quer iniciar a demo?
+851|Escolher Cor de Fundo
+852|Direita
+854|Total Gasto no Carro:
+855|Esta Conta EA Online está bloqueada e não pode ser usada. Entre em contato com o Suporte ao Cliente da EA.
+856|Detalhes do Motor
+857|Melhor Volta:
+858|Ler Mensagem
+859|Discos Furados e Ranhurados
+861|VERMELHO BRILHANTE
+862|Boa pilotagem! Você notará que recebeu grana por derrotar seu adversário. Continue vencendo suas Corridas Outrun ou essa grana vai desaparecer.
+863|Seleção de Pista Online
+864|Estatísticas Pessoais
+865|Localize o grande Estádio a partir da via expressa e você estará perto de uma das lojas Car Specialty. O Estádio fica na parte oeste do centro da cidade.
+866|Login EA
+869|Ir para as Caixas de Correio
+870|Quer trocar por um carro?
+871|Apenas jogos do mesmo nível
+872|Info da corrida
+873|Usar %s
+874|PELÍCULA ORIGINAL
+877|Como você indicou ter entre 13 e 17 anos, nossa política é avisar seu pai, mãe ou responsável que você se cadastrou no Serviço EA GAMEStm Online. Para continuar o cadastro, informe um e-mail atual do seu pai, mãe ou responsável com mais de 18 anos. Enviaremos uma mensagem para o endereço informado avisando que você se cadastrou no Serviço EA GAMEStm Online.
+879|Drag Patrocinado
+880|A concessionária é o lugar certo quando você precisa de um carro novo
+882|3. CORRIDAS OBRIGATÓRIAS
+883|Criar Nome de Usuário
+885|Seis Meses Atrás{86}
+886|Só aceitamos denúncias sobre os Termos e Condições da EA GAMES{82}. Use isto apenas para denúncias legítimas. O uso indevido pode resultar em medidas contra a sua conta.
+887|Revista Stuff
+889|Abrir/Fechar Portas
+890|Subir Marcha
+891|Underground Speed Zone
+892|Película do vidro
+893|Falha ao baixar as Notícias
+894|ROXO
+895|Selecionar Patrocinador
+897|TERMOS DO ACORDO:^Contrato concluído após vencer 9 corridas da URL, 3 corridas à escolha do patrocinador e 34 corridas adicionais à escolha do piloto.^^REQUISITOS PROMOCIONAIS:^Montar um carro que apareça em 4 capas de DVD.^^BÔNUS:^Veículo grátis da concessionária Bayview.
+898|Slot do Porta-malas %d
+899|Conjunto Selvagem
+900|Perfis com o mesmo nome serão sobrescritos.^Quer continuar?
+901|Você perdeu a conexão com o Servidor EA. Você voltará ao Menu Principal.
+902|NOS - GARRAFA DE 10 LB
+904|Descubra o mundo vivo e pulsante^da cultura tuner em Need for Speed{82} Underground 2.^Ambientado em uma cidade enorme^de exploração livre com^cinco bairros distintos e interligados,^Need for Speed Underground 2 oferece um mundo de jogo imersivo^onde as ruas são os seus menus.
+905|Esta demo é destinada apenas a fins promocionais e^não pode ser vendida, alugada ou reproduzida por qualquer parte.^^Qualquer uso não autorizado desta demo é proibido^pela lei aplicável.
+906|Pontos de Reputação Ganhos:
+907|Retrovisores de Carbono, Spoilers, Entradas de Ar do Teto
+908|TIPO 2 CHARTREUSE
+909|Tem certeza de que quer sair do ajuste?
+910|Acesse EA GAMES{82} TRAX no menu Opções para personalizar a música. Você pode escolher onde e quando cada faixa será tocada. Ouça prévias e reordene as faixas para criar a playlist perfeita.
+911|Acelerador
+912|TIPO 2 BORDÔ
+915|Frenagem em linha reta
+916|Ranking do Mês Atual
+917|Excluir
+918|Salvar Perfil
+920|V1 TUDO MENOS RODA DIREITA PURGE
+921|Capô
+922|Volume da Música dos Menus
+923|Câmera
+924|Você tem uma nova mensagem do Xbox Live. Quer lê-la agora?
+925|Desconectar
+926|Bem-vindo à Oficina de Carroceria Bayview, unidade Hotel Plaza.
+927|AJUDA BLARG
+928|Tirando uma Foto
+929|Vídeo
+930|Novembro
+931|Custo Total:
+936|E-mail do Pai, Mãe ou Responsável:
+937|Não Instalado
+938|Embreagem de Alto Desempenho
+939|Indisponível
+940|Luzes
+941|Procurando servidores LAN ...
+942|As condições da rede podem afetar este jogo.
+943|Comentários:
+944|Você terminou em quinto!
+945|Ativar GPS
+946|Rodada no Dyno
+947|Drift em Descida
+948|Neon do Motor
+949|Verificação de Idade
+950|º
+952|%$3.1f %s^@%$d rpm
+954|Prêmio de Upgrade Visual:
+955|Mangueiras de Freio Trançadas de Aço
+956|TEMPO NO AR
+957|Bem-vindo à Oficina de Carroceria Bayview, unidade Fort Union.
+958|Entrar em um jogo ranqueado trocará automaticamente para o carro ranqueado online adequado a este modo de jogo. Tem certeza de que quer entrar neste jogo?
+959|Tentando criar nova conta...
+960|Você terminou em terceiro!
+961|Cada concessionária terá um estoque diferente, então talvez você precise explorar para encontrar o modelo que quer. Há mais de 30 modelos de alguns dos fabricantes mais conhecidos do cenário tuning, incluindo Nissan, Mazda, Toyota, Subaru, Mitsubishi, Ford e outros.
+962|Aqui estão 2 exemplos de carros turbinados que você pode montar^na versão completa de Underground 2.
+963|Cada concessionária terá um estoque diferente, então talvez você precise^explorar para encontrar o modelo que quer. Há mais de 30^modelos de alguns dos fabricantes mais conhecidos do^cenário tuning, incluindo Nissan, Mazda, Toyota,^Subaru, Mitsubishi, Ford e outros.^^Aqui estão 2 exemplos de carros turbinados^que você pode montar na versão completa de Underground 2.
+964|DIRIGIBILIDADE
+965|Se você cancelar a conexão com o servidor do lobby, será desconectado do Xbox Live e voltará ao menu principal. Tem certeza de que quer fazer isso?
+966|Quer cancelar as alterações na sua configuração de decalques?
+967|Megalow Parts
+968|%s desconectou
+969|Quer comprar esta peça?
+970|OFFSET ZEPHYR
+972|Desbloquear
+974|Ir para a Garagem?
+975|Quer receber contato sobre produtos, notícias e eventos da EA?
+976|Voltar ao Dyno?
+977|SEM COMPONENTES
+978|Ver Pista
+979|Calor Intenso
+980|Pressione START para começar
+981|OFFSET WINDTUNNEL
+982|PULSO AZUL
+983|Tem certeza de que quer remover este membro do seu EA Messenger? Quaisquer mensagens não lidas deste membro serão perdidas.
+984|Você está prestes a excluir uma persona. Você perderá todas as estatísticas e conquistas deste jogador. Esta ação não pode ser desfeita. Tem certeza de que quer excluir esta persona?
+986|TIPO DE CORRIDA:  %s
+987|Quando está chovendo, a tração do seu carro diminui um pouco, o que afeta a dirigibilidade. Tenha cuidado ao entrar nas curvas em alta velocidade, pois o carro pode deslizar mais que o normal.
+988|O Óxido Nitroso dá uma breve explosão de potência ao seu carro. Ajuste o controle deslizante para calibrar seu Nitro para ser mais potente ou durar mais. Use Nitro potente em corridas curtas e Nitro de longa duração em corridas longas.
+990|Entrar na Garagem
+991|Entradas de Ar do Teto
+993|Opções do Jogo de Corrida Rápida
+994|TERMOS DO ACORDO:^Contrato concluído após vencer 5 corridas da URL, 3 corridas à escolha do patrocinador e 19 corridas adicionais à escolha do piloto.^^REQUISITOS PROMOCIONAIS:^Montar um carro que apareça em 2 capas de DVD.^^BÔNUS:^Veículo grátis da concessionária Bayview.
+995|Seleção de Modo de Corrida
+996|Houve um problema ao enviar as informações do seu carro. Quer tentar novamente?
+997|Cara! A turma da cidade encerrou a noite e as ruas para Coal Harbor West estão liberadas e prontas para corrida. Dizem que já tem piloto se juntando lá. Vá dar uma olhada.
+998|Para ajustar a música do jogo, selecione Opções e depois EA GAMES{82} TRAX. As músicas podem ser pré-visualizadas, desativadas ou reordenadas.
+999|Restrições de Desempenho do Carro:
+1000|Assunto: Peças Únicas
+1004|Uma das lojas de Gráficos fica logo ao norte dos Cassinos em South Market. Procure a luz vermelha que leva à entrada.
+1005|A Loja Megalow Parts
+1006|Mude a dirigibilidade do seu carro desativando o Controle de Estabilidade. Desativá-lo permitirá que o carro deslize nas curvas. Para mudar o Controle de Estabilidade do seu carro, selecione Opções e depois Jogador no Menu de Pausa.
+1007|Loja de Decalques
+1008|Carregando Gamertags
+1009|TIPO 3 BICO DIREITO DO CAPÔ
+1011|Prêmio de Vitória na Corrida:
+1012|Sua nova persona deve ter entre %d e %d caracteres.^Tente um nome diferente.
+1013|Desqualificado
+1014|TIPO 3 BICOS DO LADO DIREITO
+1015|A Garagem
+1016|Vitórias em Eventos de Patrocinador:
+1017|TIPO 1 BICOS ESQUERDO SUPERIOR DIREITO INFERIOR
+1019|Upgrade de Desempenho Exclusivo
+1020|Acho que você pode correr com a gente se tiver a grana e a coragem. Deixa eu te perguntar: o palhaço do circo de quem você pegou esse carro já sabe que sumiu?
+1021|Pare de ficar olhando e se apresente. Estamos fazendo sprints. Se você tem a grana, ganha o percurso. Decida.
+1022|Ei, garoto, ou entra ou sai! Os pilotos estão se preparando para umas sprints e não querem curiosos por perto. Se você tem a grana, tem vaga na próxima bateria. O mapa do percurso será enviado ao seu SMS assim que soubermos que você é de verdade.
+1023|Olha só: uma sprint está prestes a começar. Você ainda tem tempo de entrar se tiver a grana. Como sempre, a rota por SMS será enviada assim que você puser a grana na mesa.
+1024|Fala, mano! Quer correr uma sprint com os grandes ou não? Tudo de que você precisa é grana. Então, qual vai ser?
+1025|Ouviu? Para todos que estão lendo: SPRINTS! Vocês sabem como funciona. Grana é igual a rota por SMS, então não demore e se comprometa!
+1026|TEMPO DO QUARTO DE MILHA:
+1027|Concurso
+1028|Acionar Mecanismo
+1029|Conexão
+1030|Assistência de Direção:
+1032|O nome de conta EA informado é inválido.
+1033|V2 TUDO MENOS CAPÔ DIREITO PURGE
+1034|A conexão foi perdida
+1036|Conjunto de Chamas
+1037|Lobby
+1038|Port and Polish Heads
+1039|Detalhe da Geometria do Carro
+1040|O carro selecionado no momento não pode ser usado neste jogo.
+1041|Velocidade Máxima Atingida
+1042|Perfil
+1044|Cancelando pedido de amizade para %s ...
+1045|Ao dirigir em linha reta, freie com mais força antes de entrar na curva. Depois do ápice da curva, pise no acelerador para sair dela acelerando.
+1046|Partida Rápida
+1047|Esta sessão de jogo não está mais disponível.
+1049|Destruído!
+1050|BÔNUS DE TEMPO
+1051|Só os melhores pilotos das ruas são convidados para cá, então tenho que admitir que estou impressionado. Sem trânsito e sem distrações, só você e mais cinco caras que querem te deixar comendo poeira. Toda vez que você vence aqui, ganha um pouco mais de moral na cena.
+1052|Dizem pelas ruas que sua última vitória aqui foi sorte. Ninguém te leva a sério ainda. Vamos mostrar a esses palhaços quem manda e dar o fora daqui antes que a polícia perceba.
+1053|Vença hoje à noite e os patrocinadores vão começar a reparar de verdade. Você ainda não enfrentou a concorrência mais dura, mas vença esta e aumentará suas chances de ser convidado de novo. Não estrague tudo.
+1054|A concorrência aqui é dura. Vencer na rua é uma coisa; vencer em uma pista de verdade é totalmente diferente. As corridas da URL separam os candidatos dos fingidos.
+1055|Correr na URL é demais. Só os melhores são convidados para estas pistas e habilidade é o que manda. Não existe vitória de sorte só porque alguém foi acertado sem querer pela perua da vovó.
+1056|Cara, você precisa ficar ligado nesta corrida. A URL é o melhor dos melhores e esses caras têm habilidade de sobra. Você vai enfrentar alguns dos melhores pilotos da cidade, então fique alerta.
+1057|Fala, cara, você vai enfrentar uma concorrência dura na pista hoje à noite. Alguns desses caras não jogam limpo e preferem passar por cima de você a contornar. Escolha uma boa linha e fique atento que você deve chegar ao final.
+1058|Esses caras são de verdade. Não tem tempo para pensar, só fazer. As curvas e as queimadas que eles fazem são insanas, então fique por cima. As pessoas ainda não estão impressionadas com você, então é melhor ir com tudo.
+1059|É melhor você apertar o passo porque esses caras vão te passar a perna se não o fizer. Eles correm com os melhores e esta é a sua chance de entrar no meio. Sem tempo para pose, então saia com raiva e mostre o que tem.
+1061|Race breaker
+1062|CARROCERIA ORIGINAL
+1063|Torne-se Elite
+1065|Tipo de Corrida:
+1066|Sequencial
+1067|%s recusou seu convite e bloqueou você!
+1068|Anti-Aliasing em Tela Cheia
+1069|Chuva
+1071|Dificuldade
+1073|South Market
+1074|Corrida de drift
+1075|Nome da pista
+1076|Retrovisores
+1077|Tamanho do nome da conta EA inválido.^O nome da conta deve ter entre %lu e %lu caracteres.
+1078|Venha à concessionária trocar por um novo conjunto de rodas. Volte sempre, pois o estoque muda constantemente com novos modelos chegando o tempo todo.
+1079|Vantagem de Vitória sobre o Próximo Adversário:
+1080|Concessionária
+1081|%s foi bloqueado.
+1082|TRICOLOR A
+1083|TRICOLOR B
+1084|TRICOLOR C
+1085|Seleção de Servidor LAN
+1086|Opções do Volante
+1087|Lojas de upgrade estão escondidas por toda Bayview. Fique de olho nos postes de luz coloridos que podem levar a locais ocultos. Novas lojas e estoque são liberados em cada nova seção de Bayview. As lojas encontradas aparecem no seu mapa.
+1088|Melhor Pontuação:
+1089|Kit Turbo Estágio 2
+1090|Sobrescrever Jogo Salvo Existente?
+1091|Resultados da Corrida de Drag:
+1093|Neblina no Horizonte
+1094|Conjunto Rasgado
+1095|Saias Laterais
+1096|Estatísticas Pós-Corrida
+1097|A corrida não pôde ser iniciada porque a conexão com o anfitrião foi perdida.
+1098|Tem certeza de que quer sair para o Menu Principal do Xbox Live? Você receberá uma derrota e uma desconexão neste jogo.
+1099|Recusando convite de %s ...
+1100|Decalques
+1101|COMUNICADO DE UTILIDADE PÚBLICA
+1102|Capa de DVD Speed Demons 3
+1103|Criar um Novo Perfil
+1107|Tipo de KO
+1108|Persona não encontrada.
+1109|Aceitar
+1110|Instalar este layout removerá os componentes de áudio^instalados anteriormente. Quer comprar e^instalar este layout de áudio do porta-malas agora?
+1111|Corrida de Drag
+1112|Você já escolheu %s como patrocinador da fase %d.
+1113|A ação atual foi cancelada.
+1114|Amortecedores {83} Os amortecedores absorvem o impacto inicial das irregularidades e mantêm os pneus em contato com o chão. Se o seu carro patina muito, tente amaciar os amortecedores traseiros para transferir mais peso para os pneus traseiros.
+1115|Dry Shot de Óxido Nitroso
+1116|Você cancelou este processo. Quer tentar novamente?
+1117|Caminhão de Bombeiros
+1118|conectando...
+1119|Enviando dados do carro...
+1120|Excluir Persona
+1121|Esquerda
+1122|A configuração gráfica do seu carro mudou.^Quer instalar a nova configuração gráfica?
+1123|Pontuação:
+1124|Unidade do Velocímetro:
+1127|DVD Três
+1128|Tempo de Volta
+1129|Tipo de Corrida
+1130|Corridas
+1131|Selecione algo para instalar antes de finalizar!
+1132|TIPO 1 BICOS DAS DUAS RODAS
+1134|Cancelando pedido de amizade!!
+1135|Personalizar HUD
+1136|Menu
+1137|Cada carro é avaliado em um sistema visual de dez estrelas. Quanto mais quentes as peças, mais alta fica a sua nota.
+1138|Danificado
+1139|Corridas de Drag na Rodovia
+1141|Bate-papo por Voz
+1142|Bem-vindo à Oficina de Carroceria Bayview, unidade Beacon Hill East.^Você liberou Spoilers e Capôs.^Todas as peças liberadas em Oficinas de Carroceria anteriores também estão disponíveis aqui.
+1143|Potência Máx:
+1144|Para-brisa
+1145|Os mais novos Medidores Personalizados já estão em estoque. Disponíveis enquanto durarem os estoques em todas as Lojas Car Specialties Bayview.
+1147|Rebaixamento Traseiro
+1148|Exposição
+1149|Frenagem básica
+1150|Você precisa ter um volante conectado para acessar as Opções do Volante.
+1151|Exibir
+1152|Nome de conta EA inválido.^O nome da conta não pode começar com um número.
+1154|Venha à Garagem para ver todas as recompensas que você ganhou na carreira. Confira seu Patrocinador atual, Capas de Revista ou capas de DVD.
+1156|DRAG
+1157|DIVERSOS
+1158|É isso aí
+1159|Bate-papo
+1160|Pegar
+1162|Cancelar
+1163|Minutos
+1164|Loja de Gráficos
+1165|Sair da Conta

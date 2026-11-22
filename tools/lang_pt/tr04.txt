@@ -1,0 +1,330 @@
+1280|Mudar
+1281|TIPO 2 MAGENTA
+1282|Esta persona já está em uso.^Tente um nome diferente.
+1283|PULSO CIANO
+1284|Quer entrar na pista de Ajuste de Desempenho / Dyno?
+1285|V2 TUDO MENOS RODA DIREITA PURGE
+1286|A Loja Car Specialties em Beacon Hills West é uma das mais difíceis de achar. Fique de olho na luz amarela na entrada da garagem.
+1287|Mensagem SMS de Evento Especial
+1288|Ver Jogador
+1289|Ranking Geral
+1290|Criar
+1291|Adicione estilo ao seu carro. Novos retrovisores de carbono, spoilers e entradas de ar do teto estão em estoque em todas as Oficinas de Carroceria da região de Bayview.
+1292|Sair da corrida agora encerrará esta sessão. Tem certeza de que quer sair?
+1298|Freios
+1299|Enviando comentário sobre %s
+1300|Taxa de Esgotamento
+1301|Estéreo
+1302|Maior Derrapagem
+1303|Cancelar Convite
+1304|Pessoas na sua Lista de Jogadores não podem receber convites se estiverem offline.
+1305|O outro jogador saiu do jogo
+1306|Ganhe velocidade extra nas corridas de drag pegando vácuo dos pilotos à sua frente. Correr colado atrás do carro da frente faz seu carro dividir o ar e cria um efeito estilingue quando você tenta a ultrapassagem.
+1307|Clássico
+1308|Reduzir Marcha
+1311|E aí, garoto! Chegou na hora! As corridas Knock Out começam já e você está livre para entrar. Então, você é homem o bastante ou não?
+1312|Fala, manobrista selvagem! Mostre a todos que você não é só fachada! A corrida Knock Out vai rolar e esta é a sua chance de aparecer. Topa?
+1313|Você recusou o Pedido de Bate-papo por Voz
+1314|Instalar
+1315|Opções de Busca OptiMatch do Xbox Live
+1316|Desempenho
+1317|Alcance do Volante
+1318|Bleach By Pass
+1322|Uma Loja Car Specialties pode ser encontrada na área de Coal Harbor East da cidade. A entrada do prédio fica nos fundos. Procure a luz amarela para achar a entrada da garagem.
+1324|Bem-vindo ao SMS (Short Message System). É assim que você receberá informações durante o jogo.^^Quando você receber uma mensagem, o ícone vai piscar e a seta indicará em que direção pressionar para ler a mensagem.^^Os ícones de mensagem variam de cor, dependendo do tipo de informação que a mensagem contém.^^Os eventos de corrida aparecerão como ícones no topo do indicador de mensagens.^^Pressionar para cima permitirá obter mais informações sobre o evento.^^Cada tipo de corrida terá um ícone diferente associado a ele.^^Pressionar para a esquerda abrirá o Mapa do Mundo. É a forma mais fácil de ver toda a cidade e todas as corridas e lojas que você descobriu. Você também pode filtrar eventos e ativar o sistema de GPS aqui.^^Pressione para baixo para acessar suas estatísticas de carreira. Você pode ver a nota visual do seu carro, além do seu progresso geral no jogo.
+1325|Ainda mais carbono para escolher! Confira os novos retrovisores de carbono, spoilers e entradas de ar do teto em qualquer Oficina de Carroceria Bayview.
+1328|Corrida de drift orgânica
+1329|Relâmpago
+1330|OFFSET AIRSTREAM
+1331|Maior Drift:
+1332|Cada Vitória na URL:
+1333|Ler SMS
+1334|^Parabéns, seu carro foi escolhido para aparecer na capa do DVD Blacktop Bandits! Vá até a Estrela no seu Minimapa para encontrar o fotógrafo.
+1335|TIPO 3 BICO DA RODA ESQUERDA
+1336|O Race Breaker
+1337|Enquanto dirige pela cidade, desafie outros tuners para uma corrida Outrun. Quando a corrida começar, tente assumir a liderança e despistar seu adversário. Vá a qualquer lugar e faça qualquer coisa para tirá-lo do seu rastro e levar a grana do vencedor.
+1338|A Loja de Gráficos
+1339|Acesse o Mapa do Mundo para filtrar eventos e lojas do mapa pressionando para a esquerda no HUD de SMS. Percorra os vários eventos e lojas que deseja filtrar e escolha ocultá-los ou exibi-los nos mapas.
+1342|Mensagem SMS de Outrun
+1343|G Atual:
+1344|Legenda
+1345|OFFSET BLINDSIDE
+1347|Interiores/Car Specialties
+1348|Carbono é o que manda! Retrovisores, spoilers e entradas de ar do teto de carbono novinhos chegaram a todas as Oficinas de Carroceria Bayview.
+1351|El Norte
+1352|Capa de DVD Blacktop Bandits
+1353|Você perdeu a conexão com o Servidor EA. Verifique se o adaptador de rede e o cabo de rede estão conectados. Quer reconectar?
+1354|Jogador Um Pressione o botão START
+1355|Removendo Amigo...
+1356|Seleção de Carro de Corrida Rápida
+1357|CORAL
+1360|Circuito de Tuning
+1361|Fechar
+1362|CLÁUSULAS DO CONTRATO:^O piloto deve vencer 7 corridas da URL, 3 corridas à escolha do patrocinador e 29 corridas adicionais à escolha do piloto.^^REQUISITOS ADICIONAIS:^Montar um carro que apareça em 3 capas de DVD.^^BÔNUS:^Veículo de cortesia da concessionária Bayview.
+1363|Carroceria
+1364|Drag de Tuning
+1365|Feminino
+1366|kW
+1367|Nm
+1368|Jogador Dois Pressione START
+1371|Tirando fotos para a revista
+1372|Tempo Atrás:
+1373|MAIOR DRIFT:
+1374|Corrida
+1375|VERMELHO PÉROLA ESCURO
+1376|Adicione estilo ao seu carro com um capô de carbono. Agora disponível em qualquer Oficina de Carroceria Bayview.
+1377|Convite entre Jogos
+1378|É? Está feito. Tudo preparado. Só garanta que vai fazer a sua parte do acordo, entendeu?
+1379|^Capa de revista concedida por vencer seu 18º Evento Mundial na Fase 3!
+1380|Entrar em uma sala de jogo cancelará quaisquer sessões de bate-papo por voz ativas. Você também pode perder mensagens não lidas e convites de sessão de jogo.
+1381|Configuração do Teclado
+1382|Pontos Ganhos:
+1383|Prêmio em Grana:
+1384|Você Perdeu o Outrun!
+1385|Opções do Modo de Corrida Online
+1386|VELOCIDADE MÁXIMA:
+1387|Reinstalar Peças Originais?
+1388|Detalhes do Patrocinador
+1390|Tem certeza de que quer carregar^os carros do perfil %s?
+1391|Nocauteado
+1392|Editar Carro Personalizado
+1393|Você deve digitar o nome da sua conta EA^antes de solicitar uma senha perdida.
+1395|Selecione uma Persona Online
+1396|MODERNO 1
+1397|MODERNO 2
+1398|MODERNO 3
+1399|Instalar Decalque
+1400|cm
+1401|Corridas Street X
+1402|Medidores:
+1403|Direção Linear/Não Linear
+1405|Voltar ao Mapa do Mundo
+1406|Carro Atual
+1407|Carreira
+1408|Instruções do GPS
+1409|TIPO 2 VERDE
+1410|Venha conferir a nova seleção de capôs de carbono que acabou de chegar. Disponível em qualquer Oficina de Carroceria Bayview.
+1413|Instalar pintura
+1414|VELOCIDADE MÉDIA:
+1415|Mensagem SMS da Rachel
+1416|Corrida de drag - Troca perfeita
+1417|TIPO 2 BICOS DIREITO SUPERIOR ESQUERDO INFERIOR
+1418|Instalar Vinil
+1419|Patrocínios Assinados:
+1420|PULSO VERMELHO
+1422|A Oficina de Carroceria oferece uma ampla variedade de peças para personalizar^o visual do seu carro, incluindo rodas, spoilers, capôs, kits wide body^e mais. Você encontrará centenas de designs novinhos em^Underground 2, que vão do discreto ao ousado!^^Aqui estão 2 exemplos de carros turbinados que você pode^montar na versão completa de Underground 2.
+1423|Conectando...
+1438|Racing Street Unleashed
+1439|Você precisa dar um nome ao seu perfil^atual para ativar o Salvamento Automático.
+1440|Voltar ao Modo Exploração?
+1442|Fala, cara, meu parceiro está prestes a ir embora, ele não vai esperar a noite toda. Chegue à loja dele em %s ou vai perder a peça. Vai nessa.
+1443|Tem certeza de que quer sair desta corrida e voltar ao Menu Principal do Xbox Live?
+1444|Selecionar esquerda no HUD de SMS abre o Mapa do Mundo. O Mapa do Mundo é uma visão geral completa do mundo, dos locais e dos eventos já revelados. Você pode filtrar eventos no Mapa do Mundo marcando e desmarcando eventos na lista do lado esquerdo do Mapa. Além disso, há várias visualizações do Mapa aqui para você alternar.
+1445|Você não pode entrar no Ajuste de Desempenho / Dyno sem um perfil ativo.
+1448|Injetores de Combustível
+1449|Designs novinhos acabaram de chegar! Seja o primeiro do bairro a ter o capô de carbono mais insano! Disponível em todas as Oficinas de Carroceria da região de Bayview.
+1450|Seleção de Carro para Personalizar
+1452|Coal Harbor
+1453|Alto
+1455|Gamertag Banida
+1456|CONVITE ENVIADO
+1457|Acelerar
+1459|Automático
+1460|Use o sistema EA Messenger para combinar corridas com amigos e criar jogos privados só para convidados
+1462|Bem-vindo à Loja de Performance Bayview, unidade Coal Harbor West.^Você liberou o acesso aos upgrades de desempenho de nível Extremo em Redução de Peso, Pneus e Freios.^Todas as peças liberadas em outras Lojas de Performance e na Megalow Parts também estão disponíveis aqui.
+1463|Híbrido
+1464|Digite o Nome da Busca
+1465|Brilho de Luz
+1466|Bem-vindo à Oficina de Carroceria Bayview, unidade Coal Harbor West.^Você liberou o acesso a novos Para-choques Dianteiros, Para-choques Traseiros e Saias Laterais.^Todas as peças liberadas em Oficinas de Carroceria anteriores também estão disponíveis aqui.
+1467|Blacktop Bandits
+1472|Escolha entre centenas de cores de pintura personalizadas, vinis exclusivos e decalques na Loja de Gráficos.
+1473|Opções do Xbox Live
+1475|Cara, isso é bom, mas tem prazo de validade. Meu parceiro vai embora se você não chegar à loja dele em %s. Essa oportunidade pode não voltar.
+1477|Médio
+1478|Brilhante
+1479|O sistema de GPS pode ajudar você a encontrar os destinos listados no mapa. Acesse a opção de GPS selecionando o Mapa do Mundo no SMS. Pressione o botão Ativar GPS para percorrer os destinos possíveis. Ao voltar ao Modo Exploração, a seta azul aponta na direção do destino selecionado.
+1480|Tem certeza de que quer ativar o sistema de GPS?
+1481|Comentários
+1482|%s entrou. Seu Convite foi reenviado.
+1483|Pausa
+1484|LAYOUT PERSONALIZADO
+1485|pol
+1486|Permitir apenas carros de desempenho equivalente
+1487|JAPÃO
+1488|Direção
+1489|CORÉIA
+1490|Os detalhes do seu carro mudaram. Quer^salvá-los no seu perfil?
+1491|º
+1492|STREETGLOW
+1494|Entradas de Ar do Teto de Fibra de Carbono
+1495|Estratégia de Outrun
+1496|Salto Hidráulico
+1497|PAÍS DE GALES
+1498|Bem-vindo à Loja de Performance Bayview, unidade Coal Harbor East.^Você liberou o acesso aos upgrades de desempenho de nível Pro em Redução de Peso, Pneus e Freios.^Todas as peças liberadas em outras Lojas de Performance e na Megalow Parts também estão disponíveis aqui.
+1499|Você foi desconectado do Xbox Live porque outra pessoa entrou usando sua conta.
+1502|Pós-venda
+1503|O recurso de Salvamento Automático salva o jogo automaticamente quando há alterações ou quando você avança na carreira. Acesse o Salvamento Automático na seção Jogabilidade do menu de Pausa.
+1504|Bem-vindo à Oficina de Carroceria Bayview, unidade Coal Harbor East.
+1505|É esse que você quer?
+1506|DRIFT ENCADEADO
+1507|Capas de DVD
+1508|Permitir apenas jogadores do mesmo nível
+1510|Beleza, está tudo armado. Chegue à loja do meu parceiro Nesto em %s e ele vai te arranjar uma peça daora pro seu carro veloz.
+1512|Nome da Conta EA
+1513|Capa de DVD Four on the Floor
+1514|Obtendo lista de jogos atualizada^do servidor...
+1515|Quer reverter seu kit de carroceria de fibra de carbono para o original?
+1516|Lanternas Traseiras
+1518|Instalar um novo vinil nesta camada removerá o vinil^Único atualmente instalado no seu carro. Continuar?
+1519|Desconto de 20%%:
+1521|ROXO PÉROLA ESCURO
+1522|Se você escolher aparecer offline, não poderá enviar/receber convites de sessão de jogo nem convites de bate-papo por voz.
+1523|Corrida Encerrada. O Tempo Acabou.
+1524|Beacon Hill
+1525|MARCA:  %s
+1527|Ranqueado
+1529|Houve um problema de comunicação com o servidor.^Tente novamente mais tarde.
+1531|Rei do Drift!
+1532|Convidar
+1533|Pneus e Freios
+1535|Capas de DVD Conquistadas:
+1537|está jogando %s
+1538|A senha que você digitou está incorreta.
+1539|^^Capa de DVD concedida por montar um Carro de 9 Estrelas!
+1540|Cara, se você for rápido o bastante para chegar à loja do Jimmy em %s, a gente deixa esse carro tão bonito quanto ele anda, com um upgrade visual fumegante.
+1541|Duração
+1542|%s convidou você para uma partida de Need for Speed{82} Underground 2
+1543|Este nome de conta EA já está em uso.^Escolha outro nome e tente novamente.
+1546|Patrocínios:
+1547|Dias Atuais
+1548|Buscando Grana
+1549|TROCAS PERFEITAS:
+1550|V3 TUDO MENOS RODA DIREITA PURGE
+1551|A Corrida de Circuito é um pilar de Underground 2. Entre neste evento para testar suas habilidades em uma corrida de 2 voltas contra 3 adversários em um circuito de tirar o fôlego pelas ruas da cidade. Use seu nitro e qualquer atalho que encontrar para ter a vantagem da vitória.
+1552|Seu e-mail deve ter pelo menos 7 caracteres.
+1553|Descontos em Peças Megalow
+1554|Você não pode enviar um pedido de bate-papo por voz para quem bloqueou você ou se estiver em uma Sala de Jogo Criada.
+1555|Conjunto Moderno
+1556|Torque Máx
+1557|Ótimo Drift!
+1558|ROXO ESCURO
+1559|RELÂMPAGO 1
+1560|RELÂMPAGO 2
+1561|RELÂMPAGO 3
+1562|NINJA
+1564|Desafio
+1565|TESTE
+1566|Convidando %s para o Bate-papo por Voz
+1567|SKATISTA
+1568|CAVEIRA 1
+1571|Corridas de Drag no Pátio de Trens
+1572|Autenticando ID de usuário e senha ...
+1574|Exposição
+1575|Enviar Mensagem Privada
+1576|Quer salvar seu Login EA em %s?
+1577|Volume do Pneu
+1578|Escolher Cor do Ponteiro
+1579|Fala, cara, o Hector vai sair logo mas topa esperar os próximos %s. Chegue a tempo e ele vai colocar um upgrade visual daora nesse seu foguete. Câmbio.
+1580|2 Jogadores em Tela Dividida
+1581|Ei, acorda, garoto! Eles vão vir pra cima de você com tudo no X. Sem tempo para pensar, só fazer. Uma vitória vai te colocar na mira do patrocinador e você sabe que isso é bom.
+1582|Pintura
+1583|Ocorreu um erro ao excluir esta persona.
+1584|Relação Final de Transmissão
+1585|Lento na entrada - Rápido na saída
+1587|Carregar Perfil
+1588|Você só pode ter no máximo 100 Amigos no EA Messenger.
+1590|Boa corrida, parceiro. Dizem pelas ruas que há
+1591|Freio / Ré
+1592|Bem-vindo à Oficina de Carroceria Bayview, unidade Jackson Heights.^Você liberou o acesso a novos Para-choques Dianteiros, Para-choques Traseiros e Saias Laterais.^Todas as peças liberadas em Oficinas de Carroceria anteriores também estão disponíveis aqui.
+1593|Os amortecedores permitem ajustar a maciez ou a rigidez do seu carro. Use os controles deslizantes para ajustar a força dos amortecedores dianteiros e traseiros, influenciando a quantidade de subesterço ou sobresterço ao entrar em uma curva e como seu carro absorve as irregularidades.
+1594|PULSO ROXO
+1595|^Capa de revista concedida por vencer seu 16º Evento Mundial na Fase 5!
+1596|Líder da Corrida
+1597|Confira seu mapa para encontrar a localização das Lojas de Performance. A Megalow Parts é uma loja de peças de desempenho com desconto em Bayview. A loja tem um estoque pequeno, mas também os menores preços.
+1598|Seleção de Pista de Corrida Rápida
+1600|Física DEBUG
+1601|Seja bem-vindo, mano. As regras para você são simples: trânsito lento pela direita. Não quero você no meu caminho, aqui a gente não está levando a Miss Daisy para passear. Você recebe o mapa do percurso quando se comprometer. Topa?
+1602|Uuh, olha só o novato. Vou facilitar para você. Dê sua grana ao responsável pela largada e tente não atrapalhar ninguém. Não quero você estragando a surra que vou dar nesses outros trouxas.
+1603|Calma aí, mano, você não está falando sério em trazer essa lata-velha para esta corrida, está? Não quero arriscar minha vitória porque tenho que desviar do seu carro triste quando eu te dobrar. Preste atenção ao mapa e saia do meu caminho.
+1604|Pronto para montar nesta corrida, mano? Opa, você sabe que estou falando do seu carro, não de cavalos de verdade, né? Sempre me esqueço que você é do mato. Desculpe, mano.
+1605|E aí, vira-lata? Já que vou levar toda a sua grana, pode me chamar de Banco. Se você depositar o bastante na minha carteira, talvez eu te dê uma torradeira grátis. Pronto para abrir uma conta?
+1606|Fala, cara, os outros pilotos pediram para te avisar que caminhão de lixo não entra nesta corrida. A gente achou que só podia ser da prefeitura, porque ninguém é louco de ser pego correndo com uma lata-velha dessas.
+1607|Se quer correr nesta, é bom ser de verdade... e seu carro tem que andar como se estivesse em trilhos, porque aqui a gente não está de brincadeira. Vou pegar sua grana como a de qualquer outro otário. Topa?
+1608|Se quer correr com a gente, traga o seu melhor. Acho que esse carro que você está dirigindo não tem fôlego para chegar nem à linha de largada, quanto mais à de chegada. Talvez seja melhor pensar de novo.
+1609|Beleza, parece que temos um interessado. Se sua grana for boa, chegue à linha. De vez em quando a gente aceita uns casos de caridade e parece que você se encaixa direitinho.
+1612|Opções
+1613|Carro Esportivo Compacto
+1614|LISTRAS
+1616|Todos os Carros
+1617|ITÁLIA
+1619|Difícil
+1621|Metros
+1622|Ajustar configurações para este modo de corrida?
+1623|DUPLO AIRSTREAM
+1624|Pinturas de spinner não podem ser aplicadas em rodas comuns. Você precisa instalar Spinners no seu carro antes de pintá-los.
+1625|Trocando Carros
+1626|%s está ocupado!
+1627|Corrida Encerrada. O Tempo Acabou!
+1628|Ganhe a vantagem extra na sua próxima corrida adicionando a mais recente tecnologia N2O ao seu carro. Instale a sua em qualquer Loja de Performance Bayview ou Megalow Parts.
+1629|ESPANHA
+1630|Tem certeza de que quer voltar ao modo exploração?^Seu progresso no torneio será perdido.
+1631|Você deve concordar em compartilhar suas informações pessoais do Xbox^com a EA para continuar.
+1633|OFFSET BLASTBACK
+1634|ASSUMIU O 2º
+1638|Esta conta já está conectada ao servidor.
+1639|Quer selecionar um carro de patrocinador?
+1640|ABÓBORA
+1641|Houve um problema ao obter os dados de ranking do servidor.^Tente novamente mais tarde.
+1642|Um dos meus contatos acabou de ligar para avisar que um fotógrafo da %s está na cidade procurando carros incríveis para a capa do mês que vem. Vá até a estrela no mapa e eu ligo com mais detalhes quando você chegar.
+1643|V3 TUDO MENOS CAPÔ ESQUERDO PURGE
+1644|Resultados da Corrida
+1645|^^Capa de DVD concedida por montar um Carro de 8 Estrelas!
+1646|ALEMANHA
+1647|OFFSET AEROSTYLE
+1648|Desconto de 10%%:
+1650|Selecionar Perfil
+1652|Cromo e Chamas
+1653|Reconecte o Controle ao Soquete de Controle %d para continuar.
+1654|DUPLO ZEPHYR
+1655|Derrapar fora da pista e ao redor dos carros de trânsito é a chave para pontuar alto no drift em descida. Quanto mais perto você derrapa dos carros de trânsito, mais pontos você marca.
+1656|Conjunto Respingo
+1657|Áudio e Interiores é onde você traz o "brilho". Escolha entre uma grande variedade de upgrades de "exibição" para o seu carro e aumente a sua^reputação nas ruas. Você encontrará categorias totalmente novas com itens^como portas tesoura, hidráulica, componentes de áudio e spinners que^realmente destacam o seu carro.
+1661|O som do seu carro é igual ao de todo mundo? Ganhe um visual novo e um rugido diferente com uma das nossas novas Ponteiras do Escapamento. Instale hoje em qualquer Oficina de Carroceria Bayview.
+1663|Os pontos nas corridas de Drift são concedidos com base na velocidade e no ângulo do seu carro. Quanto maior a velocidade e o ângulo do drift, mais pontos você marca. Derrape nas zonas de bônus marcadas para disparar sua pontuação de drift.
+1666|Quer cancelar as alterações na sua configuração de vinil?
+1667|Exibir SMS
+1668|SPRINT
+1669|Corrida Livre
+1670|Rastros de Luz
+1672|Você está realmente fazendo nome. Conheço um fotógrafo da %s interessado em colocar seu carro na capa da revista. Vá até a estrela no seu mapa. Assim que ele me ligar com os detalhes, aviso onde você pode encontrá-lo.
+1674|CORRENTES
+1675|Fala, cara, quero meu carro de volta{86}AGORA! É melhor você vir correndo para cá ou vou espalhar o que sei sobre você {83} e isso significa nenhuma corrida até eu liberar. Vá à concessionária, não tenho a noite toda. O local está no seu mapa!
+1676|Restaurar
+1678|Regras do Modo Outrun
+1679|Fique de olho nas portas do galpão que abrem e fecham. Observe as portas que estão subindo e tente ir para aquela faixa. Tentar vencer uma porta que está fechando é uma jogada arriscada e pode custar a corrida.
+1681|Ranking do Mês Passado
+1682|Deixar
+1684|Placas de Cambagem Ajustáveis
+1685|Pontos
+1686|Bloqueado
+1687|Estatísticas da Carreira
+1688|Aplicar Vinil
+1689|Exiba seu estilo com as novas opções de posicionamento do N2O Purge. A Car Specialties Bayview consegue montar o setup show. Ligue para marcar um horário hoje à noite.
+1690|Racebreaker
+1691|Tem certeza de que quer carregar^os carros para jogar em tela dividida?
+1693|SEM WIDEBODY
+1694|TIPO 3 CHARTREUSE
+1696|Você deve encerrar esta sessão de bate-papo por voz para remover este membro da sua Lista de Amigos.
+1697|LARANJA
+1698|Jogos Disputados
+1699|Uma das suas configurações ajustadas personalizadas mudou. Quer salvar seu perfil agora?
+1700|Líder de Circuito
+1701|Um amigo meu da %s está na cidade procurando um carro bonito para colocar na capa da revista do mês que vem. Ele vai me ligar de volta com o local. Vá até a estrela no mapa e eu ligo com os detalhes.
+1702|recebido
+1703|Ah, a propósito, esqueci de dizer que tem muita ação na cidade hoje à noite. Enviei os locais das corridas para o seu mapa. Vá lá e comece a fazer seu nome!
+1704|CIRCUITO
+1706|Relação Final de Transmissão {83} Em uma pista fechada, você pode querer ajustar a Relação Final para mais aceleração, enquanto em uma reta de drag longa a velocidade máxima pode ser mais importante.
+1707|Alguém já está conectado com esta Gamertag.^Tente novamente mais tarde.
+1708|LAN
+1709|Quer entrar na Garagem?
+1711|DUPLO CYCLONE

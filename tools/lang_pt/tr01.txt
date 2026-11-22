@@ -1,0 +1,275 @@
+1|Não
+2|OK
+3|Ligado
+4|KM.
+5|Máx
+6|Mín
+7|Desligado
+8|VERMELHO
+9|Sim
+10|Uma das Lojas de Performance fica na área de Coal Harbor East, na seção Industrial. Uma luz azul indica a entrada da loja.
+11|TIPO 3 MAGENTA E AZUL
+12|Revista AutoMaxx
+13|Voltar
+14|AZUL
+15|Pés
+16|CINZA
+17|Ajuda
+19|Voltas
+20|VERDE-LIMÃO
+21|Carregar
+22|Masculino
+23|Nenhum
+25|Traseira
+26|Salvar
+27|Tempo:
+28|E-mail do pai, mãe ou responsável:
+29|Conectando ao lobby...
+31|Sair para o Menu Principal do Xbox Live
+32|^3 Corridas de Drag
+33|Centro:
+34|Beacon Hill:
+35|Jackson Heights:
+36|Coal Harbor East:
+37|Coal Harbor West:
+38|Seleção de Carro
+39|Digite a senha de %s
+40|^Capa de revista concedida por vencer seu 6º Evento Mundial na Fase 3!
+41|Para-choques Traseiros
+42|Palavrões / Obscenidade
+43|Cancelar Alterações
+62|Motor Estourado
+63|Medidores Personalizados
+64|Filtro de eventos
+65|Este pacote contém uma peça pior do que a que você^já tem instalada. Quer instalar este pacote de^desempenho?
+68|Janeiro
+69|Uma das Lojas de Performance fica na área de Coal Harbor West, na seção Industrial. Uma luz azul indica a entrada da loja.
+70|Sua sessão de bate-papo por voz terminou!
+71|Motor
+73|Capôs
+75|Rodas
+76|CREME
+77|Corridas de Drag no Aeroporto
+78|ÁUDIO DO PORTA-MALAS
+79|Você já enviou um convite para este jogador!
+80|Ocorreu um erro ao carregar a configuração de rede selecionada.
+81|Quer criar um novo perfil?
+82|Frente
+83|está online
+84|Se você consegue ver o logotipo de Need for Speed{82} Underground 2,^ precisa diminuir o brilho da sua televisão.
+85|VERDE
+86|Mensagem SMS
+87|Alcance a classificação de %$.1f estrelas
+88|Quer salvar esta revista?
+89|Tempo esgotado esperando a conexão com seu provedor.
+90|Milhas
+91|^Capa de revista concedida por vencer seu 27º Evento Mundial na Fase 4!
+92|Duração (s)
+93|OCEANO
+94|Usar Conta EA Existente
+95|Adquirido
+96|Freio-motor
+97|Oi, eu sou Brooke Burke e interpreto Rachel Teller em Need for Speed Underground 2.
+98|Interpretar uma piloto no jogo foi muito divertido, mas nas ruas eu sempre dirijo com segurança e responsabilidade.
+99|Quando o assunto é corrida, só faça isso nas ruas de Underground 2.
+100|Então lembre-se: use sempre o cinto de segurança e respeite as leis de trânsito.
+101|Olhar para Trás (Baixo)
+103|Tentar de Novo
+105|Você precisa encerrar esta sessão de bate-papo por voz para remover %s da sua Lista de Amigos.
+106|ORIGINAL
+107|Torque
+108|Esqueci o Nome da Minha Conta EA
+112|BRANCO
+114|Voltar ao Menu Principal
+115|Permissão dos Pais
+117|Não foi possível enviar o comentário.
+119|Uma das técnicas mais difíceis, o trail braking, consiste em esperar a entrada da curva para frear e manter o freio até o ápice. Cuidado para não jogar o carro em um drift.
+120|Nota Visual
+121|Opções do Anfitrião
+122|Controles
+123|Blueprint the Block
+124|%s foi bloqueado. Você não receberá mais Mensagens, Convites nem Convites de Bate-papo por Voz de %s
+126|PERFECT SHIFT %:
+128|Estatísticas do Jogador
+129|Selecionar Modo de Corrida Rápida
+130|Entrar na Loja
+132|Molas e Amortecedores de Desempenho
+133|Personalizar Carro
+134|Troca Perfeita!
+135|Desconectar do Bate-papo por Voz?
+136|Endereço de E-mail
+138|O toque final para deixar o carro estiloso são as Lanternas Traseiras. Novos modelos já em estoque em todas as Oficinas de Carroceria Bayview.
+139|Mapa da Pista:
+140|Drag Mais Rápido Concluído
+141|Potência ( %s )
+142|Entrar em Sessão de Jogo
+143|Distância:
+144|Falha ao conectar ao servidor do lobby por algum motivo.
+145|OPÇÕES DE MÚSICA
+146|Multidões
+147|Quer trocar ou remover este vinil?
+148|Eventos Especiais
+149|Esta conta foi banida.
+150|Confirmar E-mail:
+151|Sprint Patrocinado
+153|Sala de Jogo Criada
+155|Voltar ao Modo Exploração?^Todo o progresso não salvo da corrida será perdido.
+156|Vidros Leves
+157|Quer comprar este conjunto gráfico para o seu carro?
+158|Direcional Analógico
+159|Excluir Mensagem
+160|LAVANDA
+161|Tempo Parcial
+162|Coloque a potência no asfalto mais rápido instalando a mais nova Transmissão do mercado. Instale a sua com exclusividade nas Lojas de Performance Bayview.
+164|Street X são corridas disputadas em pistas curtas, onde reflexos rápidos e nervos^de aço fazem a diferença entre ganhar e perder. Aceite^este desafio para uma corrida de 3 voltas contra 3 adversários, onde^você vai travar uma batalha intensa pela linha interna.
+165|Seleção de Carro Online
+166|Revista %d
+167|TRICOLOR D
+168|TRICOLOR E
+169|TRICOLOR F
+170|Ajuste de Desempenho
+171|Este é o comentário da região 4
+172|Senha da Conta
+173|Créditos
+174|Este slot de decalque já está vazio!
+175|Cartão de Memória Slot A
+177|Spinners
+178|Reiniciar Corrida?
+179|Recorde de Volta
+181|OFFSET TEMPEST
+182|Vitórias em Eventos Mundiais:
+183|Confirmar Senha
+184|Neon
+185|Peso
+186|Conjunto Relâmpago
+187|Os carros mostrados neste jogo podem ser diferentes na aparência^e no desempenho dos carros reais, e os motoristas mostrados neste^jogo podem não estar seguindo as regras de segurança do trânsito. Ao^dirigir um carro na vida real, lembre-se de ser um motorista^seguro: use o cinto de segurança, a seta^e o bom senso.
+188|Nome Inadequado
+189|Reprise Pós-Corrida
+190|Acusado de Trapaça pelo Servidor
+191|Fase %d
+192|Administre suas voltas nas corridas Knockout. Você precisa evitar ser o último em cada volta para continuar na corrida. Fique perto até a volta final e então parta para a vitória.
+193|Quer entrar na concessionária?
+194|Buscar Gamertag
+195|O toque final de estilo é uma das nossas novas cores de Neon do Motor, disponíveis agora em todas as Lojas Car Specialties Bayview.
+196|Rebaixamento Dianteiro
+197|Sistema de Admissão de Ar Frio
+198|Pedidos de Amizade
+199|Média de Pontos de Reputação por corrida na Fase Atual
+200|Líder de Street X
+201|ACIDENTE EVITADO
+202|Mostrar Nomes dos Jogadores
+203|SEM ENTRADA DE AR NO TETO
+204|Removendo %s da lista de amigos ...
+205|Oficina de Carroceria
+206|Uma forma rápida de identificar mensagens SMS é pelo tipo de ícone exibido quando a mensagem chega. Cada tipo de mensagem tem seu próprio ícone de envelope.
+207|Drift Excelente!
+208|^3 Corridas de Street X
+209|Chance de capa de %s
+210|Barra de Torre de Suspensão
+211|%s Único
+212|Patrocínios são sua porta de entrada para a Underground Racing League. A URL é uma liga só para convidados, onde você precisa de muita reputação para ser chamado. Os patrocinadores procuram pilotos de alta reputação, então não se limite a vencer seus adversários na pista: acabe com eles.
+213|CLÁUSULAS DO CONTRATO:^O piloto deve vencer 9 corridas da URL, 3 corridas à escolha do patrocinador e 34 corridas adicionais à escolha do piloto.^^REQUISITOS ADICIONAIS:^Montar um carro que apareça em 4 capas de DVD.^^BÔNUS:^Veículo de cortesia da concessionária Bayview.
+214|Carro
+215|Dia
+216|Vitória
+217|Notícias
+218|Fuel Rail
+220|Aumente a potência e troque o seu pelo novo Motor, disponível com exclusividade em todas as Lojas de Performance Bayview.
+221|Voltar ao Menu Principal?
+223|Procure a Concessionária em Coal Harbor East, na área Industrial da cidade. Fique de olho na luz cor de água.
+224|Tem certeza de que quer salvar seu perfil?
+225|Porcentagem de Vitórias:
+226|Metade Inferior
+227|^3 Corridas de Circuito
+228|Melhor Drift:
+230|Retrovisores Laterais
+231|VOLTAR
+232|CAPS
+233|CONCLUÍDO
+234|Porta-malas de Carbono
+235|Sem Ranking
+236|Escuta, vença esta sprint e ficamos um passo mais perto de fechar este contrato. Além disso, quando você cruza a linha em primeiro, a gente recebe.
+237|Cara, as corridas sprint estão em alta e seu patrocinador quer marcar presença com a galera que curte isso. Vença esta corrida, vai causar uma boa impressão.
+238|Ninguém quer apoiar perdedor e nenhum patrocinador vai jogar dinheiro bom em cima de ruim. Quer continuar recebendo, tem que continuar vencendo. Vá lá e deixe sua marca.
+239|Tenho uns negócios engatilhados. Andei conversando com outros patrocinadores que podem soltar uma grana séria se encontrarem um vencedor. Que tal impressioná-los com uma vitória?
+240|É o seguinte, cara: vitória é grana e grana grande vem de patrocinador. Esta corrida reta vai pesar bastante no seu contrato. Então mande ver lá.
+241|Segundo lugar é perdedor do mesmo jeito, e patrocinador não anda com perdedor. Esta sprint de rua vale bem mais que trocado no seu contrato atual. Esta corrida vai plantar a semente de negócios futuros, então você tem que chegar com tudo.
+242|Para de pose e fica sério. Esta sprint conta no seu contrato e os patrocinadores não vão aceitar nada além de vitória. Acelera forte e pisa fundo, porque é pela grana.
+243|Olha só! Como você anda? Tá, ninguém liga. Eles só querem ver vencedores e hoje à noite é sua chance. É bom você cruzar a linha de chegada em primeiro ou seu mundo vai desabar.
+244|E aí, cara, espero que seu carro esteja rugindo hoje à noite porque você vai tomar uma surra nesta corrida. Os patrocinadores deixaram tudo armado, então ela conta para o seu contrato. Se vencer, ganha mais uma noite com uns trocados no bolso. Se perder... você sabe como é...
+245|Vice-campeão da URL
+246|Você tem uma mensagem importante do Xbox Live. É preciso ler esta mensagem antes de entrar.
+247|VELOCIDADE MÁXIMA
+249|Circuito Patrocinado
+250|Comando de Válvulas e Marchas de Corrida
+251|Corrida Urbana
+253|Tempo como Líder:
+254|Agora que você tem um veículo, vá até a minha garagem. Enviei o local para o seu mapa e ativei seu GPS. Ah, e nem perca tempo procurando corridas, não tem nada rolando. Não me faça esperar. Te vejo lá.
+255|Precisa de um pouco mais de impulso? O melhor N2O do mercado já está disponível com exclusividade em todas as Lojas de Performance Bayview.
+256|SLOT LIVRE
+257|Torque Máx:
+258|Vou te passar o serviço. Tudo na cena de corridas de Bayview passa por mim.
+259|E se você não
+260|O que quiser, você encontra - se souber onde procurar.
+261|Drag, drift, circuitos e muito mais. A cena é tão profunda que a gente
+262|Claro que isso traz a chance de ganhar muito dinheiro. E o melhor de tudo,
+263|Basta ter a reputação certa
+264|Lembre-se: esta é a minha cidade; você
+265|E aí, cara. A Rachel
+266|O estoque das lojas muda com o tempo e, quando houver novas peças, você receberá uma mensagem SMS. Confira suas mensagens para ver quais peças novas foram liberadas. Depois de descobertas, ou liberadas, as peças ficam disponíveis em todas as lojas desse tipo.
+267|Street X
+268|Vibração:
+269|Foi lançado um patch para este produto.^Você precisará baixar e instalar o patch para jogar online.
+270|Você precisa encerrar este bate-papo por voz para bloquear este Amigo
+271|Beacon Hill East
+272|Beacon Hill West
+273|Restaurar Porta-malas ao Original
+274|Armazenando Carros e Peças
+275|Retomar Teste
+276|%s foi bloqueado. Você não receberá mais Mensagens ou Desafios de %s
+277|Falha no login do servidor do lobby. O servidor pode estar fora do ar ou pode haver problemas de rede impedindo a conexão no momento. Verifique suas configurações de rede e tente novamente mais tarde.
+278|Outro jogador está perseguindo você com atenção indesejada. Você bloqueou esse jogador, mas ele continua tentando se comunicar com você.
+280|Tem certeza absoluta de que quer excluir esta persona?
+282|Retrovisores Laterais de Fibra de Carbono
+283|Escolher um novo layout removerá os decalques do layout anterior. Continuar?
+284|Iluminação do Carro
+285|Neon Interno
+287|Desativar GPS
+288|Quer instalar este layout de porta-malas agora?
+289|Película
+290|Sinta o coice de uma potência extra e instale o melhor Turbo do mercado. Garanta o seu hoje, com exclusividade em todas as Lojas de Performance Bayview.
+293|De: %s
+294|O Convite de Bate-papo por Voz foi recusado.
+295|Recompensas
+296|Enviar Mensagem
+297|Preferência de mapa
+298|Tem certeza de que quer desbloquear %s ?
+299|Quer dirigir seu %s em vez do seu %s?
+300|Volume da Música:
+301|Alterando Controles
+302|Belo trabalho no carro. Eu
+303|Desativando GPS
+304|Controlar Carro
+305|Obtendo dados do ranking do servidor.
+306|Quer selecionar este carro?
+307|Atualizar
+308|Olhar para Trás
+309|Falha na conexão com o EA Messenger.
+311|Nitro
+312|Sua pontuação:
+314|Menu Principal
+315|Grana:
+316|Volume de Voz e Filmes:
+317|Configurações Padrão
+318|VERDE-CLARO
+319|Personalize o interior do seu carro com novos Medidores Personalizados. Disponíveis enquanto durarem os estoques em todas as Lojas Car Specialties Bayview.
+320|LAYOUT AJUSTADO
+321|TIPO 3 BICOS ESQUERDO SUPERIOR DIREITO INFERIOR
+322|Bem-vindo à Loja de Gráficos Bayview, unidade Beacon Hill East.^Você liberou o acesso a Pintura de Rodas e Vinis Rasgados.^Todas as peças liberadas em outras Lojas de Gráficos também estão disponíveis aqui.
+323|Conectando ao Servidor EA...
+324|Arte de DEBUG
+325|A Gamertag que você selecionou não é apropriada.^Digite outra Gamertag e tente novamente.
+326|Tipo de Jogo:
+327|Aniversário
+328|Four on the Floor
+329|Configuração das Rodas

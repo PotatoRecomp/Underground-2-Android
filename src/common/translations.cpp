@@ -125,6 +125,7 @@ constexpr Entry kEntries[] = {
     {"DUTCH", {u"Nederlands", u"Nederlands", u"Nederlands", u"Nederlands", u"Nederlands"}},
     {"SWEDISH", {u"Svenska", u"Svenska", u"Svenska", u"Svenska", u"Svenska"}},
     {"DANISH", {u"Dansk", u"Dansk", u"Dansk", u"Dansk", u"Dansk"}},
+    {"PORTUGUESE", {u"Português", u"Português", u"Português", u"Português", u"Português"}},
     {"OPEN", {{}, {}, {}, {}, u"Buka"}},
     {"CHECK FOR UPDATES", {u"Rechercher des mises à jour", u"Nach Updates suchen", u"Cerca aggiornamenti", u"Buscar actualizaciones", u"Cek pembaruan"}},
     {"CHECK", {u"Rechercher", u"Suchen", u"Cerca", u"Buscar", u"Cek"}},
@@ -214,7 +215,7 @@ int Language() {
         if (!game::LanguageAvailable(game::BootLanguage())) return -1;
         auto at = std::find(std::begin(game::kLanguages), std::end(game::kLanguages), game::BootLanguage());
         if (at == std::end(game::kLanguages)) return -1;
-        // the recomp's own text is in the first five after English; Dutch, Swedish and Danish keep the panel's English
+        // the recomp's own text is in the first five after English; Dutch, Swedish, Danish and Portuguese keep the panel's English
         int i = int(at - std::begin(game::kLanguages)) - 1;
         return i < int(std::size(kEntries[0].text)) ? i : -1;
     }();

@@ -1,0 +1,74 @@
+Accept Selection|Aceitar Seleção
+Advance|Avançar
+Back|Voltar
+Back to Previous Menu|Voltar ao Menu Anterior
+Backspace|Apagar
+CAPS|CAPS
+Cancel|Cancelar
+Change Brand|Mudar Marca
+Change Car|Mudar Carro
+Change Category|Mudar Categoria
+Change Color Left / Right|Mudar Cor Esquerda / Direita
+Change Color Up / Down|Mudar Cor Cima / Baixo
+Change Component|Mudar Componente
+Change Decal Brand|Mudar Marca do Decalque
+Change Gauge Type|Mudar Tipo de Medidor
+Change Layer|Mudar Camada
+Change Layout Type|Mudar Tipo de Layout
+Change Neon|Mudar Neon
+Change Paint Selection|Mudar Seleção de Pintura
+Change Part|Mudar Peça
+Change Performance Packages|Mudar Pacotes de Desempenho
+Change Selection|Mudar Seleção
+Change Selection Toggle|Alternar Seleção
+Change Slot|Mudar Slot
+Change Trunk Layout|Mudar Layout do Porta-malas
+Change Vinyl Selection|Mudar Seleção de Vinil
+Change to Performance Packages|Ir para Pacotes de Desempenho
+Chat|Bate-papo
+Continue|Continuar
+Customize / Edit Car|Personalizar / Editar Carro
+Cycle Through Parts|Percorrer Peças
+Delete Persona|Excluir Persona
+Exit to Explore Mode|Sair para o Modo Exploração
+Grab Selected Song|Pegar Música Selecionada
+Install Highlighted Part|Instalar Peça Destacada
+Load Cars|Carregar Carros
+Log-off Online Play|Sair do Jogo Online
+Move Highlight Left / Right|Mover Destaque Esquerda / Direita
+Move Highlight Up / Down|Mover Destaque Cima / Baixo
+Move Numbers Up / Down|Mover Números Cima / Baixo
+Preview Selection|Visualizar Seleção
+Reset Highlighted Category to Default|Restaurar Categoria Destacada ao Padrão
+Rotate Car|Girar Carro
+Scroll|Rolar
+Scroll Chat|Rolar Bate-papo
+Scroll Text|Rolar Texto
+Select Car|Selecionar Carro
+Select Gauge|Selecionar Medidor
+Select Highlighted Category|Selecionar Categoria Destacada
+Select Highlighted Color|Selecionar Cor Destacada
+Select Highlighted Component|Selecionar Componente Destacado
+Select Highlighted Decal|Selecionar Decalque Destacado
+Select Highlighted Layer|Selecionar Camada Destacada
+Select Highlighted Neon|Selecionar Neon Destacado
+Select Highlighted Option|Selecionar Opção Destacada
+Select Highlighted Part|Selecionar Peça Destacada
+Select Highlighted Track|Selecionar Pista Destacada
+Select Highlighted Trunk Layout|Selecionar Layout de Porta-malas Destacado
+Select Highlighted Unique|Selecionar Peça Única Destacada
+Select Highlighted Vinyl|Selecionar Vinil Destacado
+Select Slot|Selecionar Slot
+Sign out of Xbox Live|Sair do Xbox Live
+Special Characters|Caracteres Especiais
+Switch Cars|Trocar Carros
+Switch Paint Type|Trocar Tipo de Pintura
+Switch Players|Trocar Jogadores
+Toggle Car Filter|Alternar Filtro de Carros
+Toggle Categories|Alternar Categorias
+Toggle Option|Alternar Opção
+Toggle Through Game Mode Rankings Board|Percorrer Ranking dos Modos de Jogo
+Toggle Through Stages|Percorrer Fases
+Toggle Through Statistics|Percorrer Estatísticas
+Trade for Car|Trocar por Carro
+Trade for Selected Car|Trocar pelo Carro Selecionado

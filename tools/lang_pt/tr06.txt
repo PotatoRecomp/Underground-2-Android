@@ -1,0 +1,367 @@
+2208|Kits Wide Body
+2209|Mensagem SMS de Evento de Corrida
+2210|Mensagem SMS de Loja
+2211|Este é o comentário da região 3
+2213|Fase %d - Status de %s
+2215|Quer comprar e instalar este pacote de desempenho?
+2216|Nenhum Disponível
+2217|OFFSET RIPTIDE
+2218|ESCAPAMENTO ORIGINAL
+2219|Capa de DVD Racing Street Unleashed
+2220|CAVEIRA 2
+2221|CAVEIRA 3
+2222|Sala Privada
+2223|Dê ao seu carro a vantagem de piloto com a mais recente seleção de entradas de ar do teto. Garanta a sua nas Oficinas de Carroceria Bayview.
+2225|Aceleração
+2226|Chip de Desempenho
+2227|Neblina
+2228|Apagar
+2230|Ver Estatísticas
+2232|Info de Volta
+2233|Restrições de Desempenho do Carro
+2236|Procurando^Conexão
+2240|HODÔMETRO PARCIAL:
+2241|Contatar Satélite
+2242|Criar Nova Persona
+2243|Controle de Estabilidade
+2244|Criar Jogo
+2246|Tem certeza de que quer carregar^o perfil %s?
+2247|Atenção! Instalar um capô de fibra de carbono fará com que quaisquer vinis e decalques do capô sejam removidos do seu carro.
+2249|Velocidade de 400m:
+2250|Iniciar Nova Carreira
+2251|O amigo precisa estar jogando o mesmo jogo!
+2252|Disco rígido do Xbox
+2254|Confirmar senha
+2255|Você conseguiu!
+2256|Isso foi incrível
+2257|Reativar Som do Bate-papo por Voz
+2258|Faça do seu carro o mais incrível das ruas com neon de motor novinho. Peça o seu hoje em qualquer Loja Car Specialties.
+2260|Gerenciamento de Mensagens
+2261|A Megalow Parts é a superloja de peças com desconto. Peças de desempenho de nível 1 e nível 2 estão disponíveis aqui. Embora as peças de desempenho também estejam disponíveis em outras lojas de peças pela cidade, a Megalow tem os maiores descontos.
+2262|TIPO 2 BICO DIREITO DO CAPÔ
+2263|Quer entrar na garagem?
+2264|TIPO 2 VERDE E AZUL
+2265|TIPO 2 VERDE E DOURADO
+2267|Para entrar em lojas ou eventos, dirija até a zona animada e pressione para cima no HUD de SMS, quando solicitado. Para ler as mensagens recebidas, pressione para a direita no HUD de SMS quando o ícone de correio aparecer.
+2269|Seleção de Carro da Garagem
+2270|Boa pilotagem por aí! Passe na Concessionária quando tiver um tempinho, ouvi que acabaram de receber uma nova adição quente no estoque.
+2272|RESUMO DE PONTOS DO PATROCINADOR
+2273|Digite a senha
+2275|Confirmar Senha da Conta
+2276|Assunto: Foto para a Capa do DVD
+2277|Seleção de Peça Única
+2278|HUD Personalizado
+2279|Outro jogador está usando constantemente linguagem obscena ou vulgar em salas de bate-papo, bate-papo por voz ou pelo EA Messenger.
+2280|Voltar às Caixas de Correio
+2281|Coloque seu carro na pista rápida adicionando um Turbo novinho. Instale um nas lojas de Performance Bayview ou na Megalow Parts mais próxima.
+2282|Digite a Mensagem
+2283|TIPO 1 BICO ESQUERDO DO CAPÔ
+2284|Este jogador tem a lista de amigos cheia.
+2285|Iniciar Corrida
+2286|Seu arquivo de Configuração de Rede está corrompido e não pode ser usado.
+2287|POSIÇÃO
+2288|Revistas
+2292|Pontos para a Próxima Classe:
+2293|Para mudar os controles de direção, selecione Opções e depois Jogador no Menu de Pausa. Aqui você pode alternar entre as várias preferências de direção.
+2295|Você Perdeu a Liderança!
+2299|Sair desta sala agora encerrará esta sessão de jogo. Tem certeza de que quer sair?
+2300|Derrota no Outrun
+2301|Contagem Regressiva da Corrida:  %d
+2302|Os outros jogadores não conseguiram se conectar. Esta sessão de jogo não está mais disponível.
+2304|Licenciado pela Nintendo
+2305|Tem certeza de que quer carregar seu setup ajustado personalizado anterior?
+2306|ASSUMIU O 4º
+2308|Número de Voltas:
+2310|Retrovisores laterais
+2311|Iniciando Sessão de Jogo...
+2312|Você não pode vender peças originais.
+2317|Desconexão do Anfitrião %
+2318|STREET X
+2319|Online DEBUG
+2322|No Tandem Drift você marca mais pontos derrapando o mais perto possível do seu parceiro. Bater nele, ou nas paredes, fará você perder todos os pontos do drift atual.
+2323|Pressione para baixo no HUD de SMS para acessar a legenda do Minimapa. Ela mostra o que cada ícone no seu mapa representa.
+2325|Bayview's Best
+2327|Ei, queria te avisar. Agora que você está sob contrato com o patrocinador, precisa cumprir alguns eventos específicos para fechar o negócio. Veja os ícones "X": são eles. Vá lá e arrebente. Falo com você depois.
+2328|Você deve informar o nome da conta EA^e a senha para entrar.
+2330|Turbo {83} Você ganha muita potência do Turbo, principalmente em RPMs mais altas. Dá para equilibrar essa potência ajustando Turbo e ECU juntos para ter potência onde quiser.
+2331|Ocultar no Mapa do Mundo
+2332|A aerodinâmica empurra o carro para baixo e aumenta a aderência dos pneus. Ajuste os controles deslizantes para aumentar ou diminuir o downforce dianteiro e traseiro. Downforce demais pode fazer o carro reagir de forma severa a irregularidades e meios-fios.
+2333|Pontos de Reputação Ganhos Nesta Corrida:
+2334|Tem certeza de que quer sair?
+2336|Entrar neste bate-papo por voz encerrará o atual. Quer continuar?
+2337|Instalar Pacote
+2338|Sistema de Mensagens
+2350|Quer converter para Fibra de Carbono quaisquer Para-choques Dianteiros/Traseiros, Saias Laterais e Kits Widebody instalados neste carro?
+2351|Frente
+2352|Slammed & Stretched
+2353|Volume de Voz e Filmes
+2355|TIPO 2 AZUL-CÉU
+2356|Sprint
+2357|Para isto você precisa de N2O. Não... melhor 2 cilindros, 2 dos grandes!
+2359|Continuar
+2360|PULSO BRANCO
+2362|Mudar Seleção
+2363|Desconexão do Cliente %
+2364|Modo de Mapa da Corrida
+2365|Controle de Reprise
+2366|Você perdeu a conexão com o Servidor EA. Quer reconectar?
+2367|Fique de olho em outros carros tuner na rua. Eles serão marcados no seu Minimapa como triângulos laranja. Você pode desafiar esses carros para uma corrida "Outrun" pressionando para cima no HUD de SMS quando solicitado. Na corrida, o objetivo é tomar a liderança do adversário e depois despistá-lo! Você pode seguir qualquer rota para tentar vencê-lo.
+2370|%s precisa ser adicionado à sua Lista de Amigos se você quiser enviar um convite entre jogos a este jogador.
+2371|Vá à Garagem
+2372|Bandeiras
+2373|String de HUD inválida.
+2374|Pressurização Hidráulica
+2377|Trapaça
+2380|ESCOLHER CAMADA DE VINIL
+2382|DVD %d
+2383|O comentário foi enviado. O Relacionamento com o Cliente da EA investigará a situação e tomará as medidas apropriadas.
+2384|Jogos sem ranking são divertidos, mas desafie-se jogando partidas ranqueadas online. Suba no ranking vencendo outros jogadores e se firme como o melhor piloto online.
+2385|Reativar Som de Todos?
+2386|Parabéns, você terminou o jogo! Você liberou todos os upgrades de desempenho e visuais no modo Corrida Rápida. Não há mais eventos para concluir no mundo: volte à sua Garagem para refazer qualquer evento da sua Carreira.
+2388|Derrota
+2390|Opções de Recompensa
+2391|Posição
+2392|Tempo
+2393|Tipo
+2394|Vitórias
+2395|Ano
+2396|O objetivo de uma corrida outrun é tomar a liderança e despistar o adversário abrindo mais de 300 metros de distância. Você pode^seguir qualquer rota quando é o líder. Se estiver atrás,^precisa alcançar o líder e ultrapassá-lo para assumir o controle da corrida.
+2398|Seu setup ajustado personalizado atual mudou. Quer armazená-lo?
+2399|Uma das Lojas Car Specialties fica na área de Coal Harbor West, na seção Industrial. Ela fica ao sul das 3 torres nucleares. Procure a luz amarela que indica a entrada.
+2400|Quer trocar por este carro?
+2401|Status do Jogador
+2402|TIPO 3 AZUL-CÉU
+2403|Volume do Motor
+2404|Nossa, sua mãe sabe que você pegou a perua do time infantil dela e saiu por aí? Se quiser correr com a gente, amarre bem as compras no banco de trás antes de começarmos.
+2405|Fala, mano, parece que o Bayview Bridge Club se perdeu a caminho da reunião social mensal. Nunca senti cheiro de grana de country club antes, é meio cheiro de medo. Se você ainda está dentro, eu te passo o mapa do percurso.
+2406|Filho, a gente anda de "sport-utes" bacanas nesta turma. Que tal eu pegar sua grana rapidinho para você voltar com esse ônibus à concessionária antes que o motorista precise dele para a escola amanhã cedo?
+2407|Fica claro, garoto: aqui não tem espaço nem tempo para carroça. É bom saber onde está se metendo, porque aqui ninguém devolve dinheiro.
+2408|Só pode ser brincadeira! Você tem mesmo coragem de aparecer pra gente com essa lata-velha. Mostra a grana, garoto: nestas corridas não existe fiado.
+2409|Esse carro é um balde mole, cara. Você é louco se acha que tem alguma chance! Tanto faz, eu pego sua grana. Você sabe o que fazer para começar.
+2410|Ai, ai! Olha só, garoto: você está fazendo uma performance de pato e isso não está ajudando. Talvez recupere um pouco de orgulho se correr esta próxima bateria.
+2411|Isto é PESADO, garotão. Vai esquentar com os U-Vees e você chegou bem a tempo de levar uma surra. Bote a grana na mesa e você entra.
+2412|Como você chama essa coisa em que chegou? Parece uma caixa com rodas, garoto. Acho que a gente pode dobrar um pouco as regras para deixar você entrar. Gosto de uma boa risada.
+2413|Barras Estabilizadoras de Grande Diâmetro
+2414|Desafiado por:
+2415|Desbloqueando %s ...
+2417|Ajustar Configurações
+2418|Estatísticas Gerais da Carreira
+2419|Corridas de SUV
+2420|Dependendo da sua preferência de direção, você pode mudar os controles de direção no menu Opções. Alterne entre as várias configurações para escolher a que melhor combina com você.
+2422|O outro jogador está usando um nome ofensivo ou criou um nome de sala ofensivo.
+2423|Tempo de Liderança
+2424|Acusado de Trapaça por Jogador
+2425|Máximo de Jogadores
+2426|Capôs Divididos
+2428|Película do Vidro
+2429|%s está em uma sessão de jogo, seu pedido foi recusado.
+2430|A Underground Racing League
+2431|DRIFT
+2434|Não deixe de visitar todas as lojas de tuners do mundo. A maioria está marcada no minimapa, mas os locais das lojas de corrida "underground" ficam escondidos "fora do caminho comum". Fique de olho em ruas laterais e becos que podem levar a lojas especiais com as melhores peças e upgrades.
+2436|Reputação Total
+2437|A qualidade da sua conexão com este jogo está abaixo da média.^Entrar neste jogo pode resultar em uma experiência ruim.^Tem certeza de que quer entrar neste jogo?
+2438|%s foi desbloqueado.
+2440|%s está jogando Need for Speed{82} Underground 2
+2444|Prêmio de upgrade de desempenho:
+2446|Estatísticas de Desempenho
+2447|Entrar em um jogo ranqueado trocará automaticamente para o carro ranqueado adequado a este modo de jogo. Você também pode perder mensagens não lidas e convites de sessão de jogo.
+2449|Prorrogação!
+2450|Quicar
+2455|SEM NEON
+2458|Ótima Sessão
+2459|Parabéns!^ Você ganhou uma caneta grátis^e uma xícara de café.
+2460|Trocar Coletores
+2461|Você precisa informar os dados necessários para criar uma conta EA.
+2463|Tem certeza de que quer sair desta sessão de jogo?
+2464|Reputação Média Por Corrida
+2465|Quer reverter seu porta-malas ao original?
+2466|Recompensas / Patrocínio
+2467|Dicas de Jogo
+2468|Agosto
+2469|A configuração gráfica do seu carro mudou.^Quer comprar a nova configuração gráfica?
+2470|O Race Breaker é uma nova adição ao seu sistema de nitro. Quando você^enche o nitro além de 100%, começa a acumular nitro Race Breaker.^Isso adiciona ainda mais impulso e aderência ao seu carro e pode fazer a^diferença em uma corrida. O nitro comum é identificado pela cor azul^no HUD do seu nitro. Quando ele enche, o nitro Race Breaker verde^começa a encher por cima do seu nitro comum.
+2473|Você saiu na capa de um DVD. Vá dar uma olhada!
+2475|Óxido Nitroso
+2476|1 Corrida de Circuito^1 Corrida de Drift^1 Corrida Sprint
+2477|Sombra do Carro
+2478|Desconectado
+2480|TIPO 2 BICO DA RODA ESQUERDA
+2481|MELHOR TEMPO DE VOLTA
+2482|Animal
+2484|Só garanta que ele caia ou nenhum de vocês vai sair daqui andando.
+2485|Ajuste de desempenho em tempo real
+2487|Sentido da Pista
+2489|Ocorreu um erro desconhecido ao tentar iniciar o servidor LAN.^Verifique sua configuração e tente novamente.
+2490|OFFSET ANNEX
+2491|Informe sua data de nascimento antes de continuar.
+2492|HIDRÁULICA NÍV. 2
+2493|Que pilotagem bonita! Tem um fotógrafo que quer tirar uma foto do carro vencedor para a revista Underground. Você tem 45^segundos para chegar ao local dele antes que ele vá atrás de outro piloto.^O local está marcado por uma estrela amarela piscando no seu minimapa, agora corra!
+2495|Mudar Peças de Carroceria
+2497|Enviando pedido de amizade para %s ...
+2498|Converse Aqui
+2499|Falha ao Salvar
+2500|Escolha com cuidado ao decidir seu primeiro carro. Você vai dirigi-lo por um bom tempo, então escolha um carro que combine com seu estilo. Carros AWD, FWD e RWD dirigem e respondem de formas diferentes. Veja as Estatísticas do Carro na tela de Seleção de Carro para mais informações.
+2501|Ranking:
+2502|CARROCERIA 1
+2503|CARROCERIA 2
+2504|CARROCERIA 3
+2505|CARROCERIA 4
+2506|CARROCERIA 5
+2507|CARROCERIA 6
+2508|CARROCERIA 7
+2509|CARROCERIA 8
+2510|CARROCERIA 9
+2511|CARROCERIA 10
+2512|CARROCERIA 11
+2513|CARROCERIA 12
+2514|CARROCERIA 13
+2515|CARROCERIA 14
+2516|CARROCERIA 15
+2517|Ejete o disco do jogo atual e insira %s. Você perderá mensagens não lidas e configurações não salvas.
+2518|Resolução
+2519|TIPO 3 VERMELHO E VERDE
+2521|Profundidade de Campo
+2522|Aleatório
+2523|X da Tela
+2524|ROXO BRILHANTE
+2526|Você precisa fazer upgrade do porta-malas para LAYOUT PERSONALIZADO para instalar neon no porta-malas.
+2528|Race Breaker:
+2529|Carregar Carros
+2530|Carregar Jogo
+2531|VELOCIDADE ACIMA DE 400m
+2532|Reiniciar corrida?^Todo o progresso não salvo da corrida será perdido.
+2533|Revista GTI
+2534|Tempo Final:
+2535|TESOURA
+2539|1 Corrida de Circuito^1 Corrida Sprint^1 Corrida de Drag
+2540|Preciso de alguns detalhes do patrocinador.
+2543|Óxido Nitroso com Injeção Direta
+2544|CARREGANDO
+2545|Entrar na Loja /^Desafiar Adversário
+2546|A sessão de jogo não pôde ser criada. Tente novamente.
+2547|Nenhum perfil encontrado.
+2549|AZUL BRILHANTE
+2550|TEMPO ATRÁS:
+2551|1 Corrida de Drag^1 Corrida Sprint^1 Corrida Street X
+2552|Padrão
+2553|Remover Amigo
+2555|Parabéns!^Seu carro aparecerá na capa da revista Need for Speed{82}^Underground 2!
+2558|Este é o Comentário da Região 1
+2559|Ah, claro! Grande coisa. Foi só uma corrida! Não vai acontecer de novo.
+2560|Você pode
+2561|Só me dê mais uma chance. Eu consigo vencê-lo.
+2562|VOCÊ!
+2563|Você
+2564|Tudo em jogo. Você topa ou não!?
+2565|Prêmio em Grana por Revista
+2566|TIPO 3 VERDE
+2567|ASSUMIU O 5º
+2568|Mudar Peças
+2569|Status de Conclusão do Jogo:
+2570|Pneus
+2572|Você terminou em quarto!
+2573|Medidores
+2574|Capa de DVD Slammed & Stretched
+2575|TERMOS DO ACORDO:^O piloto concorda em vencer: 5 corridas da URL, 3 corridas à escolha do patrocinador, 19 corridas à escolha do piloto.^^CLÁUSULA DE RELAÇÕES PÚBLICAS:^Montar um carro que apareça em 2 capas de DVD.^^BÔNUS:^O patrocinador fornece 1 veículo de cortesia.
+2576|mi
+2577|Balanço de Freio {83} Mover o balanço de freio para trás ajuda o carro a virar durante a frenagem, mas pode fazê-lo girar. Encontre uma configuração de que goste para o seu carro e estilo de pilotagem.
+2579|CLÁUSULAS DO CONTRATO:^O piloto deve vencer as seguintes corridas: 7 corridas da URL, 29 corridas à escolha do piloto, 3 corridas à escolha do patrocinador.^^REQUISITOS ADICIONAIS:^Montar um carro que apareça em 3 capas de DVD.^^BÔNUS:^Veículo grátis de qualquer concessionária Bayview.
+2580|Bem-vindo a Need for Speed Underground 2.^Esta demo permite que você experimente um pouco do mundo veloz^e acelerado da cultura tuner disponível na versão completa.^^^^^Em breve, novembro de 2004
+2581|Vidro Traseiro
+2582|Gráfico do Dyno
+2583|Neon interno
+2585|O servidor de Need for Speed{82} Underground 2 não está disponível no momento. Tente novamente mais tarde.
+2587|TERMOS DO ACORDO:^O piloto concorda em vencer: 9 corridas da URL, 3 corridas à escolha do patrocinador, 34 corridas à escolha do piloto.^^CLÁUSULA DE RELAÇÕES PÚBLICAS:^Montar um carro que apareça em 4 capas de DVD.^^BÔNUS:^O patrocinador fornece 1 veículo de cortesia.
+2590|Digite a Data de Nascimento
+2591|Hidráulicas
+2592|Personalize seu carro com centenas de upgrades visuais^para ter exatamente o visual que você quer.
+2593|Você não pode pintar entradas de ar do teto de fibra de carbono ou alumínio
+2594|Ao tirar fotos de capa de revista, use a função de pré-visualização para ver os melhores ângulos e setups do seu carro antes de tirar a foto final.
+2595|Mensagem Ofensiva
+2596|Restaurar padrão
+2598|Autenticando DNAS Aguarde
+2599|Esqueci Minha Senha
+2600|LED DE VOLTAS:
+2601|%s está em um jogo e recusou seu convite!
+2602|Exposição de Carros
+2603|Corridas de Circuito Knockout
+2604|MELHOR TEMPO DE VOLTA:
+2605|TIPO 2 BICO DA RODA DIREITA
+2606|Trail braking
+2607|Escapamento de Desempenho
+2608|Carregando
+2609|TIPO 2 BICOS ESQUERDO SUPERIOR DIREITO INFERIOR
+2610|O Minimapa fica no canto inferior esquerdo do seu Heads Up Display. Locais e eventos disponíveis no momento aparecerão aqui. Ícones que aparecem no anel externo dão uma direção geral de onde estão. Quando estiverem ao alcance, esses ícones aparecerão na localização exata do mapa. A rotação do mapa pode ser ajustada no Menu Opções.
+2611|Autenticação DNAS
+2612|Mensagens Armazenadas
+2613|PULSO VERDE-LIMÃO
+2615|Seu convite de voz expirou.
+2616|^^Capa de DVD concedida por montar um Carro de 1 Estrela!
+2619|Aeroporto
+2620|Desc. %
+2621|Não Foi Possível Contatar o ^ Satélite, Tentando Novamente...
+2622|Tem certeza de que quer desconectar e parar de jogar Online?
+2624|Fevereiro
+2625|Diversos
+2627|TIPO 1 BICOS DO LADO DIREITO
+2629|Boa corrida, parceiro. Dizem pelas ruas que há um fotógrafo da revista %s procurando carros incríveis. Se tiver interesse, vá até a estrela no minimapa. Te ligo quando tiver mais detalhes.
+2632|Vitórias em Eventos da URL:
+2633|Quer Ajustar o Desempenho / Dyno do seu carro?
+2635|Iniciando Servidor LAN ...
+2636|Aplicar Filtro
+2637|Você quer mesmo trocar este? ^Você perderá todas as modificações ^e só receberá 80 por cento do custo.
+2641|Cartão de Memória
+2642|Salvar/Carregar
+2645|Concluído
+2646|Lista de Amigos
+2648|Kits de Carroceria de Fibra de Carbono
+2649|Exótico
+2650|MELHOR VOLTA
+2653|Seu carro precisa ficar tão legal quanto anda. A oficina de carroceria é o lugar para adicionar para-lamas, capôs, spoilers, saias laterais e muito mais.
+2655|Bem-vindo à Loja Car Specialties Bayview, unidade Beacon Hill East.^Você liberou o acesso a N2O Purge e Layout de Áudio 1.^Todas as peças liberadas em outras Lojas Car Specialties também estão disponíveis aqui.
+2657|VOLTA DA LIDERANÇA
+2658|Dashboard do Xbox
+2659|Cima: Acelerar^Baixo: Freio /^Ré
+2660|A garagem é para onde são enviadas todas as suas peças de carro antigas. Todo o seu estoque de peças compradas está disponível para reinstalar no carro. Se quiser reinstalar peças antigas, vá ao menu de troca de peças na garagem
+2661|PULSO AMARELO
+2662|^^Capa de DVD concedida por montar um Carro de 2 Estrelas!
+2664|Digite o Nome da Conta EA
+2665|Transmissão de 6 Marchas
+2666|Layout 1
+2667|Layout 2
+2670|Status
+2671|Seleção de Jogador
+2672|Esta persona é inválida ou não pode ser usada agora.
+2675|As corridas Street X são disputadas em pistas técnicas e fechadas. O comprimento curto e os espaços apertados das pistas significam que a melhor forma de vencer é ficar na frente do pelotão. Não tenha medo de trocar uma tinta para cruzar a linha de chegada em 1º.
+2676|TIPO 2 VERMELHO E AZUL
+2677|TIPO 2 VERMELHO E DOURADO
+2678|Anterior
+2679|Chamas
+2680|Atenção! Instalar um capô de fibra de carbono fará com que quaisquer vinis do capô sejam removidos do seu carro.
+2681|Freio de Mão
+2684|Sair para a Loja de Performance?
+2686|Obtendo informações do carro ...
+2688|TIPO 3 AZUL-CÉU E VERMELHO VIVO
+2690|SUV
+2692|TIPO 2 AZUL-CÉU E VERDE
+2694|Curva Única
+2695|Selecionar Carro
+2696|TERMOS:^Contrato cumprido após 3 vitórias na URL, 3 vitórias em corridas indicadas pelo patrocinador e 9 vitórias adicionais à escolha do piloto.^^REQUISITOS PROMOCIONAIS:^Montar um carro que apareça em 1 capa de DVD.^^BÔNUS:^Veículo grátis de qualquer concessionária Bayview.
+2697|Drift Patrocinado
+2698|Vencendo Corridas
+2699|Pintura Eletrostática
+2700|Nível de Detalhe
+2702|Vice-campeão de Drag
+2703|Desculpe, a função de GPS não está disponível neste modo.
+2705|Conteúdo do Pacote
+2708|km
+2709|Senha incorreta digitada.
+2710|Seleção de Modo de Corrida Online
+2712|Máximo
+2714|^Capa de revista concedida por vencer seu 9º Evento Mundial na Fase 5!
+2715|Houve um erro ao obter seus rankings pessoais^do servidor.
+2717|0 a %d Tempo: %s
+2718|Mínimo
+2720|Bandeira
+2721|Barra Estabilizadora Dianteira
+2722|Recusar Convite
