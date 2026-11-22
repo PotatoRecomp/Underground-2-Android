@@ -246,7 +246,7 @@ void Changed() {
 enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutput, kLanguage, kGyro,
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
-             kShaderPreload, kRain, kParticles, kShifting, kResetKeyboard, kResetController };
+             kShaderPreload, kRain, kParticles, kShifting, kResetKeyboard, kResetController, kPadPreset };
 
 using rows::Kind;
 using rows::Row;
@@ -322,7 +322,7 @@ const std::vector<Row>& InputRows() {
 
 const std::vector<Row>& PadRows() {
     static const std::vector<Row> list = [] {
-        std::vector<Row> out = {{Kind::Heading, -1, "CONTROLLER"}};
+        std::vector<Row> out = {{Kind::Heading, -1, "CONTROLLER"}, {Kind::Value, kPadPreset, "PRESET"}};
         size_t count = 0;
         const input::Action* actions = input::PadActions(&count);
         for (size_t i = 0; i < count; i++) out.push_back({Kind::PadBind, int(i), actions[i].label});
@@ -418,6 +418,15 @@ void StepInputRow(int id, int step, char (&text)[64]) {
             if (step) touch::StepSteering(step);
             std::snprintf(text, sizeof(text), "%s", touch::SteeringName());
             break;
+        case kPadPreset: {
+            // a step goes to the next preset (from CUSTOM, the first) and binds it
+            if (step) {
+                int n = input::PadPresetCount(), now = input::PadPreset();
+                input::SetPadPreset(now < 0 ? (step > 0 ? 0 : n - 1) : (now + (step > 0 ? 1 : n - 1)) % n);
+            }
+            std::snprintf(text, sizeof(text), "%s", input::PadPresetName(input::PadPreset()));
+            break;
+        }
         case kShifting:
             // the RACING layout's gear lever or its X and Y buttons
             if (step) touch::StepShifting(step);

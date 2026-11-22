@@ -93,11 +93,41 @@ struct HatDir {
 };
 constexpr HatDir kHatDirs[] = {{SDL_HAT_UP, "up"}, {SDL_HAT_DOWN, "down"}, {SDL_HAT_LEFT, "left"}, {SDL_HAT_RIGHT, "right"}};
 
+// a button by what the controller's mapping makes it, whichever controller it is (the presets' inputs, "pad south"):
+// SDL's gamepad button, the loose controller's key code for it, and the pad's code it gives by default
+struct GamepadButton {
+    SDL_GamepadButton button;
+    const char* id;
+    int code, key;
+    const char* name;
+};
+constexpr GamepadButton kGamepadButtons[] = {
+    {SDL_GAMEPAD_BUTTON_SOUTH, "south", 0, 96, "A"},
+    {SDL_GAMEPAD_BUTTON_EAST, "east", 1, 97, "B"},
+    {SDL_GAMEPAD_BUTTON_WEST, "west", 2, 99, "X"},
+    {SDL_GAMEPAD_BUTTON_NORTH, "north", 3, 100, "Y"},
+    {SDL_GAMEPAD_BUTTON_LEFT_SHOULDER, "leftshoulder", 6, 102, "L1"},
+    {SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER, "rightshoulder", 7, 103, "R1"},
+    {SDL_GAMEPAD_BUTTON_DPAD_UP, "dpup", 8, 19, "DPAD UP"},
+    {SDL_GAMEPAD_BUTTON_DPAD_DOWN, "dpdown", 9, 20, "DPAD DOWN"},
+    {SDL_GAMEPAD_BUTTON_DPAD_LEFT, "dpleft", 10, 21, "DPAD LEFT"},
+    {SDL_GAMEPAD_BUTTON_DPAD_RIGHT, "dpright", 11, 22, "DPAD RIGHT"},
+    {SDL_GAMEPAD_BUTTON_START, "start", 12, 108, "START"},
+    {SDL_GAMEPAD_BUTTON_BACK, "back", 13, 109, "SELECT"},
+    {SDL_GAMEPAD_BUTTON_LEFT_STICK, "leftstick", 14, 106, "L3"},
+    {SDL_GAMEPAD_BUTTON_RIGHT_STICK, "rightstick", 15, 107, "R3"},
+};
+
 Source ParseSource(const std::string& text) {
     if (text == "trigger left") return Source{'t', 5};
     if (text == "trigger right") return Source{'t', 4};
     Source s;
     if (text == "unbound") return Source{'u'};
+    if (text.rfind("pad ", 0) == 0) {
+        for (size_t i = 0; i < std::size(kGamepadButtons); i++)
+            if (text.substr(4) == kGamepadButtons[i].id) return Source{'g', int(i)};
+        return Source{};
+    }
     char word[8] = "", sign = 0;
     if (std::sscanf(text.c_str(), "button %d", &s.index) == 1) s.kind = 'b';
     else if (std::sscanf(text.c_str(), "key %d", &s.index) == 1) s.kind = 'k';
@@ -114,6 +144,7 @@ std::string SourceText(const Source& s) {
     if (s.kind == 't')
         return s.index == 5 ? "trigger left" : "trigger right";
     if (s.kind == 'u') return "unbound";
+    if (s.kind == 'g') return std::string("pad ") + kGamepadButtons[s.index].id;
     char text[32] = "";
     if (s.kind == 'b') std::snprintf(text, sizeof(text), "button %d", s.index);
     else if (s.kind == 'k') std::snprintf(text, sizeof(text), "key %d", s.index);
@@ -449,6 +480,8 @@ void ApplyBinds(SDL_Gamepad* pad, Pad& p,
         if (!source.kind || source.kind == 'u') continue;
         if (source.kind == 't') {
             Clear(p, source.index);
+        } else if (source.kind == 'g') {
+            Clear(p, kGamepadButtons[source.index].code);
         } else if (source.kind == 'k') {
             if (loose) Clear(p, LooseCode(source));
         } else {
@@ -467,6 +500,10 @@ void ApplyBinds(SDL_Gamepad* pad, Pad& p,
         float value = 0;
         if (source.kind == 't') {
             value = LogicalTriggerValue(pad, source.index, loose);
+        } else if (source.kind == 'g') {
+            const GamepadButton& g = kGamepadButtons[source.index];
+            value = (pad && SDL_GetGamepadButton(pad, g.button)) || (loose && g_loose.seen && g_loose.keys[size_t(g.key)])
+                        ? 1.0f : 0.0f;
         } else if (source.kind == 'k') {
             if (loose && source.index >= 0 &&
                 source.index < kLooseCodes)
@@ -600,6 +637,7 @@ std::string SourceName(const Source& s) {
     if (s.kind == 't') return s.index == 5 ? "L2" : "R2";
     if (s.kind == 'u') return "UNBOUND";
     if (s.kind == 'k') return KeyName(s.index);
+    if (s.kind == 'g') return kGamepadButtons[s.index].name;
     for (SDL_Gamepad* pad : g_pads) {
         if (!pad) continue;
         int n = 0, code = -1;
@@ -713,6 +751,61 @@ void PadBind(size_t action, const std::string& source) {
                 saved.erase(id);
         }
     }
+    app::Save();
+}
+
+// The presets: each action's input by its id, the rest the mapping's. MODERN has today's racing games' triggers (R2
+// gas, L2 brake), the shoulders taking what the triggers did; PS2 the PlayStation 2's Underground 2 (X gas, square
+// brake, R1 the e-brake, L1 nitrous, R2 / L2 the gears, triangle the camera, circle look back)
+struct PresetBind {
+    const char* id;
+    const char* source;
+};
+struct Preset {
+    const char* name;
+    std::vector<PresetBind> binds;
+};
+const std::vector<Preset>& Presets() {
+    static const std::vector<Preset> list = {
+        {"DEFAULT", {}},
+        {"MODERN (R2 GAS)",
+         {{"trigger_right", "trigger right"}, {"trigger_left", "trigger left"},
+          {"button_black", "pad rightshoulder"}, {"button_white", "pad leftshoulder"}}},
+        {"PS2",
+         {{"trigger_right", "pad south"}, {"trigger_left", "pad west"}, {"button_a", "pad rightshoulder"},
+          {"button_b", "pad leftshoulder"}, {"button_x", "trigger right"}, {"button_y", "trigger left"},
+          {"button_white", "pad north"}, {"button_black", "pad east"}}},
+    };
+    return list;
+}
+
+int PadPreset() {
+    const auto& saved = game::Opt().pad;
+    const auto& list = Presets();
+    for (size_t i = 0; i < list.size(); i++) {
+        if (saved.size() != list[i].binds.size()) continue;
+        bool same = true;
+        for (const PresetBind& b : list[i].binds) {
+            auto it = saved.find(b.id);
+            same &= it != saved.end() && it->second == b.source;
+        }
+        if (same) return int(i);
+    }
+    return -1;
+}
+
+const char* PadPresetName(int preset) {
+    return preset >= 0 && preset < int(Presets().size()) ? Presets()[size_t(preset)].name : "CUSTOM";
+}
+
+int PadPresetCount() { return int(Presets().size()); }
+
+void SetPadPreset(int preset) {
+    if (preset < 0 || preset >= int(Presets().size())) return;
+    auto& saved = game::Opt().pad;
+    saved.clear();
+    for (const PresetBind& b : Presets()[size_t(preset)].binds) saved[b.id] = b.source;
+    LoadPadBindings();
     app::Save();
 }
 
