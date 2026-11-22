@@ -33,6 +33,9 @@ namespace {
 
 constexpr uint32_t kBufferFrames = audio::kRate * 4;
 constexpr float kGainStep = 1.0f / (audio::kRate / 4);  // a quarter of a second from silence to full
+// the game's own music plays through buffers with 6 dB of headroom (src/sound/mixer.cpp's DefaultHeadroom): a song mastered
+// to full scale at full gain sat that much over it and clipped with the engines
+constexpr float kHeadroom = 0.5f;
 
 struct Item {
     std::filesystem::path path;
@@ -60,11 +63,14 @@ std::atomic<float> g_gain{0.0f};
 std::atomic<uint32_t> g_skips{0};  // each change that ends the song being decoded
 float g_ramp = 0;                  // audio thread
 
-// stereo frames decoded, not yet mixed
-std::mutex g_lock;
-std::condition_variable g_room;
+// stereo frames decoded, not yet mixed: one writer (the decoder) and one reader (the audio thread), which never waits on the
+// decoder. With a lock the mix skipped its whole 10 ms block whenever the decoder held it (try_lock), as when the phone
+// put the decoder off its core mid copy: the song crackled. Totals of frames, the ring's place their remainder
 std::vector<float> g_ring(size_t(kBufferFrames) * 2);
-size_t g_read = 0, g_count = 0;  // in frames
+std::atomic<uint64_t> g_written{0}, g_read{0};
+std::atomic<uint32_t> g_flushed{0};  // the skips the reader has dropped the ring for
+std::mutex g_room_lock;              // the decoder's wait for room alone
+std::condition_variable g_room;
 
 bool IsSong(const std::filesystem::path& p) {
     std::string e = p.extension().string();
@@ -137,18 +143,23 @@ void Load() {
 
 // waits for room: the decoder keeps a few seconds ahead of the mix. False once the song is to end
 bool Write(const float* frames, size_t count, uint32_t skips) {
-    std::unique_lock<std::mutex> lock(g_lock);
     while (count) {
-        g_room.wait(lock, [&] { return g_count < kBufferFrames || g_skips != skips; });
         if (g_skips != skips) return false;
-        size_t at = (g_read + g_count) % kBufferFrames;
-        size_t n = std::min({count, size_t(kBufferFrames) - g_count, size_t(kBufferFrames) - at});
+        uint64_t written = g_written.load(std::memory_order_relaxed);
+        uint64_t used = written - g_read.load(std::memory_order_acquire);
+        if (used >= kBufferFrames) {
+            std::unique_lock<std::mutex> lock(g_room_lock);
+            g_room.wait_for(lock, std::chrono::milliseconds(20));
+            continue;
+        }
+        size_t at = size_t(written % kBufferFrames);
+        size_t n = std::min({count, size_t(kBufferFrames - used), size_t(kBufferFrames) - at});
         std::memcpy(&g_ring[at * 2], frames, n * 2 * sizeof(float));
-        g_count += n;
+        g_written.store(written + n, std::memory_order_release);
         frames += n * 2;
         count -= n;
     }
-    return true;
+    return g_skips == skips;
 }
 
 // one song's samples to stereo at the mixer's rate, linearly
@@ -362,13 +373,9 @@ void Decoder() {
     }
 }
 
-// the song being decoded ends now, and what it had decoded with it
+// the song being decoded ends now, and what it had decoded with it: the reader drops the ring at its next mix
 void Skip() {
-    {
-        std::lock_guard<std::mutex> lock(g_lock);
-        g_read = g_count = 0;
-        g_skips++;
-    }
+    g_skips++;
     g_room.notify_all();
 }
 
@@ -478,21 +485,25 @@ bool TakeStarted(Song* song) {
 }
 
 void Mix(float* out, uint32_t frames) {
+    uint64_t read = g_read.load(std::memory_order_relaxed);
+    if (uint32_t skips = g_skips; g_flushed != skips) {
+        // a skip: what the old song had decoded goes; a write of it racing the skip is dropped at the next
+        g_flushed = skips;
+        read = g_written.load(std::memory_order_acquire);
+        g_read.store(read, std::memory_order_release);
+        g_room.notify_all();
+    }
     if (!g_has_songs || !g_playing || g_source_now != kMyMusic) return;
-    std::unique_lock<std::mutex> lock(g_lock, std::try_to_lock);
-    if (!lock.owns_lock()) return;
-    float target = g_gain;
-    size_t n = std::min<size_t>(frames, g_count);
+    float target = g_gain * kHeadroom;
+    size_t n = size_t(std::min<uint64_t>(frames, g_written.load(std::memory_order_acquire) - read));
     for (size_t i = 0; i < n; i++) {
-        size_t at = (g_read + i) % kBufferFrames;
+        size_t at = size_t((read + i) % kBufferFrames);
         g_ramp += std::clamp(target - g_ramp, -kGainStep, kGainStep);
         float* f = out + i * audio::kChannels;
         f[audio::FrontLeft] += g_ring[at * 2] * g_ramp;
         f[audio::FrontRight] += g_ring[at * 2 + 1] * g_ramp;
     }
-    g_read = (g_read + n) % kBufferFrames;
-    g_count -= n;
-    lock.unlock();
+    g_read.store(read + n, std::memory_order_release);
     if (n) g_room.notify_all();
 }
 

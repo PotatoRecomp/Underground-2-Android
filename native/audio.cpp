@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <atomic>
+#include <cmath>
 #include <mutex>
 #include <vector>
 
@@ -27,6 +28,15 @@ struct Pump {
     std::vector<float> out;  // stereo frames rendered, not yet handed to SDL
 };
 
+// past the knee a sample bends towards full scale rather than being cut at it (the stream clips at 1): the fold sums the
+// speakers, and My Music over a race's engines went past full scale and cracked. Under the knee nothing changes
+constexpr float kKnee = 0.9f, kOver = 1.0f - kKnee;
+float Limit(float x) {
+    float a = std::fabs(x);
+    if (a <= kKnee) return x;
+    return std::copysign(kKnee + kOver * std::tanh((a - kKnee) / kOver), x);
+}
+
 // L = FL + kCentreFold C + BL and R = FR + kCentreFold C + BR without the sub; mono hears the average of the two
 void Fold(const float* in, uint32_t frames, bool mono, std::vector<float>& out) {
     for (uint32_t i = 0; i < frames; i++) {
@@ -35,8 +45,8 @@ void Fold(const float* in, uint32_t frames, bool mono, std::vector<float>& out) 
         float l = f[FrontLeft] + c + f[BackLeft];
         float r = f[FrontRight] + c + f[BackRight];
         if (mono) l = r = (l + r) * 0.5f;
-        out.push_back(l);
-        out.push_back(r);
+        out.push_back(Limit(l));
+        out.push_back(Limit(r));
     }
 }
 
