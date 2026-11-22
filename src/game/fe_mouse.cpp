@@ -13,7 +13,6 @@
 #include <cmath>
 #include <cstdint>
 #include <cstring>
-#include <unordered_map>
 #include <vector>
 #include <string>
 
@@ -52,6 +51,7 @@ std::atomic<uint32_t> g_presses{0};
 std::atomic<int> g_mouse_frames{0};  // presents the mouse stays on after a touch
 constexpr int kMouseFrames = 30;
 std::atomic<bool> g_menu{false}, g_intro{false};
+std::atomic<uint32_t> g_prompt_buttons{0};
 
 // The race's HUD (HUD_SingleRace.fng, races and free roam alike) is loaded before it shows: over the loading screen and
 // the opening camera the touch controls waited for nothing. Its tachometer's dial (the image 0x05D19F25 in the cluster
@@ -83,6 +83,7 @@ struct KeyBox {
 };
 std::vector<KeyBox> g_keys_building, g_keys;  // the keyboard's keys, as drawn
 std::vector<Dot> g_dots_building, g_dots, g_rings_building, g_rings;  // the colours' dots and the selected one's ring
+constexpr int kPadLT = 6, kPadRT = 7;
 // the arrows' textures, by hash: the circle with an arrow in it, which a quad's corners turn and flip: kind 1 points
 // along the texture's u (the icon rows' and the options' lists' arrows, a right one), kind 2 along its v (a shop list
 // column's, a down one, told from an up one by its place over or under the screen's middle); kind 3 is a colour's
@@ -370,8 +371,6 @@ bool CarSelect(const std::string& name) {
     return name == "UI_QRCarSelect.fng" || name == "UI_CareerCarSelect.fng" || name == "UI_OLCarSelect.fng" ||
            name == "UI_CareerCarLot.fng" || name == "MU_QuickRaceCarSelect.fng";
 }
-constexpr int kPadLT = 6, kPadRT = 7;
-
 void ScrollerTap(const std::string& name, int16_t x) {
     if (CarSelect(name)) {
         if (x <= -kArrowX) touch::QueuePad(kPadLeft, 1);
@@ -412,10 +411,91 @@ bool CarSelectTap(const std::string& name, int16_t x, int16_t y) {
     return true;
 }
 
-// The prompts under the screens ("A Install", "Y Help"; the pause menu's "B Back", "A Select" in its panel): their
-// icons are glyphs of the text, no images, so their places are the layouts': the footer's left slot A, its right slot Y
-constexpr int kPadB = 1, kPadY = 3;
-bool PromptTap(const std::string& name, int16_t x, int16_t y) {
+std::string StringOf(uint32_t hash) {
+    uint32_t n = Peek(0x3FBC20), table = Peek(0x3FBC28);
+    uint32_t lo = 0, hi = n;
+    while (table && lo < hi) {
+        uint32_t mid = (lo + hi) / 2, h = Peek(table + mid * 8);
+        if (h == hash) {
+            std::string out;
+            uint32_t p = Peek(table + mid * 8 + 4);
+            for (uint32_t i = 0; p && i < 80 && mem::IsCommitted(p + i); i++) {
+                char c = char(kernel::G<uint8_t>(p + i));
+                if (!c) break;
+                out += c;
+            }
+            return out;
+        }
+        if (h < hash) lo = mid + 1;
+        else hi = mid;
+    }
+    return {};
+}
+
+constexpr int kPadB = 1, kPadX = 2, kPadY = 3;
+
+int PromptPad(uint32_t object, uint32_t string, const std::string& text) {
+    // Stable object/string hashes observed in the FEng dumps. These keep prompts working when their translated text
+    // cannot be read from the string table, and when a dynamic label changes while retaining the same object.
+    switch (object) {
+        case 0x00169268:  // UI_EngageMessageDialog: Return to Gameplay
+        case 0x001C0CBB:  // UI_SMS_Mailbox: Return to Gameplay
+        case 0x001335F0: return kPadB;  // World Map: Back
+        case 0x21FFE496: return kPadX;  // World Map: Hide/Show
+        case 0xCBBC3F1A:  // World Map: Activate/Deactivate GPS
+        case 0xDE02CF84: return kPadA;  // race result: Continue
+    }
+    switch (string) {
+        case 0xC20A08F1:  // Return to Gameplay
+        case 0x001335F0:  // Back
+        case 0x541389E5: return kPadB;  // Cancel
+        case 0x9DB54A80: return kPadX;  // Hide on World Map
+        case 0x43512519:  // Activate GPS
+        case 0x11159F62:  // Deactivate GPS
+        case 0xDE02CF84:  // Continue
+        case 0x00000639: return kPadA;  // OK
+    }
+    std::string s;
+    for (unsigned char c : text) s += char(std::tolower(c));
+    if (s.find("help") != std::string::npos) return kPadY;
+    if (s.find("hide on world map") != std::string::npos || s.find("show on world map") != std::string::npos) return kPadX;
+    if (s.find("back") != std::string::npos || s.find("cancel") != std::string::npos ||
+        s.find("return to gameplay") != std::string::npos) return kPadB;
+    if (s.find("select") != std::string::npos || s.find("continue") != std::string::npos ||
+        s.find("activate gps") != std::string::npos || s.find("deactivate gps") != std::string::npos ||
+        s.find("install") != std::string::npos || s.find("buy") != std::string::npos || s == "ok") return kPadA;
+    return -1;
+}
+
+bool TextPromptTap(X86Context& ctx, uint32_t first, int count, int16_t x, int16_t y) {
+    static uint32_t rect = 0;
+    if (!rect) rect = mem::AllocSystem(16);
+    int budget = 500;
+    for (uint32_t o = first; rect && o && budget-- > 0 && count != 0; o = Peek(o + kNext), count--) {
+        uint32_t type = Peek(o + kObjectTypeAt);
+        if (type == 5 && TextPromptTap(ctx, Peek(o + kGroupObjectsAt), int(Peek(o + kGroupCountAt)), x, y)) return true;
+        if (type != 2 || (Peek(o + kObjectFlags) & 1)) continue;
+        uint32_t string = Peek(o + 0x60);
+        int pad = PromptPad(Peek(o + kObjectHashAt), string, StringOf(string));
+        if (pad < 0) continue;
+        X86Context saved = ctx;
+        uint8_t ok = uint8_t(kernel::CallGuest(ctx, kObjectRect, {o, rect}));
+        ctx = saved;
+        if (!ok) continue;
+        float r[4];
+        std::memcpy(r, kernel::HostPtr(rect), 16);
+        // The label's rect can exclude the controller glyph immediately to its left.
+        if (x >= r[0] - 40 && x <= r[2] + 14 && y >= r[1] - 12 && y <= r[3] + 12) {
+            touch::QueuePad(pad, 1);
+            return true;
+        }
+    }
+    return false;
+}
+
+// Pause draws B Back and A Select in its panel without separate text objects. Other screens expose their footer labels,
+// whose current rectangles are used above instead of coordinates inherited from another game.
+bool PromptTap(X86Context& ctx, uint32_t package, const std::string& name, int16_t x, int16_t y) {
     if (name == "UI_Paint.fng" && y >= 140 && y <= 172) {  // the finish's "L Gloss R", over the colours' grid's left
         if (x >= -205 && x <= -160) touch::QueuePad(kPadLT, 1);
         else if (x >= -95 && x <= -50) touch::QueuePad(kPadRT, 1);
@@ -426,13 +506,25 @@ bool PromptTap(const std::string& name, int16_t x, int16_t y) {
         touch::QueuePad(kPadB, 1);
         return true;
     }
-    if (Contains(name, "Pause")) {
-        if (y < 80 || y > 120) return false;
-        if (x >= 35 && x <= 95) touch::QueuePad(kPadB, 1);
-        else if (x >= 100 && x <= 175) touch::QueuePad(kPadA, 1);
+    if (name == "UI_pause.fng") {
+        if (y < 35 || y > 82) return false;
+        if (x >= 45 && x <= 125) touch::QueuePad(kPadB, 1);
+        else if (x >= 135 && x <= 235) touch::QueuePad(kPadA, 1);
         else return false;
         return true;
     }
+    // These two packages put Return to Gameplay inside translated groups. kObjectRect is local to the parent group,
+    // while touch coordinates are package coordinates; the visible footer band from the dump/render is stable.
+    if (name == "UI_EngageMessageDialog.fng" && y >= 170 && y <= 245) {
+        if (x >= 45) touch::QueuePad(kPadB, 1);       // Return to Gameplay
+        else touch::QueuePad(kPadA, 1);              // Go to Mailboxes
+        return true;
+    }
+    if (name == "UI_SMS_Mailbox.fng" && y >= 165 && y <= 225 && x >= -90 && x <= 220) {
+        touch::QueuePad(kPadB, 1);                    // Return to Gameplay
+        return true;
+    }
+    if (TextPromptTap(ctx, Peek(package + kPackageObjectsAt), -1, x, y)) return true;
     if (y < 168 || y > 222) return false;
     if (x >= -75 && x <= 60) touch::QueuePad(kPadA, 1);
     else if (x >= 130 && x <= 210) touch::QueuePad(kPadY, 1);
@@ -549,7 +641,7 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
         else if (NextScreen(name) && !Peek(g_menu_package + kButtonCount)) {
             touch::QueuePad(kPadA, 1);
         }
-        else if (!(OptionsList(name) && !row_click && OptionsTap(ctx, x0, y0)) && !ColumnTap(name, x0, y0) && !CarSelectTap(name, x0, y0) && !PromptTap(name, x0, y0)) {
+        else if (!(OptionsList(name) && !row_click && OptionsTap(ctx, x0, y0)) && !ColumnTap(name, x0, y0) && !CarSelectTap(name, x0, y0) && !PromptTap(ctx, g_menu_package, name, x0, y0)) {
             if (!key_press) hold = kHoldUpdates;
         }
     }
@@ -683,17 +775,42 @@ void FeFrame(X86Context& ctx) {
     }
     g_menu_package = menu;
     g_menu = menu != 0;
+    g_arrows = std::move(g_arrows_building);
+    g_arrows_building.clear();
+    // Do not walk every package's object tree here. Packages are still being linked while transition screens hand
+    // input to the next menu, and traversing that tree every frame can follow temporary/poisoned object links.
+    uint32_t prompts = 0;
+    // A and B remain the universal menu controls. Shoulders are not represented consistently as text objects, so
+    // expose them only on packages known to draw an L/R selector; never on ordinary screens such as UI_Main.fng.
+    if (menu) prompts |= (1u << kPadA) | (1u << kPadB);
+    if (CarSelect(name) || name == "UI_Paint.fng" || name == "UI_InGame_WorldMap.fng" ||
+        name == "UI_SMS_Mailbox.fng" || name == "UI_EngageMessageDialog.fng")
+        prompts |= (1u << kPadLT) | (1u << kPadRT);
+    // Every direction whose arrow image is actually drawn gets its matching host dpad button. This naturally exposes
+    // only left/right for horizontal selectors and only up/down for vertical lists.
+    if (menu)
+        for (const Arrow& a : g_arrows) {
+            int pad = a.dir == kRight ? kPadRight : a.dir == kLeft ? kPadLeft : a.dir == kDown ? kPadDown : kPadUp;
+            prompts |= 1u << pad;
+        }
+    // Options rows draw their value arrows through the row widget rather than the ordinary arrow texture hook. The
+    // vertical scrollbar is seen above, but its left/right pair must be advertised explicitly.
+    if (OptionsList(name)) prompts |= (1u << kPadLeft) | (1u << kPadRight);
+    // The World Map pans in every direction, but its movement does not use the ordinary FEng arrow quads.
+    if (name == "UI_InGame_WorldMap.fng")
+        prompts |= (1u << kPadX) | (1u << kPadUp) | (1u << kPadDown) | (1u << kPadLeft) | (1u << kPadRight);
+    // Main's Help prompt is assembled by the package without a useful translated text object.
+    if (name == "UI_Main.fng") prompts |= 1u << kPadY;
+    g_prompt_buttons = prompts;
     // the CONTROLLER page's bindings play the race; the menus keep the mapping's buttons, A picks and B backs out
     // whatever was bound to them (the input started in menu mode and nothing let it out: no binding ever played)
     input::SetPadMenuMode(menu != 0 || !Racing() || app::MenuOpen());
-    g_arrows = std::move(g_arrows_building);
     g_dots = std::move(g_dots_building);
     g_dots_building.clear();
     g_rings = std::move(g_rings_building);
     g_rings_building.clear();
     g_keys = std::move(g_keys_building);
     g_keys_building.clear();
-    g_arrows_building.clear();
     HudFrame(ctx, fe);
     static uint32_t scanned = 0;
     if (!(scanned++ % 30))
@@ -706,6 +823,8 @@ void FeFrame(X86Context& ctx) {
 }
 
 bool FeMenuShown() { return g_menu; }
+
+uint32_t FePromptButtons() { return g_prompt_buttons; }
 
 bool FeIntro() { return g_intro; }
 

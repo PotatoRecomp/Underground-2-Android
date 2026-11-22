@@ -8,6 +8,7 @@ namespace game {
 void FeFrame(X86Context& ctx);  // game thread, at each present
 bool FeIntro();      // any thread: a race's intro (the caption over its opening camera) is up
 bool FeMenuShown();  // any thread: a menu that takes the pointer is up
+uint32_t FePromptButtons();  // any thread: bit n means menu pad input n (A/B/X/Y/L/R or dpad) is currently useful
 bool FeHudWaiting();  // any thread: the race's HUD is loaded but its speedometer not drawn yet
 bool FeHudShown();    // any thread: the race's HUD is up (its speedometer drawn, or a HUD without one)
 // the arrow images the front end draws (its one texture, the circle with an arrow in it, turned and flipped by the

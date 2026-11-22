@@ -46,6 +46,22 @@ def shop(d, c):  # a shopping cart
         d.ellipse([cx - 12 * S, y + 36 * S, cx + 12 * S, y + 60 * S], fill=255)
 
 
+def race(d, c):  # a chequered flag: race, challenge or outrun
+    x, y = c
+    d.rounded_rectangle([x - 58 * S, y - 58 * S, x - 46 * S, y + 60 * S], radius=5 * S, fill=255)
+    left, top, cell = x - 44 * S, y - 52 * S, 25 * S
+    # A waving 4x3 chequered flag, with alternate cells cut out.
+    points = [(left, top), (left + 4 * cell, top + 8 * S),
+              (left + 4 * cell, top + 3 * cell + 8 * S), (left, top + 3 * cell)]
+    d.polygon(points, fill=255)
+    for row in range(3):
+        for col in range(4):
+            if (row + col) % 2:
+                x0 = left + col * cell
+                y0 = top + row * cell + col * 2 * S
+                d.rectangle([x0, y0, x0 + cell, y0 + cell], fill=0)
+
+
 def world_map(d, c):  # a folded map, its three panels apart
     x, y = c
     top, bot, step = y - 50 * S, y + 50 * S, 10 * S
@@ -93,14 +109,41 @@ def back_arrow(d, c):  # BACK: an arrow turning back to the left
     d.polygon([(x - 56 * S, y - 25 * S), (x - 14 * S, y - 58 * S), (x - 14 * S, y + 8 * S)], fill=255)
 
 
+def letter(value):
+    def draw(d, c):
+        x, y = c
+        # A block letter keeps the menu controls legible without depending on a host font.
+        if value == "X":
+            d.line([(x - 42 * S, y - 42 * S), (x + 42 * S, y + 42 * S)], fill=255, width=18 * S)
+            d.line([(x + 42 * S, y - 42 * S), (x - 42 * S, y + 42 * S)], fill=255, width=18 * S)
+        elif value == "Y":
+            d.line([(x - 42 * S, y - 44 * S), (x, y)], fill=255, width=18 * S)
+            d.line([(x + 42 * S, y - 44 * S), (x, y)], fill=255, width=18 * S)
+            d.line([(x, y), (x, y + 48 * S)], fill=255, width=18 * S)
+        elif value == "L":
+            d.line([(x - 28 * S, y - 48 * S), (x - 28 * S, y + 45 * S), (x + 38 * S, y + 45 * S)],
+                   fill=255, width=18 * S, joint="curve")
+        else:  # R
+            d.line([(x - 34 * S, y + 48 * S), (x - 34 * S, y - 48 * S), (x + 12 * S, y - 48 * S),
+                    (x + 38 * S, y - 25 * S), (x + 12 * S, y), (x - 34 * S, y)],
+                   fill=255, width=18 * S, joint="curve")
+            d.line([(x + 2 * S, y), (x + 42 * S, y + 48 * S)], fill=255, width=18 * S)
+    return draw
+
+
 # its name: its icon, the art its body is from, the art its badge is from
 ICONS = {
     "dpad_shop": (shop, "up", None),
+    "dpad_race": (race, "up", None),
     "dpad_map": (world_map, "up", None),
     "dpad_stats": (stats, "up", None),
     "dpad_sms": (sms, "up", None),
     "menu_ok": (tick, "shift_up", "a"),
     "menu_back": (back_arrow, "shift_up", "b"),
+    "menu_x": (letter("X"), "shift_up", "x"),
+    "menu_y": (letter("Y"), "shift_up", "y"),
+    "menu_l": (letter("L"), "shift_up", None),
+    "menu_r": (letter("R"), "shift_up", None),
 }
 
 
