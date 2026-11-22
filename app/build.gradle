@@ -92,6 +92,11 @@ android {
     }
 
     packaging {
+        // the native libraries deflated in the APK (30 MB to about 11): Android unpacks them once at install, as
+        // apps before API 23 had them, instead of mapping them stored from the APK
+        jniLibs {
+            useLegacyPackaging true
+        }
         resources {
             excludes += ["META-INF/LICENSE*", "META-INF/NOTICE*", "META-INF/DEPENDENCIES", "META-INF/versions/**"]
         }
