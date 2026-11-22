@@ -166,8 +166,19 @@ std::string TitleCase(std::string text) {
         std::string word = text.substr(start, end - start);
         bool keep = std::any_of(word.begin(), word.end(), [](char c) { return std::isdigit(uint8_t(c)); });
         for (const char* k : kKeep) keep |= word == k;
-        for (size_t i = start + 1; !keep && i < end; i++)
-            if (uint8_t(text[i]) < 0x80) text[i] = char(std::tolower(uint8_t(text[i])));
+        // the rest of the word in lower case: ASCII, and the capital letters of Latin 1 (U+00C0 to U+00DE but the
+        // multiplication sign, UTF-8 C3 80 to C3 9E) as their small ones 0x20 higher
+        size_t i = start + 1;
+        while (i < end && (uint8_t(text[i]) & 0xC0) == 0x80) i++;  // a first letter of two bytes
+        for (; !keep && i < end; i++) {
+            uint8_t c = uint8_t(text[i]);
+            if (c < 0x80) {
+                text[i] = char(std::tolower(c));
+            } else if (c == 0xC3 && i + 1 < end) {
+                uint8_t d = uint8_t(text[++i]);
+                if (d >= 0x80 && d <= 0x9E && d != 0x97) text[i] = char(d + 0x20);
+            }
+        }
         start = end + 1;
     }
     return text;
