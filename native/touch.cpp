@@ -665,7 +665,7 @@ bool ButtonShown(size_t i) {
     // the menus' own A and B over a menu, whether in a race or out (not over the loading screens: an A landing on one
     // crashed it)
     if (b.menu) return game::FeMenuShown() && !game::FeIntro();
-    if (!game::Racing() || game::FeIntro() || game::FeMenuShown()) return b.keep;
+    if (!game::Racing() || game::FeIntro() || game::FeMenuShown() || game::FeHudWaiting()) return b.keep;
     return true;
 }
 
@@ -1727,7 +1727,7 @@ void Draw() {
             dl->AddLine(ImVec2(cx - k, cy + k), ImVec2(cx + k, cy - k), IM_COL32(255, 80, 60, 220), th);
         }
     }
-    if (editing || (!app::MenuOpen() && game::Racing() && !game::FeIntro() && !game::FeMenuShown()))
+    if (editing || (!app::MenuOpen() && game::Racing() && !game::FeIntro() && !game::FeMenuShown() && !game::FeHudWaiting()))
         for (size_t s : {kStick, kRStick}) DrawStick(dl, th, s);
     if (editing) {
         if (g_selected >= 0 && IsStick(size_t(g_selected))) {

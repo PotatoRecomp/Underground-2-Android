@@ -8,6 +8,7 @@
 // presses, so one tap picks and accepts it.
 #include <atomic>
 #include <algorithm>
+#include <chrono>
 #include <cctype>
 #include <cmath>
 #include <cstdint>
@@ -49,6 +50,19 @@ std::atomic<uint32_t> g_presses{0};
 std::atomic<int> g_mouse_frames{0};  // presents the mouse stays on after a touch
 constexpr int kMouseFrames = 30;
 std::atomic<bool> g_menu{false}, g_intro{false};
+
+// The race's HUD (HUD_SingleRace.fng, races and free roam alike) is loaded before it shows: over the loading screen and
+// the opening camera the touch controls waited for nothing. Its tachometer's dial (the image 0x05D19F25 in the cluster
+// group 0x5164D4EA, its texture's hash at +0x24) drawn says it is up: the dial's texture is kind 6 to the draw hook,
+// and the controls wait for its first drawing after the package came, then stay for as long as it is there. A HUD
+// without that dial (another package) waits for nothing, and none waits past kHudWaitMs (the HUD turned off)
+constexpr uint32_t kCluster = 0x5164D4EA, kDial = 0x05D19F25, kImageTexture = 0x24;
+constexpr uint32_t kObjectHashAt = 0x10, kObjectTypeAt = 0x18, kGroupCountAt = 0x60, kGroupObjectsAt = 0x64;
+constexpr uint32_t kPackageObjectsAt = 0x4C;
+constexpr int64_t kHudWaitMs = 30000;
+std::atomic<uint32_t> g_dial_data{0};  // the dial texture's data address, 0 for none
+bool g_dial_drawing = false;          // drawn in the frame being drawn (game thread)
+std::atomic<bool> g_hud_waiting{false};
 
 // the arrows drawn: each as the box it covers on the 640x480 frame and the way it points; those of the frame being
 // drawn, and of the last one, which a tap is tested against
@@ -547,6 +561,54 @@ void GetMouseInfo(X86Context& ctx, uint8_t*) {
     kernel::Return(ctx, 0, 1);
 }
 
+// the HUD package, its tachometer's dial (the cluster group's image), the dial's texture: 0 for each it lacks
+uint32_t DialTextureHash(uint32_t package) {
+    int budget = 600;
+    for (uint32_t o = Peek(package + kPackageObjectsAt); o && budget-- > 0; o = Peek(o + kNext)) {
+        if (Peek(o + kObjectHashAt) != kCluster || Peek(o + kObjectTypeAt) != 5) continue;
+        uint32_t n = Peek(o + kGroupCountAt);
+        for (uint32_t c = Peek(o + kGroupObjectsAt); c && n-- > 0; c = Peek(c + kNext))
+            if (Peek(c + kObjectHashAt) == kDial) return Peek(c + kImageTexture);
+        return 0;
+    }
+    return 0;
+}
+
+int64_t NowMs() {
+    using namespace std::chrono;
+    return duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
+}
+
+// at each present: whether the controls wait for the HUD, from the frame just drawn
+void HudFrame(X86Context& ctx, uint32_t fe) {
+    static uint32_t package = 0, hash = 0;
+    static int64_t since = 0;
+    static bool seen = false;
+    static uint32_t retry = 0;
+    bool drawn = g_dial_drawing;
+    g_dial_drawing = false;
+    uint32_t hud = 0;
+    int n = 0;
+    for (uint32_t p = Peek(fe + kFirstPackage); p && n++ < kMaxPackages; p = Peek(p + kNext))
+        if (Name(p).rfind("HUD_", 0) == 0) hud = p;
+    if (hud != package) {
+        package = hud;
+        hash = hud ? DialTextureHash(hud) : 0;
+        g_dial_data = hash ? FindArrowTexture(ctx, hash) : 0;
+        since = NowMs();
+        seen = false;
+        LOGR("fe: hud %08X dial texture %08X at %08X", hud, hash, g_dial_data.load());
+    } else if (hud && !g_dial_data && ++retry % 30 == 0) {
+        // the package's objects and the dial's texture load after the package is listed
+        if (!hash) hash = DialTextureHash(hud);
+        if (hash) g_dial_data = FindArrowTexture(ctx, hash);
+        if (g_dial_data) LOGR("fe: hud %08X dial texture %08X at %08X", hud, hash, g_dial_data.load());
+    }
+    if (drawn && !seen) LOGR("fe: hud up");
+    seen |= drawn;
+    g_hud_waiting = package && g_dial_data && !seen && NowMs() - since < kHudWaitMs;
+}
+
 }  // namespace
 
 void FeFrame(X86Context& ctx) {
@@ -613,6 +675,7 @@ void FeFrame(X86Context& ctx) {
     g_keys = std::move(g_keys_building);
     g_keys_building.clear();
     g_arrows_building.clear();
+    HudFrame(ctx, fe);
     static uint32_t scanned = 0;
     if (!(scanned++ % 30))
         for (ArrowTexture& t : g_arrow_textures) t.data = FindArrowTexture(ctx, t.hash);
@@ -627,10 +690,13 @@ bool FeMenuShown() { return g_menu; }
 
 bool FeIntro() { return g_intro; }
 
+bool FeHudWaiting() { return g_hud_waiting; }
+
 
 bool FeOnPackage(const char* name) { return g_menu_package && Name(g_menu_package) == name; }
 
 int FeArrowKind(uint32_t data) {
+    if (data && data == g_dial_data) return 6;
     for (const ArrowTexture& t : g_arrow_textures)
         if (t.data && t.data == data) return t.kind;
     return 0;
@@ -638,6 +704,10 @@ int FeArrowKind(uint32_t data) {
 
 // the quad's corners: the way the arrow points is where the texture's right edge (its u past a half) lies from its left
 void FeArrowQuad(int kind, const float* px, const float* py, const float* u, const float* v) {
+    if (kind == 6) {
+        g_dial_drawing = true;
+        return;
+    }
     if (kind == 5) {
         g_keys_building.push_back({*std::min_element(px, px + 4), *std::min_element(py, py + 4),
                                    *std::max_element(px, px + 4), *std::max_element(py, py + 4)});
