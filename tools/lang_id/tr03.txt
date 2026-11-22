@@ -1,0 +1,340 @@
+767|Rendering DEBUG
+768|PEMBERITAHUAN ESRB: PENGALAMAN GAME DAPAT BERUBAH SAAT BERMAIN ONLINE
+769|Fitur Getar:
+771|Toko ini fokus pada penampilan. Kamu akan menemukan^kategori baru dengan barang seperti pintu gunting, hidrolik,^komponen audio dan spinner yang benar-benar^memamerkan mobilmu.
+772|Keluarkan Pemain
+773|Performance Shop
+774|Lihat belakang
+775|Sampul DVD #%d  Mobil %$.1f Bintang
+776|TANPA HIDROLIK
+777|Gagal mengeluarkan %s dari game.
+778|Sway Bar Depan dan Belakang
+779|Opsi Klien
+780|0 ke 100 KM/J:
+781|Mau menghapus mobil kustom ini?
+782|Silakan ganti Gamertag kamu!
+784|Kuat
+785|Pemimpin Drift
+786|Bawa mobilmu ke lintasan uji dan atur pengaturan performamu, secara langsung, saat berada di jalan.
+788|Memasang kap ini akan menghapus semua decal kap^yang sedang terpasang. Pasang komponen ini sekarang?
+789|Tidak ada hasil untuk nama itu!!
+790|Maaf, vinil ini tidak tersedia untuk kap Serat Karbon.
+791|Atur
+792|Kecepatan Tertinggi
+793|Kamu menyatakan di formulir pendaftaran^bahwa usiamu antara 13 dan 17 tahun.^^EA memberi tahu orang tua atau wali bahwa kamu membuat keanggotaan EA.^^Silakan berikan alamat email orang tua atau wali yang valid di bawah.
+794|Graphics Shop
+795|Y Layar
+796|Sampul DVD Burning Wheels
+797|Hasil Dyno
+798|Powerslide Terpanjang
+799|Katanya orang-orang memanggilmu si 14 detik karena segitu lamanya mobil rongsokan itu keluar dari gigi 1. Di sini kami nggak main begitu, dan sebelum kamu sadar apa yang terjadi, kami sudah berpesta di garis finis.
+800|Hei orang desa. Selamat datang di kota besar. Kamu mau main sama kami, kamu harus bisa membawa diri. Kami drag besar-besaran di sini. Sekali kedip kamu bakal kehilangan kami. Kamu nggak akan melawan kapal lambat yang biasa kamu balap di kampung.
+801|Kamu mau drag sama kami, bawa tenaga yang banyak. Pas aku sampai di garis finis, aku bakal pasang jam matahari supaya kita bisa mencatat waktu yang akurat buat rongsokan yang kamu sebut mobil itu.
+802|Bro, syarat ikut balapan ini cuma nyali dan uang. Aku lihat uangmu ada, dan soal nyali aku percaya omonganmu.
+803|Orang desa, apa kabar? Bawa traktormu ke garis start dan keluarkan uangnya biar kita bisa mulai. Ayo bro, waktu terbuang.
+804|Wah - Pak Tani datang dari desa. Sudah cukup kamu gali uang dari pekarangan belakang buat bayar masuk balapan ini?
+805|Apa kabar bro? Masuk aja - masih banyak tempat buat pecundang yang mengira bisa drag sama kami. Aku suka uangku dalam lembaran besar yang renyah. Siapkan buatku.
+806|Kamu bergaya kalau mengira bisa mengalahkan kami dengan mobil itu. Tapi hei, siapa bilang uang pecundang nggak laku? Ayo bro - silakan antre buat dihajar.
+807|Hei bro! Ini bakal PANAS! Kalau kamu merasa mobilmu bisa melesat, silakan datang ke garis start.
+809|Kurasa nggak ada seorang pun di luar sana yang bisa mengalahkanmu secara langsung.
+810|Sekunder
+811|KETENTUAN KESEPAKATAN:^Kontrak selesai setelah memenangkan 7 balapan URL, 3 balapan pilihan sponsor, dan 29 balapan tambahan pilihan pembalap.^^SYARAT MEDIA:^Bangun mobil yang tampil di 3 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview.
+812|Suspensi
+813|Balapan Selesai. Waktu Habis
+814|Sesuaikan Pengaturan Tampilan
+815|^^Sampul DVD diberikan karena membangun Mobil 3 Bintang!
+816|GARIS 1
+817|GARIS 2
+818|GARIS 3
+819|Selamat datang di Bayview Graphics Shop, cabang South Market.
+820|Cari
+821|Game Berperingkat
+822|Torsi ( %s )
+823|Majalah Swiss Tuner
+824|Waktu Sebelumnya:
+825|SATU WARNA
+826|Informasi akunmu akan segera dikirim lewat email.
+829|Komponen ini lebih buruk dari yang sudah kamu miliki.^Mau membeli dan memasang komponen ini?
+830|Salah satu Performance Shop berada di distrik El Norte. Cari lampu biru di luar pintu masuk area parkir.
+831|Petunjuk SMS
+833|Grip Ban Depan
+834|Hard Disk
+835|Terjadi kesalahan saat membuat persona ini.
+836|Bendera Grup
+837|Mau bergabung dengan %s?
+838|Tips Tutorial
+839|Sistem Knalpot Cat Back
+840|Ukuran Layar
+841|Drift
+842|Car Specialties Shop
+843|Filter
+844|Kampas Rem Race Compound
+845|Keluar dari Dyno Shop / Penyetelan Performa?
+846|Hei bro. Kabar baru datang kalau area Jackson Heights akhirnya dibuka. Menuju ke sana. Balapan di perbukitan itu luar biasa.
+847|Status dan Kemajuan Karier
+848|Ban Performa Ekstrem
+850|Kamu memilih untuk menjalankan Demo Burnout{ae} 3: Takedown{82}. Semua perubahan yang belum disimpan pada game saat ini akan hilang. Yakin mau menjalankan demo?
+851|Pilih Warna Latar
+852|Kanan
+854|Total Dihabiskan untuk Mobil:
+855|Akun EA Online ini terkunci dan tidak dapat digunakan. Silakan hubungi Dukungan Pelanggan EA.
+856|Aksen Mesin
+857|Lap Terbaik:
+858|Baca Pesan
+859|Cakram Cross Drilled dan Slotted
+861|MERAH TERANG
+862|Mengemudi bagus! Kamu akan melihat bahwa kamu menerima uang karena mengalahkan lawanmu. Pastikan kamu terus memenangkan Balapan Outrun-mu atau uang itu akan hilang.
+863|Pilih Lintasan Balap Online
+864|Statistik Pribadi
+865|Cari Stadion besar dari jalan bebas hambatan dan kamu akan dekat dengan salah satu toko Car Specialty. Stadion berada di bagian Barat pusat kota.
+866|Login EA
+869|Ke Kotak Surat
+870|Mau menukar mobil?
+871|Hanya game dengan level sama
+872|Info balapan
+873|Gunakan %s
+874|TINTING KACA STANDAR
+877|Karena kamu menyatakan berusia 13-17 tahun, kebijakan kami adalah memberi tahu orang tua atau wali bahwa kamu telah mendaftar ke Layanan EA GAMEStm Online. Untuk melanjutkan pendaftaran, silakan berikan alamat email aktif orang tua atau wali yang berusia di atas 18 tahun. Kami akan mengirim email ke alamat yang kamu berikan, untuk memberi tahu orang tua atau waliamu bahwa kamu telah mendaftar ke Layanan EA GAMEStm Online.
+879|Drag Sponsor
+880|Dealer mobil adalah tempat yang kamu tuju saat butuh kendaraan baru
+882|3. BALAPAN WAJIB
+883|Buat Nama Pengguna
+885|Enam Bulan Lalu{86}
+886|Kami hanya menerima laporan terkait Syarat & Ketentuan EA GAMES{82}. Gunakan ini hanya untuk laporan yang sah. Penyalahgunaan dapat berakibat tindakan terhadap akunmu.
+887|Majalah Stuff
+889|Buka/Tutup Pintu
+890|Naik Gigi
+891|Underground Speed Zone
+892|Tinting kaca
+893|Gagal mengunduh Berita
+894|UNGU
+895|Pilih Sponsor
+897|KETENTUAN KESEPAKATAN:^Kontrak selesai setelah memenangkan 9 balapan URL, 3 balapan pilihan sponsor dan 34 balapan tambahan pilihan pembalap.^^SYARAT PROMOSI:^Bangun mobil yang tampil di 4 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview.
+898|Slot Bagasi %d
+899|Set Liar
+900|Profil dengan nama yang sama akan ditimpa.^Mau melanjutkan?
+901|Koneksimu ke Server EA terputus. Kamu akan dikembalikan ke Menu Utama.
+902|NOS - TABUNG 10 LB
+904|Temukan dunia budaya tuner yang hidup^dan bernapas di Need for Speed{82} Underground 2.^Berlatar di kota luas^yang bebas dijelajahi dengan^lima lingkungan yang saling terhubung,^Need for Speed Underground 2 menghadirkan dunia game yang imersif^di mana jalanan adalah menu-menumu.
+905|Demo ini hanya ditujukan untuk tujuan promosi, dan^tidak boleh dijual, disewakan, atau diperbanyak oleh pihak mana pun.^^Penggunaan demo ini tanpa izin dilarang^oleh hukum yang berlaku.
+906|Poin Reputasi yang Dimenangkan:
+907|Spion Karbon, Spoiler, Roof Scoop
+908|TIPE 2 CHARTREUSE
+909|Yakin mau berhenti menyetel?
+910|Akses EA GAMES{82} TRAX di menu Opsi untuk menyesuaikan musik. Kamu bisa memilih di mana dan kapan setiap lagu diputar. Pratinjau dan susun ulang lagu untuk membuat playlist yang sempurna.
+911|Gas
+912|TIPE 2 MAROON
+915|Pengereman garis lurus
+916|Papan Peringkat Bulan Ini
+917|Hapus
+918|Simpan Profil
+920|V1 SEMUA KECUALI RODA KANAN PURGE
+921|Kap
+922|Volume Musik Menu
+923|Kamera
+924|Kamu punya pesan Xbox Live baru. Mau membacanya sekarang?
+925|Putuskan
+926|Selamat datang di Bayview Body Shop, cabang Hotel Plaza.
+927|BANTUAN BLARG
+928|Mengambil Foto
+929|Tampilan
+930|November
+931|Total Biaya:
+936|Alamat Email Orang Tua:
+937|Tidak Terpasang
+938|Kopling Performa Tinggi
+939|Tidak Tersedia
+940|Lampu
+941|Mencari server LAN ...
+942|Kondisi jaringan dapat memengaruhi game ini.
+943|Komentar:
+944|Kamu finis kelima!
+945|Aktifkan GPS
+946|Lari Dyno
+947|Drift Menurun
+948|Neon Mesin
+949|Verifikasi Usia
+950|th
+952|%$3.1f %s^@%$d rpm
+954|Hadiah Upgrade Visual:
+955|Selang Rem Steel Braided
+956|WAKTU MELAYANG
+957|Selamat datang di Bayview Body Shop, cabang Fort Union.
+958|Memasuki game berperingkat akan otomatis beralih ke mobil online berperingkat yang sesuai untuk mode game ini. Yakin mau masuk ke game ini?
+959|Mencoba membuat akun baru...
+960|Kamu finis ketiga!
+961|Setiap dealer mobil punya inventaris berbeda, jadi kamu mungkin harus menjelajah untuk menemukan model yang kamu mau. Ada lebih dari 30 model dari beberapa produsen paling terkenal di dunia tuning, termasuk Nissan, Mazda, Toyota, Subaru, Mitsubishi, Ford, dan lainnya.
+962|Ini 2 contoh mobil yang sudah dimodifikasi habis-habisan yang bisa kamu buat^di versi lengkap Underground 2.
+963|Setiap dealer mobil punya inventaris berbeda, jadi kamu mungkin harus^menjelajah untuk menemukan model yang kamu mau. Ada lebih dari 30^model dari beberapa produsen paling terkenal di^dunia tuning, termasuk Nissan, Mazda, Toyota,^Subaru, Mitsubishi, Ford, dan lainnya.^^Ini 2 contoh mobil yang sudah dimodifikasi habis-habisan^yang bisa kamu buat di versi lengkap Underground 2.
+964|PENANGANAN
+965|Jika kamu membatalkan koneksi ke server lobi, kamu akan keluar dari Xbox Live dan dikembalikan ke menu utama. Yakin mau melakukannya?
+966|Mau membatalkan perubahan pada setelan decalmu?
+967|Megalow Parts
+968|%s terputus
+969|Mau membeli komponen ini?
+970|OFFSET ZEPHYR
+972|Buka Blokir
+974|Lompat ke Garasi?
+975|Hubungi aku soal produk, berita, dan event EA?
+976|Kembali ke Dyno?
+977|TANPA KOMPONEN
+978|Lihat Lintasan
+979|Panas Tinggi
+980|Tekan START untuk memulai
+981|OFFSET WINDTUNNEL
+982|DENYUT BIRU
+983|Yakin mau menghapus anggota ini dari EA Messenger-mu? Semua pesan yang belum dibaca dari anggota ini akan hilang.
+984|Kamu akan menghapus sebuah persona. Kamu akan kehilangan semua statistik dan pencapaian pemain ini. Tindakan ini tidak dapat dibatalkan. Yakin mau menghapus persona ini?
+986|JENIS BALAPAN:  %s
+987|Saat hujan, traksi mobilmu akan berkurang sedikit sehingga memengaruhi penanganan. Hati-hati saat masuk tikungan dengan kecepatan tinggi karena mobilmu mungkin tergelincir lebih dari biasanya.
+988|Nitrous Oxide memberi dorongan tenaga singkat pada mobilmu. Atur penggeser untuk menyetel Nitro agar lebih bertenaga atau lebih tahan lama. Coba Nitro bertenaga untuk balapan pendek, dan Nitro tahan lama untuk balapan panjang.
+990|Masuk Garasi
+991|Roof Scoop
+993|Opsi Game Quick Race
+994|KETENTUAN KESEPAKATAN:^Kontrak selesai setelah memenangkan 5 balapan URL, 3 balapan pilihan sponsor, dan 19 balapan tambahan pilihan pembalap.^^SYARAT PROMOSI:^Bangun mobil yang tampil di 2 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview.
+995|Pilih Mode Balapan
+996|Terjadi masalah saat mengirim informasi mobilmu. Mau mencoba lagi?
+997|Bro! Kru kota sudah selesai malam ini dan jalan ke Coal Harbor West terbuka dan siap untuk balapan. Kabarnya sudah ada pembalap yang berkumpul. Pergi dan lihat.
+998|Untuk menyesuaikan musik game, pilih Opsi lalu pilih EA GAMES{82} TRAX. Lagu dapat dipratinjau, dimatikan, atau disusun ulang.
+999|Pembatasan Performa Mobil:
+1000|Subjek: Komponen Unik
+1004|Salah satu Graphics Shop berada tepat di utara Kasino di South Market. Cari lampu merah yang mengarah ke pintu masuk.
+1005|Toko Megalow Parts
+1006|Ubah penanganan mobilmu dengan mematikan Kontrol Stabilitas mobilmu. Mematikannya akan membuat mobilmu bisa meluncur di tikungan. Untuk mengubah Kontrol Stabilitas mobilmu, pilih Opsi lalu pilih Pemain dari Menu Jeda.
+1007|Toko Decal
+1008|Memuat Gamertag
+1009|TIPE 3 NOZEL KANAN KAP
+1011|Hadiah Kemenangan Balapan:
+1012|Persona barumu harus terdiri dari %d sampai %d karakter.^Silakan coba nama lain.
+1013|Didiskualifikasi
+1014|TIPE 3 KEDUA NOZEL KANAN
+1015|Garasi
+1016|Kemenangan Event Sponsor:
+1017|TIPE 1 NOZEL KIRI ATAS KANAN BAWAH
+1019|Upgrade Performa Unik
+1020|Kurasa kamu boleh ikut kami kalau punya uang dan nyali. Tapi biar kutanya satu hal; apakah badut sirkus yang mobilnya kamu ambil itu sudah tahu mobilnya hilang?
+1021|Berhenti melotot dan maju. Kami lagi balapan sprint. Kalau kamu punya uangnya, kamu dapat rute lintasan. Tentukan pilihan.
+1022|Hei bro, masuk atau keluar! Pembalap lagi bersiap untuk sprint dan mereka nggak mau ada penonton yang berkeliaran. Kalau kamu punya uangnya - kamu dapat tempat di heat berikutnya. Peta lintasan akan dikirim ke SMS-mu begitu kami yakin kamu serius.
+1023|Dengar - sprint sebentar lagi mulai. Kamu masih punya waktu untuk ikut kalau punya uangnya. Seperti biasa - rute SMS akan dikirim setelah kamu menaruh uangmu.
+1024|Hei kamu! Mau ikut sprint dengan para bos atau nggak? Yang kamu butuhkan cuma uang. Jadi gimana?
+1025|Dengar ya! Buat semua yang membaca - SPRINT! Kalian tahu aturannya. Uang sama dengan rute SMS, jadi jangan tunda dan komitmen!
+1026|WAKTU SEPEREMPAT MIL:
+1027|Kontes
+1028|Aktifkan Mekanisme
+1029|Koneksi
+1030|Bantuan Kemudi:
+1032|Nama akun EA yang ditentukan tidak valid.
+1033|V2 SEMUA KECUALI KAP KANAN PURGE
+1034|Koneksi telah terputus
+1036|Set Api
+1037|Lobi
+1038|Port and Polish Heads
+1039|Detail Geometri Mobil
+1040|Mobil yang sedang kamu pilih tidak dapat digunakan di game ini.
+1041|Kecepatan Tertinggi Tercapai
+1042|Profil
+1044|Membatalkan permintaan pertemanan untuk %s ...
+1045|Saat berkendara di jalan lurus, rem sekeras mungkin sebelum masuk tikungan. Setelah apex tikungan, injak pedal gas untuk berakselerasi keluar dari tikungan.
+1046|Pertandingan Cepat
+1047|Sesi game ini tidak lagi tersedia.
+1049|Hancur Total!
+1050|BONUS WAKTU
+1051|Hanya pembalap terbaik di jalanan yang diundang ke sini, jadi harus kuakui aku terkesan. Tanpa lalu lintas dan gangguan, hanya kamu dan lima orang lain yang mau meninggalkanmu di belakang. Setiap kali menang di sini, reputasimu di dunia balap bertambah sedikit.
+1052|Kabar di jalanan menyebut kemenangan terakhirmu di sini cuma kebetulan. Belum ada yang menganggapmu serius. Ayo tunjukkan pada para badut ini siapa bosnya dan pergi dari sini sebelum polisi sadar.
+1053|Menang malam ini dan sponsor akan mulai memperhatikan. Kamu belum benar-benar menghadapi lawan terberat, tapi menangkan yang ini dan peluangmu diundang lagi akan naik. Jangan sampai gagal.
+1054|Persaingan di sini ketat. Menang di jalanan itu satu hal, menang di lintasan sungguhan itu hal yang sama sekali berbeda. Balapan URL memisahkan calon juara dari pura-pura.
+1055|Balapan URL itu keren banget. Hanya yang terbaik yang diundang ke lintasan ini dan skill adalah raja. Tidak akan ada kemenangan keberuntungan hanya karena seseorang tersenggol mobil kombi nenek.
+1056|Bro, kamu harus tetap tajam untuk balapan ini. URL itu yang terbaik dari yang terbaik dan orang-orang ini punya skill gila. Kamu bakal melawan beberapa pembalap terbaik di kota, jadi tetap waspada.
+1057|Bro, kamu bakal menghadapi persaingan ketat di lintasan malam ini. Beberapa dari mereka nggak main bersih dan lebih suka menabrakmu daripada menyalipmu. Pilih jalur yang bagus dan tetap waspada, maka kamu seharusnya bisa sampai finis.
+1058|Orang-orang ini serius. Nggak ada waktu berpikir - langsung lakukan. Tikungan dan manuver yang bisa mereka lakukan gila banget, jadi tetap di atas. Orang-orang masih belum terkesan sama kamu, jadi sebaiknya kamu tampil habis-habisan.
+1059|Sebaiknya kamu tampil rapat karena orang-orang ini bakal bikin kamu kapok kalau nggak. Mereka bareng para teratas dan ini kesempatanmu menyelip masuk. Nggak ada waktu untuk pamer, jadi keluar dengan nyali dan tunjukkan apa yang kamu punya.
+1061|Race breaker
+1062|BODI STANDAR
+1063|Jadilah Elit
+1065|Jenis Balapan:
+1066|Berurutan
+1067|%s menolak undanganmu dan memblokirmu!
+1068|Anti-Aliasing Layar Penuh
+1069|Hujan
+1071|Kesulitan
+1073|South Market
+1074|Balapan drift
+1075|Nama lintasan
+1076|Spion
+1077|Panjang nama akun EA tidak valid.^Nama akun harus terdiri dari %lu sampai %lu karakter.
+1078|Datang ke dealer mobil untuk menukar dengan kendaraan baru. Cek lagi sesering mungkin karena inventaris selalu berubah dengan model baru yang terus berdatangan.
+1079|Selisih Kemenangan dari Lawan Berikutnya:
+1080|Dealer Mobil
+1081|%s telah diblokir.
+1082|TRI-WARNA A
+1083|TRI-WARNA B
+1084|TRI-WARNA C
+1085|Pilih Server LAN
+1086|Opsi Setir
+1087|Toko upgrade tersembunyi di seluruh Bayview. Perhatikan lampu jalan berwarna yang dapat membawamu ke lokasi tersembunyi. Toko dan inventaris baru terbuka di setiap bagian baru Bayview. Toko yang ditemukan muncul di petamu.
+1088|Skor Terbaik:
+1089|Kit Turbo Tahap 2
+1090|Timpa Game yang Tersimpan?
+1091|Hasil Balapan Drag:
+1093|Kabut Cakrawala
+1094|Set Robekan
+1095|Side Skirt
+1096|Statistik Setelah Balapan
+1097|Balapan tidak dapat dimulai karena koneksi ke host telah terputus.
+1098|Yakin mau keluar ke Menu Utama Xbox Live? Kamu akan menerima kekalahan dan pemutusan untuk game ini.
+1099|Menolak undangan dari %s ...
+1100|Decal
+1101|PENGUMUMAN LAYANAN MASYARAKAT
+1102|Sampul DVD Speed Demons 3
+1103|Buat Profil Baru
+1107|Tipe KO
+1108|Persona tidak ditemukan.
+1109|Terima
+1110|Memasang tata letak ini akan menghapus semua komponen^audio yang sebelumnya terpasang. Mau membeli dan^memasang tata letak audio bagasi ini sekarang?
+1111|Balapan Drag
+1112|Kamu sudah memilih %s sebagai sponsor tahap %d.
+1113|Tindakan saat ini telah dibatalkan.
+1114|Shocks {83} Shock menyerap benturan awal dari gundukan dan menjaga banmu tetap menempel di jalan. Jika mobilmu sering wheelspin, coba lunakkan shock belakang agar lebih banyak bobot berpindah ke ban belakang.
+1115|Dry Shot Nitrous Oxide
+1116|Kamu telah membatalkan proses ini. Mau mencoba lagi?
+1117|Mobil Pemadam Kebakaran
+1118|menghubungkan...
+1119|Mengunggah data mobil...
+1120|Hapus Persona
+1121|Kiri
+1122|Setelan grafis mobilmu telah berubah.^Mau memasang setelan grafis barumu?
+1123|Skor:
+1124|Satuan Spidometer:
+1127|DVD Tiga
+1128|Waktu Lap
+1129|Jenis Balapan
+1130|Balapan
+1131|Silakan pilih sesuatu untuk dipasang sebelum checkout!
+1132|TIPE 1 KEDUA NOZEL RODA
+1134|Membatalkan permintaan pertemanan!!
+1135|Sesuaikan HUD
+1136|Menu
+1137|Setiap mobil dinilai dengan sistem visual sepuluh bintang. Semakin keren komponennya, semakin tinggi nilaimu.
+1138|Rusak
+1139|Balapan Drag Jalan Tol
+1141|Obrolan Suara
+1142|Selamat datang di Bayview Body Shop, cabang Beacon Hill East.^Kamu telah membuka Spoiler dan Kap.^Semua komponen yang dibuka di Body Shop sebelumnya juga tersedia di sini.
+1143|Tenaga Maks:
+1144|Kaca Depan
+1145|Panel Instrumen Kustom terbaru kini tersedia. Tersedia selama persediaan masih ada di semua Bayview Car Specialties Shops.
+1147|Penurunan Belakang
+1148|Pameran
+1149|Pengereman dasar
+1150|Kamu harus memasang setir untuk mengakses Opsi Setir.
+1151|Pamer
+1152|Nama akun EA tidak valid.^Nama akun tidak boleh diawali angka.
+1154|Datang ke Garasi untuk melihat semua hadiah yang sudah kamu menangkan di kariermu. Lihat Sponsor saat ini, Sampul Majalah, atau sampul DVD.
+1156|DRAG
+1157|LAIN-LAIN
+1158|Yoi
+1159|Obrolan
+1160|Ambil
+1162|Batal
+1163|Menit
+1164|Graphic Shop
+1165|Keluar Akun

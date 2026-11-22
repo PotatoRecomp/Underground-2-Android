@@ -1,0 +1,367 @@
+2208|Wide Body Kit
+2209|Pesan SMS Event Balapan
+2210|Pesan SMS Toko
+2211|Ini komentar untuk region 3
+2213|Tahap %d - Status %s
+2215|Mau membeli dan memasang paket performa ini?
+2216|Tidak Ada yang Tersedia
+2217|OFFSET RIPTIDE
+2218|KNALPOT STANDAR
+2219|Sampul DVD Racing Street Unleashed
+2220|TENGKORAK 2
+2221|TENGKORAK 3
+2222|Ruang Pribadi
+2223|Beri mobilmu keunggulan pembalap dengan pilihan roof scoop terbaru. Ambil milikmu di Bayview Body Shops.
+2225|Akselerasi
+2226|Chip Performa
+2227|Kabut
+2228|Hapus Mundur
+2230|Lihat Statistik
+2232|Info Lap
+2233|Pembatasan Performa Mobil
+2236|Mencari^Koneksi
+2240|ODOMETER PERJALANAN:
+2241|Hubungi Satelit
+2242|Buat Persona Baru
+2243|Kontrol Stabilitas
+2244|Buat Game
+2246|Yakin mau memuat^profil %s?
+2247|Peringatan! Memasang kap serat karbon akan menghapus semua vinil dan decal kap dari mobilmu.
+2249|Kecepatan 400m:
+2250|Mulai Karier Baru
+2251|Teman harus memainkan game yang sama!
+2252|Hard disk Xbox
+2254|Konfirmasi kata sandi
+2255|Kamu berhasil!
+2256|Itu luar biasa
+2257|Aktifkan Suara Obrolan Suara
+2258|Jadikan mobilmu kendaraan terkeren di jalanan dengan neon mesin yang benar-benar baru. Pesan hari ini di Car Specialties Shop mana pun.
+2260|Manajemen Pesan
+2261|Megalow Parts adalah toko komponen diskon super. Komponen performa level 1 dan level 2 tersedia di sini. Meski komponen performa juga tersedia di toko komponen lain di sekitar kota, Megalow punya diskon terbesar.
+2262|TIPE 2 NOZEL KANAN KAP
+2263|Mau masuk ke garasi?
+2264|TIPE 2 HIJAU & BIRU
+2265|TIPE 2 HIJAU & EMAS
+2267|Untuk masuk ke toko atau event, kendarai mobilmu ke zona beranimasi dan tekan atas pada HUD SMS, saat diminta. Untuk membaca pesan masuk, tekan kanan pada HUD SMS saat ikon surat muncul.
+2269|Pilih Mobil Garasi
+2270|Mengemudi bagus! Mampir ke Dealer Mobil kalau ada waktu, katanya mereka baru dapat tambahan keren di inventaris.
+2272|RINGKASAN POIN SPONSOR
+2273|Masukkan kata sandi
+2275|Konfirmasi Kata Sandi Akun
+2276|Subjek: Foto untuk Sampul DVD
+2277|Pilih Komponen Unik
+2278|HUD Kustom
+2279|Pemain lain terus-menerus menggunakan bahasa cabul atau vulgar di ruang obrolan, obrolan suara, atau lewat EA Messenger.
+2280|Kembali ke Kotak Surat
+2281|Bawa mobilmu ke jalur cepat dengan menambah Turbo baru. Pasang di Bayview Performance shop atau Megalow Parts terdekat.
+2282|Masukkan Pesan
+2283|TIPE 1 NOZEL KIRI KAP
+2284|Pemain ini daftar temannya penuh.
+2285|Mulai Balapan
+2286|File Konfigurasi Jaringanmu rusak dan tidak dapat digunakan.
+2287|POSISI
+2288|Majalah
+2292|Poin ke Kelas Berikutnya:
+2293|Untuk mengubah kontrol kemudi, pilih Opsi lalu pilih Pemain dari Menu Jeda. Di sini kamu bisa menelusuri berbagai preferensi kemudi.
+2295|Kamu Kehilangan Posisi Pertama!
+2299|Meninggalkan ruangan ini sekarang akan mengakhiri sesi game ini. Yakin mau keluar?
+2300|Kekalahan Outrun
+2301|Hitung Mundur Balapan:  %d
+2302|Pemain lain tidak dapat terhubung. Sesi game ini tidak lagi tersedia.
+2304|Berlisensi oleh Nintendo
+2305|Yakin mau memuat setelan hasil tuning kustom sebelumnya?
+2306|DAPAT POSISI 4
+2308|Jumlah Lap:
+2310|Spion samping
+2311|Memulai Sesi Game...
+2312|Kamu tidak bisa menjual komponen standar.
+2317|Putus Host %
+2318|STREET X
+2319|Online DEBUG
+2322|Saat Tandem Drift, kamu bisa mendapat poin terbanyak dengan drift sedekat mungkin dengan pasanganmu. Menabrak mereka, atau dinding, akan membuatmu kehilangan semua poin untuk drift saat ini.
+2323|Tekan bawah pada HUD SMS untuk mengakses legenda Mini-map. Ini akan menunjukkan apa yang diwakili setiap ikon di petamu.
+2325|Bayview's Best
+2327|Hei, aku mau kasih tahu. Sekarang kamu terikat kontrak dengan sponsor, kamu harus menyelesaikan beberapa event tertentu untuk menuntaskan kesepakatanmu. Lihat ikon "X" - itu event-nya. Pergi ke sana dan hancurkan. Nanti kita ngobrol lagi.
+2328|Kamu harus menentukan nama akun EA^dan kata sandi untuk login.
+2330|Turbo {83} Turbo memberi banyak tenaga, terutama di RPM tinggi. Kamu bisa menyeimbangkan tenaga ini dengan menyetel Turbo & ECU bersamaan agar tenaga ada di tempat yang kamu inginkan.
+2331|Sembunyikan di Peta Dunia
+2332|Aerodinamika menekan ke bawah dan meningkatkan grip ban. Atur penggeser untuk menambah atau mengurangi downforce depan dan belakang. Downforce yang terlalu besar dapat membuat mobilmu bereaksi keras terhadap gundukan dan trotoar.
+2333|Poin Reputasi Didapat di Balapan Ini:
+2334|Yakin mau keluar?
+2336|Masuk ke obrolan suara ini akan mengakhiri yang sedang berlangsung. Mau melanjutkan?
+2337|Pasang Paket
+2338|Sistem Pesan
+2350|Mau mengubah semua Bemper Depan/Belakang, Side Skirt, dan Widebody Kit yang terpasang di mobil ini menjadi Serat Karbon?
+2351|Maju
+2352|Slammed & Stretched
+2353|Volume Suara & Film
+2355|TIPE 2 BIRU LANGIT
+2356|Sprint
+2357|Untuk ini kamu butuh N2O. Nggak... bikin jadi 2 tabung, 2 yang besar!
+2359|Lanjutkan
+2360|DENYUT PUTIH
+2362|Ganti Pilihan
+2363|Putus Klien %
+2364|Mode Peta Balapan
+2365|Kontrol Replay
+2366|Koneksimu ke Server EA terputus. Mau menyambung kembali?
+2367|Perhatikan mobil tuner lain di jalan. Mereka akan ditandai di Mini-map-mu sebagai segitiga oranye. Kamu bisa menantang mobil-mobil ini ke balapan "Outrun" dengan menekan atas pada HUD SMS saat diminta. Saat balapan, tujuannya adalah merebut posisi terdepan dari lawanmu lalu meninggalkan mereka! Kamu bebas mengambil rute mana pun untuk mencoba mengalahkan mereka.
+2370|%s harus ditambahkan ke Daftar Temanmu jika kamu ingin mengirim undangan antar-game ke pemain ini.
+2371|Pergi ke Garasi
+2372|Bendera
+2373|String HUD rusak.
+2374|Tekanan Hidrolik
+2377|Curang
+2380|PILIH LAPISAN VINIL
+2382|DVD %d
+2383|Masukan telah dikirim. Hubungan Pelanggan EA akan menyelidiki situasi ini dan mengambil tindakan yang sesuai.
+2384|Game tanpa peringkat itu seru, tapi tantang dirimu dengan bermain game berperingkat online. Naiki papan peringkat dengan mengalahkan pemain lain dan jadilah pembalap online terbaik.
+2385|Aktifkan Suara Semua?
+2386|Selamat - kamu telah menamatkan game! Kamu telah membuka semua upgrade performa dan visual di mode Quick Race. Tidak ada lagi event yang harus diselesaikan di dunia ini - kembali ke Garasimu untuk mengulang event mana pun dari Kariermu.
+2388|Kalah
+2390|Opsi Hadiah
+2391|Peringkat
+2392|Waktu
+2393|Jenis
+2394|Menang
+2395|Tahun
+2396|Tujuan balapan outrun adalah merebut posisi terdepan dan meninggalkan lawan dengan menciptakan jarak lebih dari 300 meter. Kamu bebas^mengambil rute mana pun saat menjadi pemimpin. Jika kamu tertinggal,^kamu harus mengejar pemimpin dan menyalipnya untuk mengambil alih balapan.
+2398|Setelan hasil tuning kustommu saat ini telah berubah. Mau menyimpannya?
+2399|Salah satu Car Specialties Shop berada di area Coal Harbor West di bagian Industrial. Letaknya di selatan 3 menara nuklir. Cari lampu kuning yang menandai pintu masuk.
+2400|Mau menukar dengan mobil ini?
+2401|Status Pemain
+2402|TIPE 3 BIRU LANGIT
+2403|Volume Mesin
+2404|Wah, ibumu tahu nggak kamu bawa mobil keluarga kecilnya keluar kota? Kalau mau ikut kami, pastikan ikat belanjaan di belakang sebelum kita mulai.
+2405|Hei bro, sepertinya Bayview Bridge Club tersesat dalam perjalanan ke acara sosial bulanan. Aku belum pernah mencium bau uang country club - baunya agak ketakutan. Kalau kamu masih ikut, aku kasih peta lintasannya.
+2406|Nak, di kru ini kami pakai "sport-ute" yang keren. Bagaimana kalau aku ambil uangmu sekarang biar kamu bisa naik bus itu balik ke dealer sebelum sopirnya butuh buat sekolah besok pagi?
+2407|Jelas ya bro - nggak ada tempat dan waktu buat mobil kuno di sini. Sebaiknya kamu tahu apa yang kamu masuki karena nggak ada pengembalian uang di sini.
+2408|Kamu pasti bercanda! Kamu benar-benar punya nyali datang ke kami dengan mobil butut itu. Mana uangmu bro - di balapan ini nggak ada utang.
+2409|Itu mobil yang oleng banget bro. Kamu gila kalau mengira punya peluang! Nggak masalah, aku ambil uangmu. Kamu tahu apa yang harus dilakukan untuk memulai.
+2410|Oh sayang! Lihat bro - kamu bergaya payah dan itu nggak membantumu. Mungkin kamu bisa merebut kembali harga dirimu kalau ikut heat berikutnya.
+2411|Ini KERAS bro. Sebentar lagi panas dengan para U-Vee dan kamu datang tepat waktu untuk dihajar. Keluarkan uangnya dan kamu ikut.
+2412|Apa namanya benda yang kamu bawa itu? Kelihatannya seperti kotak beroda bro. Kurasa kami bisa melonggarkan aturan sedikit untuk membiarkanmu masuk. Aku suka tertawa.
+2413|Sway Bar Diameter Besar
+2414|Ditantang oleh:
+2415|Membuka blokir %s ...
+2417|Setel Pengaturan
+2418|Statistik Karier Keseluruhan
+2419|Balapan SUV
+2420|Tergantung preferensi berkendaramu, kamu bisa mengubah kontrol kemudi di menu Opsi. Telusuri berbagai pengaturan untuk memilih yang paling cocok untukmu.
+2422|Pemain lain menggunakan nama yang menyinggung atau membuat nama ruang yang menyinggung.
+2423|Waktu Memimpin
+2424|Dituduh Curang oleh Pemain
+2425|Pemain Maksimum
+2426|Kap Terbelah
+2428|Tinting Kaca
+2429|%s sedang dalam sesi game, permintaanmu ditolak.
+2430|Underground Racing League
+2431|DRIFT
+2434|Pastikan kamu mengunjungi semua toko tuner di dunia ini. Sebagian besar ditandai di mini map tapi lokasi toko balap "underground" tersembunyi "di luar jalur biasa". Perhatikan jalan samping dan gang yang bisa membawa ke toko spesial yang menjual komponen dan upgrade terbaik.
+2436|Total Reputasi
+2437|Kualitas koneksimu ke game ini di bawah rata-rata.^Bergabung ke game ini mungkin membuat pengalaman bermain buruk.^Yakin mau bergabung ke game ini?
+2438|%s telah dibuka blokirnya.
+2440|%s sedang bermain Need for Speed{82} Underground 2
+2444|Hadiah upgrade performa:
+2446|Statistik Performa
+2447|Memasuki game berperingkat akan otomatis beralih ke mobil berperingkat yang sesuai untuk mode game ini. Kamu juga mungkin kehilangan pesan yang belum dibaca dan undangan sesi game.
+2449|Waktu Tambahan!
+2450|Pantulan
+2455|TANPA NEON
+2458|Sesi Hebat
+2459|Selamat!^ Kamu dapat pena gratis^dan cangkir kopi.
+2460|Ganti Header
+2461|Kamu perlu memasukkan informasi yang diperlukan untuk membuat akun EA.
+2463|Yakin mau keluar dari sesi game ini?
+2464|Rata-rata Reputasi Per Balapan
+2465|Mau mengembalikan bagasimu ke standar?
+2466|Hadiah / Sponsor
+2467|Tips Game
+2468|Agustus
+2469|Setelan grafis mobilmu telah berubah.^Mau membeli setelan grafis barumu?
+2470|Race Breaker adalah tambahan baru pada sistem nitromu. Saat kamu^mengisi nitro melebihi 100%, kamu mulai mengumpulkan nitro Race Breaker.^Ini menambah dorongan dan grip ekstra pada mobilmu dan dapat membuat^perbedaan dalam balapan. Nitro biasa ditandai dengan warna biru pada^HUD nitromu. Saat penuh, nitro Race Breaker berwarna hijau akan^mulai terisi di atas nitro biasamu.
+2473|Kamu berhasil masuk sampul DVD. Ayo lihat!
+2475|Nitrous Oxide
+2476|1 Balapan Sirkuit^1 Balapan Drift^1 Balapan Sprint
+2477|Bayangan Mobil
+2478|Terputus
+2480|TIPE 2 NOZEL RODA KIRI
+2481|WAKTU LAP TERBAIK
+2482|Hewan
+2484|Pastikan saja dia tumbang atau kalian semua nggak akan selamat dari ini.
+2485|Penyetelan performa waktu nyata
+2487|Arah Lintasan
+2489|Terjadi kesalahan tak dikenal saat mencoba memulai server LAN.^Periksa konfigurasimu dan coba lagi.
+2490|OFFSET ANNEX
+2491|Silakan masukkan tanggal lahirmu sebelum memilih lanjut.
+2492|HIDROLIK LVL 2
+2493|Mengemudi yang bagus! Ada fotografer yang ingin memotret mobil pemenang untuk majalah Underground. Kamu punya 45^detik untuk sampai di lokasinya sebelum dia pergi mencari pembalap lain.^Lokasi ditandai bintang kuning berkedip di mini map-mu, sekarang cepat!
+2495|Ganti Komponen Bodi
+2497|Mengirim permintaan pertemanan ke %s ...
+2498|Ngobrol Di Sini
+2499|Gagal Menyimpan
+2500|Pilih dengan hati-hati saat menentukan mobil pertamamu. Kamu akan mengendarainya cukup lama, jadi pilih mobil yang cocok dengan gayamu. Mobil AWD, FWD, dan RWD berkendara dan menanganinya berbeda. Cek Statistik Mobil di layar Pilih Mobil untuk info lebih lanjut.
+2501|Papan Peringkat:
+2502|BODI 1
+2503|BODI 2
+2504|BODI 3
+2505|BODI 4
+2506|BODI 5
+2507|BODI 6
+2508|BODI 7
+2509|BODI 8
+2510|BODI 9
+2511|BODI 10
+2512|BODI 11
+2513|BODI 12
+2514|BODI 13
+2515|BODI 14
+2516|BODI 15
+2517|Silakan keluarkan disc game saat ini dan masukkan %s. Kamu akan kehilangan pesan yang belum dibaca dan pengaturan yang belum disimpan.
+2518|Resolusi
+2519|TIPE 3 MERAH & HIJAU
+2521|Depth Of Field
+2522|Acak
+2523|X Layar
+2524|UNGU TERANG
+2526|Kamu harus mengupgrade bagasimu ke TATA LETAK KUSTOM untuk memasang neon bagasi.
+2528|Race Breaker:
+2529|Muat Mobil
+2530|Muat Game
+2531|KECEPATAN DI ATAS 400m
+2532|Ulangi balapan?^Semua kemajuan balapan yang belum disimpan akan hilang.
+2533|Majalah GTI
+2534|Waktu Finis:
+2535|GUNTING
+2539|1 Balapan Sirkuit^1 Balapan Sprint^1 Balapan Drag
+2540|Butuh detail sponsor.
+2543|Direct Port Nitrous Oxide
+2544|MEMUAT
+2545|Masuk Toko /^Tantang Lawan
+2546|Sesi game tidak dapat dibuat. Silakan coba lagi.
+2547|Tidak ada profil ditemukan.
+2549|BIRU TERANG
+2550|WAKTU TERTINGGAL:
+2551|1 Balapan Drag^1 Balapan Sprint^1 Balapan Street X
+2552|Bawaan
+2553|Hapus Teman
+2555|Selamat!^Mobilmu akan tampil di sampul majalah Need for Speed{82}^Underground 2!
+2558|Ini Komentar Region 1
+2559|Oh ya! Hebat banget. Itu cuma satu balapan! Nggak bakal terulang lagi.
+2560|Kamu bisa
+2561|Beri aku satu kesempatan lagi. Aku bisa mengalahkannya.
+2562|KAMU!
+2563|Kamu
+2564|Semuanya dipertaruhkan. Kamu ikut atau nggak!?
+2565|Hadiah Uang untuk Majalah
+2566|TIPE 3 HIJAU
+2567|DAPAT POSISI 5
+2568|Ganti Komponen
+2569|Status Penyelesaian Game:
+2570|Ban
+2572|Kamu finis keempat!
+2573|Indikator
+2574|Sampul DVD Slammed & Stretched
+2575|KETENTUAN PERJANJIAN:^Pembalap setuju untuk menang: 5 balapan URL, 3 balapan pilihan sponsor, 19 balapan pilihan pembalap.^^KLAUSUL HUMAS:^Bangun mobil yang tampil di 2 sampul DVD.^^BONUS:^Sponsor menyediakan 1 kendaraan gratis.
+2576|mi
+2577|Bias Rem {83} Menggeser bias rem ke belakang akan membantu mobilmu berbelok saat mengerem, tapi bisa menyebabkan mobil berputar. Temukan setelan yang kamu suka untuk mobil dan gaya berkendaramu.
+2579|KETENTUAN KONTRAK:^Pembalap harus memenangkan balapan berikut: 7 balapan URL, 29 balapan - pilihan pembalap, 3 balapan - pilihan sponsor.^^SYARAT TAMBAHAN:^Bangun mobil yang tampil di 3 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview mana pun.
+2580|Selamat datang di Need for Speed Underground 2.^Demo ini memungkinkan kamu merasakan sedikit dari dunia budaya tuner^yang berkecepatan tinggi dan serba cepat yang tersedia di versi lengkap.^^^^^Segera hadir November 2004
+2581|Kaca Belakang
+2582|Grafik Dyno
+2583|Neon interior
+2585|Server Need for Speed{82} Underground 2 tidak tersedia saat ini. Silakan coba lagi nanti.
+2587|KETENTUAN PERJANJIAN:^Pembalap setuju untuk menang: 9 balapan URL, 3 balapan pilihan sponsor, 34 balapan pilihan pembalap.^^KLAUSUL HUMAS:^Bangun mobil yang tampil di 4 sampul DVD.^^BONUS:^Sponsor menyediakan 1 kendaraan gratis.
+2590|Masukkan Tanggal Lahir
+2591|Hidrolik
+2592|Kustomisasi mobilmu dengan ratusan upgrade visual^untuk mendapatkan tampilan persis seperti yang kamu mau.
+2593|Kamu tidak bisa mengecat roof scoop serat karbon atau aluminium
+2594|Saat mengambil foto sampul majalah, gunakan fungsi pratinjau untuk melihat sudut dan setelan terbaik untuk mobilmu sebelum kamu menjepret foto terakhir.
+2595|Pesan Menyinggung
+2596|Reset ke bawaan
+2598|Mengautentikasi DNAS Harap tunggu
+2599|Lupa Kata Sandi
+2600|LED LAP:
+2601|%s sedang dalam game dan menolak undanganmu!
+2602|Pameran Mobil
+2603|Balapan Sirkuit Knockout
+2604|WAKTU LAP TERBAIK:
+2605|TIPE 2 NOZEL RODA KANAN
+2606|Trail braking
+2607|Knalpot Performa
+2608|Memuat
+2609|TIPE 2 NOZEL KIRI ATAS KANAN BAWAH
+2610|Mini-map berada di kiri bawah Heads Up Display-mu. Lokasi dan event yang sedang tersedia akan muncul di sini. Ikon yang muncul di cincin luar menunjukkan arah umum lokasinya. Saat dalam jangkauan, ikon ini akan muncul di lokasi peta yang tepat. Rotasi peta dapat diatur di Menu Opsi.
+2611|Autentikasi DNAS
+2612|Pesan Tersimpan
+2613|DENYUT LIME
+2615|Undangan suaramu telah kedaluwarsa.
+2616|^^Sampul DVD diberikan karena membangun Mobil 1 Bintang!
+2619|Bandara
+2620|Disk. %
+2621|Tidak Dapat Menghubungi ^ Satelit, Mencoba Lagi...
+2622|Yakin mau memutuskan koneksi dan berhenti bermain Online?
+2624|Februari
+2625|Lain-lain
+2627|TIPE 1 KEDUA NOZEL KANAN
+2629|Balapan bagus kawan. Kabar di jalanan bilang ada fotografer dari majalah %s yang mencari mobil keren. Kalau tertarik, pergi ke bintang di mini map. Aku akan telepon kalau sudah ada detail lebih lanjut.
+2632|Kemenangan Event URL:
+2633|Mau Menyetel Performa / Dyno mobilmu?
+2635|Memulai Server LAN ...
+2636|Terapkan Filter
+2637|Kamu benar-benar mau menukar ini? ^Kamu akan kehilangan semua modifikasi, ^dan hanya mendapat 80 persen dari harganya.
+2641|Kartu Memori
+2642|Simpan/Muat
+2645|Selesai
+2646|Daftar Teman
+2648|Body Kit Serat Karbon
+2649|Eksotis
+2650|LAP TERBAIK
+2653|Mobilmu harus terlihat sekeren caranya melaju. Body shop adalah tempat untuk menambah fender, kap, spoiler, side skirt, dan lainnya.
+2655|Selamat datang di Bayview Car Specialties Shop, cabang Beacon Hill East.^Kamu telah membuka akses ke N2O Purge dan Tata Letak Audio 1.^Semua komponen yang dibuka di Car Specialties Shop lain juga tersedia di sini.
+2657|LAP PEMIMPIN
+2658|Dashboard Xbox
+2659|Atas: Akselerasi^Bawah: Rem /^Mundur
+2660|Garasi adalah tempat semua komponen mobil lamamu dikirim. Seluruh inventaris komponen yang kamu beli tersedia untuk dipasang kembali di mobilmu. Jika mau memasang kembali komponen lama, masuk ke menu ganti komponen di garasi
+2661|DENYUT KUNING
+2662|^^Sampul DVD diberikan karena membangun Mobil 2 Bintang!
+2664|Masukkan Nama Akun EA
+2665|Transmisi 6 Speed
+2666|Tata Letak 1
+2667|Tata Letak 2
+2670|Status
+2671|Pilih Pemain
+2672|Persona ini tidak valid atau tidak bisa digunakan saat ini.
+2675|Balapan Street X diadakan di lintasan sempit dan teknis. Lintasan yang pendek dan sempit berarti cara terbaik untuk menang adalah berada di depan rombongan. Jangan takut bertukar cat untuk melewati garis finis di posisi 1.
+2676|TIPE 2 MERAH & BIRU
+2677|TIPE 2 MERAH & EMAS
+2678|Sebelumnya
+2679|Api
+2680|Peringatan! Memasang kap serat karbon akan menghapus semua vinil kap dari mobilmu.
+2681|Rem Tangan
+2684|Keluar ke Performance Shop?
+2686|Mengambil informasi mobil ...
+2688|TIPE 3 BIRU LANGIT & MERAH CERAH
+2690|SUV
+2692|TIPE 2 BIRU LANGIT & HIJAU
+2694|Satu Tikungan
+2695|Pilih Mobil
+2696|KETENTUAN:^Kontrak selesai setelah 3 kemenangan URL, 3 kemenangan balapan yang ditentukan sponsor dan 9 kemenangan tambahan pilihan pembalap.^^SYARAT PROMOSI:^Bangun mobil yang tampil di 1 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview mana pun.
+2697|Drift Sponsor
+2698|Memenangkan Balapan
+2699|Powder Coat
+2700|Tingkat Detail
+2702|Runner Up Drag
+2703|Maaf, fungsi GPS tidak tersedia di mode ini.
+2705|Isi Paket
+2708|km
+2709|Kata sandi yang dimasukkan salah.
+2710|Pilih Mode Balapan Online
+2712|Maksimum
+2714|^Sampul majalah diberikan karena memenangkan World Event ke-9 di Tahap 5!
+2715|Terjadi kesalahan saat mengambil peringkat pribadimu^dari server.
+2717|0 ke %d Waktu: %s
+2718|Minimum
+2720|Bendera
+2721|Sway Bar Depan
+2722|Tolak Undangan

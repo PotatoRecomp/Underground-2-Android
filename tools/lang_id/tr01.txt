@@ -1,0 +1,275 @@
+1|Tidak
+2|OK
+3|Nyala
+4|KM.
+5|Maks
+6|Min
+7|Mati
+8|MERAH
+9|Ya
+10|Salah satu Toko Performa ada di kawasan Coal Harbor East di area Industrial. Lampu biru menandai pintu masuk toko.
+11|TIPE 3 MAGENTA & BIRU
+12|Majalah AutoMaxx
+13|Kembali
+14|BIRU
+15|Kaki
+16|ABU-ABU
+17|Bantuan
+20|LIME
+19|Lap
+21|Muat
+22|Pria
+23|Tidak Ada
+25|Belakang
+26|Simpan
+27|Waktu:
+28|Alamat email orang tua atau wali:
+29|Menghubungkan ke lobi...
+31|Keluar ke Menu Utama Xbox Live
+32|^3 Balapan Drag
+33|Pusat Kota:
+34|Beacon Hill:
+35|Jackson Heights:
+36|Coal Harbor East:
+37|Coal Harbor West:
+38|Pilih Mobil
+39|Masukkan kode sandi untuk %s
+40|^Sampul majalah diberikan karena memenangkan World Event ke-6 di Tahap 3!
+41|Bemper Belakang
+42|Kata Kasar / Cabul
+43|Batalkan Perubahan
+62|Mesin Jebol
+63|Panel Instrumen Kustom
+64|Penyaringan event
+65|Paket ini berisi komponen yang lebih buruk dari yang^sudah terpasang. Pasang paket performa ini?
+68|Januari
+69|Salah satu Toko Performa ada di kawasan Coal Harbor West di area Industrial. Lampu biru menandai pintu masuk toko.
+70|Sesi obrolan suara kamu telah berakhir!
+71|Mesin
+73|Kap Mesin
+75|Velg
+76|KRIM
+77|Balapan Drag Bandara
+78|AUDIO BAGASI
+79|Kamu sudah mengirim undangan ke pemain ini!
+80|Terjadi kesalahan saat memuat konfigurasi jaringan yang dipilih.
+81|Mau membuat profil baru?
+82|Depan
+83|sedang online
+84|Jika kamu bisa melihat logo Need for Speed{82} Underground 2,^ kamu perlu menurunkan kecerahan televisimu.
+85|HIJAU
+86|Pesan SMS
+87|Raih peringkat %$.1f bintang
+88|Mau menyimpan majalah ini?
+89|Waktu habis menunggu koneksi ke ISP kamu.
+90|Mil
+91|^Sampul majalah diberikan karena memenangkan World Event ke-27 di Tahap 4!
+92|Durasi (d)
+93|SAMUDRA
+94|Gunakan Akun EA yang Ada
+95|Dimiliki
+96|Rem mesin
+97|Hai, aku Brooke Burke dan aku berperan sebagai Rachel Teller di Need for Speed Underground 2.
+98|Menjadi pembalap di game ini sangat seru, tapi di jalan raya aku selalu berkendara dengan aman dan bertanggung jawab.
+99|Soal balapan, pastikan kamu hanya melakukannya di jalanan Underground 2.
+100|Jadi ingat, selalu pakai sabuk pengaman dan patuhi peraturan lalu lintas.
+101|Lihat Belakang (Bawah)
+103|Ulangi
+105|Kamu harus mengakhiri sesi obrolan suara ini untuk menghapus %s dari Daftar Teman.
+106|STANDAR
+107|Torsi
+108|Lupa Nama Akun EA
+112|PUTIH
+114|Kembali ke Menu Utama
+115|Izin Orang Tua
+117|Tidak dapat mengirim masukan.
+119|Salah satu teknik yang lebih sulit, trail braking, adalah menunggu sampai awal tikungan untuk mulai mengerem dan menahannya sampai apex. Hati-hati jangan sampai mobil terlempar ke drift.
+120|Nilai Visual
+121|Opsi Host
+122|Kontrol
+123|Blueprint the Block
+124|%s telah diblokir. Kamu tidak akan lagi menerima Pesan, Undangan, atau Undangan Obrolan Suara dari %s
+126|PERFECT SHIFT %:
+128|Statistik Pemain
+129|Pilih Mode Quick Race
+130|Masuk Toko
+132|Pegas dan Peredam Performa
+133|Kustomisasi Mobil
+134|Perfect Shift!
+135|Putuskan Obrolan Suara?
+136|Alamat Email
+138|Sentuhan akhir untuk tampilan mobil yang keren adalah Lampu Belakang. Model baru sekarang tersedia di semua Bayview Body Shops.
+139|Peta Lintasan:
+140|Drag Tercepat Selesai
+141|Tenaga ( %s )
+142|Gabung Sesi Game
+143|Jarak:
+144|Gagal terhubung ke server lobi karena suatu hal.
+145|OPSI MUSIK
+146|Penonton
+147|Mau mengubah atau menghapus vinil ini?
+148|Event Spesial
+149|Akun ini telah diblokir.
+150|Konfirmasi Alamat Email:
+151|Sprint Sponsor
+153|Ruang Game Dibuat
+155|Kembali ke Mode Jelajah?^Semua kemajuan balapan yang belum disimpan akan hilang.
+156|Kaca Ringan
+157|Mau membeli setelan grafis ini untuk mobilmu?
+158|Stik Kontrol
+159|Hapus Pesan
+160|LAVENDER
+161|Waktu Split
+162|Bawa tenagamu ke aspal lebih cepat dengan memasang Transmisi terbaru di pasaran. Pasang eksklusif di Bayview Performance Shops.
+164|Street X adalah balapan ketat di lintasan pendek, di mana reaksi cepat dan nyali baja^menentukan menang atau kalah. Terima^tantangan ini untuk balapan 3 lap melawan 3 lawan, di mana^kamu harus bertarung sengit untuk merebut jalur dalam.
+165|Pilih Mobil Online
+166|Majalah %d
+167|TRI-WARNA D
+168|TRI-WARNA E
+169|TRI-WARNA F
+170|Penyetelan Performa
+171|Ini komentar untuk region 4
+172|Kata Sandi Akun
+173|Kredit
+174|Slot decal ini sudah kosong!
+175|Slot Kartu Memori A
+177|Spinner
+178|Ulangi Balapan?
+179|Rekor Lap
+181|OFFSET TEMPEST
+182|Kemenangan World Event:
+183|Konfirmasi Kata Sandi
+184|Neon
+185|Bobot
+186|Set Petir
+187|Mobil yang ditampilkan di game ini mungkin berbeda tampilan^dan performanya dari mobil sungguhan, dan pengemudi yang ditampilkan di^game ini mungkin tidak mengikuti aturan keselamatan berkendara. Saat^mengemudi di dunia nyata, ingatlah untuk menjadi pengemudi^yang aman: pakai sabuk pengaman, nyalakan lampu sein,^dan gunakan penilaian yang baik.
+188|Nama Tidak Pantas
+189|Replay Setelah Balapan
+190|Dituduh Curang oleh Server
+191|Tahap %d
+192|Atur lapmu saat balapan Knockout. Kamu harus menghindari posisi terakhir di setiap lap agar terus lanjut. Tetaplah dekat sampai lap terakhir, lalu lancarkan seranganmu untuk menang.
+193|Mau masuk ke dealer mobil?
+194|Cari Gamertag
+195|Sentuhan gaya paling akhir adalah salah satu warna Neon Mesin baru kami, tersedia sekarang di semua Bayview Car Specialties Shops.
+196|Penurunan Depan
+197|Sistem Asupan Udara Dingin
+198|Permintaan Pertemanan
+199|Rata-rata Poin Reputasi per balapan untuk Tahap Saat Ini
+200|Juara Street X
+201|KECELAKAAN DIBERSIHKAN
+202|Tampilkan Nama Pemain
+203|TANPA ROOF SCOOP
+204|Menghapus %s dari daftar teman ...
+205|Bengkel Bodi
+206|Cara cepat mengenali pesan SMS adalah dari jenis ikon yang muncul saat pesan diterima. Setiap jenis pesan punya ikon amplop yang berbeda.
+207|Drift Hebat!
+208|^3 Balapan Street X
+209|Peluang sampul %s
+210|Strut Tower Bar
+211|%s Unik
+212|Sponsor adalah tiketmu masuk ke Underground Racing League. URL adalah liga khusus undangan yang butuh reputasi besar untuk bisa masuk. Sponsor mencari pembalap dengan reputasi tinggi, jadi jangan cuma kalahkan lawanmu di lintasan - hancurkan mereka.
+213|KETENTUAN KONTRAK:^Pembalap harus memenangkan 9 balapan URL, 3 balapan pilihan sponsor, dan 34 balapan tambahan pilihan pembalap.^^SYARAT TAMBAHAN:^Bangun mobil yang tampil di 4 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview.
+214|Mobil
+215|Hari
+216|Menang
+217|Berita
+218|Fuel Rail
+220|Tambah tenaga dan tukar mesinmu dengan Mesin baru yang tersedia eksklusif di semua Bayview Performance Shops.
+221|Kembali ke Menu Utama?
+223|Cari Dealer Mobil di Coal Harbor East, area Industrial kota. Perhatikan lampu berwarna aqua.
+224|Yakin mau menyimpan profilmu?
+225|Persen Menang:
+226|Bagian Bawah
+227|^3 Balapan Sirkuit
+228|Drift Terbaik:
+230|Spion Samping
+231|KEMBALI
+232|CAPS
+233|SELESAI
+234|Bagasi Karbon
+235|Belum Peringkat
+236|Dengar, menangkan sprint ini dan kita selangkah lebih dekat menyelesaikan kontrak ini. Lagipula, kalau kamu finis pertama kita dapat bayaran.
+237|Sprint lagi naik daun dan sponsormu mau bikin nama di kalangan anak-anak yang suka itu. Pastikan kamu menang, ini bakal kasih kesan bagus.
+238|Nggak ada yang mau mendukung pecundang dan nggak ada sponsor yang mau buang uang percuma. Kamu mau terus dibayar, kamu harus terus menang. Keluar sana dan tinggalkan kesan.
+239|Aku lagi siapkan beberapa kesepakatan. Aku sudah ngobrol dengan sponsor lain yang mungkin mau keluar uang besar kalau mereka menemukan pemenang. Gimana kalau kamu bikin mereka terkesan dengan satu kemenangan?
+240|Gini bro - menang berarti uang dan uang besar datang dari sponsor. Balapan lurus ini bakal dihitung besar buat kontrakmu. Jadi tampil maksimal di sana.
+241|Posisi kedua sama aja kayak pecundang, dan sponsor nggak mau bergaul sama pecundang. Sprint jalanan ini nilainya lebih dari sekadar receh buat kontrakmu sekarang. Balapan ini bakal jadi bekal kesepakatan berikutnya, jadi kamu harus tampil habis-habisan.
+242|Berhenti gaya-gayaan dan serius. Sprint ini dihitung untuk kontrakmu dan para sponsor nggak akan terima apa pun selain kemenangan. Tarik kencang dan gas pol karena ini demi uang.
+243|Dengar ya! Kabarmu gimana - ya, nggak ada yang peduli. Mereka cuma mau lihat pemenang dan malam ini kesempatanmu. Sebaiknya kamu melesat sampai garis akhir di posisi teratas, atau duniamu bakal runtuh.
+244|Hei bro - semoga mobilmu lagi ganas malam ini karena kamu bakal kena telak di balapan ini. Sponsor sudah mengatur semuanya jadi balapan ini dihitung untuk kontrakmu. Kalau menang, kamu dapat satu malam lagi dengan uang masuk kantong. Kalau kalah - kamu tahu sendiri...
+245|Runner Up URL
+246|Kamu punya pesan penting dari Xbox Live. Kamu harus membaca pesan ini sebelum bisa masuk.
+247|KECEPATAN TERTINGGI
+249|Sirkuit Sponsor
+250|Camshaft dan Gigi Balap
+251|Balapan Kota
+253|Waktu sebagai Pemimpin:
+254|Sekarang kamu sudah punya kendaraan, datanglah ke garasiku. Lokasinya sudah aku kirim ke petamu dan GPS-nya sudah aktif. Oh, dan nggak usah cari balapan, lagi nggak ada apa-apa. Jangan bikin aku nunggu. Sampai ketemu di sana.
+255|Butuh dorongan ekstra? N2O terkuat di pasaran sekarang tersedia eksklusif di semua Bayview Performance Shops.
+256|SLOT KOSONG
+257|Torsi Maks:
+258|Biar aku kasih info. Semua yang terjadi di dunia balap Bayview lewat aku.
+259|Dan kalau kamu belum
+260|Apa pun yang kamu suka, bisa kamu temukan - kalau kamu tahu di mana mencarinya.
+261|Drag, drift, sirkuit dan masih banyak lagi. Dunia ini sangat dalam, kita
+262|Tentu saja dengan itu datang kesempatan mendapat uang besar. Dan yang terbaik,
+263|Yang dibutuhkan hanyalah reputasi yang tepat
+264|Ingat, ini kotaku; kamu
+265|Hei bro. Rachel
+266|Isi toko akan berubah seiring waktu, dan saat ada komponen baru kamu akan menerima pesan SMS. Periksa pesanmu untuk melihat komponen baru apa yang terbuka. Setelah komponen ditemukan, atau dibuka, komponen itu tersedia di semua toko sejenis.
+267|Street X
+268|Getaran:
+269|Sebuah patch telah dirilis untuk produk ini.^Kamu perlu mengunduh dan memasang patch itu agar bisa bermain online.
+270|Kamu harus mengakhiri obrolan suara ini untuk memblokir Teman ini
+271|Beacon Hill East
+272|Beacon Hill West
+273|Kembalikan Bagasi ke Standar
+274|Menyimpan Mobil & Komponen
+275|Lanjutkan Uji Coba
+276|%s telah diblokir. Kamu tidak akan lagi menerima Pesan atau Tantangan dari %s
+277|Login server lobi gagal. Server mungkin sedang mati atau ada masalah jaringan yang menghalangi koneksi saat ini. Periksa pengaturan jaringanmu dan coba lagi nanti.
+278|Pemain lain mengganggumu secara pribadi dengan perhatian yang tidak diinginkan. Kamu sudah memblokir pemain itu, tapi mereka terus berusaha menghubungimu.
+280|Yakin banget mau menghapus persona ini?
+282|Spion Samping Serat Karbon
+283|Memilih tata letak baru akan menghapus decal dari tata letak sebelumnya. Lanjutkan?
+284|Pencahayaan Mobil
+285|Neon Interior
+287|Nonaktifkan GPS
+288|Mau memasang tata letak bagasi ini sekarang?
+289|Tinting
+290|Rasakan tendangan tenaga ekstra dan pasang Turbo terbaik di pasaran. Ambil milikmu hari ini, eksklusif di semua Bayview Performance Shops.
+293|Dari: %s
+294|Undangan Obrolan Suara telah ditolak.
+295|Hadiah
+296|Kirim Pesan
+297|Preferensi peta
+298|Yakin mau membuka blokir %s ?
+299|Mau mengemudikan %s kamu, bukan %s?
+300|Volume Musik:
+301|Mengubah Kontrol
+302|Kerja bagus dengan mobilnya. Aku
+303|Menonaktifkan GPS
+304|Kendalikan Mobil
+305|Mengambil data papan peringkat dari server.
+306|Mau memilih mobil ini?
+307|Segarkan
+308|Lihat Belakang
+309|Koneksi ke EA Messenger gagal.
+311|Nitro
+312|Skormu:
+314|Menu Utama
+315|Uang:
+316|Volume Suara dan Film:
+317|Pengaturan Bawaan
+318|HIJAU TERANG
+319|Personalisasi bagian dalam mobilmu dengan Panel Instrumen Kustom baru. Tersedia selama persediaan masih ada di semua Bayview Car Specialties Shops.
+320|TATA LETAK TUNED
+321|TIPE 3 NOZEL KIRI ATAS KANAN BAWAH
+322|Selamat datang di Bayview Graphics Shop, cabang Beacon Hill East.^Kamu telah membuka akses ke Cat Velg dan Tear Vinyl.^Semua komponen yang dibuka di Graphics Shop lain juga tersedia di sini.
+323|Menghubungkan ke Server EA...
+324|Seni DEBUG
+325|Gamertag yang kamu pilih tidak pantas.^Masukkan Gamertag lain dan coba lagi.
+326|Tipe Game:
+327|Ulang Tahun
+328|Four on the Floor
+329|Konfigurasi Velg

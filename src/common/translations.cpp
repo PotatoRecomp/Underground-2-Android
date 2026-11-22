@@ -1,6 +1,6 @@
 // Text the recomp adds in French, German, Italian, Spanish and Indonesian: Double Agent recomp's wording where the
 // English is the same, in sentence case with German's nouns capitalized; the panel's rows and the game's menu show it
-// in capitals. Indonesian has no game strings on any disc, so only this text changes with it.
+// in capitals. Indonesian has no game strings on any disc: the game's own text is translated apart (src/game/language.cpp).
 #include <algorithm>
 #include <cctype>
 #include <iterator>

@@ -1,0 +1,455 @@
+3253|Lihat ini! Itu
+3254|Nggak bro
+3255|Jadi KAMU
+3256|Kamu benar.
+3257|Kamu belum
+3258|START
+3259|Biarkan teman dan musuhmu tahu siapa yang datang dengan memasang lampu terbaru di mobilmu. Warna baru tersedia sekarang di semua Car Specialties Shops.
+3260|BUNUH DIRI
+3261|Ganti Kamera
+3262|Sesuaikan kontrol berkendaramu di menu opsi. Pilih setelan yang paling cocok dengan gaya berkendaramu. Pilih transmisi otomatis atau manual dan nyalakan kontrol stabilitas.
+3263|Bergabung ke game '%s'...
+3264|Semua nama Akun EA yang terkait dengan alamat email ini akan segera dikirim.
+3265|Petunjuk Mini-map
+3266|Tahap%d - %s Toko Tersembunyi Ditemukan:
+3267|Diundang oleh:
+3268|Tribal
+3269|Hasil Event
+3270|ALPINE 1 LCD - 5.5 INCI
+3271|Menginisialisasi jaringan ...
+3273|Set Tribal
+3274|Status Intro
+3275|KUNING MUTIARA GELAP
+3277|Yakin mau berhenti bermain Online? Semua pesan yang belum dibaca mungkin dihapus dan semua tantangan yang tertunda akan dibatalkan.
+3279|Setelah menghapus pemain yang belum siap, pemain tidak cukup untuk memulai game!
+3280|Kamu perlu memasang semua upgrade mesin, ECU, dan turbo level 3 untuk mengakses neon mesin.
+3281|Ride Height {83} Ride height yang sangat rendah akan menguntungkan pengemudi yang disiplin selama mereka menghindari gundukan dan trotoar yang bisa dengan mudah mengganggu mobil.
+3282|Volume:
+3283|HITAM TUA
+3285|Filter Bahan Bakar
+3286|Baru dari seberang lautan! ECU kustom terbaru kini ada di rak semua Bayview Performance Shops dan toko Megalow Parts.
+3287|Unik
+3289|KORAL TUA
+3290|HIJAU TUA
+3292|Terlalu Terang
+3293|Pesan SMS komponen baru
+3294|Sampul DVD:
+3296|Buat Pertandingan
+3297|Hei Rachel! Eh kamu bukan Rachel. Nggak masalah buatku. Kalau kamu mau balapan sama kami dan punya uangnya, kamu masuk. Urusan sama Rachel kamu selesaikan sendiri. Dua putaran. Yang pertama melewati garis ambil uangnya. Ikut?
+3298|Bro, kamu datang pakai mobil Rachel dan mengira kamu hebat? Butuh lebih dari satu set roda keren untuk membuktikan kamu pantas di sini. Keluarkan uangmu dan ayo mulai. Dua lap. Lintasan akan diunduh ke petamu.
+3299|Yakin mau kembali ke Mode Jelajah?
+3301|BURNOUT
+3302|Terlalu banyak pemain di daftar blokirmu!
+3303|Pegas menentukan kelembutan atau kekakuan mobilmu secara keseluruhan. Gunakan penggeser untuk mengatur kekakuan pegas depan & belakang. Coba pegas kaku untuk lintasan mulus, pegas lunak untuk lintasan dengan trotoar dan lompatan.
+3304|SKOR DRIFT TERBAIK:
+3305|Memasang kap ini akan menghapus semua decal kap^yang sedang terpasang. Beli dan pasang komponen ini sekarang?
+3306|Majalah Power
+3307|Tambahkan upgrade Nitrous Oxide ke mobilmu untuk memanfaatkan fitur Racebreaker baru. Berkendara dengan gaya menambah N2O ekstra ke indikatormu dan dapat diisi ulang sepanjang balapan untuk kecepatan tambahan.
+3308|Lintasan Pendek
+3309|Kamu harus berada di ruang game untuk mengirim undangan game.
+3310|Kamu perlu menamai profil^yang ingin kamu simpan.
+3311|Jika kamu membatalkan koneksi ke server lobi, kamu akan offline dan dikembalikan ke menu utama.^Yakin mau melakukannya?
+3312|Pemain 1
+3313|Pemain 2
+3314|Maaf, vinil ini tidak tersedia untuk komponen widebody Serat Karbon.
+3315|Jika kamu tertinggal dari lawan di balapan outrun, strategi terbaik adalah menahan diri sedikit agar kamu bisa bereaksi terhadap tikungan cepat dan perubahan arah. Tunggu sampai ruas jalan tanpa tikungan untuk mencoba menyalip.
+3320|Neon Underglow
+3322|Baru dari pameran dagang, kini kami punya desain lampu depan terbaru untuk mobilmu. Ambil milikmu di Bayview Body Shop mana pun.
+3324|Thumbstick Kiri
+3325|Pengatur Tekanan Bahan Bakar
+3326|Cuaca
+3327|Multiturn
+3328|Pemimpin
+3330|Desember
+3331|Menu Utama Xbox Live
+3332|TIPE 3 KEDUA NOZEL KIRI
+3333|Game gagal dimulai. Silakan coba membuat atau bergabung ke game lain.
+3334|Downforce Depan
+3335|Event Tersembunyi
+3336|Cari salah satu Body Shop di distrik Hotel Plaza. Cari lampu kuning kehijauan dan papan besar Body Shop berwarna biru.
+3337|HIDROLIK LVL 3
+3338|Masuk ke sesi obrolan suara ini akan mengakhiri yang sedang berlangsung. Mau melanjutkan?
+3339|PEMAIN
+3340|Server menolak hasil balapan terakhir.^Game telah kedaluwarsa atau^hasilnya tidak valid.
+3341|Penyetelan Kustom
+3342|Komponen yang ingin kamu terapkan sudah terpasang!
+3343|[Pesan pribadi]
+3344|Sampul DVD Underground Speed Zone
+3345|Entri tanggal
+3348|Pintu Kiri
+3349|Mau %s standar ini?
+3351|Pilih Event
+3352|Kamu bisa menyesuaikan game saat bermain online. Gunakan sistem penyaringan untuk menampilkan hanya game yang cocok untukmu dan kemampuan balapmu.
+3354|Kurva torsi ECU adalah grafik yang menunjukkan jumlah tenaga yang dihasilkan mesin di sepanjang rentang RPM. Atur bentuk kurva untuk memindahkan tenaga ke rentang RPM yang paling sering kamu pakai di balapan.
+3355|Pemulihan Akun
+3356|Waktu Terbaik:
+3358|Banggakan asalmu di pintu mobil dan beri tahu semua orang dari mana kamu berasal dengan Vinil Bendera terbaru. Beragam pilihan tersedia di semua Graphics Shops.
+3360|Sulit
+3361|Menjerit
+3362|Kamu Memenangkan Outrun!
+3363|Sponsor Tiga
+3364|Salah satu Body Shop berada di distrik Fort Union. Cari lampu kuning kehijauan dan papan besar Body Shop berwarna biru.
+3367|Pemain lain telah membantumu, baik selama game maupun sekadar saat mengobrol online.
+3369|Terjadi kesalahan saat menginisialisasi adaptor jaringan.
+3370|Penyimpanan Komponen Performa
+3371|Kamera Sorotan:
+3373|Mengakses. Jangan sentuh Kartu Memori di Slot A atau^ tombol POWER.
+3375|Pesan Seluler Diterima
+3376|Balapan Drift
+3377|Menunggu
+3378|THAILAND
+3379|KUNING TUA
+3380|Saat mengendarai mobil bertransmisi manual, turunkan satu gigi untuk mengurangi kecepatan sebelum masuk tikungan. Jika dilakukan dengan benar, kamu bisa mengurangi kecepatan cukup banyak sampai tidak perlu mengerem.
+3382|Pasang desain velg terkeren terbaru di mobilmu. Model dan ukuran baru baru saja tiba di semua Bayview Body Shops.
+3383|Getar
+3385|Balapan berakhir karena pemain tidak cukup untuk melanjutkan.
+3386|Cakram Diameter Besar
+3388|Bosan dengan mobilmu? Tukar dengan mobil lain di dealer mobil mana pun. Ingat, saat kamu menukar mobil, kamu juga akan kehilangan semua komponen yang sudah dibeli untuk mobil itu.
+3389|Berhenti Menyetel
+3390|Mencari Game
+3392|Perhatikan Body Shop di Beacon Hills East. Letaknya tersembunyi di belakang Coffee Shop.
+3394|Runner Up Street X
+3396|TIPE 2 BIRU LANGIT & EMAS
+3397|Pilih Warna Dial
+3400|Volume Musik Game
+3401|Aktifkan Penyaringan
+3402|Kamu harus menjadi host ruang game PRIVAT untuk mengirim undangan game!!
+3403|Pilih Komponen Satuan
+3404|Mini-map dapat diatur untuk tetap statis atau berputar saat berkendara atau balapan. Sesuaikan fungsi peta untuk mode Jelajah dan Balapan dengan mengakses opsi Gameplay di menu Jeda.
+3405|Dorongan Nitro
+3406|Temukan jalanmu ke event balapan dan toko dengan bantuan sistem GPS. Akses dengan menekan kiri pada HUD SMS. Setelah memilih tujuan, kembali ke game dan ikuti panah biru.
+3407|Rasis / Ujaran Kebencian
+3408|Pesan dimasukkan terlalu cepat untuk diproses. Silakan coba lagi.
+3410|2. BONUS
+3411|Kelas Peringkat
+3414|Poin Drift Terbesar
+3415|Lihat Sponsor yang Ditandatangani
+3416|Kini kami menawarkan cat kustom untuk semua model kaliper rem. Datang hari ini ke Bayview Graphics Shop mana pun dan lihat warna terbaru.
+3417|LAP BERSIH
+3418|Dapat %dX dengan:
+3419|^^Sampul DVD diberikan karena membangun Mobil 6 Bintang!
+3420|Lanjutkan Karier
+3421|Bulan
+3422|Tidak dapat mengautentikasi ID pengguna dan kata sandi. Periksa konfigurasi jaringanmu dan coba lagi.
+3423|Komponen Terbuka
+3424|Car Specialties Shop dapat ditemukan di area Coal Harbor East kota. Pintu masuk bangunan ada di bagian belakang. Cari lampu hijau untuk menemukan pintu masuk jalan masuk.
+3425|AQUA MUTIARA GELAP
+3426|BIRU MUTIARA GELAP
+3427|EMAS MUTIARA GELAP
+3428|LIME MUTIARA GELAP
+3429|MAGENTA MUTIARA GELAP
+3430|Subjek: Lihat Sampul DVD Kamu
+3431|Hei jagoan - siap balapan jalur cepat jarak dekat? Ini BESAR dan bakal mulai di lintasan X dalam beberapa detik.
+3432|Ada apa denganmu bro? Selalu pamer. Buktikan omonganmu dan ikut Street X gila ini. Mau ikut atau nggak?
+3433|Si X BESAR datang menyerang! Kalau mau ikut sebaiknya sekarang! Kalau tinggal - sebaiknya maju dan main. Pegang kuat setirmu dan antre.
+3434|Hei bro - kita bakal menekuk beberapa tikungan pendek dan kamu diundang ikut. Nggak akan lama jadi sebaiknya cepat.
+3435|Kamu pasti di sini karena suatu alasan - yaitu untuk kalah. Siap-siap dihajar Street X. Peta akan ditembakkan ke arahmu. Coba jangan sampai terlindas.
+3436|Tukar Mobil
+3437|Lintasan
+3438|Opsi Filter
+3441|Kamu benar-benar mau menukar mobil sponsormu?^Kamu akan kehilangan semua tambahan dan hanya mendapat 80 persen dari harganya.
+3442|Penyimpanan Komponen
+3443|Koneksi ke ISP kamu tidak dapat dibuat. Periksa adaptor jaringan, koneksi, dan/atau konfigurasi jaringanmu lalu coba lagi.
+3444|Keluar ke Menu Utama?^Semua kemajuan balapan yang belum disimpan akan hilang.
+3445|Nama persona yang kamu masukkan mengandung karakter tidak valid. Silakan coba nama lain.
+3446|Kembalikan Kit ke Standar
+3447|Di versi lengkap Underground 2, toko cat adalah tempat^untuk memberi sentuhan pribadi pada mobilmu. Buat mobilmu^menonjol dari kerumunan dengan cat spesial atau vinil^kustom keren. Kamu juga bisa datang ke sini untuk menempelkan^decal pabrikan favoritmu di mobilmu.^^Berikut sedikit contoh warna dan gaya cat yang^bisa kamu terapkan di mobilmu.
+3448|OFFSET TWISTER
+3451|Gunakan Akun yang Ada
+3453|TIPE 1 NOZEL RODA KANAN
+3457|Jadilah yang pertama di krumu yang memakai desain spion samping terbaru langsung dari pabrik. Jumlah terbatas tersedia di Bayview Body Shop mana pun.
+3458|Permintaan pertemanan dibatalkan.
+3461|Nitrous Oxide  {83} Setel Nitro kustommu agar lebih bertenaga untuk balapan pendek atau lebih tahan lama untuk balapan panjang.
+3464|Lihat Mobil
+3465|Gear Ratios menentukan laju akselerasi dan kecepatan maksimum yang bisa kamu capai di setiap gigi. Ubah setiap rasio gigi dengan mengatur penggesernya.
+3466|Sway Bars {83} Sway bar yang lebih lunak membuat mobil bisa miring dan memindahkan bobotnya lebih lambat. Sway bar yang lebih kaku memberi nuansa go-kart pada mobilmu, tapi tidak akan toleran terhadap gundukan dan trotoar.
+3467|Waktu Tertinggal
+3468|Cari Body Shop di area Coal Harbor West di bagian Industrial. Lampu kuning kehijauan menandai pintu masuk toko.
+3469|September
+3470|Untuk menyalakan atau mematikan spion tengah saat bermain, pilih Opsi lalu pilih Gameplay dari Menu Jeda.
+3472|Setelah Balapan
+3473|Pemain lain mengganggu pengalaman game dengan berteriak atau menjerit di sesi suara atau obrolan.
+3474|Body shop adalah tempat yang bagus untuk memperbaiki tampilan mobilmu dan meningkatkan peringkat bintang visualmu. Peringkat bintang visual yang tinggi memungkinkan kamu menyelesaikan beberapa tugas karier dan berarti uang tambahan untuk sampul majalah.
+3475|Mobil yang baru kamu ambil itu keren banget! Ada fotografer yang^ingin memotret mobilmu untuk sampul majalah tuner. Lokasinya^ditandai dengan bintang kuning di mini map-mu.
+3477|Sesi game tidak lagi tersedia.
+3479|KECELAKAAN DIHINDARI
+3480|OFFSET TIMUR LAUT
+3481|BALAPAN BERSIH
+3482|Spion tengah
+3483|Legenda Mini-map
+3484|Model Velg
+3486|Memverifikasi akun
+3488|Baru tiba! Warna neon baru untuk menyesuaikan tampilan mobilmu. Jangan terjebak dengan tampilan membosankan yang sama. Pergi ke Car Specialties Shop terdekat untuk mendapatkannya hari ini.
+3489|Grip Ban Belakang
+3490|Gamertag yang kamu pilih dicadangkan.^Masukkan Gamertag lain dan coba lagi.
+3491|Lobi LAN
+3492|Hei bro, masuk ke dalam untuk ambil komponen uniknya.
+3493|Selamat datang di Bayview Performance Shop, cabang Beacon Hill West.^Kamu telah membuka akses ke upgrade performa level Street untuk Pengurangan Bobot, Ban, dan Rem.^Semua komponen yang dibuka di Performance Shop lain, dan Megalow Parts juga tersedia di sini.
+3494|Ke Garasi...Sekarang!
+3495|Statistik Mobil
+3496|Mobil Baru
+3497|Salah satu Body Shop berada di area Coal Harbor East di bagian Industrial. Lampu kuning kehijauan menandai pintu masuk toko.
+3498|kartu memori (PS2)
+3501|Batalkan Permintaan Pertemanan
+3502|Hasil Balapan Turnamen
+3503|Keluar ke Garasi?
+3505|Subjek: Kesempatan Sampul Majalah
+3506|^^Sampul DVD diberikan karena membangun Mobil 7 Bintang!
+3508|TIPE 3 BIRU LANGIT & MAGENTA
+3509|Hei bro, banyak balapan di kota malam ini. Aku sudah mengunggah semua lokasi pertemuan yang aku tahu ke petamu. Aku dengar rumor tentang balapan lain tapi aku nggak tahu lokasi pastinya. Perhatikan saja.
+3510|Sesi game ini tidak lagi tersedia. Memperbarui Daftar Sesi Game.
+3511|Pratinjau
+3514|Kurang
+3515|Lebih
+3517|Lunak
+3518|Lemah
+3520|Waktu Split:
+3521|Kamu tahu apa yang harus dilakukan. Aku nggak
+3522|Aku nggak akan
+3523|Jangan
+3524|Jangan kecewakan aku, aku mengandalkanmu Nikki!
+3526|URL:
+3527|Selamat datang di Bayview Graphics Shop, cabang Coal Harbor East.^Kamu telah membuka akses ke kategori Cat tambahan dan Vinil baru.^Semua komponen yang dibuka di Graphics Shop lain juga tersedia di sini.
+3528|Upgrade Mesin baru kini tersedia untuk semua merek dan model. Dapatkan lebih banyak tenaga untuk mobilmu dengan menambahkan teknologi balap terbaru di Bayview Performance Shop atau Megalow Parts mana pun.
+3531|^Sampul majalah diberikan karena memenangkan World Event ke-20 di Tahap 5!
+3532|TIPE 1 NOZEL KANAN KAP
+3533|Kamu tidak bisa mengecat spoiler serat karbon atau aluminium
+3534|Server tidak dapat mengeluarkan pemain ini dari game.
+3535|km/j
+3536|mph
+3537|Kembali ke Peta Dunia?^Semua kemajuan balapan yang belum disimpan akan hilang.
+3539|Pilih Merek
+3540|Ban Street Performance
+3541|Mobil Standar
+3543|Mobilku
+3544|INGGRIS
+3545|Terjadi kesalahan server saat mengambil peringkat bulanan.
+3546|Pemimpin Drag
+3547|Ya, ya. Kamu menyala di luar sana, tapi ingat itu baru sedikit - kamu harus terus menang untuk bertahan.^^ Orang-orang mulai
+3548|Orang-orang mulai
+3550|Pemenang!
+3551|TIPE 2 BIRU LANGIT & MERAH CERAH
+3552|Tidak ada file Konfigurasi Jaringan yang dapat digunakan di^kartu memori (PS2) di slot KARTU MEMORI 1.
+3553|Menang %
+3554|Menunggu hasil akhir balapan...
+3555|GAMEPLAY
+3556|Syarat kontrak terselesaikan
+3557|Majalah Satu
+3558|Majalah Dua
+3559|Flywheel Ringan
+3562|SKOR:
+3564|Penggerak
+3565|Video
+3566|Setir
+3567|Mitsubishi, Eclipse, dan Lancer Evolution nama, lambang, dan desain bodi adalah merek dagang dan/atau hak kekayaan intelektual Mitsubishi Motors Corporation dan digunakan dengan lisensi^kepada Electronic Arts Inc.^^"NISSAN" dan nama, logo, merek, dan desain produk NISSAN adalah merek dagang dan/atau hak kekayaan intelektual^NISSAN MOTOR CO., LTD. dan digunakan dengan lisensi^kepada Electronic Arts Inc.^^Nama, lambang, dan desain bodi SUBARU, IMPREZA, WRX dan STi adalah milik Fuji Heavy Industries Ltd.^^Nama dan logo semua perusahaan komponen mobil aftermarket adalah^merek dagang dari pemiliknya masing-masing dan digunakan^dengan izin. Semua merek dagang lainnya adalah milik^pemiliknya masing-masing.^^{a9} 2004 Electronic Arts Inc. Hak cipta dilindungi undang-undang.
+3568|Mau menyimpan DVD ini?
+3569|%s sudah ada di sesi gamemu
+3570|Yakin mau keluar dari Xbox Live? Semua pesan yang belum dibaca mungkin dihapus dan semua undangan serta permintaan obrolan suara yang tertunda akan dibatalkan.
+3571|Dapatkan vinil baru untuk mobilmu di sini. Kamu bisa^memilih dari koleksi pola yang sangat banyak serta beberapa vinil^kustom keren yang bisa ditumpuk dalam banyak^kombinasi.
+3573|High Flow Headers
+3574|Pemain Dua Tekan tombol START
+3575|Pembukaan
+3576|TIPE 3 KEDUA NOZEL RODA
+3577|Dibatalkan
+3578|Buka/Tutup Kap
+3579|Mengundang %s untuk bermain ...
+3581|Kamu terakhir!
+3582|Hidrolik
+3585|Hanya izinkan pemain yang bergabung dengan peringkat sama
+3586|Maaf, vinil ini tidak tersedia untuk komponen bodi Serat Karbon.
+3588|Level Lalu Lintas
+3590|Mengambil statistik dari server.
+3592|Pengaturanmu telah berubah. Mau^menyimpannya ke profilmu?
+3593|Vinil unik membutuhkan keempat lapisan vinil^saat dipasang di kendaraanmu. Semua vinil^lain yang saat ini terpasang akan^dihapus. Yakin mau menerapkan^ vinil ini ke kendaraanmu?
+3594|Mau ikut balapan event ini?
+3595|Ganti Komponen Performa
+3596|^Sampul majalah diberikan karena memenangkan World Event ke-11 di Tahap 4!
+3597|Mobil Berperingkat Online
+3599|Drift Gila
+3600|Waktu Tambahan^Tantangan Outrun Diterima^Tinggalkan Mereka!
+3601|Kamu diputus dari game ini karena terlalu lama berada di menu jeda.
+3602|Graphics Shop Beacon Hills East berada tepat di utara jembatan menuju Beacon Hills. Cari lampu merah.
+3604|Buat Akun EA Baru
+3605|Kembali ke Standar
+3606|Terpasang
+3608|Status Event
+3609|Membatalkan undangan game untuk %s ...
+3612|Mau membeli kemampuan mengubah semua Bemper Depan/Belakang dan Side Skirt yang terpasang di mobil ini menjadi Serat Karbon? Ini akan menyebabkan beberapa vinil dihapus dari mobilmu.
+3613|Kamera Lompatan:
+3614|Yakin mau memutuskan koneksi dan berhenti bermain Online? Semua pesan yang belum dibaca mungkin dihapus dan semua tantangan serta permintaan obrolan suara yang tertunda akan dibatalkan.
+3615|Pesan belum dibaca
+3616|Tekan tombol START
+3618|Masuk ke Xbox Live
+3619|Street X:
+3621|Mau menerapkan cat ini ke kendaraanmu?
+3622|Cat Dasar
+3623|Roof Scoop
+3625|Koneksimu ke ISP terputus. Pastikan adaptor jaringan dan kabel jaringanmu tersambung. Kamu akan dikembalikan ke menu utama.
+3626|Lihat gedung-gedung dekat pintu masuk Jackson Heights dan kamu akan menemukan Graphics Shop. Letaknya agak masuk dari jalan sehingga butuh mata jeli untuk menemukan pintu masuknya.
+3627|Koneksimu ke host terputus, atau host telah keluar dari game.
+3628|Street X itu keren banget bro - mobilmu sebaiknya punya suspensi mantap untuk menahan g yang bakal kamu tarik di lintasan ini. Mau ikut? Aku kirim peta lintasannya.
+3629|Apa kabar? Kamu mau ikut Street X sama kami? Kalau begitu tetap di belakang rombongan dan lihat bagaimana caranya. Aku bakal merasa bersalah kalau menyakiti orang payah sepertimu. Aku kirim petanya biar kamu nggak menghalangi.
+3630|Hei, hei, hei. Kamu serius bawa rongsokan menyedihkan itu ke lintasan Street X-ku? Kamu tahu kamu harus mengendarainya di lintasan, bukan mendorongnya - kan? Mau lihat peta lintasan sebelum menaruh uangmu?
+3631|Gimana kalau kamu kasih uangmu sekarang, sebelum kita balapan? Aku mau memastikan kekayaan baruku punya waktu untuk terbiasa dengan rumah barunya di kantongku.
+3632|Bro, mobil rongsokan itu punya sabuk pengaman nggak? Kalau ada kamu bakal butuh karena kalau nggak kamu terlempar dari mobilmu. Ini Street X dan benar-benar ganas. Kamu bakal menarik g besar kalau mau ikut.
+3633|Hei bro - kamu tahu ini balapan mobil, bukan urusan kereta kuda, kan? Mobil itu yang bunyinya brum brum. Mungkin kamu sebaiknya absen dulu sampai terbiasa dengan kereta tanpa kuda yang canggih ini.
+3634|Begini cara balapan ini berjalan. Aku bakal mengalahkanmu telak dan saat kamu akhirnya sampai di ujung, kamu bangunkan aku dari tidur siangku supaya aku bisa dibayar. Aku yakin aku bakal lelah banget menunggumu di garis finis. Deal?
+3635|Biar kuberi info. Kita balapan, aku menang, kamu kasih uangmu. Kita bisa lewati rasa malunya kalau kamu lebih suka langsung menyerahkan uangnya sekarang. Gimana?
+3636|Hei kamu! Kamu beruntung. Street X sebentar lagi mulai dan kami butuh satu pecundang lagi. Siap dihajar atau nggak?
+3637|Gagal memperbarui dan menjalankan filter karena suatu hal.
+3638|Diferensial
+3639|Pilih Mode Layar Terbagi
+3640|Shock Depan
+3641|Hapus Mobil Tuned
+3642|Status Karier
+3643|SEMUA SKOR LAP
+3644|High Flow Fuel Pump
+3646|Yakin mau menghapus pesan ini?
+3649|Mild Camshaft & Cam Gears
+3650|Kecepatan Trap:
+3651|Kekalahan
+3652|Kampas Rem Street Compound
+3653|Sampul DVD Bayview's Best
+3655|Kamu tidak bisa mengecat spion serat karbon atau aluminium
+3656|Daftar Pemain
+3658|Perjanjian Keanggotaan
+3659|Runner Up Sprint
+3660|Kotak masuk EA Messenger penerima penuh. Pesan ini tidak dapat dikirim
+3661|Komponen ini lebih buruk dari yang sudah kamu pasang.^Mau memasang komponen ini?
+3662|Graphics Shop di bagian Coal Harbor East kota ada di sebelah jalan layang tol. Cari lampu merah untuk menemukan pintu masuk area parkir.
+3663|SWEDIA
+3665|Pilih Mobil Layar Terbagi
+3666|Akun ini tidak aktif. Kamu perlu memperbarui akun di Pemulihan Akun.
+3667|Memindai kartu memori
+3668|Kamera Lompatan
+3669|Kap Unik
+3670|Mobil yang dipilih saat ini tidak valid untuk game ini, atau pengaturan gamemu tidak valid. Silakan coba lagi dengan mobil atau pengaturan game yang berbeda.
+3671|Mau memasang paket performa ini?
+3672|Perhatikan pesan SMS yang masuk. Kamu sering mendapat informasi di mana balapan berlangsung yang tidak muncul di petamu.
+3674|Mau menyalakan Simpan Otomatis? Simpan Otomatis akan menimpa file simpanan dengan nama yang sama tanpa konfirmasi pengguna.
+3676|Koneksimu ke ISP terputus. Kamu akan dikembalikan ke menu utama.
+3677|^Sampul majalah diberikan karena memenangkan World Event ke-28 di Tahap 5!
+3681|DUO-WARNA A
+3682|DUO-WARNA B
+3683|^Sampul majalah diberikan karena memenangkan World Event ke-4 di Tahap 5!
+3685|Saatnya membuktikan atau diam. Kamu harus menang di sini supaya sponsor menganggapmu serius. Aku kirim peta ke HUD-mu. Semoga berhasil.
+3686|Tenang, di sini persaingannya ketat tapi menurutku kamu bisa mengalahkan mereka. Kamu butuh kemenangan ini untuk kontrakmu jadi jangan sampai gagal.
+3687|Hei bro, kita harus menang balapan ini untuk memenuhi ketentuan lain di kontrak. Kamu harus dibayar kalau mau terus membangun mobilmu.
+3688|Dengar jagoan, aku tahu kamu sudah menang tapi sponsormu mengawasi yang satu ini jadi kamu harus tampil bagus. Apa pun selain posisi 1 adalah kegagalan.
+3690|Gini - kalau kamu gagal di sini kamu tamat. Sponsor nggak main-main kalau soal kekalahan. Serius dan tekuk mereka ke belakang untuk tetap tampil.
+3691|Kamu menang dan kamu aman sampai jalur cepat berikutnya. Sponsor mengawasi jadi jangan kacaukan ini. Peta akan dikirim lewat SMS - nanti{86}
+3692|Sebaiknya kamu tampil BESAR bro karena nggak ada tempat pamer di depan sponsor. Mau bikin orang-orang itu kapok jadi jangan kasih ampun. Peta dikirim ke arahmu.
+3693|Ini PANAS bro. Sponsor berkeliling mengamati suasana dan balapan ini dihitung untuk kesepakatanmu. Kamu harus tampil di sana seolah nggak ada akhirnya.
+3694|Xbox Communicator
+3696|Putar
+3697|Penyimpanan Car Specialties
+3698|Jadi kamu mau yang ini untuk mobil sponsor barumu?
+3702|Ride height menentukan seberapa tinggi mobilmu berada di atas pegasnya, yang memengaruhi pusat gravitasinya. Gunakan penggeser untuk menaikkan atau menurunkan mobilmu. Umumnya, pusat gravitasi lebih rendah membuat mobil lebih mudah ditangani.
+3707|Kamu bisa melihat sampul DVD dan sponsor saat ini dengan membuka menu Lihat Hadiah dari menu Garasimu. Tetap ikuti syarat yang diperlukan untuk memenuhi kontrak sponsormu.
+3708|Mau membeli dan memasang tata letak audio bagasi ini?
+3710|Mau memasang komponen ini sekarang?
+3711|%s berhasil dimuat.
+3712|Perangkat cheat terdeteksi! Kamu harus melepas semua perangkat cheat untuk bermain online.
+3713|OFFSET TYPHOON
+3714|Pemimpin Sprint
+3715|^Sampul majalah diberikan karena memenangkan World Event ke-34 di Tahap 5!
+3716|Metalik
+3717|Uji Coba
+3718|Mengubah Kontrol Kemudi
+3719|Lanjutkan Balapan
+3720|Cat Ulang
+3722|Balapan berakhir karena koneksimu ke server terputus.
+3723|Filter Game
+3724|%s mengundangmu bermain %s
+3727|Dolby Pro Logic II
+3728|Widebody Kit
+3730|Kap Serat Karbon
+3731|DEBUG
+3732|TIPE 1 NOZEL RODA KIRI
+3733|Kamu memilih untuk tidak Menerima! Kamu harus menerima Syarat & Ketentuan^ untuk mengakses fitur online game ini.
+3734|Statis
+3735|Pemain
+3736|Bayview Performance Shop
+3737|PERFORMA BALAPAN DRAG
+3738|V2 SEMUA KECUALI RODA KIRI PURGE
+3739|Silakan pilih konfigurasi jaringan dari file Konfigurasi Jaringanmu atau buat yang baru. Di sinilah pengaturan penyedia layanan internet dan perangkat kerasmu disimpan dan diatur.
+3740|TIPE 2 BIRU LANGIT & MAGENTA
+3741|Ubah Bagasi ke Serat Karbon
+3742|Inventaris Baru di Dealer Mobil
+3743|Statistik Balapan
+3744|Graphics Shop adalah toko layanan lengkap. Sesuaikan tampilan mobilmu dengan memilih cat, vinil, dan decal yang dipratinjau di mobilmu. Setelah kamu puas dengan tampilannya, bayar biayanya dan pilihanmu akan diterapkan ke mobilmu.
+3746|Satuan Spidometer
+3747|HITAM SEDANG
+3749|Tidak Digunakan
+3750|Jawab Permintaan Pertemanan
+3752|HIJAU SEDANG
+3754|Konfigurasi Joypad
+3756|Kesalahan Masuk Xbox Live
+3757|Sampai jumpa di Garasi
+3759|Naik Gigi (Turun)^Turun Gigi (Naik)
+3760|WAKTU FINIS:
+3762|TIPE 1 NOZEL KANAN ATAS KIRI BAWAH
+3763|Balapan berikutnya dimulai dalam %d detik
+3766|Karakter Khusus
+3768|Para Reaps sedang menguasai jalanan, melakukan apa saja demi menang. Lihat saja.
+3769|Bos mereka - Caleb
+3770|Sponsor mengurus semuanya lewat aku dan aku bisa rugi besar, tapi kamu
+3771|Dengan sejarah kalian berdua, lupakan saja soal balapan
+3772|Tapi kalau kamu terus menang
+3773|Ingat saja
+3776|Setara
+3779|Hei, aku mau mobilku kembali! Sebaiknya kamu cepat ke sana atau aku bakal sebar kabar soal kamu - dan itu berarti nggak ada lagi balapan sampai aku bilang boleh. Ke dealer mobil..SEKARANG!
+3780|Interior Berisi Busa
+3782|Saat bermain online kamu bisa naik melalui sepuluh level peringkat di setiap mode game. Coba capai status elit di masing-masing. Pemain yang mencapai peringkat elit mendapat hadiah khusus yang terlihat oleh pemain lain di ruang game online.
+3783|Tukar mobil ini?
+3785|Mode Outrun
+3786|Tinggalkan Ruangan
+3787|Putar Angka
+3788|Torsi Nitro
+3789|Hei bro - kamu
+3790|Tanpa lalu lintas, tanpa jalanan
+3791|Dan karena kamu
+3792|Kamu telah mencapai jumlah maksimum pemain terblokir yang diizinkan di EA Messenger-mu.
+3796|ECU {83} Kamu bisa mengatur setiap titik pada kurva torsi mesinmu untuk mendapat tenaga di RPM rendah, tenaga konsisten di semua RPM, atau lebih banyak tenaga menuju RPM maksimum.
+3797|Pemain Satu Tekan START
+3800|Jika kamu lebih suka kontrol lebih besar atas performa mobilmu, ubah transmisimu dari Otomatis ke Manual dengan memilih Opsi lalu pilih Pemain dari Menu Jeda.
+3802|Hindari area lintasan yang sedang dibangun. Bagian lintasan yang belum diaspal akan mengganggu mobilmu dan mengurangi kecepatanmu.
+3804|Mode Balapan:
+3805|HITAM MUTIARA GELAP
+3806|Volume Musik
+3807|Volume Efek Suara
+3808|1 Street X^1 Balapan Sirkuit^1 Balapan Sprint
+3809|1 Balapan Sirkuit^1 Balapan Sprint^1 Balapan Street X
+3810|KORAL MUTIARA GELAP
+3811|HIJAU MUTIARA GELAP
+3812|KETENTUAN:^Kontrak selesai setelah 5 kemenangan URL, 3 kemenangan balapan yang ditentukan sponsor dan 19 kemenangan tambahan pilihan pembalap.^^SYARAT PROMOSI:^Bangun mobil yang tampil di 2 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview mana pun.
+3813|KETENTUAN KONTRAK:^Pembalap harus memenangkan balapan berikut: 3 balapan URL, 9 balapan - pilihan pembalap, 3 balapan - pilihan sponsor.^^SYARAT TAMBAHAN:^Bangun mobil yang tampil di 1 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview mana pun.
+3814|Mode Game
+3815|Nama game
+3816|Jenis Game
+3817|Tekstur Beranimasi
+3818|Yakin mau keluar ke Dashboard Xbox dan membuat Akun Xbox Live{82} baru?
+3819|Ada Performance Shop di Beacon Hills West, terletak dekat Burger King{ae}. Cari lampu biru yang mengarah ke pintu masuk.
+3821|Paket ini berisi komponen yang lebih buruk dari yang^sudah kamu miliki. Mau membeli dan memasang^paket performa ini?
+3823|Pembalap
+3824|Pegas Depan
+3825|Undangan suaramu telah ditolak.
+3826|Batas Waktu
+3827|Keluar Balapan
+3828|Server menolak nama akun EA ini.^Pilih nama lain dan coba lagi.
+3829|Kurva Torsi Turbo
+3830|^Sampul majalah diberikan karena memenangkan World Event ke-32 di Tahap 5!
+3831|Semakin cepat kamu memperlambat sebelum masuk tikungan, semakin cepat kamu bisa berakselerasi keluar darinya. Teknik ini akan menghemat detik berharga saat balapan.
+3832|Tekan enter untuk menetapkan tombol atau tombol baru
+3833|Sway Bar Belakang
+3836|Mengirim Masukan, Harap Tunggu...
+3837|Pemain Maksimum:
+3838|Game
+3840|^^Sampul DVD diberikan karena membangun Mobil 10 Bintang!
+3841|Set Garis
+3843|Keluar ke Menu Utama Online
+3844|Kata sandi yang dimasukkan tidak cocok.
+3845|Panel Seperempat Kanan
+3846|Majalah Tiga
+3847|Selamat datang di Bayview Car Specialties Shop, cabang Stadium.
+3848|Pilih Mode

@@ -1,0 +1,330 @@
+1280|Ubah
+1281|TIPE 2 MAGENTA
+1282|Persona ini sudah dipakai.^Silakan coba nama lain.
+1283|DENYUT AQUA
+1284|Mau masuk ke lintasan Penyetelan Performa / Dyno?
+1285|V2 SEMUA KECUALI RODA KANAN PURGE
+1286|Car Specialties Shop di Beacon Hills West adalah salah satu toko tersulit untuk ditemukan. Perhatikan lampu kuning di pintu masuk jalan masuk.
+1287|Pesan SMS Event Spesial
+1288|Lihat Pemain
+1289|Peringkat Keseluruhan
+1290|Buat
+1291|Tambahkan gaya pada mobilmu. Spion karbon, spoiler, dan roof scoop baru tersedia di semua Body Shop area Bayview.
+1292|Meninggalkan balapan sekarang akan mengakhiri sesi ini. Yakin mau keluar?
+1298|Rem
+1299|Mengirim masukan tentang %s
+1300|Laju Penurunan
+1301|Stereo
+1302|Slide Terpanjang
+1303|Batalkan Undangan
+1304|Orang di Daftar Pemainmu tidak dapat dikirimi undangan jika mereka offline.
+1305|Pemain lain telah keluar dari game
+1306|Dapatkan kecepatan ekstra di balapan drag dengan drafting di belakang pembalap di depanmu. Membalap dekat di belakang mobil di depan membuat mobilmu berbagi udara dan menciptakan efek ketapel saat kamu mencoba menyalip.
+1307|Klasik
+1308|Turun Gigi
+1311|Hei bro! Kamu datang tepat waktu! Balapan Knock Out sebentar lagi mulai dan kamu bebas ikut. Jadi, kamu cukup jantan atau nggak?
+1312|Hei, stuntman liar! Buktikan ke semua orang kamu bukan cuma pamer! Balapan Knock Out lagi berlangsung dan ini kesempatanmu untuk maju. Ikut nggak?
+1313|Kamu menolak Permintaan Obrolan Suara
+1314|Pasang
+1315|Opsi Pencarian OptiMatch Xbox Live
+1316|Performa
+1317|Rentang Setir
+1318|Bleach By Pass
+1322|Car Specialties Shop dapat ditemukan di area Coal Harbor East kota. Pintu masuk bangunan ada di bagian belakang. Cari lampu kuning untuk menemukan pintu masuk jalan masuk.
+1324|Selamat datang di SMS (Short Message System). Inilah cara kamu menerima informasi selama bermain.^^Saat kamu menerima pesan, ikon akan berkedip dan panah akan menunjukkan arah tombol yang ditekan untuk membaca pesan.^^Ikon pesan surat akan bervariasi warnanya, tergantung jenis informasi dalam pesan.^^Event balapan akan muncul sebagai ikon di bagian atas indikator pesan.^^Menekan atas akan memberimu informasi lebih lanjut tentang event.^^Setiap jenis balapan memiliki ikon yang berbeda.^^Menekan kiri akan membuka Peta Dunia. Ini cara termudah untuk melihat seluruh kota dan semua balapan serta toko yang sudah kamu temukan. Kamu juga bisa menyaring event, serta mengaktifkan sistem GPS di sini.^^Tekan bawah dan kamu bisa mengakses statistik kariermu. Kamu bisa mengetahui nilai visual mobilmu, serta kemajuan keseluruhanmu dalam game.
+1325|Lebih banyak karbon untuk dipilih! Lihat spion karbon, spoiler, dan roof scoop baru di Bayview Body Shop mana pun.
+1328|Balapan Drift Organik
+1329|Petir
+1330|OFFSET AIRSTREAM
+1331|Drift Terpanjang:
+1332|Setiap Kemenangan URL:
+1333|Baca SMS
+1334|^Selamat, mobilmu terpilih untuk tampil di sampul DVD Blacktop Bandits! Pergi ke Bintang di Mini-map untuk bertemu fotografer.
+1335|TIPE 3 NOZEL RODA KIRI
+1336|Race Breaker
+1337|Saat berkeliling kota, tantang tuner lain untuk balapan Outrun. Begitu balapan dimulai, coba rebut posisi terdepan dan tinggalkan lawanmu. Lewati mana saja dan lakukan apa saja untuk lepas dari buntutmu dan ambil uang pemenang.
+1338|Graphics Shop
+1339|Akses Peta Dunia untuk menyaring event dan toko dari peta dengan menekan kiri pada HUD SMS. Gulir berbagai event dan toko yang ingin kamu saring dan pilih untuk menyembunyikan atau menampilkannya dari peta.
+1342|Pesan SMS Outrun
+1343|G Saat Ini:
+1344|Legenda
+1345|OFFSET BLINDSIDE
+1347|Interior/Car Specialties
+1348|Karbon adalah segalanya! Spion karbon, spoiler, dan roof scoop terbaru telah tiba di semua Bayview Body Shops.
+1351|El Norte
+1352|Sampul DVD Blacktop Bandits
+1353|Koneksimu ke Server EA terputus. Pastikan adaptor jaringan dan kabel jaringanmu tersambung. Mau menyambung kembali?
+1354|Pemain Satu Tekan tombol START
+1355|Menghapus Teman...
+1356|Pilih Mobil Quick Race
+1357|KORAL
+1360|Sirkuit Tuning
+1361|Tutup
+1362|KETENTUAN KONTRAK:^Pembalap harus memenangkan 7 balapan URL, 3 balapan pilihan sponsor dan 29 balapan tambahan pilihan pembalap.^^SYARAT TAMBAHAN:^Bangun mobil yang tampil di 3 sampul DVD.^^BONUS:^Kendaraan gratis dari dealer mobil Bayview.
+1363|Bodi
+1364|Drag Tuning
+1365|Wanita
+1366|kW
+1367|Nm
+1368|Pemain Dua Tekan START
+1371|Mengambil foto majalah
+1372|Waktu Tertinggal:
+1373|DRIFT TERPANJANG:
+1374|Balapan
+1375|MERAH MUTIARA GELAP
+1376|Tambahkan gaya pada mobilmu dengan kap karbon. Sekarang tersedia di Bayview Body Shop mana pun.
+1377|Undangan Antar-Game
+1378|Ya? Sudah beres. Semuanya sudah diatur. Pastikan kamu memenuhi bagianmu dari kesepakatan, paham?
+1379|^Sampul majalah diberikan karena memenangkan World Event ke-18 di Tahap 3!
+1380|Masuk ke ruang game akan membatalkan semua sesi obrolan suara yang aktif. Kamu juga mungkin kehilangan pesan yang belum dibaca dan undangan sesi game.
+1381|Konfigurasi Keyboard
+1382|Poin Didapat:
+1383|Hadiah Uang:
+1384|Kamu Kalah di Outrun!
+1385|Opsi Mode Balapan Online
+1386|KECEPATAN TERTINGGI:
+1387|Pasang Ulang Komponen Standar?
+1388|Detail Sponsor
+1390|Yakin mau memuat^mobil di profil %s?
+1391|Tersingkir
+1392|Edit Mobil Kustom
+1393|Kamu harus memasukkan nama akun EA^sebelum meminta kata sandi yang hilang.
+1395|Pilih Persona Online
+1396|MODERN 1
+1397|MODERN 2
+1398|MODERN 3
+1399|Pasang Decal
+1400|cm
+1401|Balapan Street X
+1402|Indikator:
+1403|Kemudi Linear/Non-linear
+1405|Kembali ke Peta Dunia
+1406|Mobil Saat Ini
+1407|Karier
+1408|Petunjuk GPS
+1409|TIPE 2 HIJAU
+1410|Datang dan lihat koleksi kap karbon baru yang baru saja tiba. Tersedia di Bayview Body Shop mana pun.
+1413|Pasang cat
+1414|KECEPATAN RATA-RATA:
+1415|Pesan SMS dari Rachel
+1416|Balap drag - Perfect shift
+1417|TIPE 2 NOZEL KANAN ATAS KIRI BAWAH
+1418|Pasang Vinil
+1419|Sponsor Ditandatangani:
+1420|DENYUT MERAH
+1422|Body Shop menyediakan beragam komponen untuk menyesuaikan^tampilan mobilmu; termasuk roda, spoiler, kap, wide body kit^dan lainnya. Kamu akan menemukan ratusan desain baru di^Underground 2 mulai dari yang kalem sampai yang liar!^^Ini 2 contoh mobil yang sudah dimodifikasi habis-habisan yang bisa kamu^buat di versi lengkap Underground 2.
+1423|Menghubungkan...
+1438|Racing Street Unleashed
+1439|Kamu harus menamai profilmu^saat ini untuk menyalakan Simpan Otomatis.
+1440|Kembali ke Mode Jelajah?
+1442|Bro, temanku sebentar lagi pergi, dia nggak akan menunggu semalaman. Sampai di tokonya dalam %s atau kamu kehilangan komponennya. Cepat jalan.
+1443|Yakin mau keluar dari balapan ini dan kembali ke Menu Utama Xbox Live?
+1444|Memilih kiri pada HUD SMS akan membuka Peta Dunia. Peta Dunia adalah ikhtisar lengkap dunia, lokasi, dan event yang sudah terungkap. Kamu bisa menyaring event di Peta Dunia dengan memilih dan membatalkan pilihan event dari daftar di sisi kiri Peta. Selain itu, ada beberapa tampilan Peta di sini untuk kamu telusuri.
+1445|Kamu tidak bisa masuk ke Penyetelan Performa / Dyno tanpa profil aktif.
+1448|Fuel Injector
+1449|Desain baru baru saja tiba! Jadilah yang pertama di kawasanmu yang memiliki kap karbon terkeren! Tersedia di semua Body Shop area Bayview.
+1450|Pilih Mobil Kustomisasi
+1452|Coal Harbor
+1453|Tinggi
+1455|Gamertag Diblokir
+1456|UNDANGAN TERKIRIM
+1457|Akselerasi
+1459|Otomatis
+1460|Gunakan sistem EA Messenger untuk mengoordinasikan balapan dengan teman, atur game pribadi khusus undangan
+1462|Selamat datang di Bayview Performance Shop, cabang Coal Harbor West.^Kamu telah membuka akses ke upgrade performa level Ekstrem untuk Pengurangan Bobot, Ban, dan Rem.^Semua komponen yang dibuka di Performance Shop lain, dan Megalow Parts juga tersedia di sini.
+1463|Hibrida
+1464|Masukkan Nama Pencarian
+1465|Cahaya Lampu
+1466|Selamat datang di Bayview Body Shop, cabang Coal Harbor West.^Kamu telah membuka akses ke Bemper Depan, Bemper Belakang, dan Side Skirt baru.^Semua komponen yang dibuka di Body Shop sebelumnya juga tersedia di sini.
+1467|Blacktop Bandits
+1472|Pilih dari ratusan warna cat kustom, vinil unik, dan decal di Graphics Shop.
+1473|Opsi Xbox Live
+1475|Bro, ini bagus banget tapi ada batas waktunya. Temanku akan pergi kalau kamu tidak sampai di tokonya dalam %s. Kesempatan ini mungkin tidak datang lagi.
+1477|Sedang
+1478|Mengilap
+1479|Sistem GPS dapat membantumu menemukan tujuan yang tercantum di peta. Akses opsi GPS dengan memilih Peta Dunia di SMS. Tekan tombol Aktifkan GPS untuk menggulir tujuan yang mungkin. Setelah kembali ke Mode Jelajah, panah biru menunjuk ke arah tujuan yang dipilih.
+1480|Yakin mau mengaktifkan sistem GPS?
+1481|Masukan
+1482|%s telah masuk. Undanganmu telah dikirim ulang.
+1483|Jeda
+1484|TATA LETAK KUSTOM
+1485|in
+1486|Hanya izinkan mobil dengan performa setara
+1487|JEPANG
+1488|Kemudi
+1489|KOREA
+1490|Detail mobilmu telah berubah. Mau^menyimpannya ke profilmu?
+1491|nd
+1492|STREETGLOW
+1494|Roof Scoop Serat Karbon
+1495|Strategi Outrun
+1496|Pantulan Hidrolik
+1497|WALES
+1498|Selamat datang di Bayview Performance Shop, cabang Coal Harbor East.^Kamu telah membuka akses ke upgrade performa level Pro untuk Pengurangan Bobot, Ban, dan Rem.^Semua komponen yang dibuka di Performance Shop lain, dan Megalow Parts juga tersedia di sini.
+1499|Kamu keluar dari Xbox Live karena orang lain masuk menggunakan akunmu.
+1502|Aftermarket
+1503|Fitur Simpan Otomatis akan menyimpan game secara otomatis saat ada perubahan atau saat kamu maju di kariermu. Akses Simpan Otomatis di bagian Gameplay pada menu Jeda.
+1504|Selamat datang di Bayview Body Shop, cabang Coal Harbor East.
+1505|Ini yang kamu mau?
+1506|DRIFT BERANTAI
+1507|Sampul DVD
+1508|Hanya izinkan pemain dengan level sama
+1510|Oke sudah diatur. Sampai di toko temanku Nesto dalam %s dan dia akan memberimu komponen keren untuk mobil kencangmu.
+1512|Nama Akun EA
+1513|Sampul DVD Four on the Floor
+1514|Mengambil daftar game terbaru^dari server...
+1515|Mau mengembalikan body kit serat karbonmu ke standar?
+1516|Lampu Belakang
+1518|Memasang vinil baru pada lapisan ini akan menghapus vinil^Unik yang sedang terpasang dari mobilmu. Lanjutkan?
+1519|Diskon 20%%:
+1521|UNGU MUTIARA GELAP
+1522|Jika kamu memilih tampil offline, kamu tidak bisa mengirim/menerima undangan sesi game atau undangan obrolan suara.
+1523|Balapan Selesai. Waktu Habis.
+1524|Beacon Hill
+1525|MEREK:  %s
+1527|Berperingkat
+1529|Terjadi masalah saat berkomunikasi dengan server.^Silakan coba lagi nanti.
+1531|Raja Drift!
+1532|Undang
+1533|Ban & Rem
+1535|Sampul DVD Dimenangkan:
+1537|sedang bermain %s
+1538|Kode sandi yang kamu masukkan salah.
+1539|^^Sampul DVD diberikan karena membangun Mobil 9 Bintang!
+1540|Bro, kalau kamu cukup cepat sampai di toko Jimmy dalam %s kita bisa bikin mobilmu tampil sekeren cara kamu menyetirnya dengan upgrade visual yang mantap.
+1541|Durasi
+1542|%s mengundangmu ke game Need for Speed{82} Underground 2
+1543|Nama akun EA ini sudah digunakan.^Pilih nama lain dan coba lagi.
+1546|Sponsor:
+1547|Masa Kini
+1548|Mencari Uang
+1549|PERFECT SHIFT:
+1550|V3 SEMUA KECUALI RODA KANAN PURGE
+1551|Balapan Sirkuit adalah andalan Underground 2. Ikuti event ini untuk menguji skillmu dalam balapan 2 lap melawan 3 lawan di sirkuit menegangkan melintasi jalanan kota. Gunakan nitromu serta jalan pintas apa pun yang kamu temukan untuk memberimu keunggulan menang.
+1552|Alamat emailmu minimal harus 7 karakter.
+1553|Diskon Komponen Megalow
+1554|Kamu tidak bisa mengirim permintaan obrolan suara ke siapa pun yang telah memblokirmu atau jika kamu sedang berada di Ruang Game Buatan.
+1555|Set Modern
+1556|Torsi Maks
+1557|Drift Keren!
+1558|UNGU TUA
+1559|PETIR 1
+1560|PETIR 2
+1561|PETIR 3
+1562|NINJA
+1564|Tantangan
+1565|COBA JALAN
+1566|Mengundang %s ke Obrolan Suara
+1567|SKATER
+1568|TENGKORAK 1
+1571|Balapan Drag Train Yard
+1572|Mengautentikasi id pengguna dan kata sandi ...
+1574|Pameran
+1575|Kirim Pesan Pribadi
+1576|Mau menyimpan Login EA kamu ke %s?
+1577|Volume Ban
+1578|Pilih Warna Jarum
+1579|Bro, Hector sebentar lagi pergi tapi dia mau menunggu selama %s berikutnya. Sampai di sana tepat waktu dan dia akan memasang upgrade visual keren di mobil rocketmu. Out.
+1580|Layar Terbagi 2 Pemain
+1581|Hei bangun bro! Mereka bakal menyerangmu habis-habisan di X. Nggak ada waktu berpikir, langsung lakukan. Kemenangan akan membuatmu masuk radar sponsor dan kamu tahu itu bagus.
+1582|Cat
+1583|Terjadi kesalahan saat menghapus persona ini.
+1584|Final Drive Ratio
+1585|Pelan masuk - Cepat keluar
+1587|Muat Profil
+1588|Kamu hanya bisa punya maksimal 100 Teman di EA Messenger.
+1590|Balapan bagus kawan. Kabar di jalanan bilang ada
+1591|Rem / Mundur
+1592|Selamat datang di Bayview Body Shop, cabang Jackson Heights.^Kamu telah membuka akses ke Bemper Depan, Bemper Belakang, dan Side Skirt baru.^Semua komponen yang dibuka di Body Shop sebelumnya juga tersedia di sini.
+1593|Shock memungkinkan kamu menyetel kelembutan atau kekakuan mobilmu. Gunakan penggeser untuk mengatur kekuatan shock depan & belakang, memengaruhi tingkat understeer atau oversteer saat masuk tikungan & cara mobilmu menyerap gundukan.
+1594|DENYUT UNGU
+1595|^Sampul majalah diberikan karena memenangkan World Event ke-16 di Tahap 5!
+1596|Pemimpin Balapan
+1597|Cek petamu untuk menemukan lokasi Performance Shop. Megalow Parts adalah toko komponen performa diskon di Bayview. Toko ini punya inventaris kecil tapi juga harga paling murah.
+1598|Pilih Lintasan Quick Race
+1600|Fisika DEBUG
+1601|Selamat datang bro. Aturan buatmu sederhana - lalu lintas lambat ke kanan. Aku nggak mau kamu menghalangiku, kita nggak lagi menyetir Miss Daisy di sini. Kamu dapat peta lintasan setelah berkomitmen - ikut?
+1602|Wah, lihat si pemula. Biar kubuat gampang buatmu. Serahkan uangmu ke starter dan jangan menghalangi siapa pun. Aku nggak mau kamu mengacaukan kemenanganku atas orang-orang bodoh lain ini.
+1603|Wah bro, kamu nggak serius mau bawa rongsokan itu ke balapan ini kan? Aku nggak mau mempertaruhkan kemenanganku karena harus menghindari mobil menyedihkanmu saat kusalip. Perhatikan peta dan jangan menghalangiku.
+1604|Siap naik kuda buat balapan ini, bro? Eh - kamu tahu aku bicara soal mobilmu, bukan kuda sungguhan, kan? Aku selalu lupa kamu dari pelosok. Maaf bro.
+1605|Apa kabar anjing kampung? Karena aku bakal ambil semua uangmu, kamu boleh panggil aku Bank. Kalau kamu setor cukup banyak ke dompetku, mungkin aku kasih pemanggang roti gratis. Siap buka rekening?
+1606|Bro, pembalap lain minta aku bilang bahwa truk sampah nggak boleh ikut balapan ini. Kami kira pasti dari kota karena nggak ada yang mau kepergok balapan pakai rongsokan begitu.
+1607|Kalau mau ikut yang ini, bawa yang serius...dan mobilmu harus melaju seperti di atas rel karena kami nggak main-main. Aku bakal ambil uangmu sama seperti pecundang lain. Ikut?
+1608|Kalau mau balapan sama kami, bawa barang terbaikmu. Kurasa mobil yang kamu bawa itu nggak cukup kuat buat sampai ke garis start, apalagi sampai garis finis. Mungkin kamu perlu mikir lagi soal yang ini.
+1609|Oke - sepertinya kita punya peserta. Kalau uangmu bagus, silakan maju ke garis start. Kami kadang menerima kasus amal dan sepertinya kamu cocok sekali.
+1612|Opsi
+1613|Mobil Kompak Sport
+1614|GARIS-GARIS
+1616|Semua Mobil
+1617|ITALIA
+1619|Sulit
+1621|Meter
+1622|Setel pengaturan untuk mode balapan ini?
+1623|DUAL AIRSTREAM
+1624|Cat spinner tidak dapat diterapkan pada velg biasa. Kamu harus memasang Spinner di mobilmu sebelum bisa mengecatnya.
+1625|Menukar Mobil
+1626|%s sedang sibuk!
+1627|Balapan Selesai. Waktu Habis!
+1628|Dapatkan keunggulan ekstra di balapan berikutnya dengan menambahkan teknologi N2O terbaru ke mobilmu. Pasang di Bayview Performance Shop atau Megalow Parts mana pun.
+1629|SPANYOL
+1630|Yakin mau kembali ke mode jelajah?^Kemajuan turnamenmu akan hilang.
+1631|Kamu harus setuju membagikan informasi pribadi Xbox-mu^dengan EA untuk melanjutkan.
+1633|OFFSET BLASTBACK
+1634|DAPAT POSISI 2
+1638|Akun ini sudah login ke server.
+1639|Mau memilih mobil sponsor?
+1640|LABU
+1641|Terjadi masalah saat mengambil data peringkat dari server.^Silakan coba lagi nanti.
+1642|Salah satu kontakku baru saja menelepon dan bilang ada fotografer dari %s di kota yang mencari mobil keren untuk sampul bulan depan. Pergi ke bintang di peta dan aku akan telepon dengan detail lebih lanjut saat kamu sampai.
+1643|V3 SEMUA KECUALI KAP KIRI PURGE
+1644|Hasil Balapan
+1645|^^Sampul DVD diberikan karena membangun Mobil 8 Bintang!
+1646|JERMAN
+1647|OFFSET AEROSTYLE
+1648|Diskon 10%%:
+1650|Pilih Profil
+1652|Krom & Api
+1653|Sambungkan kembali Kontroler ke Soket Kontroler %d untuk melanjutkan.
+1654|DUAL ZEPHYR
+1655|Drift di luar jalan dan di sekitar mobil lalu lintas adalah kunci mendapat skor besar di drift menurun. Semakin dekat kamu drift dengan mobil lalu lintas, semakin banyak poin yang kamu dapat.
+1656|Set Percikan
+1657|Audio & Interior adalah tempat kamu membawa "bling". Pilih dari beragam upgrade "pamer" untuk mobilmu dan tingkatkan^reputasimu di jalanan. Kamu akan menemukan semua kategori baru dengan barang^seperti pintu gunting, hidrolik, komponen audio dan spinner yang^benar-benar memamerkan mobilmu.
+1661|Suara mobilmu sama seperti yang lain? Dapatkan tampilan baru yang keren dan raungan khas saat kamu memasang salah satu Ujung Knalpot baru kami. Pasang hari ini di Bayview Body Shop mana pun.
+1663|Poin diberikan di balapan Drift berdasarkan kecepatan dan sudut mobilmu. Semakin tinggi kecepatan dan sudut drift, semakin banyak poin yang kamu dapat. Meluncur di zona bonus yang ditandai untuk membuat skor driftmu melonjak.
+1666|Mau membatalkan perubahan pada setelan vinilmu?
+1667|Tampilkan SMS
+1668|SPRINT
+1669|Lari Bebas
+1670|Jejak Cahaya
+1672|Kamu benar-benar mulai punya nama. Aku kenal fotografer dari %s yang tertarik memasang mobilmu di sampul majalah. Pergi ke bintang di petamu. Begitu dia menelepon dengan detailnya, aku akan kasih tahu di mana kamu bisa bertemu dengannya.
+1674|RANTAI
+1675|Bro, aku mau mobilku kembali{86}SEKARANG! Sebaiknya kamu cepat ke sini atau aku bakal sebar kabar soal kamu {83} dan itu berarti nggak ada lagi balapan sampai aku bilang boleh. Ke dealer mobil, aku nggak punya waktu semalaman. Lokasinya ada di petamu!
+1676|Reset
+1678|Aturan Mode Outrun
+1679|Perhatikan pintu roundhouse yang membuka dan menutup. Lihat pintu yang naik dan coba pindah ke jalur itu. Mencoba mengalahkan pintu yang menutup adalah langkah berisiko dan bisa membuatmu kalah.
+1681|Papan Peringkat Bulan Lalu
+1682|Biarkan
+1684|Camber Plate Adjustable
+1685|Poin
+1686|Diblokir
+1687|Statistik Karier
+1688|Terapkan Vinil
+1689|Tampilkan gayamu dengan opsi penempatan N2O Purge baru. Bayview Car Specialties bisa memasangkan setelan kerennya. Telepon untuk janji temu malam ini.
+1690|Racebreaker
+1691|Yakin mau memuat^mobil untuk bermain layar terbagi?
+1693|TANPA WIDEBODY
+1694|TIPE 3 CHARTREUSE
+1696|Kamu harus mengakhiri sesi obrolan suara ini untuk menghapus anggota ini dari Daftar Temanmu.
+1697|ORANYE
+1698|Game Dimainkan
+1699|Salah satu setelan hasil tuning kustommu telah berubah. Mau menyimpan profilmu sekarang?
+1700|Pemimpin Sirkuit
+1701|Temanku dari %s lagi di kota mencari mobil keren untuk dipasang di sampul majalah bulan depan. Dia akan menelepon balik dengan lokasinya. Pergi ke bintang di peta dan aku akan telepon dengan detailnya.
+1702|diterima
+1703|Hei ngomong-ngomong, aku lupa bilang kalau malam ini banyak aksi di kota. Aku sudah mengirim lokasi balapan ke petamu. Keluar sana dan mulai bikin namamu!
+1704|SIRKUIT
+1706|Final Drive Ratio {83} Di lintasan yang sempit, kamu mungkin ingin menyetel Final Drive Ratio untuk akselerasi lebih besar, sementara di lintasan drag yang panjang, kecepatan tertinggi mungkin lebih penting.
+1707|Seseorang sudah login dengan Gamertag ini.^Silakan coba lagi nanti.
+1708|LAN
+1709|Mau masuk ke Garasi?
+1711|DUAL CYCLONE

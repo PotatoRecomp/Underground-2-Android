@@ -1,0 +1,74 @@
+Accept Selection|Terima Pilihan
+Advance|Lanjut
+Back|Kembali
+Back to Previous Menu|Kembali ke Menu Sebelumnya
+Backspace|Backspace
+CAPS|CAPS
+Cancel|Batal
+Change Brand|Ganti Merek
+Change Car|Ganti Mobil
+Change Category|Ganti Kategori
+Change Color Left / Right|Ganti Warna Kiri / Kanan
+Change Color Up / Down|Ganti Warna Atas / Bawah
+Change Component|Ganti Komponen
+Change Decal Brand|Ganti Merek Decal
+Change Gauge Type|Ganti Jenis Indikator
+Change Layer|Ganti Lapisan
+Change Layout Type|Ganti Jenis Tata Letak
+Change Neon|Ganti Neon
+Change Paint Selection|Ganti Pilihan Cat
+Change Part|Ganti Komponen
+Change Performance Packages|Ganti Paket Performa
+Change Selection|Ganti Pilihan
+Change Selection Toggle|Ganti Pilihan Toggle
+Change Slot|Ganti Slot
+Change Trunk Layout|Ganti Tata Letak Bagasi
+Change Vinyl Selection|Ganti Pilihan Vinil
+Change to Performance Packages|Ganti ke Paket Performa
+Chat|Obrolan
+Continue|Lanjutkan
+Customize / Edit Car|Kustomisasi / Edit Mobil
+Cycle Through Parts|Telusuri Komponen
+Delete Persona|Hapus Persona
+Exit to Explore Mode|Keluar ke Mode Jelajah
+Grab Selected Song|Ambil Lagu Terpilih
+Install Highlighted Part|Pasang Komponen Terpilih
+Load Cars|Muat Mobil
+Log-off Online Play|Keluar dari Main Online
+Move Highlight Left / Right|Geser Sorotan Kiri / Kanan
+Move Highlight Up / Down|Geser Sorotan Atas / Bawah
+Move Numbers Up / Down|Geser Angka Atas / Bawah
+Preview Selection|Pratinjau Pilihan
+Reset Highlighted Category to Default|Reset Kategori Terpilih ke Bawaan
+Rotate Car|Putar Mobil
+Scroll|Gulir
+Scroll Chat|Gulir Obrolan
+Scroll Text|Gulir Teks
+Select Car|Pilih Mobil
+Select Gauge|Pilih Indikator
+Select Highlighted Category|Pilih Kategori Terpilih
+Select Highlighted Color|Pilih Warna Terpilih
+Select Highlighted Component|Pilih Komponen Terpilih
+Select Highlighted Decal|Pilih Decal Terpilih
+Select Highlighted Layer|Pilih Lapisan Terpilih
+Select Highlighted Neon|Pilih Neon Terpilih
+Select Highlighted Option|Pilih Opsi Terpilih
+Select Highlighted Part|Pilih Komponen Terpilih
+Select Highlighted Track|Pilih Lintasan Terpilih
+Select Highlighted Trunk Layout|Pilih Tata Letak Bagasi Terpilih
+Select Highlighted Unique|Pilih Unik Terpilih
+Select Highlighted Vinyl|Pilih Vinil Terpilih
+Select Slot|Pilih Slot
+Sign out of Xbox Live|Keluar dari Xbox Live
+Special Characters|Karakter Khusus
+Switch Cars|Ganti Mobil
+Switch Paint Type|Ganti Jenis Cat
+Switch Players|Ganti Pemain
+Toggle Car Filter|Alihkan Filter Mobil
+Toggle Categories|Alihkan Kategori
+Toggle Option|Alihkan Opsi
+Toggle Through Game Mode Rankings Board|Telusuri Papan Peringkat Mode Game
+Toggle Through Stages|Telusuri Tahap
+Toggle Through Statistics|Telusuri Statistik
+Trade for Car|Tukar dengan Mobil
+Trade for Selected Car|Tukar dengan Mobil Terpilih
