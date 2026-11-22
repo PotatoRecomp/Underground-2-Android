@@ -595,11 +595,73 @@ Pad Poll(int port) {
     return p;
 }
 
+namespace {
+
+// the phone's own vibrator (Underground2Activity.vibrate, 0 to 255) for port 0 while it has no controller: the
+// stronger motor's speed in 16 steps, sent only when the step changes (the game sets its motors every frame)
+std::atomic<int> g_phone_level{0};
+
+void PhoneVibrate(uint16_t left, uint16_t right) {
+    int level = game::Opt().vibration && host::PhoneVibrator() ? std::max(left, right) >> 12 : 0;
+    if (g_phone_level.exchange(level) == level) return;
+#ifdef __ANDROID__
+    auto* env = static_cast<JNIEnv*>(SDL_GetAndroidJNIEnv());
+    auto activity = static_cast<jobject>(SDL_GetAndroidActivity());
+    if (!env || !activity) return;
+    jclass cls = env->GetObjectClass(activity);
+    jmethodID m = env->GetMethodID(cls, "vibrate", "(I)V");
+    if (m) env->CallVoidMethod(activity, m, jint(level ? level * 16 + 15 : 0));
+    if (env->ExceptionCheck()) env->ExceptionClear();
+    env->DeleteLocalRef(cls);
+    env->DeleteLocalRef(activity);
+#endif
+}
+
+}  // namespace
+
+}  // namespace input
+
+namespace host {
+
+// asked once: Underground2Activity.hasVibrator, false where Android finds none (some custom ROMs) and off Android
+bool PhoneVibrator() {
+#ifdef __ANDROID__
+    static const bool has = [] {
+        auto* env = static_cast<JNIEnv*>(SDL_GetAndroidJNIEnv());
+        auto activity = static_cast<jobject>(SDL_GetAndroidActivity());
+        if (!env || !activity) return false;
+        jclass cls = env->GetObjectClass(activity);
+        jmethodID m = env->GetMethodID(cls, "hasVibrator", "()Z");
+        bool yes = m && env->CallBooleanMethod(activity, m);
+        if (env->ExceptionCheck()) {
+            env->ExceptionClear();
+            yes = false;
+        }
+        env->DeleteLocalRef(cls);
+        env->DeleteLocalRef(activity);
+        return yes;
+    }();
+    return has;
+#else
+    return false;
+#endif
+}
+
+}  // namespace host
+
+namespace input {
+
 // the motors run until set again
 void Rumble(int port, uint16_t left, uint16_t right) {
     if (app::kGame.rumble) app::kGame.rumble(port, left, right);
-    std::lock_guard lock(g_lock);
-    if (port >= 0 && port < 4 && g_pads[port]) SDL_RumbleGamepad(g_pads[port], left, right, 0);
+    bool pad;
+    {
+        std::lock_guard lock(g_lock);
+        pad = port >= 0 && port < 4 && g_pads[port];
+        if (pad) SDL_RumbleGamepad(g_pads[port], left, right, 0);
+    }
+    // a controller plugged in takes the rumble; the phone stops
+    if (port == 0) PhoneVibrate(pad ? 0 : left, pad ? 0 : right);
 }
 
 namespace {

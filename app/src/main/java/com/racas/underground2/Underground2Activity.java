@@ -8,11 +8,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.Settings;
@@ -41,11 +44,13 @@ public class Underground2Activity extends SDLActivity {
     static final String SHARED = "Underground2";
 
     private AlertDialog dialog;  // the one up, at most one at a time
-    private boolean resumed;
+    private volatile boolean resumed;  // read from the game thread too (vibrate)
     private UpdateChecker.Release update;  // a newer release not shown yet
     private final GameImporter importer = new GameImporter(this);
     private boolean importing;  // the file picker or the copy is up: nothing else is asked meanwhile
     private boolean checking;   // a check asked from the menu is under way
+    private int vibration;      // the game's rumble on the phone, 0 to 255 (native/input.cpp), kept for onResume
+    private static final long VIBRATION_MS = 30000;  // the motors run until set again: long, cancelled at 0
 
     // SDL may request an orientation from its window hint. Keep this game in sensor-driven landscape,
     // allowing either horizontal side while rejecting portrait requests.
@@ -137,6 +142,38 @@ public class Underground2Activity extends SDLActivity {
                 // the down and up a press brings with it: the button events above carry it
                 return true;
         }
+    }
+
+    // the controller's rumble on the phone itself, from the game's thread while port 0 has no controller: the motors'
+    // strength 1 to 255, 0 stops. A phone without amplitude control runs at its one strength from a quarter up
+    public void vibrate(int amplitude) {
+        synchronized (this) {
+            vibration = Math.max(0, Math.min(255, amplitude));
+        }
+        if (resumed) applyVibration();
+    }
+
+    // the VIBRATION row's NOT SUPPORTED: Android finds no vibrator (some custom ROMs)
+    public boolean hasVibrator() {
+        return vibrator() != null;
+    }
+
+    private Vibrator vibrator() {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        return v != null && v.hasVibrator() ? v : null;
+    }
+
+    private synchronized void applyVibration() {
+        Vibrator v = vibrator();
+        if (v == null) return;
+        int amplitude = vibration;
+        if (!v.hasAmplitudeControl()) amplitude = amplitude >= 64 ? VibrationEffect.DEFAULT_AMPLITUDE : 0;
+        if (amplitude == 0) {
+            v.cancel();
+            return;
+        }
+        AudioAttributes game = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).build();
+        v.vibrate(VibrationEffect.createOneShot(VIBRATION_MS, amplitude), game);
     }
 
     // CHECK FOR UPDATES in the options menu, from the game's thread: the answer always shows, up to date or offline
@@ -245,6 +282,7 @@ public class Underground2Activity extends SDLActivity {
     protected void onResume() {
         super.onResume();
         resumed = true;
+        applyVibration();
         askForGame();
         saveCrashLogs();
         tellOfUpdate();
@@ -262,6 +300,8 @@ public class Underground2Activity extends SDLActivity {
     @Override
     protected void onPause() {
         resumed = false;
+        Vibrator v = vibrator();
+        if (v != null) v.cancel();
         super.onPause();
     }
 

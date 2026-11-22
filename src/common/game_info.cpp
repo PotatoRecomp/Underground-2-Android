@@ -105,6 +105,7 @@ const app::GameInfo app::kGame = {
                 {"rain", &game::Opt().rain, nullptr},
                 {"particles", &game::Opt().particles, nullptr},
                 {"shader_preload", &game::Opt().shader_preload, nullptr},
+                {"vibration", &game::Opt().vibration, nullptr},
                 {"cheat_cash", &game::Opt().cheat_cash, nullptr},
                 {"cheat_nitrous", &game::Opt().cheat_nitrous, nullptr},
                 {"cheat_unlock_all", &game::Opt().cheat_unlock_all, nullptr},

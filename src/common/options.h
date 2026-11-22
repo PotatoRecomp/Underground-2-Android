@@ -35,6 +35,7 @@ struct Options {
     bool rain = true;       // the falling rain and its drops on the screen, src/game/effects.cpp skips them when off
     bool particles = true;  // the particle effects (smoke, sparks, spray), src/game/effects.cpp spawns none when off
     bool shader_preload = false;  // native/vulkan.cpp makes earlier runs' shaders and pipelines at the start
+    bool vibration = true;  // the phone vibrates as a controller's motors would, while no controller is on port 0
     uint32_t audio_output = 0;  // audio::kOutputAuto, kOutputStereo, kOutputSurround or kOutputMono
     // cheats, src/game/game.cpp's ApplyCheats
     bool cheat_cash = false;  // the career's cash kept at its largest

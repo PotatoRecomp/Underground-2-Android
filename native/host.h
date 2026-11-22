@@ -24,6 +24,8 @@ uint32_t SurfaceEpoch();
 void WaitForeground();
 // the window's size in pixels
 void WindowPixels(int& w, int& h);
+// the phone has a vibrator Android can drive (input.cpp); false off Android
+bool PhoneVibrator();
 
 }  // namespace host
 
