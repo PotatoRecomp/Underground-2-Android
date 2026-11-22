@@ -13,6 +13,7 @@
 #include <unordered_map>
 
 #include "app/app.h"
+#include "common/fe_mouse.h"
 #include "common/music.h"
 #include "common/options.h"
 #include "core/log.h"
@@ -81,7 +82,10 @@ void MusicFrame(X86Context& ctx) {
     // 0xB4940 / 0xB49F0 write these floats and pass the settings to 0x76A70.
     float level = kernel::G<float>(flow == 6 ? 0x406CF4 : 0x406CF0);
     if (!std::isfinite(level)) level = 0;
-    music::SetContext((flow == 3 || flow == 6) && !g_focus_paused, flow == 6, std::clamp(level, 0.0f, 1.0f));
+    // My Music starts at the main menu, not over the boot's logos, movies and memory card screens
+    static bool main_menu = false;
+    main_menu |= FeOnPackage("UI_Main.fng");
+    music::SetContext(main_menu && (flow == 3 || flow == 6) && !g_focus_paused, flow == 6, std::clamp(level, 0.0f, 1.0f));
     bool replace = music::HasSongs() && music::Source() == music::kMyMusic;
     uint32_t bus = kernel::R32(0x3E5AFC);
     bool changed = g_replace_music.exchange(replace) != replace;
