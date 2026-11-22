@@ -30,6 +30,7 @@
 #include "common/keys.h"
 #include "common/aspect.h"
 #include "common/fe_mouse.h"
+#include "common/hud_layout.h"
 #include "common/menu.h"
 #include "common/options.h"
 #include "common/translations.h"
@@ -393,7 +394,7 @@ namespace {
 using input::NowMs;
 
 // what a finger on the screen does
-enum class Role : uint8_t { None, Stick, Look, Button, Drag, Pinch, Wheel, FeMouse };
+enum class Role : uint8_t { None, Stick, Look, Button, Drag, Pinch, Wheel, FeMouse, HudDrag };
 
 // a control of the touch layout: what it shows and presses, on the controller (analog 0-7, button bits from 8) or on
 // the host. Where it sits is the layout's, which the player edits
@@ -536,6 +537,25 @@ Layout g_before = kRacing;
 float g_before_opacity = 0.85f;
 int g_selected = -1;
 
+// The HUD's speedometer, minimap and race information, moved in the editor too (src/game/hud_layout.cpp moves them):
+// their offsets from where the game puts them, FEng units, in layout.toml's [hud]
+constexpr const char* kHudIds[game::kHudItems] = {"speedometer", "minimap", "race_info", "drag_tachometer"};
+constexpr const char* kHudLabels[game::kHudItems] = {"SPEEDOMETER", "MINIMAP", "RACE INFO", "DRAG TACHOMETER"};
+struct HudPlace {
+    float x = 0, y = 0;
+};
+using HudLayout = std::array<HudPlace, game::kHudItems>;
+HudLayout g_hud{}, g_hud_before{};
+int g_hud_selected = -1;
+HudPlace g_hud_drag_from;  // the dragged item's place as the drag began
+
+void PublishHud() {
+    for (size_t i = 0; i < game::kHudItems; i++) {
+        game::g_hud_x[i] = g_hud[i].x;
+        game::g_hud_y[i] = g_hud[i].y;
+    }
+}
+
 float Width() {
     int w, h;
     host::WindowPixels(w, h);
@@ -557,6 +577,12 @@ void LoadLayout() {
     try {
         toml::table t = toml::parse_file(LayoutFile().string());
         g_layout = kRacing;
+        for (size_t i = 0; i < game::kHudItems; i++)
+            if (const toml::table* p = t["hud"][kHudIds[i]].as_table()) {
+                g_hud[i].x = float((*p)["x"].value_or(0.0));
+                g_hud[i].y = float((*p)["y"].value_or(0.0));
+            }
+        PublishHud();
         g_opacity = std::clamp(float(t["opacity"].value_or(double(g_opacity))), 0.2f, 1.0f);
         g_scale = std::clamp(float(t["scale"].value_or(double(g_scale))), 0.5f, 1.5f);
         g_fixed_sticks = t["stick_mode"].value_or(std::string("floating")) == "fixed";
@@ -596,10 +622,13 @@ void SaveLayout() {
         controls.insert(PlaceId(i),
                         toml::table{{"x", double(p.x)}, {"y", double(p.y)}, {"r", double(p.r)}, {"hidden", p.hidden}});
     }
+    toml::table hud;
+    for (size_t i = 0; i < game::kHudItems; i++)
+        hud.insert(kHudIds[i], toml::table{{"x", double(g_hud[i].x)}, {"y", double(g_hud[i].y)}});
     toml::table t{{"version", kLayoutVersion}, {"preset", "racing"}, {"opacity", double(g_opacity)},
                   {"scale", double(g_scale)}, {"stick_mode", g_fixed_sticks ? "fixed" : "floating"},
                   {"steering", kSteeringIds[size_t(g_steering.load())]},
-                  {"controls", controls}};
+                  {"controls", controls}, {"hud", hud}};
     std::ofstream(LayoutFile()) << t << "\n";
 }
 
@@ -610,7 +639,9 @@ void EnsureLayout() {
 void OpenEditor() {
     g_before = g_layout;
     g_before_opacity = g_opacity;
+    g_hud_before = g_hud;
     g_selected = -1;
+    g_hud_selected = -1;
     g_editing = true;
 }
 
@@ -742,7 +773,10 @@ int BarAt(float x, float y, float rect[4] = nullptr, int which = -1) {
 
 void ResetLayout() {
     g_layout = kRacing;
+    g_hud = {};
+    PublishHud();
     g_selected = -1;
+    g_hud_selected = -1;
 }
 
 void CloseEditor(bool keep) {
@@ -751,8 +785,11 @@ void CloseEditor(bool keep) {
     } else {
         g_layout = g_before;
         g_opacity = g_before_opacity;
+        g_hud = g_hud_before;
+        PublishHud();
     }
     g_selected = -1;
+    g_hud_selected = -1;
     g_editing = false;
 }
 
@@ -896,6 +933,50 @@ int QueuedPress() {
 
 void Resize(size_t i, float r) { g_layout[i].r = std::clamp(r, kMinRadius, kMaxRadius); }
 
+// the frame on the screen as the presenter letterboxes it, pixels
+struct Frame {
+    float x0, y0, w, h;
+};
+Frame Letterbox() {
+    float w = Width(), h = Height(), aspect = game::Aspect();
+    float vw = std::min(w, h * aspect), vh = vw / aspect;
+    return {(w - vw) / 2, (h - vh) / 2, vw, vh};
+}
+
+// a HUD item's box on the screen where it is moved to, pixels: kHudBoxes's, from where the game has it now
+void HudRect(size_t i, float r[4]) {
+    Frame f = Letterbox();
+    const game::HudBox& b = game::kHudBoxes[i];
+    float dx = (g_hud[i].x + game::g_hud_base_x[i]) / game::kHudUnitsX;
+    float dy = (g_hud[i].y + game::g_hud_base_y[i]) / game::kHudUnitsY;
+    r[0] = f.x0 + (b.x0 + dx) * f.w;
+    r[1] = f.y0 + (b.y0 + dy) * f.h;
+    r[2] = f.x0 + (b.x1 + dx) * f.w;
+    r[3] = f.y0 + (b.y1 + dy) * f.h;
+}
+
+// the HUD item under a point, -1 for none
+int HitHud(float x, float y) {
+    for (size_t i = 0; i < game::kHudItems; i++) {
+        float r[4];
+        HudRect(i, r);
+        if (x >= r[0] && x <= r[2] && y >= r[1] && y <= r[3]) return int(i);
+    }
+    return -1;
+}
+
+// a HUD item dragged by a finger from where it was as the drag began; its box kept in the frame
+void DragHud(size_t i, float dx, float dy) {
+    Frame f = Letterbox();
+    const game::HudBox& b = game::kHudBoxes[i];
+    float bx = game::g_hud_base_x[i] / game::kHudUnitsX, by = game::g_hud_base_y[i] / game::kHudUnitsY;
+    float sx = std::clamp(g_hud_drag_from.x / game::kHudUnitsX + dx / f.w, -b.x0 - bx, 1.0f - b.x1 - bx);
+    float sy = std::clamp(g_hud_drag_from.y / game::kHudUnitsY + dy / f.h, -b.y0 - by, 1.0f - b.y1 - by);
+    g_hud[i].x = sx * game::kHudUnitsX;
+    g_hud[i].y = sy * game::kHudUnitsY;
+    PublishHud();
+}
+
 // the editor: a touch on the bar resets, resizes the picked control, cancels or saves; a second finger while one
 // drags a control pinches it bigger or smaller; on a control picks it up to move it, anywhere else lets go of the pick
 void EditDown(Finger& f, float x, float y) {
@@ -941,10 +1022,18 @@ void EditDown(Finger& f, float x, float y) {
             if (b == kPlaces && (x - sx) * (x - sx) + (y - sy) * (y - sy) <= sr * sr) b = s;
         }
     }
+    // else a HUD item, under the controls
     if (b == kPlaces) {
         g_selected = -1;
+        g_hud_selected = HitHud(x, y);
+        if (g_hud_selected >= 0) {
+            f.role = Role::HudDrag;
+            f.button = size_t(g_hud_selected);
+            g_hud_drag_from = g_hud[f.button];
+        }
         return;
     }
+    g_hud_selected = -1;
     g_selected = int(b);
     f.role = Role::Drag;
     f.button = b;
@@ -1053,6 +1142,7 @@ void FingerMove(SDL_FingerID id, float x, float y) {
         if (f.id != id) continue;
         f.x = x;
         f.y = y;
+        if (f.role == Role::HudDrag) DragHud(f.button, f.x - f.x0, f.y - f.y0);
         if (f.role == Role::Drag) {
             Place& p = g_layout[f.button];
             p.x = std::clamp((x - f.x0) / Width(), 0.0f, 1.0f);
@@ -1448,6 +1538,21 @@ void CentredText(ImDrawList* dl, ImVec2 at, float size, ImU32 colour, const char
     dl->AddText(ImGui::GetFont(), size, ImVec2(at.x - ts.x / 2, at.y - ts.y / 2), colour, text);
 }
 
+// the editor's boxes for the HUD's items, under the controls
+void DrawHudBoxes(ImDrawList* dl, float th) {
+    for (size_t i = 0; i < game::kHudItems; i++) {
+        float r[4];
+        HudRect(i, r);
+        float hh = (r[3] - r[1]) / 2;
+        bool picked = int(i) == g_hud_selected;
+        ImU32 edge = picked ? IM_COL32(255, 200, 60, 255) : IM_COL32(240, 228, 205, 200);
+        dl->AddRectFilled(ImVec2(r[0], r[1]), ImVec2(r[2], r[3]), IM_COL32(20, 18, 14, 150), hh * 0.15f);
+        dl->AddRect(ImVec2(r[0], r[1]), ImVec2(r[2], r[3]), edge, hh * 0.15f, 0, th * (picked ? 1.5f : 1.0f));
+        CentredText(dl, ImVec2((r[0] + r[2]) / 2, (r[1] + r[3]) / 2), std::min(hh * 0.3f, Height() * 0.036f),
+                    IM_COL32(255, 255, 255, 230), app::Ui(kHudLabels[i]).c_str());
+    }
+}
+
 // a control in its shape: glass, its edge, its icon or label, a face button's caption under it. fade is the share
 // (of 100) a hidden control shows at in the editor
 // the steering wheel, turned as it steers: a rim, three spokes to a hub and a saffron mark at its top
@@ -1600,7 +1705,10 @@ void Draw() {
     float th = std::max(2.0f, h / 360.0f);
     if (!editing && !Shown()) return;
     ImDrawList* dl = ImGui::GetForegroundDrawList();
-    if (editing) dl->AddRectFilled(ImVec2(0, 0), ImVec2(Width(), h), IM_COL32(0, 0, 0, 90));
+    if (editing) {
+        dl->AddRectFilled(ImVec2(0, 0), ImVec2(Width(), h), IM_COL32(0, 0, 0, 90));
+        DrawHudBoxes(dl, th);
+    }
     for (size_t i = 0; i < kButtonCount; i++) {
         const Button& b = kButtons[i];
         if (!ButtonShown(i) || (app::MenuOpen() && b.press != kPanel && !editing)) continue;
