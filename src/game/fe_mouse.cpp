@@ -19,7 +19,9 @@
 
 #include "common/aspect.h"
 #include "common/fe_mouse.h"
+#include "common/menu.h"
 #include "common/options.h"
+#include "common/pad_binds.h"
 #include "core/log.h"
 #include "cpu/x86_context.h"
 #include "kernel/kernel.h"
@@ -615,6 +617,7 @@ void FeFrame(X86Context& ctx) {
     uint32_t fe = FEngine();
     if (!fe) {
         g_menu = false;
+        input::SetPadMenuMode(true);
         return;
     }
     static const uint32_t thunk = dispatch::HostThunk(GetMouseInfo);
@@ -667,6 +670,9 @@ void FeFrame(X86Context& ctx) {
     }
     g_menu_package = menu;
     g_menu = menu != 0;
+    // the CONTROLLER page's bindings play the race; the menus keep the mapping's buttons, A picks and B backs out
+    // whatever was bound to them (the input started in menu mode and nothing let it out: no binding ever played)
+    input::SetPadMenuMode(menu != 0 || !Racing() || app::MenuOpen());
     g_arrows = std::move(g_arrows_building);
     g_dots = std::move(g_dots_building);
     g_dots_building.clear();
