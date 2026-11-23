@@ -371,6 +371,21 @@ bool CarSelect(const std::string& name) {
     return name == "UI_QRCarSelect.fng" || name == "UI_CareerCarSelect.fng" || name == "UI_OLCarSelect.fng" ||
            name == "UI_CareerCarLot.fng" || name == "MU_QuickRaceCarSelect.fng";
 }
+// the shops' packages, as the xbe names them: customize, performance, paint, vinyls, decals, rims, spinners, unique
+// parts, neon, ICE, the custom HUD, tuning and the dyno
+bool ShopPackage(const std::string& name) {
+    static const char* const kShop[] = {
+        "UI_BuyPerformanceParts.fng", "UI_ChooseCustomHUD.fng", "UI_ChooseCustomHud.fng",
+        "UI_ChooseCustomizeCategory.fng", "UI_ChoosePaintCategory.fng", "UI_ChoosePerformanceCategory.fng",
+        "UI_ChoosePerformancePackage.fng", "UI_ChooseRimBrand.fng", "UI_ChooseSpinner.fng",
+        "UI_ChooseUniquePart.fng", "UI_ChooseVinylLayer.fng", "UI_CustomHUDOverlay.fng", "UI_CustomNeonMain.fng",
+        "UI_DecalMain.fng", "UI_DecalsOverlay.fng", "UI_DecalsOverlayInvis.fng", "UI_GenericParts_Browser.fng",
+        "UI_ICEMAIN.fng", "UI_IcePartsOverlay.fng", "UI_NeonPartsOverlay.fng", "UI_Paint.fng",
+        "UI_PerformanceBrandSelect.fng", "UI_Rims_Browser.fng", "UI_CareerCarLot.fng"};
+    for (const char* s : kShop)
+        if (name == s) return true;
+    return name.starts_with("UI_PerformanceDyno_") || name.starts_with("UI_PerformanceTuning_");
+}
 void ScrollerTap(const std::string& name, int16_t x) {
     if (CarSelect(name)) {
         if (x <= -kArrowX) touch::QueuePad(kPadLeft, 1);
@@ -805,6 +820,10 @@ void FeFrame(X86Context& ctx) {
     // The World Map pans in every direction, but its movement does not use the ordinary FEng arrow quads.
     if (name == "UI_InGame_WorldMap.fng")
         prompts |= (1u << kPadX) | (1u << kPadUp) | (1u << kPadDown) | (1u << kPadLeft) | (1u << kPadRight);
+    // the shops' screens (the paint's colour grid, the parts' lists, the tuning's sliders) step with the dpad but do
+    // not always draw the arrow quads seen above: keep the whole dpad shown in all of them
+    if (ShopPackage(name))
+        prompts |= (1u << kPadUp) | (1u << kPadDown) | (1u << kPadLeft) | (1u << kPadRight);
     // Main's Help prompt is assembled by the package without a useful translated text object.
     if (name == "UI_Main.fng") prompts |= 1u << kPadY;
     if (name == "UI_PostRaceResults.fng") prompts |= 1u << kPadX;
