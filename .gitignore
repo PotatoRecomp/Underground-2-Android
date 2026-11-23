@@ -31,6 +31,7 @@ __pycache__/
 underground2.toml
 android.toml
 layout.toml
+!/sdk/**/layout.toml
 /shadercache/
 /logs/
 /hdd/
