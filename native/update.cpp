@@ -25,7 +25,7 @@ static void CallActivity(const char* name) {
 
 void CheckForUpdates() { CallActivity("checkForUpdates"); }
 #else
-void CheckForUpdates() { SDL_OpenURL("https://github.com/RanggaCasper/Underground2-Android/releases/latest"); }
+void CheckForUpdates() { SDL_OpenURL("https://github.com/PotatoRecomp/Underground-2-Android/releases/latest"); }
 #endif
 
 }  // namespace host
