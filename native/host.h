@@ -69,6 +69,9 @@ bool TiltSteering();         // any thread: STEERING is TILT
 const char* ShiftingName();  // GEAR LEVER or X / Y BUTTONS: what shifts in the RACING layout
 void StepShifting(int step);
 void EditLayout();  // the controls over the screen to drag where they go
+// UI thread, under app::UiLock: the lowest bottom edge, pixels, of the controls shown now along the top of the screen
+// (centres in its top 30%) over x0 to x1; 0 for none. The FPS counter's top presets go under it
+float TopClear(float x0, float x1);
 void LoadArt();     // main thread, once ImGui's context is made: the controls' art into its font atlas
 }  // namespace touch
 

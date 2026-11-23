@@ -556,6 +556,10 @@ std::atomic<bool> g_editing{false};
 Layout g_before = kRacing;
 float g_before_opacity = 0.85f;
 int g_selected = -1;
+// the editor's page: the race's controls (with the sticks and the HUD's items) or the menus' prompt buttons, each
+// edited alone so the two sets, which share the screen, do not lie over each other in the editor
+enum class EditPage : uint8_t { Race, Menu };
+EditPage g_page = EditPage::Race;
 
 // The HUD's speedometer, minimap and race information, moved in the editor too (src/game/hud_layout.cpp moves them):
 // their offsets from where the game puts them, FEng units, in layout.toml's [hud]
@@ -692,7 +696,14 @@ void OpenEditor() {
     g_selected = -1;
     g_hud_selected = -1;
     g_fps_selected = false;
+    g_page = EditPage::Race;
     g_editing = true;
+}
+
+// a place on the editor's page: the settings gear on both, the sticks on the race's
+bool InPage(size_t i) {
+    if (IsStick(i)) return g_page == EditPage::Race;
+    return kButtons[i].keep || kButtons[i].menu == (g_page == EditPage::Menu);
 }
 
 constexpr float kTabAspect = 2.3f, kPillAspect = 2.1f, kPedalAspect = 0.6f;
@@ -716,7 +727,7 @@ bool ShiftShown(size_t i) {
 bool ButtonShown(size_t i) {
     const Button& b = kButtons[i];
     if (!SteeringShown(b.press) || !ShiftShown(i)) return false;
-    if (g_editing) return true;
+    if (g_editing) return InPage(i);
     if (g_layout[i].hidden) return false;
     // no pad out of a race (the front end's screens, the loading screens), nor over its intro or the pause menu and
     // the options in it: they take the finger as their pointer, the pad's controls would hide them
@@ -803,10 +814,10 @@ void Extent(size_t i, float& hw, float& hh) {
     hw = hh * (s == Shape::Tab ? kTabAspect : s == Shape::Pill ? kPillAspect : s == Shape::Pedal ? kPedalAspect : 1.0f);
 }
 
-// the editor's bar at the top: Reset, smaller and bigger for the picked control, hide or show it, Cancel, Done, in
-// screen shares
-constexpr const char* kBarLabels[] = {"RESET", "-", "+", "HIDE", "CANCEL", "DONE"};
-enum { kBarReset, kBarSmaller, kBarBigger, kBarHide, kBarCancel, kBarDone, kBarCount };
+// the editor's bar at the top: Reset, smaller and bigger for the picked control, hide or show it, the page (race or
+// menu), Cancel, Done, in screen shares
+constexpr const char* kBarLabels[] = {"RESET", "-", "+", "HIDE", "RACE", "CANCEL", "DONE"};
+enum { kBarReset, kBarSmaller, kBarBigger, kBarHide, kBarPage, kBarCancel, kBarDone, kBarCount };
 constexpr float kBarY = 0.17f, kBarH = 0.09f, kBarW = 0.13f, kBarGap = 0.02f;
 constexpr float kBarSizeW = 0.07f;                       // the - and + buttons
 constexpr float kMinRadius = 0.02f, kMaxRadius = 0.25f;  // a control's own radius, in screen heights
@@ -833,10 +844,14 @@ int BarAt(float x, float y, float rect[4] = nullptr, int which = -1) {
     return -1;
 }
 
+// the page's own controls to their places, the HUD's items with the race's; the FPS counter, on both pages, too
 void ResetLayout() {
-    g_layout = kRacing;
-    g_hud = {};
-    PublishHud();
+    for (size_t i = 0; i < kPlaces; i++)
+        if (InPage(i)) g_layout[i] = kRacing[i];
+    if (g_page == EditPage::Race) {
+        g_hud = {};
+        PublishHud();
+    }
     // a dragged FPS counter goes back to its default place
     if (game::Opt().fps_position == game::kFpsCustom) game::Opt().fps_position = game::Options{}.fps_position;
     g_selected = -1;
@@ -1086,6 +1101,12 @@ void EditDown(Finger& f, float x, float y) {
         case kBarHide:
             if (Hideable(g_selected)) g_layout[size_t(g_selected)].hidden = !g_layout[size_t(g_selected)].hidden;
             return;
+        case kBarPage:
+            g_page = g_page == EditPage::Race ? EditPage::Menu : EditPage::Race;
+            g_selected = -1;
+            g_hud_selected = -1;
+            g_fps_selected = false;
+            return;
         case kBarCancel:
             CloseEditor(false);
             return;
@@ -1119,7 +1140,7 @@ void EditDown(Finger& f, float x, float y) {
     if (b == kButtonCount) {
         b = kPlaces;
         for (size_t s : {kStick, kRStick}) {
-            if (!ShiftShown(s)) continue;
+            if (!ShiftShown(s) || !InPage(s)) continue;
             float sx = g_layout[s].x * Width(), sy = g_layout[s].y * Height(), sr = Radius(s);
             if (b == kPlaces && (x - sx) * (x - sx) + (y - sy) * (y - sy) <= sr * sr) b = s;
         }
@@ -1127,7 +1148,7 @@ void EditDown(Finger& f, float x, float y) {
     // else a HUD item, under the controls
     if (b == kPlaces) {
         g_selected = -1;
-        g_hud_selected = HitHud(x, y);
+        g_hud_selected = g_page == EditPage::Race ? HitHud(x, y) : -1;
         if (g_hud_selected >= 0) {
             f.role = Role::HudDrag;
             f.button = size_t(g_hud_selected);
@@ -1799,14 +1820,18 @@ void DrawEditorBar(ImDrawList* dl, float th) {
         // - and + wait for a control to be picked, Hide for one that can be hidden
         bool hideable = Hideable(g_selected);
         int alpha = (size && g_selected < 0) || (i == kBarHide && !hideable) ? 90 : 240;
-        const char* label = i == kBarHide && hideable && g_layout[size_t(g_selected)].hidden ? "SHOW" : kBarLabels[i];
+        const char* label = i == kBarHide && hideable && g_layout[size_t(g_selected)].hidden ? "SHOW"
+                            : i == kBarPage && g_page == EditPage::Menu                     ? "MENU"
+                                                                                             : kBarLabels[i];
         dl->AddRectFilled(ImVec2(r[0], r[1]), ImVec2(r[2], r[3]),
                           done ? IM_COL32(150, 115, 45, 235) : IM_COL32(20, 18, 14, 225), h * 0.015f);
         dl->AddRect(ImVec2(r[0], r[1]), ImVec2(r[2], r[3]), IM_COL32(220, 180, 100, alpha), h * 0.015f, 0, th * 0.7f);
         CentredText(dl, ImVec2((r[0] + r[2]) / 2, (r[1] + r[3]) / 2), h * (size ? 0.06f : 0.042f),
                     IM_COL32(255, 255, 255, alpha), app::Ui(label).c_str());
     }
-    CentredText(dl, ImVec2(Width() / 2, (kBarY + kBarH + 0.05f) * h), h * 0.036f, IM_COL32(255, 255, 255, 220),
+    CentredText(dl, ImVec2(Width() / 2, (kBarY + kBarH + 0.05f) * h), h * 0.036f, IM_COL32(255, 200, 60, 240),
+                app::Ui(g_page == EditPage::Race ? "EDITING RACE CONTROLS" : "EDITING MENU CONTROLS").c_str());
+    CentredText(dl, ImVec2(Width() / 2, (kBarY + kBarH + 0.1f) * h), h * 0.036f, IM_COL32(255, 255, 255, 220),
                 app::Ui("DRAG TO MOVE, PINCH OR - + TO RESIZE").c_str());
 }
 
@@ -1823,7 +1848,7 @@ void Draw() {
     ImDrawList* dl = ImGui::GetForegroundDrawList();
     if (editing) {
         dl->AddRectFilled(ImVec2(0, 0), ImVec2(Width(), h), IM_COL32(0, 0, 0, 90));
-        DrawHudBoxes(dl, th);
+        if (g_page == EditPage::Race) DrawHudBoxes(dl, th);
         DrawFpsEdge(dl, th);
     }
     for (size_t i = 0; i < kButtonCount; i++) {
@@ -1844,7 +1869,8 @@ void Draw() {
             dl->AddLine(ImVec2(cx - k, cy + k), ImVec2(cx + k, cy - k), IM_COL32(255, 80, 60, 220), th);
         }
     }
-    if (editing || (!app::MenuOpen() && game::Racing() && !game::FeIntro() && !game::FeMenuShown() && !game::FeHudWaiting()))
+    if (editing ? g_page == EditPage::Race
+                : !app::MenuOpen() && game::Racing() && !game::FeIntro() && !game::FeMenuShown() && !game::FeHudWaiting())
         for (size_t s : {kStick, kRStick}) DrawStick(dl, th, s);
     if (editing) {
         if (g_selected >= 0 && IsStick(size_t(g_selected))) {
@@ -1950,6 +1976,21 @@ void LoadArt() {
         atlas->CalcCustomRectUV(r, &g_art[i].uv0, &g_art[i].uv1);
         SDL_DestroySurface(s);
     }
+}
+
+float TopClear(float x0, float x1) {
+    std::lock_guard lock(g_lock);
+    EnsureLayout();
+    float bottom = 0;
+    for (size_t i = 0; i < kButtonCount; i++) {
+        if (!ButtonShown(i)) continue;
+        float cx, cy, hw, hh;
+        Centre(i, cx, cy);
+        Extent(i, hw, hh);
+        if (cy > Height() * 0.3f || cx + hw < x0 || cx - hw > x1) continue;
+        bottom = std::max(bottom, cy + hh);
+    }
+    return bottom;
 }
 
 const char* StickModeName() {

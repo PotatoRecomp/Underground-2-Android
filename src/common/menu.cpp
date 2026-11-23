@@ -48,6 +48,7 @@ void StepSteering(int step);
 const char* ShiftingName();
 void StepShifting(int step);
 void EditLayout();
+float TopClear(float x0, float x1);
 }  // namespace touch
 
 // native/update.cpp: the activity asks GitHub for a newer release and says what it found
@@ -1198,6 +1199,9 @@ ImVec2 FpsCorner(float box_w, float box_h) {
     float x = pos == kFpsTopLeft || pos == kFpsBottomLeft     ? margin
               : pos == kFpsTopRight || pos == kFpsBottomRight ? screen.x - margin - box_w
                                                               : screen.x / 2 - box_w / 2;
+    // a top preset under the touch controls shown over it (the gear, Start and Back over the centre, the shortcuts at
+    // the top left, a menu's L and R): over them it hid their art and they its numbers
+    if (!bottom && pos != kFpsCustom) y = std::max(y, touch::TopClear(x, x + box_w) + margin * 0.5f);
     // CUSTOM: where it was dragged, kept whole on the screen whichever style or size it has now
     if (pos == kFpsCustom) {
         x = float(game::Opt().fps_x) / kFpsPlaceScale * screen.x;
