@@ -37,6 +37,7 @@ struct Options {
     bool fog = true;    // the distance fog, native/vulkan.cpp draws without it when off
     bool rain = true;       // the falling rain and its drops on the screen, src/game/effects.cpp skips them when off
     bool particles = true;  // the particle effects (smoke, sparks, spray), src/game/effects.cpp spawns none when off
+    bool road_reflections = true;  // the wet road's reflection, src/game/effects.cpp; native/vulkan.cpp binds black
     bool shader_preload = false;  // native/vulkan.cpp makes earlier runs' shaders and pipelines at the start
     bool vibration = true;  // the phone vibrates as a controller's motors would, while no controller is on port 0
     uint32_t audio_output = 0;  // audio::kOutputAuto, kOutputStereo, kOutputSurround or kOutputMono
@@ -44,6 +45,7 @@ struct Options {
     bool cheat_cash = false;  // the career's cash kept at its largest
     bool cheat_nitrous = false;  // the players' nitrous never runs out, src/game/nitrous.cpp
     bool cheat_unlock_all = false;  // every car, track and part unlocked while it is on (the game's own switch)
+    bool cheat_drag_shift = false;  // the player shifts up at the shift light in drag races, src/game/drag_shift.cpp
     std::string language = "int";  // one of kLanguages
     std::map<std::string, std::string> keys;  // action id to key names, absent is the default
     std::map<std::string, std::string> pad;   // action id to a controller's input, absent is SDL's mapping
@@ -58,6 +60,10 @@ void WaitWhileUnfocused();  // native/game_host.cpp: game thread, before the pre
 bool Racing();    // src/game/game.cpp, any thread: the game flow is in a race (free roam too), not loading or the front end
 void MusicFrame(X86Context& ctx);  // src/game/game.cpp: game thread, at each present
 void ApplyCheats();                // src/game/game.cpp: game thread, at each present
+void DragShiftFrame(X86Context& ctx);  // src/game/drag_shift.cpp: game thread, at each present
+void EffectsFrame();                   // src/game/effects.cpp: game thread, at each present
+// the road reflection's target data (virtual), views 4 and 5; src/game/effects.cpp, each present, for native/vulkan.cpp
+inline std::atomic<uint32_t> g_road_reflection[2]{};
 // src/game/android_options.cpp: game thread, at each present: our options rows redrawn once the UI applied a change
 void OptionsFrame(X86Context& ctx);
 

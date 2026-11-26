@@ -1333,6 +1333,7 @@ private:
     size_t recent_count_ = 0;
     Image lut_;
     Image dummy_[3];  // 2D, 3D, cube
+    Image road_off_;  // ROAD REFLECTIONS off: what the road samples for its reflection, opaque black
     VkSampler linear_ = VK_NULL_HANDLE, point_ = VK_NULL_HANDLE;
     VkDescriptorPool ui_pool_ = VK_NULL_HANDLE;
     bool ui_ = false;
@@ -1859,7 +1860,8 @@ bool VulkanBackend::CreateFixedImages() {
     if (!CreateImage(lut_, kBgra, 256, 1, 1, 1, 1, kSampled, VK_IMAGE_VIEW_TYPE_2D) ||
         !CreateImage(dummy_[0], kBgra, 1, 1, 1, 1, 1, kSampled, VK_IMAGE_VIEW_TYPE_2D) ||
         !CreateImage(dummy_[1], kBgra, 1, 1, 1, 1, 1, kSampled, VK_IMAGE_VIEW_TYPE_3D) ||
-        !CreateImage(dummy_[2], kBgra, 1, 1, 1, 6, 1, kSampled, VK_IMAGE_VIEW_TYPE_CUBE, true))
+        !CreateImage(dummy_[2], kBgra, 1, 1, 1, 6, 1, kSampled, VK_IMAGE_VIEW_TYPE_CUBE, true) ||
+        !CreateImage(road_off_, kBgra, 1, 1, 1, 1, 1, kSampled, VK_IMAGE_VIEW_TYPE_2D))
         return false;
     VkSamplerCreateInfo sc{VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO};
     sc.magFilter = sc.minFilter = VK_FILTER_LINEAR;
@@ -1879,6 +1881,13 @@ bool VulkanBackend::CreateFixedImages() {
         VkImageSubresourceRange r{VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, im->layers};
         vkCmdClearColorImage(Cb(), im->image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &black, 1, &r);
         Transition(*im, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+    }
+    {
+        const VkClearColorValue opaque_black{{0.0f, 0.0f, 0.0f, 1.0f}};
+        Transition(road_off_, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+        VkImageSubresourceRange r{VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1};
+        vkCmdClearColorImage(Cb(), road_off_.image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &opaque_black, 1, &r);
+        Transition(road_off_, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
     }
     for (int i = 0; i < 768; i++) ramp_[i] = uint8_t(i & 255);
     UploadGammaRamp();
@@ -3423,6 +3432,11 @@ VkImageView VulkanBackend::BindTexture(const State& s, int stage, DrawTextures& 
     info.rect = d.linear;
     if (!d.cube && d.depth == 1 && !fi.compressed && !fi.depth)
         if (VkImageView v = BindFrameRegion(stage, d, stages)) return v;
+    // ROAD REFLECTIONS off: the game draws it no more (src/game/effects.cpp), and the road reads a fixed opaque image
+    // instead of the last one drawn
+    if (!d.cube && d.data && !game::Opt().road_reflections &&
+        (d.data == game::g_road_reflection[0].load() || d.data == game::g_road_reflection[1].load()))
+        return road_off_.view;
     auto tit = targets_.find(TargetMapKey(d.data, fi.depth));
     if (tit != targets_.end() && !d.cube && d.depth == 1 && !fi.compressed)
         return BindTargetTexture(s, stage, d, tit->second, true, stages);

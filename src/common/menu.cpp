@@ -258,7 +258,7 @@ enum RowId { kRenderResolution, kMaxFps, kVsync, kFpsCounter, kAniso, kAudioOutp
              kGyroSensitivity, kTouchOpacity, kTouchSize, kTouchEdit, kCheckUpdates, kAspectRatio, kScreenFilter,
              kAntiAliasing, kFpsPosition, kFpsTemps, kStickMode, kBloom, kFog, kDonate, kGithub, kYoutube, kFpsUsage,
              kShaderPreload, kRain, kParticles, kShifting, kResetKeyboard, kResetController, kPadPreset, kCheatCash,
-             kCheatNitrous, kCheatUnlockAll, kVibration, kHdr, kFpsStyle };
+             kCheatNitrous, kCheatUnlockAll, kVibration, kHdr, kFpsStyle, kRoadReflections, kCheatDragShift };
 
 using rows::Kind;
 using rows::Row;
@@ -285,6 +285,7 @@ constexpr Row kGraphicsRows[] = {
     {Kind::Value, kFog, "FOG"},
     {Kind::Value, kRain, "RAIN"},
     {Kind::Value, kParticles, "PARTICLES"},
+    {Kind::Value, kRoadReflections, "ROAD REFLECTIONS"},
     {Kind::Value, kScreenFilter, "SCREEN FILTER"},
 };
 
@@ -312,6 +313,7 @@ constexpr Row kCheatRows[] = {
     {Kind::Value, kCheatCash, "MAX CASH"},
     {Kind::Value, kCheatNitrous, "INFINITE NITROUS"},
     {Kind::Value, kCheatUnlockAll, "UNLOCK ALL"},
+    {Kind::Value, kCheatDragShift, "AUTO SHIFT IN DRAG"},
 };
 
 // the credits' names, an info row's id; as they are, untranslated
@@ -366,12 +368,14 @@ bool* ToggleFlag(Settings& s, int id) {
         case kFog: return &o.fog;
         case kRain: return &o.rain;
         case kParticles: return &o.particles;
+        case kRoadReflections: return &o.road_reflections;
         case kShaderPreload: return &o.shader_preload;
         case kVibration: return &o.vibration;
         case kHdr: return &o.hdr;
         case kCheatCash: return &o.cheat_cash;
         case kCheatNitrous: return &o.cheat_nitrous;
         case kCheatUnlockAll: return &o.cheat_unlock_all;
+        case kCheatDragShift: return &o.cheat_drag_shift;
         default: return nullptr;
     }
 }
