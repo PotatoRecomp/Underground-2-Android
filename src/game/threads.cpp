@@ -117,3 +117,37 @@ LOCKED(g_stream, 001CB050)
 LOCKED(g_stream, 001CAFD0)
 
 #undef LOCKED
+
+// EA's packet streams ("STRM", made by 0x85000; the movies and the front end's streamed data). A stream's readers are
+// handles of 16 bytes at its +0x34 (stream +0, channel +4, bytes queued +8, next packet +0xC), its section at +8 taken
+// through 0x251C41 / 0x251C4C. The parser (0x72920) queues a packet under the section: the count first, then, if the
+// queue was empty, the next packet. The pop (0x72F90) read the count and the next packet before taking the section, so
+// on a phone it saw the new count with the old pointer, which the stream's make never sets: 0xAAAAAAAA (fresh heap) or
+// a stale packet. The first gave SIGSEGV at 0x72FBB under the movies (0x25D86C, the race intro, the garage); the second
+// wrote the packet's size into freed memory (the heap's int3 at 0x4F2F5 in its check 0x4F1A0) or walked garbage packets
+// for ever (no frame for 10 s, title at 0x25D88E). The whole pop runs under the stream's own section (recursive, so
+// the pop's own enter and leave nest)
+namespace {
+constexpr uint32_t kStrm = 0x4D525453;
+}
+
+X86_EXTERN_FUNC(__imp__sub_00072F90);
+X86_EXTERN_FUNC(sub_00251C41);
+X86_EXTERN_FUNC(sub_00251C4C);
+X86_FUNC(sub_00072F90) {
+    uint32_t handle = kernel::R32(ctx.esp + 4);
+    uint32_t stream = handle ? kernel::R32(handle) : 0;
+    if (!stream || kernel::R32(stream) != kStrm) {
+        __imp__sub_00072F90(ctx, base);
+        return;
+    }
+    ctx.ecx = stream + 4;
+    X86_PUSH32(0x72F90u);
+    sub_00251C41(ctx, base);
+    __imp__sub_00072F90(ctx, base);
+    uint32_t packet = ctx.eax;
+    ctx.ecx = stream + 4;
+    X86_PUSH32(0x72F90u);
+    sub_00251C4C(ctx, base);
+    ctx.eax = packet;
+}
